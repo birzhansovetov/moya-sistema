@@ -153,6 +153,30 @@ test('guided workout shows one exercise at a time and resumes at the first unfin
   expect(await screen.findByText('Упражнение 2 из 2')).toBeInTheDocument()
 })
 
+test('rest can start after a completed set and be skipped without completing the workout',async()=>{
+  apiMock.mockReset().mockImplementation(async(path:string,init?:RequestInit)=>{
+    if(path==='/health/sport/catalog')return {version:'1',programs:[program],exercises:exercise}
+    if(path==='/health/sport/plan')return {plan:{id:'plan-1',answers,program,started_on:'2026-10-06',content_version:'1'}}
+    if(path==='/health/sport/workouts')return init?.method==='POST'?{id:'done'}:{items:[]}
+    if(path.startsWith('/health/sport/draft?'))return {draft:null}
+    if(path==='/health/sport/draft')return {draft:null}
+    throw new Error(`Unexpected ${path}`)
+  })
+  mount()
+  fireEvent.click(await screen.findByRole('button',{name:'Записать тренировку'}))
+  fireEvent.change(await screen.findByLabelText('Приседание до стула — подход 1 (повторения)'),{target:{value:'10'}})
+  fireEvent.click(screen.getByRole('button',{name:'Начать отдых после подхода 1'}))
+  expect(screen.getByRole('timer')).toHaveTextContent('01:15')
+  fireEvent.click(screen.getByRole('button',{name:'Пропустить отдых'}))
+  expect(screen.queryByRole('timer')).not.toBeInTheDocument()
+  expect(apiMock.mock.calls.some(([path,init])=>path==='/health/sport/workouts'&&init?.method==='POST')).toBe(false)
+  fireEvent.change(screen.getByLabelText('Приседание до стула — подход 2 (повторения)'),{target:{value:'9'}})
+  fireEvent.click(screen.getByRole('button',{name:'Начать отдых после подхода 2'}))
+  fireEvent.click(screen.getByRole('button',{name:'Завершить тренировку'}))
+  await screen.findByText('Тренировка завершена и записана.')
+  expect(screen.queryByRole('timer')).not.toBeInTheDocument()
+})
+
 test('eight-week home plan shows a dated training calendar and progression guidance', async () => {
   const fullProgram = { ...program, duration_weeks: 8, progression: Array.from({ length: 8 }, (_, index) => `Неделя ${index + 1}: прогресс`), sessions: [program.sessions[0], { ...program.sessions[0], id: 'B', title: 'Дом B' }] }
   apiMock.mockReset().mockImplementation(async (path: string) => {
