@@ -69,8 +69,10 @@ export function AuthPage({ onAuthenticated }: { onAuthenticated: (value: AuthRes
       <h1>{title}</h1>
       <p className={styles.subtitle}>{description}</p>
       <form onSubmit={submit}>
-        {['login', 'register', 'forgot'].includes(mode) && <Input label="Email" type="email" autoComplete="email" required value={email} onChange={event => setEmail(event.target.value)} placeholder="you@example.com" />}
-        {['login', 'verify', 'reset'].includes(mode) && <Input label="Пароль" type="password" autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={12} required value={password} onChange={event => setPassword(event.target.value)} placeholder={mode === 'login' ? 'Введите пароль' : 'Не менее 12 символов'} />}
+        <div className={styles.fields}>
+          {['login', 'register', 'forgot'].includes(mode) && <Input label="Email" type="email" autoComplete="email" required value={email} onChange={event => setEmail(event.target.value)} placeholder="you@example.com" />}
+          {['login', 'verify', 'reset'].includes(mode) && <Input label="Пароль" type="password" autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={12} required value={password} onChange={event => setPassword(event.target.value)} placeholder={mode === 'login' ? 'Введите пароль' : 'Не менее 12 символов'} />}
+        </div>
         <div className={styles.feedbackSlot} aria-live="polite">
           {['verify', 'reset'].includes(mode) && !linkToken && <p role="alert" className={styles.error}>Ссылка не содержит кода. Откройте ссылку из письма целиком.</p>}
           {error && <p role="alert" className={styles.error}>{error}</p>}
