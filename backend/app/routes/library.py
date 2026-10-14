@@ -1,4 +1,5 @@
 import json
+import hashlib
 import zipfile
 import xml.etree.ElementTree as ET
 from functools import lru_cache
@@ -35,6 +36,11 @@ def local_book(book_id: str):
     return files('app.content').joinpath('ebooks', name)
 
 
+@lru_cache(maxsize=16)
+def book_checksum(book_id: str):
+    return hashlib.sha256(local_book(book_id).read_bytes()).hexdigest()
+
+
 @router.get('/guides')
 def guides(area:Literal['personal','reading','finance','sport'],user:User=Depends(get_current_user),db:Session=Depends(get_db)):
     items=json.loads(files('app.content').joinpath('guides.json').read_text())
@@ -54,7 +60,7 @@ def download_book(book_id:str,user:User=Depends(get_current_user)):
 
 
 @lru_cache(maxsize=8)
-def book_paragraphs(book_id:str):
+def book_content(book_id:str):
     book=local_book(book_id)
     with zipfile.ZipFile(book) as archive:
         chapters=sorted((name for name in archive.namelist() if name.startswith('OPS/c') and name.endswith('.xhtml')),
@@ -62,14 +68,21 @@ def book_paragraphs(book_id:str):
         if not chapters:
             raise HTTPException(500,'Текст книги недоступен')
         paragraphs=[]
+        outline=[]
         for chapter in chapters:
             root=ET.fromstring(archive.read(chapter))
-            paragraphs.extend(' '.join(''.join(node.itertext()).split()) for node in root.iter('{http://www.w3.org/1999/xhtml}p'))
-    return [paragraph for paragraph in paragraphs if paragraph]
+            outline.append({'title':f'Глава {len(outline)+1}','offset':len(paragraphs)})
+            paragraphs.extend(paragraph for node in root.iter('{http://www.w3.org/1999/xhtml}p')
+                              if (paragraph := ' '.join(''.join(node.itertext()).split())))
+    return paragraphs, outline
+
+
+def book_paragraphs(book_id:str):
+    return book_content(book_id)[0]
 
 
 @router.get('/books/{book_id}/read')
 def read_book(book_id:str,offset:int=Query(default=0,ge=0),user:User=Depends(get_current_user)):
-    paragraphs=book_paragraphs(book_id)
+    paragraphs, chapters=book_content(book_id)
     end=min(offset+60,len(paragraphs))
-    return {'paragraphs':paragraphs[offset:end], 'total':len(paragraphs), 'next_offset':end if end<len(paragraphs) else None}
+    return {'paragraphs':paragraphs[offset:end], 'total':len(paragraphs), 'next_offset':end if end<len(paragraphs) else None, 'chapters':chapters, 'checksum':book_checksum(book_id)}

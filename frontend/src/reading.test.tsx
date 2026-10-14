@@ -40,6 +40,28 @@ test('reading allows a free-text-only note and retains it after a failed save',a
   expect(logs[0]).toMatchObject({page:null,reflection:{}})
   await waitFor(()=>expect(screen.getByLabelText('Свободная заметка')).toHaveValue(''))
 })
+
+test('catalog reader resumes a chapter and saves a bookmark without a reading log',async()=>{
+ const original=apiMock.getMockImplementation()!
+ const suggestion={id:'test-book',title:'Тестовый роман',author:'Автор',interest:'',genres:[],source:'https://example.test',description:'Книга',questions:[],check:'',available_offline:true}
+ let saved:Record<string,unknown>|null=null
+ apiMock.mockImplementation((path:string,init?:RequestInit)=>{
+   if(path==='/library/books')return Promise.resolve({items:[suggestion]})
+   if(path==='/reading/books/reader-state/test-book'){
+     if(init?.method==='PUT'){saved=JSON.parse(init.body as string);return Promise.resolve({...saved,checksum:'abc'})}
+     return Promise.resolve({location:{format:'epub',chapter:1,position:60},bookmarks:[],checksum:'abc'})
+   }
+   if(path.startsWith('/library/books/test-book/read'))return Promise.resolve({paragraphs:['Текст второй главы.'],total:120,next_offset:120,chapters:[{title:'Глава 1',offset:0},{title:'Глава 2',offset:60}],checksum:'abc'})
+   return original(path,init)
+ })
+ mount()
+ fireEvent.click(await screen.findByRole('button',{name:'Читать здесь'}))
+ expect(await screen.findByText('Текст второй главы.')).toBeInTheDocument()
+ expect(apiMock.mock.calls.some(([path])=>String(path).includes('offset=60'))).toBe(true)
+ fireEvent.click(screen.getByRole('button',{name:'Добавить закладку'}))
+ await waitFor(()=>expect(saved).toMatchObject({bookmarks:[{format:'epub',chapter:1,position:60}]}))
+ expect(logs).toHaveLength(0)
+})
 test('saving a reading page updates the bookmark and the next reading step',async()=>{
   mount()
   await screen.findByText('Страницы 11–25')

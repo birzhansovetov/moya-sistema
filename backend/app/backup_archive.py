@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 from app.db import utc_now
 from app.models import (
     Expense, ExpenseCategory, Income, FoodLog, NutritionMenu, NutritionProfile,
-    PersonalEntry, ReadingBook, ReadingLog, SportPlan, StudyAttempt,
+    PersonalEntry, ReadingBook, ReadingLog, ReaderState, SportPlan, StudyAttempt,
     StudyDraft, StudyPlan, StudyReview, Subtask, Task, TaskCompletion,
     TrainingFeedback, User, WeightLog, WorkoutDraft, WorkoutLog,
 )
@@ -31,7 +31,7 @@ PERSONAL_MODELS = (
     SportPlan, WorkoutLog, WorkoutDraft, TrainingFeedback,
     NutritionProfile, NutritionMenu, FoodLog, WeightLog,
     ExpenseCategory, Expense, Income,
-    PersonalEntry, ReadingBook, ReadingLog,
+    PersonalEntry, ReadingBook, ReadingLog, ReaderState,
     StudyPlan, StudyAttempt, StudyDraft, StudyReview,
 )
 PERSONAL_TABLES = {model.__tablename__: model for model in PERSONAL_MODELS}
@@ -52,6 +52,7 @@ JSON_SHAPES = {
     "nutrition_menus": {"days_snapshot": (list,), "profile_snapshot": (dict,)},
     "food_logs": {"recipe_snapshot": (dict,), "nutrition_snapshot": (dict,)},
     "reading_logs": {"reflection": (dict,)},
+    "reader_states": {"location": (dict, type(None)), "bookmarks": (list,)},
     "study_plans": {"config": (dict,), "lesson_ids": (list,)},
     "study_attempts": {"snapshot": (dict,), "result": (dict,)},
     "study_drafts": {"content": (dict,)},
@@ -197,7 +198,7 @@ def validate_snapshot(value: object, email: str) -> dict[str, Any]:
         raise ArchiveError("Неверная структура архива")
     current_tables = set(PERSONAL_TABLES)
     missing_tables = current_tables - set(tables)
-    if set(tables) - current_tables or not missing_tables <= {"training_feedback", "workout_drafts", "incomes"}:
+    if set(tables) - current_tables or not missing_tables <= {"training_feedback", "workout_drafts", "incomes", "reader_states"}:
         raise ArchiveError("Неверная структура архива")
     for table in missing_tables:
         tables[table] = []

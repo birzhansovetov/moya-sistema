@@ -12,7 +12,8 @@ from sqlalchemy.orm import Session
 
 from app.auth import AuthContext, get_current_user, require_csrf
 from app.db import get_db, utc_now
-from app.models import ReadingBook, ReadingLog, User
+from app.models import ReadingBook, ReadingLog, ReaderState, User
+from app.routes.library import book_checksum, book_paragraphs
 from app.tasks import local_date
 
 router = APIRouter(prefix='/api/reading/books', tags=['reading'])
@@ -78,6 +79,17 @@ class LogCreate(LogValues):
     create_key: str = Field(min_length=1, max_length=100)
 
 
+class ReaderLocation(BaseModel):
+    format: Literal['epub']
+    chapter: int = Field(ge=0, le=10000)
+    position: int = Field(ge=0, le=10000000)
+
+
+class ReaderStateValues(BaseModel):
+    location: ReaderLocation | None = None
+    bookmarks: list[ReaderLocation] = Field(default_factory=list, max_length=100)
+
+
 def owned(db, user_id, book_id):
     item = db.get(ReadingBook, book_id)
     if item is None or item.user_id != user_id:
@@ -141,6 +153,34 @@ def books(q: str = Query(default='', max_length=100), deleted: bool = False, sta
     if q.strip():
         items = [item for item in items if q.strip().casefold() in (item.title+' '+item.author).casefold()]
     return {'items': [serialize_book(db, item) for item in items[offset:offset+limit]], 'total': len(items), 'limit': limit, 'offset': offset}
+
+
+@router.get('/reader-state/{content_id}')
+def get_reader_state(content_id: str, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    checksum = book_checksum(content_id)
+    item = db.scalar(select(ReaderState).where(ReaderState.user_id == user.id, ReaderState.content_id == content_id))
+    if item and item.checksum == checksum:
+        return {'location': item.location, 'bookmarks': item.bookmarks, 'checksum': checksum}
+    return {'location': None, 'bookmarks': [], 'checksum': checksum}
+
+
+@router.put('/reader-state/{content_id}')
+def save_reader_state(content_id: str, payload: ReaderStateValues, context: AuthContext = Depends(require_csrf), db: Session = Depends(get_db)):
+    checksum = book_checksum(content_id)
+    length = len(book_paragraphs(content_id))
+    positions = [value.position for value in ([payload.location] if payload.location else []) + payload.bookmarks]
+    if any(value >= length for value in positions):
+        raise HTTPException(422, 'Место чтения вне книги')
+    item = db.scalar(select(ReaderState).where(ReaderState.user_id == context.user.id, ReaderState.content_id == content_id))
+    if item is None:
+        item = ReaderState(user_id=context.user.id, content_id=content_id, checksum=checksum)
+        db.add(item)
+    item.checksum = checksum
+    item.location = payload.location.model_dump() if payload.location else None
+    item.bookmarks = [value.model_dump() for value in payload.bookmarks]
+    item.updated_at = utc_now()
+    db.commit()
+    return {'location': item.location, 'bookmarks': item.bookmarks, 'checksum': checksum}
 
 
 @router.get('/{book_id}')

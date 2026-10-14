@@ -22,7 +22,7 @@ EXPECTED_TABLES = {
     "tasks", "subtasks", "task_completions", "sport_plans", "workout_logs", "workout_drafts",
     "nutrition_profiles", "nutrition_menus", "food_logs", "weight_logs",
     "expense_categories", "expenses", "incomes", "personal_entries", "reading_books",
-    "reading_logs", "study_plans", "study_attempts", "study_drafts", "study_reviews", "training_feedback",
+    "reading_logs", "reader_states", "study_plans", "study_attempts", "study_drafts", "study_reviews", "training_feedback",
 }
 
 
@@ -107,6 +107,12 @@ def test_archive_before_income_feature_restores_with_empty_incomes():
     del old["tables"]["incomes"]
     checked = validate_snapshot(old, "one@example.com")
     assert checked["tables"]["incomes"] == []
+
+
+def test_archive_before_reader_positions_restores_with_empty_state():
+    old=empty_snapshot()
+    del old['tables']['reader_states']
+    assert validate_snapshot(old,'one@example.com')['tables']['reader_states']==[]
 
 
 def test_old_diary_archive_without_activities_still_restores(client, mailbox):

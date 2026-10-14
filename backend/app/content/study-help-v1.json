@@ -638,5 +638,101 @@
       "checked_by": "Codex structural and content review",
       "recheck_by": "2027-04-14"
     }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v3",
+    "lesson_id": "en-a2-01",
+    "question_index": 0,
+    "hint": "Посмотрите на every Monday: это повторяющаяся привычка.",
+    "next_step": "Нужна форма Present Simple для she; вспомните окончание глагола в третьем лице.",
+    "explanation": "Правильная форма — studies: She studies English every Monday.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v3",
+    "lesson_id": "en-a2-01",
+    "question_index": 1,
+    "hint": "Сначала послушайте фразу о сегодняшней погоде и обычном способе добираться.",
+    "next_step": "Сравните normally walk и today в аудио. Что изменилось именно сегодня?",
+    "explanation": "Говорящий едет на автобусе, потому что сегодня идёт дождь.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v3",
+    "lesson_id": "en-a2-01",
+    "question_index": 2,
+    "hint": "Найдите в тексте причину, связанную с дверью магазина.",
+    "next_step": "Сопоставьте временную работу из дома с тем, что сейчас ремонтируют.",
+    "explanation": "Нора дома, потому что дверь магазина ремонтируют.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v3",
+    "lesson_id": "en-a2-02",
+    "question_index": 0,
+    "hint": "Вопрос уже содержит Did, а yesterday указывает на прошлое.",
+    "next_step": "После Did используйте основную форму смыслового глагола, без окончания прошедшего времени.",
+    "explanation": "Правильная форма — finish: Did you finish the report yesterday?",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v3",
+    "lesson_id": "en-a2-02",
+    "question_index": 1,
+    "hint": "Прослушайте причину остановки транспорта до поездки на поезде.",
+    "next_step": "Сравните, опоздал ли человек сам или автобус задержался по дороге.",
+    "explanation": "Говорящий пропустил поезд, потому что автобус задержался из-за закрытой дороги.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v3",
+    "lesson_id": "en-a2-02",
+    "question_index": 2,
+    "hint": "Найдите в тексте предложение о телефоне во время прогулки.",
+    "next_step": "Обратите внимание на заряд устройства: хватало ли его для многих снимков?",
+    "explanation": "Омар сделал мало фотографий, потому что заряд телефона был низким.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
   }
 ]

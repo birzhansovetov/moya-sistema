@@ -45,3 +45,17 @@ def test_locally_licensed_books_can_be_read_and_downloaded(client, mailbox):
     assert long_book['next_offset'] == 60
     assert client.get('/api/library/books/turgenev-hunters-notes/read?offset=60').json()['paragraphs'][0] != long_book['paragraphs'][0]
     assert client.get('/api/library/books/unknown/download').status_code == 404
+
+
+def test_catalog_reader_has_chapters_and_private_position_separate_from_reading_log(client, mailbox):
+    from test_spheres import sign_in
+    csrf=sign_in(client,mailbox,'chapter-one@example.com')
+    path='/api/reading/books/reader-state/turgenev-hunters-notes'
+    book=client.get('/api/library/books/turgenev-hunters-notes/read').json()
+    assert book['chapters'] and book['chapters'][0]['offset']==0
+    saved=client.put(path,headers={'X-CSRF-Token':csrf},json={'location':{'format':'epub','chapter':1,'position':72},'bookmarks':[{'format':'epub','chapter':1,'position':72}]})
+    assert saved.status_code==200,saved.text
+    assert client.get(path).json()['location']['position']==72
+    assert client.get('/api/reading/books').json()['total']==0
+    sign_in(client,mailbox,'chapter-two@example.com')
+    assert client.get(path).json()['location'] is None

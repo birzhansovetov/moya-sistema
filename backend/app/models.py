@@ -372,6 +372,18 @@ class ReadingBook(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
 
 
+class ReaderState(Base):
+    __tablename__ = 'reader_states'
+    __table_args__ = (UniqueConstraint('user_id', 'content_id', name='uq_reader_state_owner_content'),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), index=True)
+    content_id: Mapped[str] = mapped_column(String(160))
+    checksum: Mapped[str] = mapped_column(String(64))
+    location: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    bookmarks: Mapped[list] = mapped_column(JSON, default=list)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
+
+
 class ReadingLog(Base):
     __tablename__ = 'reading_logs'
     __table_args__ = (UniqueConstraint('book_id', 'create_key', name='uq_reading_log_key'),)
