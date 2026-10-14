@@ -1,5 +1,6 @@
 import {Guides} from '../components/Guides'
 import {BookSuggestions,type Suggestion} from '../components/BookSuggestions'
+import {PersonalBookLibrary} from '../components/PersonalBookLibrary'
 import {useRef,useState} from 'react'
 import {Link,useSearchParams} from 'react-router-dom'
 import {useMutation,useQuery,useQueryClient} from '@tanstack/react-query'
@@ -55,6 +56,7 @@ export function ReadingPage(){
         </>}
       </>}
     </section></div>
+    <PersonalBookLibrary />
     <Guides area="reading" />
     <BookSuggestions onChoose={(suggestion,opener)=>setBookEditor({suggestion,opener})} />
     {bookEditor&&<TaskDialog label={bookEditor.book?'Настроить книгу':'Добавить книгу'} returnFocusTo={bookEditor.opener} onClose={()=>{if(!bookPending)setBookEditor(null)}}><section className={`card ${styles.dialog}`}><h2>{bookEditor.book?'Книга и план чтения':'Новая книга'}</h2><BookForm suggestion={bookEditor.suggestion} initial={bookEditor.book} onSaved={item=>savedBook(item,bookEditor)} onPendingChange={setBookPending} onCancel={()=>{if(!bookPending)setBookEditor(null)}}/></section></TaskDialog>}

@@ -384,6 +384,22 @@ class ReaderState(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
 
 
+class UploadedBook(Base):
+    __tablename__ = 'uploaded_books'
+    __table_args__ = (UniqueConstraint('user_id', 'create_key', name='uq_uploaded_book_owner_key'),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), index=True)
+    title: Mapped[str] = mapped_column(String(200))
+    original_filename: Mapped[str] = mapped_column(String(200))
+    format: Mapped[str] = mapped_column(String(8))
+    object_key: Mapped[str] = mapped_column(String(200), unique=True)
+    checksum: Mapped[str] = mapped_column(String(64))
+    size_bytes: Mapped[int] = mapped_column(Integer)
+    page_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    create_key: Mapped[str] = mapped_column(String(100))
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
+
+
 class ReadingLog(Base):
     __tablename__ = 'reading_logs'
     __table_args__ = (UniqueConstraint('book_id', 'create_key', name='uq_reading_log_key'),)

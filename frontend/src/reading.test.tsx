@@ -13,6 +13,7 @@ beforeEach(()=>{
   apiMock.mockReset().mockImplementation(async(path:string,init?:RequestInit)=>{
     const url=new URL(path,'https://test.local');const body=init?.body?JSON.parse(init.body as string):{}
     if(url.pathname==='/library/guides'||url.pathname==='/library/books')return {items:[]}
+    if(url.pathname==='/reading/books/uploads/status')return {enabled:false,max_bytes:15728640}
     if(url.pathname==='/reading/books')return {items:[{...book}],total:1,limit:30,offset:0}
     if(url.pathname==='/reading/books/one')return {...book}
     if(url.pathname==='/reading/books/one/logs'){
@@ -26,6 +27,33 @@ beforeEach(()=>{
     }
     throw new Error('Unexpected '+path)
   })
+})
+test('manual book entry remains available when private file storage is disabled',async()=>{
+  mount()
+  expect(await screen.findByText('Загрузка файлов пока недоступна. Готовые книги и запись названия доступны ниже.')).toBeInTheDocument()
+  expect(screen.getByRole('button',{name:'Записать свою книгу'})).toBeEnabled()
+})
+
+test('personal EPUB reader resumes and saves position without a reading log',async()=>{
+  const original=apiMock.getMockImplementation()!
+  let saved:Record<string,unknown>|null=null
+  apiMock.mockImplementation((path:string,init?:RequestInit)=>{
+    if(path==='/reading/books/uploads/status')return Promise.resolve({enabled:true,max_bytes:15728640})
+    if(path==='/reading/books/uploads')return Promise.resolve({items:[{id:'private-one',title:'Моя EPUB',format:'epub',original_filename:'book.epub',size_bytes:1024,page_count:null}]})
+    if(path==='/reading/books/uploads/private-one/reader-state'){
+      if(init?.method==='PUT'){saved=JSON.parse(init.body as string);return Promise.resolve({...saved,checksum:'abc'})}
+      return Promise.resolve({location:{format:'epub',chapter:1,position:60},bookmarks:[],checksum:'abc'})
+    }
+    if(path.startsWith('/reading/books/uploads/private-one/read'))return Promise.resolve({paragraphs:['Личный текст.'],chapters:[{title:'Глава 1',offset:0},{title:'Глава 2',offset:60}],total:120,next_offset:null})
+    return original(path,init)
+  })
+  mount()
+  fireEvent.click(await screen.findByRole('button',{name:/Моя EPUB/}))
+  await waitFor(()=>expect(screen.getByText('Личный текст.')).toBeInTheDocument())
+  await waitFor(()=>expect(apiMock.mock.calls.some(([path])=>String(path).includes('/uploads/private-one/read?offset=60'))).toBe(true))
+  fireEvent.click(screen.getAllByRole('button',{name:'Добавить закладку'}).at(-1)!)
+  await waitFor(()=>expect(saved).toMatchObject({bookmarks:[{format:'epub',chapter:1,position:60}]}))
+  expect(logs).toHaveLength(0)
 })
 function mount(){render(<QueryClientProvider client={new QueryClient({defaultOptions:{queries:{retry:false}}})}><MemoryRouter initialEntries={['/education/reading?book=one']}><ReadingPage/></MemoryRouter></QueryClientProvider>)}
 test('reading allows a free-text-only note and retains it after a failed save',async()=>{

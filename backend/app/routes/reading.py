@@ -80,14 +80,19 @@ class LogCreate(LogValues):
 
 
 class ReaderLocation(BaseModel):
-    format: Literal['epub']
+    format: Literal['epub', 'fb2']
     chapter: int = Field(ge=0, le=10000)
     position: int = Field(ge=0, le=10000000)
 
 
+class PdfReaderLocation(BaseModel):
+    format: Literal['pdf']
+    page: int = Field(ge=0, le=100000)
+
+
 class ReaderStateValues(BaseModel):
-    location: ReaderLocation | None = None
-    bookmarks: list[ReaderLocation] = Field(default_factory=list, max_length=100)
+    location: ReaderLocation | PdfReaderLocation | None = None
+    bookmarks: list[ReaderLocation | PdfReaderLocation] = Field(default_factory=list, max_length=100)
 
 
 def owned(db, user_id, book_id):
@@ -168,6 +173,8 @@ def get_reader_state(content_id: str, user: User = Depends(get_current_user), db
 def save_reader_state(content_id: str, payload: ReaderStateValues, context: AuthContext = Depends(require_csrf), db: Session = Depends(get_db)):
     checksum = book_checksum(content_id)
     length = len(book_paragraphs(content_id))
+    if any(value.format != 'epub' for value in ([payload.location] if payload.location else []) + payload.bookmarks):
+        raise HTTPException(422, 'Неверный формат закладки')
     positions = [value.position for value in ([payload.location] if payload.location else []) + payload.bookmarks]
     if any(value >= length for value in positions):
         raise HTTPException(422, 'Место чтения вне книги')
