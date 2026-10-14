@@ -1,0 +1,40 @@
+name: Catalog coverage
+
+on:
+  push:
+    paths:
+      - 'backend/app/content/**'
+      - 'backend/app/matching.py'
+      - 'backend/app/routes/onboarding.py'
+      - 'backend/app/nutrition.py'
+      - 'backend/app/sport.py'
+      - 'frontend/src/pages/Onboarding.tsx'
+      - 'backend/app/coverage.py'
+      - 'backend/tests/test_coverage.py'
+      - '.github/workflows/check-content.yml'
+  pull_request:
+    paths:
+      - 'backend/app/content/**'
+      - 'backend/app/matching.py'
+      - 'backend/app/routes/onboarding.py'
+      - 'backend/app/nutrition.py'
+      - 'backend/app/sport.py'
+      - 'frontend/src/pages/Onboarding.tsx'
+      - 'backend/app/coverage.py'
+      - 'backend/tests/test_coverage.py'
+      - '.github/workflows/check-content.yml'
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[dev]'
+        working-directory: backend
+      - run: python -m app.coverage --check
+        working-directory: backend
+      - run: python -m pytest tests/test_coverage.py -q
+        working-directory: backend

@@ -1,0 +1,64 @@
+@font-face{font-family:"Noto Sans";src:url('/fonts/NotoSans-Variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:optional}
+:root{
+  color-scheme:light;
+  --color-canvas:#f4f3f0;--color-surface:#fff;--color-surface-soft:#eeece7;
+  --color-text:#242424;--color-text-muted:#625f59;--color-line:#dcd9d2;
+  --color-action:#242424;--color-action-hover:#3d3d3d;--color-action-text:#fff;
+  --color-danger:#aa3040;--color-error-bg:#fff1f2;--color-success:#226947;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;
+  --radius-control:12px;--radius-card:18px;--radius-dialog:20px;
+  --text-small:13px;--text-label:14px;--text-body:16px;--text-title:clamp(36px,3.4vw,48px);
+  --bg:var(--color-canvas);--surface:var(--color-surface);--surface-raised:var(--color-surface);--surface-soft:var(--color-surface-soft);
+  --line:var(--color-line);--text:var(--color-text);--text-muted:var(--color-text-muted);
+  --accent:var(--color-action);--accent-strong:var(--color-action-hover);--accent-ink:var(--color-action-text);
+  --app-bg:var(--color-canvas);--app-surface:var(--color-surface);--app-soft:var(--color-surface-soft);
+  --app-line:var(--color-line);--app-ink:var(--color-text);--app-muted:var(--color-text-muted);
+  font-family:"Noto Sans",Arial,sans-serif;color:var(--color-text);background:var(--color-canvas)
+}
+html{min-width:320px;overflow-x:clip}body{background:var(--color-canvas);color:var(--color-text);font-size:var(--text-body);line-height:1.5;overflow-x:clip}
+button,input,select,textarea{font:inherit}button{touch-action:manipulation}
+h1,h2,h3,h4{color:var(--color-text);letter-spacing:-.025em;overflow-wrap:break-word}
+h1,.pageHeader h1{font-size:var(--text-title);line-height:1.12;letter-spacing:-.035em;max-width:none;overflow-wrap:break-word}
+p{max-width:75ch}
+.primaryButton,.secondaryButton,.dangerButton,.uiButton{
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);box-sizing:border-box;
+  min-height:48px;min-width:0;padding:10px 16px;border:1px solid transparent;border-radius:var(--radius-control);
+  font-size:var(--text-label);font-weight:700;line-height:1.35;text-align:center;text-decoration:none;
+  white-space:normal;overflow-wrap:anywhere;vertical-align:middle;position:relative
+}
+.primaryButton,.uiButton--primary{background:var(--color-action);border-color:var(--color-action);color:var(--color-action-text)}
+.primaryButton:hover:not(:disabled),.uiButton--primary:hover:not(:disabled){background:var(--color-action-hover);border-color:var(--color-action-hover);color:#fff;transform:none}
+.secondaryButton,.uiButton--secondary{background:var(--color-surface);border-color:#bcb8af;color:var(--color-text)}
+.secondaryButton:hover:not(:disabled),.uiButton--secondary:hover:not(:disabled){background:var(--color-surface-soft);border-color:#77736d;color:var(--color-text)}
+.uiButton--quiet{background:transparent;color:var(--color-text);border-color:transparent}.uiButton--quiet:hover:not(:disabled){background:var(--color-surface-soft)}
+.dangerButton,.uiButton--danger{background:var(--color-danger);border-color:var(--color-danger);color:#fff}
+.dangerButton:hover:not(:disabled),.uiButton--danger:hover:not(:disabled){background:#842432;color:#fff}
+.primaryButton:disabled,.secondaryButton:disabled,.dangerButton:disabled,.uiButton:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.uiButtonContent{display:block;min-width:0}.uiButton[aria-busy=true] .uiButtonContent{visibility:hidden}
+.uiButtonSpinner{position:absolute;width:18px;height:18px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:ui-spin .7s linear infinite}
+@keyframes ui-spin{to{transform:rotate(360deg)}}
+.uiField{display:grid;gap:var(--space-2);min-width:0;color:#45413b;font-size:var(--text-label);font-weight:650;line-height:1.4}
+.uiFieldLabel{overflow-wrap:anywhere}.uiFieldHint,.uiFieldError{font-size:var(--text-small);font-weight:400;line-height:1.45}.uiFieldHint{color:var(--color-text-muted)}.uiFieldError{color:#9d2435}
+.uiFieldHint,.uiFieldError{min-height:1.45em}
+input:not([type=checkbox]):not([type=radio]),select,textarea,.uiInput,.uiSelect{box-sizing:border-box;min-width:0;max-width:100%;min-height:48px;background:var(--color-surface);border:1px solid #bcb8af;border-radius:var(--radius-control);color:var(--color-text);font-size:var(--text-body)}
+input:not([type=checkbox]):not([type=radio]):hover,select:hover,textarea:hover{border-color:#77736d}
+input::placeholder,textarea::placeholder{color:#6b6862}
+input[aria-invalid=true],select[aria-invalid=true],textarea[aria-invalid=true]{border-color:var(--color-danger);background:var(--color-error-bg)}
+input:disabled,select:disabled,textarea:disabled{background:var(--color-surface-soft);color:#706d67;cursor:not-allowed}
+input[type=checkbox],input[type=radio]{accent-color:var(--color-action)}
+.card,.summaryCard,.sectionCard,.uiCard{box-sizing:border-box;min-width:0;height:auto;background:var(--color-surface);border:1px solid var(--color-line);border-radius:var(--radius-card);box-shadow:none;overflow-wrap:break-word}
+.uiCard{padding:var(--space-6)}
+.sectionCard{min-height:0}
+.uiDialog{position:fixed;inset:0;box-sizing:border-box;max-width:min(640px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:var(--space-6);border:1px solid var(--color-line);border-radius:var(--radius-dialog);background:var(--color-surface);color:var(--color-text);overflow:auto}
+.uiDialog::backdrop{background:#171715a6}
+.uiDialog:not([open]){display:none}
+.uiDialog .taskFormCard{width:100%;border:0;box-shadow:none;padding:0;background:transparent}
+.errorMessage{background:var(--color-error-bg);border:1px solid #e2a4ad;color:#862332;min-height:48px}
+.successMessage{background:#e8f3eb;border:1px solid #9dcab0;color:var(--color-success);min-height:48px}
+:where(button,a,input,select,textarea,summary):focus-visible{outline:3px solid #276f8b!important;outline-offset:3px}
+.formStack,.formGrid,.healthActions,.formActions{column-gap:var(--space-4);row-gap:var(--space-4)}
+.formGrid>*{min-width:0}
+.pageHeader{gap:var(--space-6)}.pageHeader p{font-size:var(--text-body);line-height:1.5}
+@media(max-width:700px){.uiCard{padding:var(--space-4)}.pageHeader h1{font-size:clamp(32px,8vw,40px)}.formGrid{grid-template-columns:minmax(0,1fr)}.formActions{flex-wrap:wrap}.formActions>*{flex:1 1 160px}}
+@media(max-width:390px){.uiDialog{max-width:calc(100vw - 16px);padding:var(--space-4)}.primaryButton,.secondaryButton,.dangerButton,.uiButton{padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){.uiButtonSpinner{animation-duration:1.5s}}

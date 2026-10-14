@@ -1,0 +1,577 @@
+{
+  "java": {
+    "version": "v2",
+    "lessons": [
+      {
+        "id": "java-13",
+        "title": "Проверки без внешних библиотек",
+        "level": "beginner",
+        "minutes": 40,
+        "explanation": [
+          "Проверка полезна, когда у метода есть явный контракт. Отделите вычисление от вывода: метод total(int price, int count) возвращает результат, а main лишь запускает примеры. Так можно проверить обычный вход, ноль и ошибочное значение без ручного чтения десятков строк.",
+          "В простом учебном проекте достаточно явной проверки if с AssertionError; оператор assert по умолчанию выключен, поэтому не используйте его без флага -ea. Позже можно перейти к JUnit, но сначала важно видеть ожидаемое и фактическое значение каждого случая."
+        ],
+        "example": "public class Main {\n  static int total(int price, int count) {\n    if (price < 0 || count < 0) throw new IllegalArgumentException(\"negative input\");\n    return Math.multiplyExact(price, count);\n  }\n  public static void main(String[] args) {\n    if (total(125, 4) != 500) throw new AssertionError(\"regular case\");\n    if (total(125, 0) != 0) throw new AssertionError(\"empty case\");\n    try { total(-1, 2); throw new AssertionError(\"missing error\"); }\n    catch (IllegalArgumentException expected) { System.out.println(\"ok\"); }\n  }\n}",
+        "practice": "Добавьте метод расчёта стоимости с явным запретом отрицательных значений. Проверьте обычный случай, нулевое количество, ошибочный вход и переполнение через Math.multiplyExact. Запишите команды javac Main.java и java Main и фактический вывод.",
+        "solution": "Для 125 и 4 ожидается 500, для нуля — 0; отрицательный вход и переполнение должны завершиться ожидаемым исключением. Обе ошибки проверяйте отдельными блоками, чтобы один сбой не скрывал другой.",
+        "rubric": [
+          "Сохранён воспроизводимый результат и точные команды запуска или проверки.",
+          "Проверены обычный, пустой и ошибочный входы; ожидаемое сравнивается с фактическим.",
+          "Записано, что ещё не проверено и какой следующий шаг нужен для исправления."
+        ],
+        "quiz": [
+          {
+            "prompt": "Почему простой Java assert ненадёжен без дополнительных условий?",
+            "options": [
+              "Он всегда выполняется при javac",
+              "По умолчанию он выключен без -ea"
+            ],
+            "answers": [
+              "По умолчанию он выключен без -ea"
+            ],
+            "explanation": "Оператор assert нужно явно включить флагом -ea. Для этого учебного примера использована проверка if с AssertionError.",
+            "skill": "code"
+          },
+          {
+            "prompt": "Что произойдёт при Math.multiplyExact(Integer.MAX_VALUE, 2)?",
+            "options": [
+              "Получится обычное положительное int",
+              "Будет ArithmeticException"
+            ],
+            "answers": [
+              "Будет ArithmeticException"
+            ],
+            "explanation": "multiplyExact обнаруживает переполнение и выбрасывает ArithmeticException вместо молчаливого перехода через границу.",
+            "skill": "practice"
+          }
+        ],
+        "retry_practice": "После разбора ошибки повторите упражнение с новым входом. Добавьте метод расчёта стоимости с явным запретом отрицательных значений. Проверьте обычный случай, нулевое количество, ошибочный вход и переполнение через Math.multiplyExact. Запишите команды javac Main.java и java Main и фактический вывод.",
+        "related_source": {
+          "label": "Официальная документация",
+          "url": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html#multiplyExact(int,int)"
+        }
+      },
+      {
+        "id": "java-14",
+        "title": "Итоговый проект: журнал с проверяемым вводом",
+        "level": "beginner",
+        "minutes": 45,
+        "explanation": [
+          "Соберите ранее изученные методы, коллекции и файлы в одну маленькую программу. Каждая строка данных должна иметь понятный формат: дата, название занятия и целое число минут. Ввод сначала проверяется, затем добавляется в память; файл сохраняется только после успешной проверки.",
+          "Границы проекта важнее размера кода. Не храните пароли и личные медицинские заметки. Ошибочная строка не должна удалять старые записи. Сделайте резервную копию тестового файла и проверьте повторный запуск. Автоматический тест примеров не доказывает, что произвольный файл безопасен; неизвестный формат явно отклоняйте."
+        ],
+        "example": "import java.util.*;\npublic class Main {\n  record Entry(String title, int minutes) {\n    Entry { if (title == null || title.isBlank() || minutes <= 0) throw new IllegalArgumentException(\"bad entry\"); }\n  }\n  public static void main(String[] args) {\n    var entries = new ArrayList<Entry>();\n    entries.add(new Entry(\"Walk\", 30));\n    System.out.println(entries.stream().mapToInt(Entry::minutes).sum());\n  }\n}",
+        "practice": "Создайте командную программу журнала занятий с добавлением и чтением записей из локального файла. Зафиксируйте формат файла, обработку пустого названия и неверных минут, а также повторный запуск без потери ранее сохранённой записи. Покажите вход, вывод и структуру файлов.",
+        "solution": "Минимальный результат: запись валидируется до сохранения; после повторного запуска читается та же запись; повреждённая строка даёт понятную ошибку и не удаляет файл. Пример показывает только модель в памяти — файловую часть нужно реализовать самостоятельно.",
+        "rubric": [
+          "Сохранён воспроизводимый результат и точные команды запуска или проверки.",
+          "Проверены обычный, пустой и ошибочный входы; ожидаемое сравнивается с фактическим.",
+          "Записано, что ещё не проверено и какой следующий шаг нужен для исправления."
+        ],
+        "quiz": [
+          {
+            "prompt": "Когда следует изменять файл с журналом?",
+            "options": [
+              "До проверки, чтобы не потерять ввод",
+              "После проверки всех новых данных"
+            ],
+            "answers": [
+              "После проверки всех новых данных"
+            ],
+            "explanation": "Предварительная валидация не даёт ошибочному вводу испортить уже сохранённые данные.",
+            "skill": "code"
+          },
+          {
+            "prompt": "Что проверяет повторный запуск программы?",
+            "options": [
+              "Только то, что первый запуск напечатал число",
+              "Что сохранённая запись читается из файла"
+            ],
+            "answers": [
+              "Что сохранённая запись читается из файла"
+            ],
+            "explanation": "Повторный процесс не имеет старой памяти; запись должна восстановиться из сохранённого формата.",
+            "skill": "practice"
+          }
+        ],
+        "retry_practice": "После разбора ошибки повторите упражнение с новым входом. Создайте командную программу журнала занятий с добавлением и чтением записей из локального файла. Зафиксируйте формат файла, обработку пустого названия и неверных минут, а также повторный запуск без потери ранее сохранённой записи. Покажите вход, вывод и структуру файлов.",
+        "related_source": {
+          "label": "Официальная документация",
+          "url": "https://dev.java/learn/java-io/reading-writing/"
+        }
+      }
+    ]
+  },
+  "go": {
+    "version": "v2",
+    "lessons": [
+      {
+        "id": "go-31",
+        "title": "Проверка гонок и отмены запроса",
+        "level": "beginner",
+        "minutes": 45,
+        "explanation": [
+          "Горутина может одновременно читать и менять общую карту. Обычный go test не всегда обнаружит ошибку, поэтому запускайте go test -race ./...; гонка должна быть устранена синхронизацией или передачей данных через канал, а не скрыта повторным запуском.",
+          "Context сообщает операции об отмене. Обработчик, который ждёт результат, должен завершаться при закрытии ctx.Done() и не оставлять работающую горутину. Тест с коротким сроком проверяет отмену, а журнал показывает, что процесс завершился без зависания."
+        ],
+        "example": "package main\nimport (\"context\"; \"fmt\"; \"time\")\nfunc wait(ctx context.Context) error {\n  select { case <-time.After(50*time.Millisecond): return nil; case <-ctx.Done(): return ctx.Err() }\n}\nfunc main() { ctx, cancel := context.WithTimeout(context.Background(), time.Millisecond); defer cancel(); fmt.Println(wait(ctx) != nil) }",
+        "practice": "Для своей модели задач напишите тест отмены долгой операции и тест конкурентного чтения/изменения. Запустите go test ./..., затем go test -race ./.... Сохраните команду, вывод и исправление, если детектор сообщает гонку.",
+        "solution": "Тест отмены должен завершиться с context deadline exceeded или context canceled; детектор гонок должен пройти без сообщения DATA RACE. Наличие зелёного обычного теста само по себе не доказывает отсутствие гонок.",
+        "rubric": [
+          "Сохранён воспроизводимый результат и точные команды запуска или проверки.",
+          "Проверены обычный, пустой и ошибочный входы; ожидаемое сравнивается с фактическим.",
+          "Записано, что ещё не проверено и какой следующий шаг нужен для исправления."
+        ],
+        "quiz": [
+          {
+            "prompt": "Какая команда включает детектор гонок Go?",
+            "options": [
+              "go run -race test",
+              "go test -race ./..."
+            ],
+            "answers": [
+              "go test -race ./..."
+            ],
+            "explanation": "Флаг -race подключает инструмент обнаружения гонок при запуске тестов.",
+            "skill": "code"
+          },
+          {
+            "prompt": "Что должна вернуть операция после истечения срока контекста?",
+            "options": [
+              "Успех, игнорируя отмену",
+              "Ошибку контекста"
+            ],
+            "answers": [
+              "Ошибку контекста"
+            ],
+            "explanation": "При отмене ctx.Done() разблокируется, а ctx.Err() описывает причину завершения.",
+            "skill": "practice"
+          }
+        ],
+        "retry_practice": "После разбора ошибки повторите упражнение с новым входом. Для своей модели задач напишите тест отмены долгой операции и тест конкурентного чтения/изменения. Запустите go test ./..., затем go test -race ./.... Сохраните команду, вывод и исправление, если детектор сообщает гонку.",
+        "related_source": {
+          "label": "Официальная документация",
+          "url": "https://go.dev/doc/articles/race_detector"
+        }
+      },
+      {
+        "id": "go-32",
+        "title": "Передача проекта: воспроизводимый HTTP API",
+        "level": "beginner",
+        "minutes": 45,
+        "explanation": [
+          "Завершите учебный API задач как продукт с ограниченным контрактом. В README перечислите команды go test ./... и go run ., пример запроса и ответа, а также допустимые значения конфигурации. Ошибочный JSON должен возвращать ошибку клиента, а не молчаливо создавать пустую запись.",
+          "Проверьте проект из новой копии каталога без локальных временных файлов. Переменные среды документируются по имени, но реальные секреты не публикуются. Один тест на ошибочный запрос, один на успешный запрос и один на повторный запуск дают больше доверия, чем длинное описание без проверки."
+        ],
+        "example": "package main\nimport (\"fmt\"; \"net/http\"; \"net/http/httptest\")\nfunc main() {\n  h := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { fmt.Fprint(w, \"ready\") })\n  w := httptest.NewRecorder(); h.ServeHTTP(w, httptest.NewRequest(\"GET\", \"/health\", nil)); fmt.Println(w.Code, w.Body.String())\n}",
+        "practice": "Соберите итоговый API: документируйте запуск, два маршрута, ошибки валидации и минимум три теста. Скопируйте исходники в чистую папку и повторите запуск по README. Сохраните пример curl и фактический ответ. Не размещайте секреты в репозитории.",
+        "solution": "Готовая учебная передача содержит исходники, go.mod, README, тесты успешного и ошибочного запросов, воспроизводимый запуск из чистой папки. Пример показывает только один обработчик; остальные части реализуются в проекте.",
+        "rubric": [
+          "Сохранён воспроизводимый результат и точные команды запуска или проверки.",
+          "Проверены обычный, пустой и ошибочный входы; ожидаемое сравнивается с фактическим.",
+          "Записано, что ещё не проверено и какой следующий шаг нужен для исправления."
+        ],
+        "quiz": [
+          {
+            "prompt": "Что нужно для воспроизводимого запуска Go-проекта?",
+            "options": [
+              "Только снимок экрана успешного запроса",
+              "Исходники, go.mod и команды в README"
+            ],
+            "answers": [
+              "Исходники, go.mod и команды в README"
+            ],
+            "explanation": "Из чистой копии должны выполняться описанные команды без неизвестных локальных файлов.",
+            "skill": "code"
+          },
+          {
+            "prompt": "Как следует отвечать на некорректный JSON запроса?",
+            "options": [
+              "Создать пустой объект и вернуть 200",
+              "Явной ошибкой клиента"
+            ],
+            "answers": [
+              "Явной ошибкой клиента"
+            ],
+            "explanation": "Неуспешная валидация не должна выглядеть как успешное создание ресурса.",
+            "skill": "practice"
+          }
+        ],
+        "retry_practice": "После разбора ошибки повторите упражнение с новым входом. Соберите итоговый API: документируйте запуск, два маршрута, ошибки валидации и минимум три теста. Скопируйте исходники в чистую папку и повторите запуск по README. Сохраните пример curl и фактический ответ. Не размещайте секреты в репозитории.",
+        "related_source": {
+          "label": "Официальная документация",
+          "url": "https://go.dev/doc/tutorial/add-a-test"
+        }
+      }
+    ]
+  },
+  "english": {
+    "version": "v2",
+    "lessons": [
+      {
+        "id": "en-a2-09",
+        "title": "Практика A2: уточнение и перенос встречи",
+        "level": "A2",
+        "minutes": 35,
+        "explanation": [
+          "В короткой переписке сначала назовите цель: I need to change our meeting. Затем предложите конкретные день и время: Could we meet on Thursday at three? Для понятного ответа подтвердите новый вариант или предложите другой.",
+          "Вежливый вопрос с could не меняет порядок слов после него: Could we meet, а не Could we meeting. Если время не подходит, объясните причину одним предложением и спросите о другой возможности."
+        ],
+        "example": "Hi Ana, I cannot meet on Tuesday. Could we meet on Thursday at three? Please let me know if that works for you. Best, Sam.",
+        "reading": "Mina has an English lesson on Tuesday afternoon, but her train is delayed. She sends a short message to her teacher before the lesson starts. She says that she cannot arrive on time and asks whether they can meet on Thursday at three. Her teacher is busy on Thursday, so she offers Friday at four. Mina checks her calendar, agrees to Friday, and writes down the new time. Both people now know when the lesson will happen and why the first plan changed.",
+        "transcript": "Hello, this is Mina. I am sorry, but my train is late today. I cannot be at our lesson at three. Could we have the lesson on Thursday afternoon? If Thursday is difficult, I can also come on Friday after four. Please send me a message with the time that works for you. Thank you for understanding.",
+        "audio": "/audio/study-v2/en-a2-09.wav",
+        "vocabulary": [
+          {
+            "id": "en-a2-09-w1",
+            "word": "delay",
+            "translation": "задержка",
+            "example": "The train has a delay."
+          },
+          {
+            "id": "en-a2-09-w2",
+            "word": "available",
+            "translation": "доступный",
+            "example": "Are you available on Friday?"
+          },
+          {
+            "id": "en-a2-09-w3",
+            "word": "confirm",
+            "translation": "подтверждать",
+            "example": "Please confirm the new time."
+          },
+          {
+            "id": "en-a2-09-w4",
+            "word": "reschedule",
+            "translation": "переносить",
+            "example": "We need to reschedule the lesson."
+          }
+        ],
+        "practice": "Напишите сообщение из 70–90 слов: отмените встречу, предложите два новых времени и попросите подтверждение. Затем ответьте от лица собеседника.",
+        "speaking": "Произнесите вслух разговор на 45–60 секунд: попросите перенести встречу и подтвердите итоговое время.",
+        "solution": "В тексте должна быть причина, два конкретных времени и финальное подтверждение. В записи поезд опаздывает, а Мина предлагает четверг или пятницу после четырёх.",
+        "rubric": [
+          "Письменная задача выполнена с конкретными примерами и понятной структурой.",
+          "Ошибки после повторного чтения исправлены; новые слова употреблены в собственных фразах.",
+          "Устная часть произнесена вслух, а понимание записи проверено до открытия расшифровки."
+        ],
+        "quiz": [
+          {
+            "prompt": "Which request is correct?",
+            "options": [
+              "Could we meeting on Thursday?",
+              "Could we meet on Thursday?"
+            ],
+            "answers": [
+              "Could we meet on Thursday?"
+            ],
+            "explanation": "After could we use the base form meet.",
+            "skill": "grammar"
+          },
+          {
+            "prompt": "What completes a rescheduling exchange?",
+            "options": [
+              "Sending only an apology",
+              "Confirming the final time"
+            ],
+            "answers": [
+              "Confirming the final time"
+            ],
+            "explanation": "The other person must know the agreed day and time.",
+            "skill": "reading"
+          },
+          {
+            "prompt": "What is late in the recording?",
+            "options": [
+              "The teacher",
+              "The train"
+            ],
+            "answers": [
+              "The train"
+            ],
+            "explanation": "Mina says that her train is late.",
+            "skill": "listening"
+          }
+        ],
+        "retry_practice": "После разбора ошибок выполните новую версию задания: Напишите сообщение из 70–90 слов: отмените встречу, предложите два новых времени и попросите подтверждение. Затем ответьте от лица собеседника."
+      },
+      {
+        "id": "en-b1-09",
+        "title": "Практика B1: проблема, причины и решение",
+        "level": "B1",
+        "minutes": 35,
+        "explanation": [
+          "На уровне B1 полезно связывать проблему и действие: The event started late because the room was unavailable. We moved the discussion online, so everyone could join. Because introduces a reason, while so introduces a result.",
+          "Хорошее объяснение описывает факты отдельно от предположений. Используйте however для контраста и therefore для вывода, но не соединяйте ими два независимых предложения одной запятой без корректной пунктуации."
+        ],
+        "example": "The venue closed early, so we moved the workshop online. However, two participants had no connection. We sent them a recording and a short summary.",
+        "reading": "A small group planned a workshop at the local library. On the morning of the event, the library manager called to say that the meeting room had a water problem. The organiser quickly created an online meeting and informed the speakers. Most people joined from home, but two participants had no internet connection. After the workshop, the organiser sent a recording and a written summary to everyone. The group decided to check the room one day earlier before the next event and prepare a backup online link.",
+        "transcript": "Our workshop changed at the last minute because the library room was unavailable. We moved the session online, and most people joined successfully. Two participants could not connect, so we sent them the recording and the notes afterwards. Next time we will confirm the room on the previous day and prepare a second meeting link. Please tell us whether you received the materials.",
+        "audio": "/audio/study-v2/en-b1-09.wav",
+        "vocabulary": [
+          {
+            "id": "en-b1-09-w1",
+            "word": "venue",
+            "translation": "место проведения",
+            "example": "The venue changed in the morning."
+          },
+          {
+            "id": "en-b1-09-w2",
+            "word": "backup",
+            "translation": "запасной вариант",
+            "example": "We prepared a backup link."
+          },
+          {
+            "id": "en-b1-09-w3",
+            "word": "participant",
+            "translation": "участник",
+            "example": "Every participant got the notes."
+          },
+          {
+            "id": "en-b1-09-w4",
+            "word": "therefore",
+            "translation": "поэтому",
+            "example": "The room was closed; therefore, we met online."
+          }
+        ],
+        "practice": "Напишите 110–140 слов о проблеме в учёбе или работе: факт, причина, действие, результат и один следующий шаг. Отдельно отметьте, какие детали известны точно.",
+        "speaking": "За одну минуту устно объясните проблему, решение и то, что измените в следующий раз.",
+        "solution": "В истории зал библиотеки оказался недоступен из-за проблемы с водой. Группа перешла онлайн, а двум людям без связи отправила запись и конспект.",
+        "rubric": [
+          "Письменная задача выполнена с конкретными примерами и понятной структурой.",
+          "Ошибки после повторного чтения исправлены; новые слова употреблены в собственных фразах.",
+          "Устная часть произнесена вслух, а понимание записи проверено до открытия расшифровки."
+        ],
+        "quiz": [
+          {
+            "prompt": "Which word introduces a result?",
+            "options": [
+              "because",
+              "so"
+            ],
+            "answers": [
+              "so"
+            ],
+            "explanation": "Because gives a reason; so introduces the resulting action.",
+            "skill": "grammar"
+          },
+          {
+            "prompt": "Which detail is a fact in the story?",
+            "options": [
+              "The organiser wanted to cancel all future meetings",
+              "The room had a water problem"
+            ],
+            "answers": [
+              "The room had a water problem"
+            ],
+            "explanation": "The library manager reported the room problem; the group still held a workshop.",
+            "skill": "reading"
+          },
+          {
+            "prompt": "What was sent after the workshop?",
+            "options": [
+              "A bill and a new ticket",
+              "A recording and notes"
+            ],
+            "answers": [
+              "A recording and notes"
+            ],
+            "explanation": "The speaker says they sent the recording and notes.",
+            "skill": "listening"
+          }
+        ],
+        "retry_practice": "После разбора ошибок выполните новую версию задания: Напишите 110–140 слов о проблеме в учёбе или работе: факт, причина, действие, результат и один следующий шаг. Отдельно отметьте, какие детали известны точно."
+      },
+      {
+        "id": "en-b2-09",
+        "title": "Практика B2: позиция и возражение",
+        "level": "B2",
+        "minutes": 35,
+        "explanation": [
+          "Аргумент на уровне B2 включает чёткую позицию, основание, возможное возражение и ответ на него. Формула Although X, Y показывает уступку, но не делает чужую позицию слабой автоматически. Лучше объяснить, при каких условиях ваше решение работает.",
+          "Различайте утверждение и доказательство. В учебном ответе можно ссылаться на наблюдение из текста, но нельзя выдавать придуманную статистику за факт. Формулировки may и appears to помогают честно передать степень уверенности."
+        ],
+        "example": "Although remote meetings save travel time, they may make informal discussion harder. A short in-person session each month could balance both needs.",
+        "reading": "A community group is deciding whether to hold all meetings online. Supporters say that members who live far away can join more easily and avoid travelling. Others argue that new members often learn through informal conversations before and after a meeting. The group has no reliable data about attendance yet. It decides to try a mixed format for three months: regular online sessions and one in-person discussion each month. After the trial, it will compare attendance, ask members for feedback, and decide which format works better.",
+        "transcript": "I support a mixed meeting format for the next three months. Online sessions are easier for members who live far away. However, in-person discussions may help new members ask questions informally. Although the mixed format requires more planning, a short trial would let us collect evidence. I would compare attendance and ask members how useful each meeting felt before making a permanent decision.",
+        "audio": "/audio/study-v2/en-b2-09.wav",
+        "vocabulary": [
+          {
+            "id": "en-b2-09-w1",
+            "word": "although",
+            "translation": "хотя",
+            "example": "Although it takes time, the trial is useful."
+          },
+          {
+            "id": "en-b2-09-w2",
+            "word": "evidence",
+            "translation": "доказательство",
+            "example": "We need evidence before a final choice."
+          },
+          {
+            "id": "en-b2-09-w3",
+            "word": "attendance",
+            "translation": "посещаемость",
+            "example": "Attendance may change across formats."
+          },
+          {
+            "id": "en-b2-09-w4",
+            "word": "trade-off",
+            "translation": "компромисс",
+            "example": "Every format has a trade-off."
+          }
+        ],
+        "practice": "Напишите 170–210 слов: выберите формат встреч, приведите два основания, изложите сильное возражение и ответьте на него. Предложите способ проверить решение без выдуманной статистики.",
+        "speaking": "За 90 секунд защитите позицию и ответьте на одно возможное возражение.",
+        "solution": "Текст предлагает трёхмесячную проверку смешанного формата. В записи говорящий предлагает сравнить посещаемость и спросить участников до окончательного выбора.",
+        "rubric": [
+          "Письменная задача выполнена с конкретными примерами и понятной структурой.",
+          "Ошибки после повторного чтения исправлены; новые слова употреблены в собственных фразах.",
+          "Устная часть произнесена вслух, а понимание записи проверено до открытия расшифровки."
+        ],
+        "quiz": [
+          {
+            "prompt": "Which phrase introduces a concession?",
+            "options": [
+              "Because the plan takes time, it may help.",
+              "Although the plan takes time, it may help."
+            ],
+            "answers": [
+              "Although the plan takes time, it may help."
+            ],
+            "explanation": "Although acknowledges a competing consideration before the main claim.",
+            "skill": "grammar"
+          },
+          {
+            "prompt": "What evidence is available before the trial?",
+            "options": [
+              "A complete attendance study",
+              "No reliable attendance data yet"
+            ],
+            "answers": [
+              "No reliable attendance data yet"
+            ],
+            "explanation": "The text explicitly says the group has no reliable attendance data yet.",
+            "skill": "reading"
+          },
+          {
+            "prompt": "What does the speaker propose measuring?",
+            "options": [
+              "Only the meeting cost",
+              "Attendance and member feedback"
+            ],
+            "answers": [
+              "Attendance and member feedback"
+            ],
+            "explanation": "The recording proposes comparing attendance and asking members for feedback.",
+            "skill": "listening"
+          }
+        ],
+        "retry_practice": "После разбора ошибок выполните новую версию задания: Напишите 170–210 слов: выберите формат встреч, приведите два основания, изложите сильное возражение и ответьте на него. Предложите способ проверить решение без выдуманной статистики."
+      }
+    ]
+  },
+  "java-backend": {
+    "version": "v3",
+    "lessons": [
+      {
+        "id": "backend-13",
+        "title": "Изменение схемы и сохранность данных",
+        "level": "foundation",
+        "minutes": 45,
+        "explanation": [
+          "Схема базы меняется вместе с кодом, но старые строки не исчезают сами собой. Добавляйте новое необязательное поле отдельно от заполнения существующих записей. Сначала проверьте чтение старого формата, затем миграцию, затем повторный запуск. Для рискованного изменения сохраните тестовую копию данных.",
+          "Откат миграции не всегда возвращает удалённую информацию. Если колонка удалена, обратный ALTER TABLE не восстановит её значения. Поэтому план отката должен описывать резервную копию, проверку целостности и границу, после которой возврат требует восстановления данных."
+        ],
+        "example": "import java.util.*;\npublic class Main {\n  record Task(int id, String title, String note) {}\n  static Task fromOld(int id, String title) { return new Task(id, title, null); }\n  public static void main(String[] args) { System.out.println(fromOld(1, \"Read\")); }\n}",
+        "practice": "Опишите миграцию учебной таблицы tasks: добавьте необязательное поле note, проверьте старую строку и новую запись. Запишите SQL до и после, запрос проверки количества строк и способ восстановить тестовую копию при ошибке. Не удаляйте рабочие данные.",
+        "solution": "Безопасный учебный сценарий сохраняет все старые task ID и title, допускает note = NULL у старых строк и проверяет число строк до/после. Удаление колонки без копии не считается обратимой миграцией.",
+        "rubric": [
+          "Сохранён воспроизводимый результат и точные команды запуска или проверки.",
+          "Проверены обычный, пустой и ошибочный входы; ожидаемое сравнивается с фактическим.",
+          "Записано, что ещё не проверено и какой следующий шаг нужен для исправления."
+        ],
+        "quiz": [
+          {
+            "prompt": "Какое значение допустимо для нового необязательного поля у старой строки?",
+            "options": [
+              "Обязательно случайный текст",
+              "NULL"
+            ],
+            "answers": [
+              "NULL"
+            ],
+            "explanation": "Если поле необязательно, старые строки могут сохранить NULL до отдельного заполнения.",
+            "skill": "backend"
+          },
+          {
+            "prompt": "Почему обратное добавление удалённой колонки не восстанавливает данные?",
+            "options": [
+              "SQL автоматически хранит их навсегда",
+              "Значения уже потеряны"
+            ],
+            "answers": [
+              "Значения уже потеряны"
+            ],
+            "explanation": "Откат структуры не возвращает содержимое удалённой колонки; нужна проверенная копия.",
+            "skill": "practice"
+          }
+        ],
+        "retry_practice": "После разбора ошибки повторите упражнение с новым входом. Опишите миграцию учебной таблицы tasks: добавьте необязательное поле note, проверьте старую строку и новую запись. Запишите SQL до и после, запрос проверки количества строк и способ восстановить тестовую копию при ошибке. Не удаляйте рабочие данные.",
+        "related_source": {
+          "label": "Официальная документация",
+          "url": "https://www.postgresql.org/docs/current/ddl-alter.html"
+        }
+      },
+      {
+        "id": "backend-14",
+        "title": "Итоговая передача сервиса и границы результата",
+        "level": "foundation",
+        "minutes": 45,
+        "explanation": [
+          "Передача учебного сервиса — это не публикация в интернете. Покажите контракт маршрутов, инструкции локального запуска, структуру данных и тесты ошибок. Для каждого требования назовите свидетельство: команда, запрос, ответ или тест. Не описывайте непроверенное как готовое.",
+          "Секреты должны приходить из локального окружения и отсутствовать в README, логах и репозитории. Список известных ограничений важен так же, как список возможностей: например, отсутствие production-аутентификации или проверки под нагрузкой. Следующий разработчик должен видеть, что ещё требуется до реального развёртывания."
+        ],
+        "example": "public class Main {\n  public static void main(String[] args) {\n    System.out.println(\"GET /health -> 200\");\n    System.out.println(\"POST /tasks invalid body -> 400\");\n    System.out.println(\"Production deployment: not performed\");\n  }\n}",
+        "practice": "Подготовьте пакет передачи учебного API: README с командами, таблицу маршрутов и статусов, три воспроизводимых теста, пример конфигурации без секретов и список ограничений. Повторите запуск из чистой копии и запишите фактический результат каждого теста.",
+        "solution": "Пакет считается учебно завершённым, когда независимый человек может воспроизвести локальный запуск и ошибки по README. Это не доказывает готовность к production: аутентификация, эксплуатация и нагрузка проверяются отдельно.",
+        "rubric": [
+          "Сохранён воспроизводимый результат и точные команды запуска или проверки.",
+          "Проверены обычный, пустой и ошибочный входы; ожидаемое сравнивается с фактическим.",
+          "Записано, что ещё не проверено и какой следующий шаг нужен для исправления."
+        ],
+        "quiz": [
+          {
+            "prompt": "Что следует писать о непроверенном развёртывании?",
+            "options": [
+              "Назвать сервис готовым к production",
+              "Явно указать, что оно не выполнялось"
+            ],
+            "answers": [
+              "Явно указать, что оно не выполнялось"
+            ],
+            "explanation": "Отчёт отделяет проверенный локальный результат от будущих эксплуатационных проверок.",
+            "skill": "backend"
+          },
+          {
+            "prompt": "Что доказывает воспроизводимость передачи?",
+            "options": [
+              "Только скриншот редактора",
+              "Запуск из чистой копии по README"
+            ],
+            "answers": [
+              "Запуск из чистой копии по README"
+            ],
+            "explanation": "Чистая копия исключает скрытые локальные файлы и настройки.",
+            "skill": "practice"
+          }
+        ],
+        "retry_practice": "После разбора ошибки повторите упражнение с новым входом. Подготовьте пакет передачи учебного API: README с командами, таблицу маршрутов и статусов, три воспроизводимых теста, пример конфигурации без секретов и список ограничений. Повторите запуск из чистой копии и запишите фактический результат каждого теста.",
+        "related_source": {
+          "label": "Официальная документация",
+          "url": "https://docs.oracle.com/en/java/javase/21/docs/api/jdk.httpserver/com/sun/net/httpserver/HttpServer.html"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+@media(max-width:650px){
+  :root{--bg:#f4f3f0;--surface:#fff;--surface-raised:#fff;--surface-soft:#efede8;--line:#e3e0d9;--text:#242424;--text-muted:#696661}
+  body{background:#f4f3f0;color:#242424}
+  h1{font-size:clamp(30px,8vw,38px);line-height:1.06;letter-spacing:-.035em}
+  h2{font-size:21px;line-height:1.2}
+  .pageHeader{display:flex;align-items:flex-start;gap:16px;border:0;padding:0;margin:0 0 22px}
+  .pageHeader h1{margin:0 0 8px}
+  .pageHeader p{font-size:14px;line-height:1.45;margin:0;color:#696661}
+  .pageHeader .textButton{display:inline-flex;align-items:center;min-height:44px;margin:0 0 4px}
+  .pageHeader .primaryButton,.pageHeader .secondaryButton{width:100%;justify-content:center}
+  .card,.summaryCard,.sectionCard,.sectionCard:nth-child(n){background:#fff;border:1px solid #e6e3dc;border-radius:20px;box-shadow:0 5px 18px #2927230a}
+  .card{padding:20px}
+  .primaryButton,.secondaryButton,.iconButton{min-height:48px;border-radius:13px;font-size:15px}
+  .primaryButton{background:#242424;border-color:#242424;color:#fff}
+  .secondaryButton{background:#fff;border-color:#d7d3ca;color:#292824}
+  input,textarea,select{min-height:48px;font-size:16px;border-radius:12px;background:#fff;border-color:#d7d3ca}
+  input[type=checkbox],input[type=radio]{min-height:0}
+  .formStack{gap:16px}.formStack label{font-size:14px;line-height:1.4}
+  .sectionDirectory{display:grid;gap:12px;border:0}
+  .sphereRow{background:#fff;border:1px solid #e6e3dc;border-radius:19px;padding:0 18px;box-shadow:0 5px 18px #2927230a}
+  .sphereRow:hover{padding-left:18px;background:#fff}
+  .sphereMain{grid-template-columns:minmax(0,1fr) 26px;gap:5px 12px;padding:19px 0 7px}
+  .sphereMain .sphereRowName{font-size:21px;letter-spacing:-.025em}
+  .sphereMain .sphereRowDescription{font-size:13px;line-height:1.45;color:#66635e}
+  .sphereMain .sphereRowArrow{width:27px;height:27px;font-size:15px;background:#f2f0eb;border:0}
+  .sphereContinue{display:flex;align-items:center;min-height:48px;margin:0;border-top:1px solid #eeece6;color:#242424;font-size:13px;line-height:1.3}
+  .sectionSettings label{min-height:44px;font-size:15px}
+  .tabBar{gap:8px;border:0;padding:0 0 5px;margin-bottom:18px;scrollbar-width:none}
+  .tabBar::-webkit-scrollbar{display:none}
+  .tabBar button{min-height:44px;border:1px solid #dedbd3;border-radius:12px;background:#fff;color:#54514c;padding:9px 15px;font-size:13px}
+  .tabBar .selectedTab{background:#242424;border-color:#242424;color:#fff}
+  .dateToolbar{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:8px;margin:0 0 16px}
+  .dateToolbar .secondaryButton{width:44px;min-width:44px;padding:0}
+  .dateToolbar label{min-width:0;justify-content:space-between;gap:6px;padding:0 10px;background:#fff;border:1px solid #e6e3dc;border-radius:13px;color:#57534d;font-size:13px}
+  .dateToolbar input{min-width:0;max-width:145px;border:0;background:transparent;padding:0 2px;font-size:13px;box-shadow:none}
+  .dateToolbar>.textButton{grid-column:1/-1;min-height:44px;justify-self:start}
+  .todayNext{padding:22px;margin-bottom:14px;background:#242424!important;border-color:#242424!important;color:#fff;box-shadow:0 10px 24px #24242424}
+  .todayNext .eyebrow{color:#b9b7b2}
+  .todayNext h2{color:#fff;font-size:clamp(24px,7vw,31px);line-height:1.12}
+  .todayNext p{color:#cfcdc8;font-size:14px}
+  .todayNextInner{gap:18px}
+  .todayNext .primaryButton{background:#fff;color:#242424;border-color:#fff;width:100%;text-align:center}
+  .todayMore{background:#fff;border:1px solid #e6e3dc;border-radius:18px;padding:0 18px;margin-bottom:20px}
+  .todayMore>summary{min-height:54px;display:flex;align-items:center;justify-content:space-between;padding:8px 0;font-size:14px;font-weight:650}
+  .todayMore .todayColumns{padding:0 0 18px}
+  .todayTasks{margin-top:0}
+  .todaySummary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border:0;background:transparent;border-radius:0;overflow:visible;margin:0 0 18px}
+  .todayMetric{display:grid;justify-items:start;align-content:center;gap:4px;min-height:84px;padding:12px 10px;text-align:left;background:#fff;border:1px solid #e6e3dc;border-radius:15px}
+  .todayMetric+.todayMetric{border-left:1px solid #e6e3dc}
+  .todayMetric span{font-size:11px;color:#706c66}
+  .todayMetric strong{font-size:20px;color:#242424}
+  .todayMetric small{font-size:10px;color:#77736d;white-space:normal}
+  .todayTasks .sectionHeading{align-items:center}
+  .todayTasks .sectionHeading h2{font-size:20px}
+  .todayTasks .emptyState{padding:12px 0;background:transparent;border:0}
+  .formOverlay{align-items:flex-end;padding:0;background:#1e1d1b88}
+  .formOverlay .taskFormCard{width:100%;max-height:calc(100dvh - 24px);overflow:auto;border-radius:22px 22px 0 0;padding:22px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -12px 32px #0002}
+  .calendarDay{min-height:58px;border-radius:10px;padding:6px}
+  .calendarDay small{font-size:10px}
+  .formActions{flex-wrap:wrap}.formActions>*{flex:1 1 140px}
+  .outlineLink,.dayJump a{min-height:44px;display:inline-flex;align-items:center}
+  .healthActions>.primaryButton,.healthActions>.secondaryButton{width:100%;justify-content:center}
+  .healthSession summary,.secondaryFilters>summary,.reader details summary{min-height:48px;display:flex;align-items:center}
+}

@@ -1,0 +1,22 @@
+.page{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px;background:#f4f3f0;color:#242424}
+.brand{display:flex;align-items:center;gap:11px;width:min(100%,440px);margin-bottom:28px;color:#242424;font-size:18px;font-weight:730;letter-spacing:-.035em}
+.brandMark{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:12px;background:#242424;color:#fff;font-size:20px;font-weight:750}
+.card{width:min(100%,440px);padding:38px;background:#fff;border:1px solid #e4e1da;border-radius:22px;box-shadow:0 16px 46px #2927230b}
+.page .card h1{margin:0 0 10px;color:#242424;font-size:clamp(30px,4vw,38px);font-weight:750;line-height:1.12;letter-spacing:-.045em}
+.subtitle{margin:0 0 30px;color:#696661;font-size:15px;line-height:1.5}
+.card form{display:grid;gap:18px}
+.card label{display:grid;gap:9px;color:#34332f;font-size:14px;font-weight:650}
+.page .card input{width:100%;min-height:52px;padding:12px 14px;background:#fff;border:1px solid #cbc8c1;border-radius:12px;color:#242424;font-size:16px;box-shadow:none}
+.page .card input::placeholder{color:#88847e}
+.page .card input:focus{border-color:#242424;outline:3px solid #24242420;outline-offset:1px;box-shadow:none}
+.page .card button{width:100%;min-height:52px;margin-top:4px;border-radius:12px;background:#242424;border-color:#242424;color:#fff;font-size:15px;font-weight:700}
+.page .card button:hover:not(:disabled){background:#3c3b39;border-color:#3c3b39}
+.error,.success{margin:0;padding:13px 14px;border-radius:11px;font-size:14px;line-height:1.45}
+.feedbackSlot{min-height:22px}
+.error{background:#fff0ef;color:#8e2c28;border:1px solid #f2d0ce}
+.success{background:#eaf5ed;color:#24623c;border:1px solid #cce5d3}
+.links{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 20px;margin-top:24px;font-size:14px}
+.links a{color:#34332f;font-weight:620;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#aaa69e}
+.links a:hover{text-decoration-color:#34332f}
+.footnote{width:min(100%,440px);margin:22px 0 0;color:#77736d;font-size:13px;text-align:center}
+@media(max-width:480px){.page{justify-content:flex-start;padding:44px 18px 28px}.brand{margin-bottom:28px}.card{padding:28px 22px;border-radius:20px}.page .card h1{font-size:31px}.subtitle{margin-bottom:26px}.footnote{margin-top:20px}}

@@ -1,0 +1,54 @@
+:root{color-scheme:light;--bg:#ececec;--surface:#f8f8f8;--surface-raised:#fff;--surface-soft:#e6e6e6;--line:#cecece;--text:#1e1e1e;--text-muted:#5a5a5a;--accent:#202020;--accent-strong:#3a3a3a;--accent-ink:#fff;color:#1e1e1e;background:#ececec}
+body{background:#ececec;color:#1e1e1e}
+::selection{background:#202020;color:#fff}
+:focus-visible{outline-color:#202020!important}
+h1,h2,h3,h4{color:#202020}
+h1{font-size:clamp(42px,5vw,76px);line-height:1;letter-spacing:-.04em;font-weight:760}
+h2{letter-spacing:-.035em}
+.pageHeader{border-color:#cfcfcf;margin-bottom:38px;padding-bottom:32px}
+.pageHeader p,.muted,.formHint,.labelHint{color:#5b5b5b}
+.pageHeader .textButton,.textButton,.sectionHeading a{color:#303030}
+.pageHeader .textButton{margin-bottom:19px;text-decoration:underline;text-underline-offset:4px}
+.card,.summaryCard,.sectionCard,.sectionCard:nth-child(n){background:#f9f9f9;border:1px solid #d7d7d7;border-radius:13px;box-shadow:none}
+.primaryButton{background:#202020;color:#fff;border-color:#202020;box-shadow:none}
+.primaryButton:hover{background:#414141;color:#fff}
+.secondaryButton{background:transparent;border-color:#aaa;color:#242424}
+.secondaryButton:hover{background:#dedede;border-color:#777;color:#151515}
+.iconButton{background:#f5f5f5;border-color:#bdbdbd;color:#222}
+input,textarea,select{background:#fafafa;border:1px solid #bdbdbd;color:#202020;caret-color:#202020}
+input::placeholder,textarea::placeholder{color:#717171}
+input:hover,textarea:hover,select:hover{border-color:#777}
+input:focus,textarea:focus,select:focus{border-color:#222;box-shadow:0 0 0 3px #2020201c}
+input[type=checkbox],input[type=radio]{accent-color:#202020}
+.formStack label,.healthActions label{color:#343434}
+.tabBar,.overviewLine,.occurrenceRow,.taskRow,.subtaskRow{border-color:#d2d2d2}
+.tabBar button{color:#636363}.tabBar button:hover{color:#1f1f1f}.tabBar .selectedTab{color:#1f1f1f;border-color:#1f1f1f}
+.secondaryFilters>summary{color:#252525}
+.emptyState{background:#f6f6f6;border-color:#c7c7c7;color:#555}.emptyState h3{color:#222}.emptyIcon{background:#e2e2e2;color:#222}
+.outlineLink,.dayJump a{border-color:#bdbdbd;color:#262626}.outlineLink:hover,.dayJump a:hover,.dayJump a:focus-visible{background:#dedede}
+.summaryCard strong,.overviewLine strong,.todayMetric strong{color:#202020}
+.summaryCard span,.summaryCard small,.overviewLine,.occurrenceText span,.taskRowMain span,.taskRowMain small,.todayMetric span,.todayMetric small{color:#636363}
+.todaySummary{background:#f9f9f9;border-color:#d7d7d7}.todayMetric+.todayMetric{border-color:#d7d7d7}
+.dateToolbar label{color:#4b4b4b}
+.calendarDay{background:#f8f8f8;border-color:#cfcfcf;color:#242424}.calendarDay:hover{background:#e1e1e1}.calendarDay.isToday{border-color:#333}.calendarDay.isSelected{background:#d7d7d7;border-color:#333}.calendarDay small{color:#555}
+.boardColumn{background:#e2e2e2;border-color:#ccc}.boardCard{background:#f9f9f9;border-color:#d1d1d1}.boardCard small{color:#666}
+.statusBadge{background:#e0e0e0;color:#333}.status-done{background:#dcebe1;color:#24543a}.status-in_progress{background:#eee4d1;color:#654d21}
+.healthPage a:not(.secondaryButton){color:#333}.healthList{color:#3d3d3d}.healthSession{border-color:#d2d2d2}.healthSession p{color:#555}.healthExercise,.healthMeal{background:#f1f1f1;border-color:#d2d2d2}.healthMeal small,.healthMeal label{color:#555}
+.healthNotice{background:#e5e5e5;border-color:#c3c3c3}.healthCheckGrid label{color:#444}
+.profileBackupPreview{background:#f3f3f3;border-color:#ccc}.profileBackupPreview p,.profileBackupPreview ul,.profileBackupLabel,.profileBackupCheck{color:#444}.profileBackupTag{background:#e4e4e4;color:#333}
+.profileBackup input[type=file]::file-selector-button{background:#eee;border-color:#aaa;color:#222}.profileBackup input[type=file]::file-selector-button:hover{background:#ddd}
+.weightChart svg{background:#e7e7e7}.weightChart>div{color:#555}
+.sectionDirectory{border-color:#c7c7c7}
+.sphereRow{border-color:#c7c7c7;min-height:124px;padding:24px 8px}
+.sphereRow:hover{background:#e1e1e1}
+.sphereRowName{font-size:clamp(31px,3.8vw,54px);letter-spacing:-.04em;color:#202020}
+.sphereRowDescription{color:#555;font-size:15px}
+.sphereRowArrow{border-color:#aaa;color:#222}
+.sectionCard h2{color:#222}.sectionCard p,.sectionCount{color:#555}
+.nutritionMealFilter button{background:#f5f5f5;border-color:#c4c4c4;color:#333}.nutritionMealFilter button[aria-pressed=true]{background:#202020;border-color:#202020;color:#fff}.nutritionMealFilter button:hover{background:#dfdfdf}.nutritionMealFilter button[aria-pressed=true]:hover{background:#3d3d3d}.nutritionSearch{color:#444}.nutritionRecipeOpen{color:#333}.nutritionRecipe>summary small,.nutritionRecipeTotal,.nutritionIngredients li small{color:#666}.nutritionIngredients li{border-color:#d2d2d2}
+.todayColumns .healthDayItem p,.healthDayItem p{color:#666}.todayColumns .healthDayItem a,.healthDayItem a,.healthDayRecipeLink,.todayFinanceLink{color:#333}.healthDayItem{border-color:#d2d2d2}
+.formOverlay,.formOverlay::backdrop{background:#202020ba}
+@media(max-width:750px){h1{font-size:clamp(38px,10vw,52px)}.pageHeader{margin-bottom:28px;padding-bottom:24px}.sphereRow{min-height:96px;padding:17px 4px}.sphereRowName{font-size:27px}}
+@media(prefers-reduced-motion:reduce){.sphereRow{transition:none}.sphereRow:hover{padding-left:8px}}
+.sphereRow{display:block;min-height:0;padding:0 8px}.sphereRow:hover{padding-left:8px}.sphereMain{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1fr) 34px;align-items:center;gap:20px;padding:20px 0;text-decoration:none;color:inherit}.sphereContinue{display:inline-flex;align-items:center;min-height:44px;margin:0 0 10px;color:#155f78;font-size:14px;font-weight:700;text-decoration:none}.sphereContinue:hover{text-decoration:underline}.sphereMain:focus-visible,.sphereContinue:focus-visible{outline:3px solid #278398;outline-offset:3px}
+@media(max-width:750px){.sphereMain{grid-template-columns:minmax(0,1fr) 34px;gap:4px 12px;padding:17px 0 8px}.sphereMain .sphereRowName,.sphereMain .sphereRowDescription{grid-column:1}.sphereMain .sphereRowArrow{grid-column:2;grid-row:1/3}.sphereContinue{margin-bottom:17px}}

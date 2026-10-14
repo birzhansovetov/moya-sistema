@@ -1,0 +1,24 @@
+.weeklyReview{margin:0 0 22px;padding:24px}
+.weeklyReviewHeader h2{margin:8px 0;font-size:clamp(24px,2.4vw,32px)}
+.weeklyReviewHeader p,.weeklyReviewNote{color:#65615b;font-size:13px;line-height:1.5}
+.weeklyReviewAreas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px;list-style:none;padding:0;margin:22px 0 14px}
+.weeklyReviewAreas li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #e2dfd8}
+.weeklyReviewAreas a{color:#343632;text-decoration:none}
+.weeklyReviewAreas a:hover{text-decoration:underline}
+.weeklyReviewAreas strong{font-variant-numeric:tabular-nums}
+.weeklyReviewTasks{margin:10px 0 20px;font-size:14px}
+.weeklyReviewTraining{margin:0 0 20px;padding:18px 20px;border:1px solid #dedbd4;border-radius:18px;background:#faf9f6}
+.weeklyReviewTraining h3{font-size:20px;margin:6px 0 8px}
+.weeklyReviewTraining p{margin:0 0 12px;line-height:1.5;color:#494d47}
+.weeklyReviewTrainingCount{font-size:13px;color:#626b62;font-variant-numeric:tabular-nums}
+.weeklyReviewFeedback{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.weeklyReviewFeedback button[aria-pressed="true"]{background:#1f2824;color:#fff;border-color:#1f2824}
+.weeklyReviewFeedbackStatus{margin:10px 0 0!important;color:#315f50!important;font-size:13px}
+.weeklyReviewReflection{display:grid;gap:8px;margin:-4px 0 18px}
+.weeklyReviewReflection label{display:grid;gap:7px;max-width:400px;font-size:13px;font-weight:700}
+.weeklyReviewReflection select{min-height:42px}
+.weeklyReviewReflection p{margin:0;color:#535f51;font-size:13px}
+.weeklyReviewActions{display:flex;flex-wrap:wrap;gap:10px}
+.weeklyReviewActions a{text-decoration:none}
+.weeklyReviewNote{margin:14px 0 0}
+@media(max-width:680px){.weeklyReview{padding:20px}.weeklyReviewAreas{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.weeklyReviewActions>*{flex:1 1 100%;text-align:center}}

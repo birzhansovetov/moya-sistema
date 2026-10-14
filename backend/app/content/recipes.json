@@ -1,0 +1,2450 @@
+{
+  "version": "2026-10-11-3",
+  "recipes": [
+    {
+      "id": "oatmeal_milk_banana",
+      "name": "Овсяная каша с бананом",
+      "meal": "breakfast",
+      "minutes": 12,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "oats",
+          "grams": 80,
+          "state": "dry"
+        },
+        {
+          "food_id": "milk_2pct",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "banana",
+          "grams": 120,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Отмерьте 80 г сухих хлопьев и 250 г молока.",
+        "Нагревайте вместе 5–7 минут, помешивая, до мягкости хлопьев.",
+        "Нарежьте 120 г очищенного банана и добавьте перед подачей."
+      ]
+    },
+    {
+      "id": "egg_toast_tomato",
+      "name": "Яйца с тостом и помидором",
+      "meal": "breakfast",
+      "minutes": 15,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "egg",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "whole_wheat_bread",
+          "grams": 100,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 160,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 5,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Взвесьте яйца без скорлупы; нагрейте сковороду с 5 г масла.",
+        "Готовьте яйца до полного схватывания белка и желтка.",
+        "Подсушите хлеб и подайте с вымытым нарезанным помидором."
+      ]
+    },
+    {
+      "id": "yogurt_oats_banana",
+      "name": "Йогурт с овсом и бананом",
+      "meal": "breakfast",
+      "minutes": 5,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "greek_yogurt",
+          "grams": 300,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "oats",
+          "grams": 70,
+          "state": "dry"
+        },
+        {
+          "food_id": "banana",
+          "grams": 120,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Вымойте и нарежьте банан.",
+        "Смешайте йогурт с овсяными хлопьями и бананом.",
+        "При желании дайте хлопьям размягчиться 10 минут; не храните готовую смесь вне холодильника."
+      ]
+    },
+    {
+      "id": "oatmeal_water_banana",
+      "name": "Овсяная каша на воде с бананом",
+      "meal": "breakfast",
+      "minutes": 12,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "oats",
+          "grams": 110,
+          "state": "dry"
+        },
+        {
+          "food_id": "banana",
+          "grams": 150,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Залейте 110 г сухих хлопьев водой по инструкции на упаковке.",
+        "Варите до мягкости, затем дайте немного остыть.",
+        "Добавьте 150 г очищенного нарезанного банана."
+      ]
+    },
+    {
+      "id": "chicken_rice_carrot",
+      "name": "Курица с рисом и морковью",
+      "meal": "lunch",
+      "minutes": 35,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "rice",
+          "grams": 115,
+          "state": "dry"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Взвесьте сухой рис, промойте и сварите по инструкции на упаковке.",
+        "Нарежьте сырую куриную грудку, готовьте отдельно до полной готовности без розового центра.",
+        "Натрите вымытую морковь; смешайте с готовым рисом, курицей и 10 г масла."
+      ]
+    },
+    {
+      "id": "lentil_rice_tomato",
+      "name": "Чечевица с рисом и томатом",
+      "meal": "lunch",
+      "minutes": 40,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 115,
+          "state": "dry"
+        },
+        {
+          "food_id": "rice",
+          "grams": 75,
+          "state": "dry"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте сухую чечевицу и рис и сварите в отдельных кастрюлях по инструкции на упаковке до мягкости.",
+        "Вымойте и нарежьте помидор.",
+        "Смешайте готовые крупы с помидором и 10 г масла; при желании прогрейте."
+      ]
+    },
+    {
+      "id": "chicken_potato_cucumber",
+      "name": "Курица с картофелем и огурцом",
+      "meal": "lunch",
+      "minutes": 35,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 210,
+          "state": "raw"
+        },
+        {
+          "food_id": "potato",
+          "grams": 400,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Вымойте картофель и сварите до мягкости; указанный вес — до варки.",
+        "Приготовьте куриную грудку до полной готовности без розового центра.",
+        "Вымойте и нарежьте огурец; подайте всё вместе с 10 г масла."
+      ]
+    },
+    {
+      "id": "lentil_potato_soup",
+      "name": "Чечевичный суп с картофелем",
+      "meal": "dinner",
+      "minutes": 40,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 110,
+          "state": "dry"
+        },
+        {
+          "food_id": "potato",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте сухую чечевицу и очистите вымытые овощи; вес указан до приготовления.",
+        "Сварите чечевицу и нарезанный картофель в воде до мягкости, затем добавьте морковь и помидор.",
+        "Доведите овощи до готовности и вмешайте 10 г масла в готовый суп."
+      ]
+    },
+    {
+      "id": "chicken_spinach_rice",
+      "name": "Курица со шпинатом и рисом",
+      "meal": "dinner",
+      "minutes": 35,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 190,
+          "state": "raw"
+        },
+        {
+          "food_id": "rice",
+          "grams": 100,
+          "state": "dry"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите сухой рис по инструкции на упаковке.",
+        "Приготовьте куриную грудку до полной готовности без розового центра.",
+        "Вымойте шпинат, быстро прогрейте его с 10 г масла и подайте с рисом и курицей."
+      ]
+    },
+    {
+      "id": "egg_potato_salad",
+      "name": "Картофельный салат с яйцом",
+      "meal": "dinner",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "egg",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "potato",
+          "grams": 380,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Сварите яйца вкрутую и вымытый картофель до мягкости; вес картофеля указан до варки, яиц — без скорлупы.",
+        "Остудите продукты, вымойте и нарежьте огурец с помидором.",
+        "Смешайте всё с 10 г масла и подайте; храните готовый салат в холодильнике."
+      ]
+    },
+    {
+      "id": "rice_banana_breakfast",
+      "name": "Рисовая каша на воде с бананом",
+      "meal": "breakfast",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "rice",
+          "grams": 100,
+          "state": "dry"
+        },
+        {
+          "food_id": "banana",
+          "grams": 150,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Промойте и взвесьте 100 г сухого риса; сварите на воде по инструкции на упаковке до мягкости.",
+        "Очистите и нарежьте 150 г банана; добавьте к готовому рису.",
+        "Подавайте тёплым. Используйте отдельную чистую посуду, если исключаете аллергены."
+      ]
+    },
+    {
+      "id": "egg_potato_tomato_breakfast",
+      "name": "Яйца с картофелем и помидором",
+      "meal": "breakfast",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "egg",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "potato",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 5,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Взвесьте и нарежьте вымытый картофель небольшими кусками; сварите до мягкости.",
+        "Яйца весом 150 г без скорлупы приготовьте до полного схватывания белка и желтка.",
+        "Вымойте и нарежьте помидор; подайте с картофелем, яйцами и 5 г масла."
+      ]
+    },
+    {
+      "id": "lentil_tomato_quick_lunch",
+      "name": "Чечевица с помидором и шпинатом",
+      "meal": "lunch",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 130,
+          "state": "dry"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте 130 г сухой чечевицы и сварите до мягкости по инструкции на упаковке; время зависит от сорта.",
+        "Вымойте и нарежьте помидор и шпинат; прогрейте шпинат с готовой чечевицей.",
+        "Добавьте помидор и 10 г масла. Если выбранная чечевица требует более 30 минут, это блюдо не подходит для быстрого обеда."
+      ]
+    },
+    {
+      "id": "chicken_rice_quick_lunch",
+      "name": "Курица с рисом и огурцом",
+      "meal": "lunch",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "rice",
+          "grams": 100,
+          "state": "dry"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте 100 г сухого риса и сварите по инструкции на упаковке.",
+        "Пока рис варится, нарежьте 200 г сырой куриной грудки небольшими кусками и приготовьте до полной готовности без розового центра.",
+        "Вымойте и нарежьте огурец; подайте с готовым рисом, курицей и 10 г масла."
+      ]
+    },
+    {
+      "id": "spinach_tomato_omelette",
+      "name": "Омлет со шпинатом и помидором",
+      "meal": "breakfast",
+      "minutes": 18,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "egg",
+          "grams": 140,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 90,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 160,
+          "state": "raw"
+        },
+        {
+          "food_id": "whole_wheat_bread",
+          "grams": 70,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 5,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Вымойте шпинат и помидор; помидор нарежьте.",
+        "Прогрейте шпинат на сковороде с 5 г масла. Влейте взбитые яйца и готовьте под крышкой до полного схватывания.",
+        "Подайте с нарезанным помидором и хлебом."
+      ]
+    },
+    {
+      "id": "egg_cucumber_toast",
+      "name": "Тост с яйцом и огурцом",
+      "meal": "breakfast",
+      "minutes": 15,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "egg",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "whole_wheat_bread",
+          "grams": 90,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 60,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Сварите яйца вкрутую; указанный вес — без скорлупы.",
+        "Подсушите хлеб, вымойте и нарежьте огурец.",
+        "Выложите яйца и огурец на тосты, добавьте йогурт."
+      ]
+    },
+    {
+      "id": "milk_rice_banana_porridge",
+      "name": "Рисовая каша на молоке с бананом",
+      "meal": "breakfast",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "rice",
+          "grams": 85,
+          "state": "dry"
+        },
+        {
+          "food_id": "milk_2pct",
+          "grams": 280,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "banana",
+          "grams": 100,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Промойте 85 г сухого риса и сварите в воде до мягкости по инструкции на упаковке.",
+        "Влейте молоко и прогрейте кашу, помешивая.",
+        "Добавьте 100 г очищенного нарезанного банана перед подачей."
+      ]
+    },
+    {
+      "id": "chicken_lentil_carrot",
+      "name": "Курица с чечевицей и морковью",
+      "meal": "lunch",
+      "minutes": 40,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 170,
+          "state": "raw"
+        },
+        {
+          "food_id": "lentils",
+          "grams": 85,
+          "state": "dry"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 130,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 70,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 7,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите 85 г сухой чечевицы по инструкции на упаковке.",
+        "Приготовьте курицу отдельно до полной готовности без розового центра.",
+        "Вымойте морковь и шпинат, нарежьте и прогрейте с готовой чечевицей; подайте с курицей и маслом."
+      ]
+    },
+    {
+      "id": "chicken_rice_vegetable_soup",
+      "name": "Куриный суп с рисом и овощами",
+      "meal": "lunch",
+      "minutes": 40,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "rice",
+          "grams": 60,
+          "state": "dry"
+        },
+        {
+          "food_id": "potato",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 60,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Вымойте и нарежьте картофель и морковь; промойте сухой рис.",
+        "В кипящую воду положите овощи и рис, затем нарезанную сырую курицу. Варите до полной готовности курицы без розового центра и мягкости риса и овощей.",
+        "Вымойте шпинат, добавьте в суп в конце и ещё раз доведите до кипения. Вода не входит в расчёт пищевой ценности."
+      ]
+    },
+    {
+      "id": "warm_lentil_egg_salad",
+      "name": "Тёплый салат из чечевицы с яйцом",
+      "meal": "lunch",
+      "minutes": 35,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 90,
+          "state": "dry"
+        },
+        {
+          "food_id": "egg",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 80,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 7,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите сухую чечевицу по инструкции на упаковке; отдельно сварите яйца вкрутую.",
+        "Вымойте помидор и шпинат, нарежьте помидор, шпинат быстро прогрейте.",
+        "Смешайте готовую чечевицу с овощами и яйцами, добавьте масло."
+      ]
+    },
+    {
+      "id": "rice_egg_carrot_bowl",
+      "name": "Рис с яйцом, морковью и шпинатом",
+      "meal": "lunch",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "rice",
+          "grams": 90,
+          "state": "dry"
+        },
+        {
+          "food_id": "egg",
+          "grams": 130,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 130,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 90,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 7,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите сухой рис по инструкции на упаковке.",
+        "Вымойте морковь и шпинат; морковь натрите и прогрейте с маслом, затем добавьте шпинат.",
+        "Влейте яйца и готовьте до полного схватывания, смешайте с готовым рисом."
+      ]
+    },
+    {
+      "id": "baked_chicken_potato_carrot",
+      "name": "Запечённая курица с картофелем и морковью",
+      "meal": "dinner",
+      "minutes": 45,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "potato",
+          "grams": 280,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 8,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Вымойте картофель и морковь, нарежьте одинаковыми кусочками и смешайте с 8 г масла.",
+        "Положите на противень овощи и сырую курицу отдельно от готовой еды.",
+        "Запекайте до мягкости овощей и полной готовности курицы без розового центра; время зависит от размера кусков и духовки."
+      ]
+    },
+    {
+      "id": "lentil_spinach_stew",
+      "name": "Рагу из чечевицы со шпинатом",
+      "meal": "dinner",
+      "minutes": 40,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 95,
+          "state": "dry"
+        },
+        {
+          "food_id": "potato",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 8,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте сухую чечевицу; вымойте и нарежьте картофель, морковь и помидор.",
+        "Тушите чечевицу с картофелем и морковью в воде до мягкости по инструкции на упаковке.",
+        "Добавьте помидор и вымытый шпинат, прогрейте до готовности и вмешайте масло."
+      ]
+    },
+    {
+      "id": "chicken_cucumber_yogurt_salad",
+      "name": "Салат с курицей, огурцом и йогуртом",
+      "meal": "dinner",
+      "minutes": 25,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 130,
+          "state": "raw"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 110,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "whole_wheat_bread",
+          "grams": 70,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Приготовьте курицу до полной готовности без розового центра; нарежьте готовую курицу чистым ножом.",
+        "Вымойте и нарежьте огурец и помидор.",
+        "Смешайте курицу с овощами и йогуртом, подайте с хлебом. Готовый салат храните в холодильнике."
+      ]
+    },
+    {
+      "id": "potato_spinach_egg_pan",
+      "name": "Картофель со шпинатом и яйцом",
+      "meal": "dinner",
+      "minutes": 30,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "potato",
+          "grams": 280,
+          "state": "raw"
+        },
+        {
+          "food_id": "egg",
+          "grams": 130,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 130,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 7,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Вымойте, нарежьте и сварите картофель до мягкости; указанный вес — до варки.",
+        "Вымойте шпинат и прогрейте его на сковороде с маслом, добавьте готовый картофель.",
+        "Влейте яйца и готовьте до полного схватывания."
+      ]
+    },
+    {
+      "id": "baked_chopped_chicken_patties",
+      "name": "Рубленые куриные котлеты в духовке",
+      "meal": "dinner",
+      "minutes": 45,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "source_url": "https://menunedeli.ru/recipe/recept-pp-kotlet-iz-kurinoj-grudki/",
+      "source_note": "Адаптация идеи: вместо крахмала и зелени используются овсяные хлопья; граммы заданы для расчёта порций.",
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 400,
+          "state": "raw"
+        },
+        {
+          "food_id": "egg",
+          "grams": 50,
+          "state": "raw"
+        },
+        {
+          "food_id": "oats",
+          "grams": 25,
+          "state": "dry"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 8,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Разогрейте духовку до 180 °C. Взвесьте 400 г куриного филе без кожи, мелко порубите его; после работы с сырой курицей вымойте нож, доску и руки.",
+        "Добавьте 50 г яйца без скорлупы и 25 г мелких овсяных хлопьев. Перемешайте и оставьте на 10 минут, чтобы хлопья впитали влагу.",
+        "Сформируйте 4 небольшие котлеты. Смажьте форму 8 г масла, разложите котлеты с промежутками.",
+        "Запекайте примерно 25–35 минут до полной готовности в центре; надёжный ориентир для курицы — внутренняя температура 74 °C. Разделите готовые котлеты на две порции."
+      ]
+    },
+    {
+      "id": "oat_pancake_yogurt_banana",
+      "name": "Овсяноблин с йогуртом и бананом",
+      "meal": "breakfast",
+      "minutes": 15,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": true,
+      "source_url": "https://lina.bz/blog/menyu-na-nedelyu-pp/",
+      "source_note": "Адаптация идеи овсяноблина из недельного меню: начинка из йогурта и банана; количество продуктов указано в граммах.",
+      "ingredients": [
+        {
+          "food_id": "oats",
+          "grams": 60,
+          "state": "dry"
+        },
+        {
+          "food_id": "egg",
+          "grams": 50,
+          "state": "raw"
+        },
+        {
+          "food_id": "milk_2pct",
+          "grams": 60,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 100,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "banana",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 5,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Измельчите 60 г сухих овсяных хлопьев. Смешайте с 50 г яйца без скорлупы и 60 г молока до густого теста.",
+        "Смажьте антипригарную сковороду 5 г масла. Вылейте тесто и готовьте на умеренном огне с двух сторон до полного схватывания яйца.",
+        "Нарежьте 100 г очищенного банана. На готовый овсяноблин положите 100 г холодного йогурта и банан; сложите пополам и подайте сразу."
+      ]
+    },
+    {
+      "id": "spinach_egg_muffins",
+      "name": "Яичные маффины со шпинатом",
+      "meal": "breakfast",
+      "minutes": 25,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "egg",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 5,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Разогрейте духовку до 180 °C. Вымойте шпинат и помидор, мелко нарежьте.",
+        "Взбейте 200 г яйца без скорлупы, смешайте с овощами. Смажьте 4 формочки 5 г масла.",
+        "Разлейте смесь по формочкам и запекайте 15–20 минут до полного схватывания. Две формочки составляют одну порцию."
+      ]
+    },
+    {
+      "id": "banana_oat_cups",
+      "name": "Запечённые овсяные корзинки с бананом",
+      "meal": "breakfast",
+      "minutes": 30,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "oats",
+          "grams": 120,
+          "state": "dry"
+        },
+        {
+          "food_id": "banana",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "egg",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "milk_2pct",
+          "grams": 80,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Разогрейте духовку до 180 °C. Разомните 180 г очищенного банана.",
+        "Смешайте банан, 120 г сухих овсяных хлопьев, 100 г яйца без скорлупы и 80 г молока.",
+        "Разложите смесь по 4 силиконовым формочкам и выпекайте 20–25 минут до полного схватывания. Две корзинки — одна порция."
+      ]
+    },
+    {
+      "id": "yogurt_carrot_oat_bowl",
+      "name": "Йогурт с морковью и овсяными хлопьями",
+      "meal": "breakfast",
+      "minutes": 10,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "greek_yogurt",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "oats",
+          "grams": 60,
+          "state": "dry"
+        },
+        {
+          "food_id": "banana",
+          "grams": 80,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Вымойте, очистите и мелко натрите 100 г моркови. Очистите и нарежьте 80 г банана.",
+        "Соедините 250 г йогурта с 60 г сухих овсяных хлопьев и морковью.",
+        "Добавьте банан, перемешайте и подавайте сразу либо дайте хлопьям размягчиться в холодильнике 10 минут."
+      ]
+    },
+    {
+      "id": "tomato_spinach_shakshuka",
+      "name": "Яйца в томатах со шпинатом",
+      "meal": "breakfast",
+      "minutes": 20,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "egg",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 250,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 80,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 7,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "whole_wheat_bread",
+          "grams": 70,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Вымойте и нарежьте 250 г помидоров и 80 г шпината.",
+        "Прогрейте помидоры на сковороде с 7 г масла 5 минут, затем добавьте шпинат.",
+        "Вбейте 150 г яйца без скорлупы, накройте крышкой и готовьте до полного схватывания белка и желтка. Подайте с 70 г хлеба."
+      ]
+    },
+    {
+      "id": "banana_oat_french_toast",
+      "name": "Тосты с бананом в яичной заливке",
+      "meal": "breakfast",
+      "minutes": 15,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "whole_wheat_bread",
+          "grams": 100,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "egg",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "milk_2pct",
+          "grams": 60,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "banana",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 5,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Взбейте 100 г яйца без скорлупы с 60 г молока. Очистите и нарежьте 100 г банана.",
+        "Быстро окуните 100 г хлеба в яичную смесь. Смажьте сковороду 5 г масла.",
+        "Обжарьте тосты на умеренном огне с обеих сторон до полного приготовления яичной смеси. Подайте с бананом."
+      ]
+    },
+    {
+      "id": "rice_yogurt_banana_bowl",
+      "name": "Рис с йогуртом и бананом",
+      "meal": "breakfast",
+      "minutes": 25,
+      "servings": 1,
+      "cost_tier": "medium",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "rice",
+          "grams": 75,
+          "state": "dry"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 200,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "banana",
+          "grams": 120,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите 75 г сухого риса в воде до мягкости по инструкции на упаковке.",
+        "Остудите рис до комнатной температуры, не оставляя его надолго без холодильника.",
+        "Добавьте 200 г холодного йогурта и 120 г очищенного нарезанного банана."
+      ]
+    },
+    {
+      "id": "chicken_oat_patty_bowl",
+      "name": "Куриные котлеты с рисом и огурцом",
+      "meal": "lunch",
+      "minutes": 45,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 360,
+          "state": "raw"
+        },
+        {
+          "food_id": "egg",
+          "grams": 50,
+          "state": "raw"
+        },
+        {
+          "food_id": "oats",
+          "grams": 30,
+          "state": "dry"
+        },
+        {
+          "food_id": "rice",
+          "grams": 140,
+          "state": "dry"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 240,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Сварите 140 г сухого риса по инструкции на упаковке. Вымойте и нарежьте 240 г огурца.",
+        "Мелко нарубите 360 г сырой курицы и смешайте с 50 г яйца без скорлупы и 30 г хлопьев. Сформируйте 4 котлеты.",
+        "Смажьте форму 10 г масла, запекайте котлеты при 180 °C примерно 25–30 минут до 74 °C в центре. Разделите рис, огурец и котлеты на две порции."
+      ]
+    },
+    {
+      "id": "lentil_tomato_potato_soup",
+      "name": "Томатный суп с чечевицей и картофелем",
+      "meal": "lunch",
+      "minutes": 40,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 150,
+          "state": "dry"
+        },
+        {
+          "food_id": "potato",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте 150 г сухой чечевицы. Вымойте, очистите и нарежьте картофель, морковь и помидоры.",
+        "Залейте чечевицу и картофель водой, варите по инструкции на упаковке до мягкости. Добавьте морковь и помидоры.",
+        "Проварите овощи до готовности, вмешайте 10 г масла и разделите суп на две порции. Вода не входит в расчёт пищевой ценности."
+      ]
+    },
+    {
+      "id": "chicken_tomato_rice_skilet",
+      "name": "Рис с курицей, томатами и шпинатом",
+      "meal": "lunch",
+      "minutes": 35,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "rice",
+          "grams": 150,
+          "state": "dry"
+        },
+        {
+          "food_id": "chicken_breast",
+          "grams": 350,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 250,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 12,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите 150 г сухого риса. Вымойте и нарежьте помидоры и шпинат.",
+        "Нарежьте 350 г сырой курицы и готовьте отдельно с 12 г масла до 74 °C в центре.",
+        "Добавьте овощи, прогрейте до мягкости, затем смешайте с готовым рисом. Разделите на две порции."
+      ]
+    },
+    {
+      "id": "lentil_egg_tomato_bowl",
+      "name": "Чечевица с яйцом и томатами",
+      "meal": "lunch",
+      "minutes": 35,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 160,
+          "state": "dry"
+        },
+        {
+          "food_id": "egg",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 240,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите 160 г сухой чечевицы по инструкции на упаковке. Сварите яйца вкрутую.",
+        "Вымойте и нарежьте 240 г помидоров и 200 г огурцов.",
+        "Соедините чечевицу с овощами, добавьте 10 г масла и разложите яйца сверху. Разделите на две порции."
+      ]
+    },
+    {
+      "id": "chicken_potato_yogurt_plate",
+      "name": "Курица с картофелем и йогуртовым соусом",
+      "meal": "lunch",
+      "minutes": 40,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 360,
+          "state": "raw"
+        },
+        {
+          "food_id": "potato",
+          "grams": 500,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 160,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Вымойте и нарежьте 500 г картофеля, смешайте с 10 г масла и запекайте при 200 °C до мягкости.",
+        "Приготовьте 360 г курицы отдельно до 74 °C в центре. Вымойте и нарежьте 200 г огурца.",
+        "Смешайте огурец со 160 г йогурта. Разделите курицу, картофель и соус на две порции."
+      ]
+    },
+    {
+      "id": "spinach_rice_egg_bowl",
+      "name": "Рис с омлетом и шпинатом",
+      "meal": "lunch",
+      "minutes": 25,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "rice",
+          "grams": 150,
+          "state": "dry"
+        },
+        {
+          "food_id": "egg",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 160,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Сварите 150 г сухого риса по инструкции на упаковке. Вымойте и нарежьте шпинат и помидоры.",
+        "Прогрейте овощи на сковороде с 10 г масла. Влейте 200 г яйца без скорлупы и готовьте до полного схватывания.",
+        "Подайте омлет с рисом, разделив всё на две порции."
+      ]
+    },
+    {
+      "id": "baked_chicken_tomato_potato",
+      "name": "Запеканка из курицы, картофеля и томатов",
+      "meal": "dinner",
+      "minutes": 50,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 360,
+          "state": "raw"
+        },
+        {
+          "food_id": "potato",
+          "grams": 450,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 250,
+          "state": "raw"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 120,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Разогрейте духовку до 190 °C. Нарежьте сырой картофель тонкими ломтиками, курицу небольшими кусочками, помидоры кружочками.",
+        "Смажьте форму 10 г масла, выложите картофель и курицу, сверху помидоры и 120 г йогурта.",
+        "Запекайте 35–45 минут до мягкости картофеля и 74 °C в центре курицы. Разделите на две порции."
+      ]
+    },
+    {
+      "id": "lentil_carrot_patties",
+      "name": "Чечевичные котлеты с морковью",
+      "meal": "dinner",
+      "minutes": 45,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 180,
+          "state": "dry"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 160,
+          "state": "raw"
+        },
+        {
+          "food_id": "egg",
+          "grams": 50,
+          "state": "raw"
+        },
+        {
+          "food_id": "oats",
+          "grams": 30,
+          "state": "dry"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 12,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите 180 г сухой чечевицы до мягкости; слейте воду. Вымойте и мелко натрите 160 г моркови.",
+        "Разомните чечевицу, смешайте с морковью, 50 г яйца без скорлупы и 30 г сухих хлопьев. Сформируйте 4 котлеты.",
+        "Смажьте форму 12 г масла и запекайте при 190 °C около 20–25 минут до полного схватывания. Две котлеты — одна порция."
+      ]
+    },
+    {
+      "id": "chicken_spinach_egg_pan",
+      "name": "Курица со шпинатом и яйцом",
+      "meal": "dinner",
+      "minutes": 30,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 360,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "egg",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 220,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Нарежьте 360 г сырой курицы и готовьте с 10 г масла до 74 °C в центре.",
+        "Вымойте шпинат и помидоры, нарежьте и добавьте к готовой курице. Прогрейте до мягкости.",
+        "Влейте 150 г яйца без скорлупы и готовьте до полного схватывания. Разделите на две порции."
+      ]
+    },
+    {
+      "id": "potato_yogurt_egg_salad",
+      "name": "Картофельный салат с яйцом и йогуртом",
+      "meal": "dinner",
+      "minutes": 35,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "potato",
+          "grams": 500,
+          "state": "raw"
+        },
+        {
+          "food_id": "egg",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 250,
+          "state": "raw"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 160,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 80,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Вымойте и сварите 500 г картофеля до мягкости. Сварите яйца вкрутую.",
+        "Остудите картофель и яйца, нарежьте. Вымойте огурец и шпинат, нарежьте их.",
+        "Смешайте ингредиенты со 160 г йогурта и разделите на две порции. Готовый салат храните в холодильнике."
+      ]
+    },
+    {
+      "id": "lentil_rice_spinach_stew",
+      "name": "Чечевица с рисом и шпинатом",
+      "meal": "dinner",
+      "minutes": 40,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "lentils",
+          "grams": 130,
+          "state": "dry"
+        },
+        {
+          "food_id": "rice",
+          "grams": 110,
+          "state": "dry"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 12,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите 130 г сухой чечевицы и 110 г сухого риса отдельно по инструкции на упаковке.",
+        "Вымойте и нарежьте шпинат и помидоры, прогрейте их с 12 г масла.",
+        "Смешайте крупы с овощами, прогрейте ещё 2–3 минуты и разделите на две порции."
+      ]
+    },
+    {
+      "id": "chicken_cucumber_rice_salad",
+      "name": "Тёплый рисовый салат с курицей",
+      "meal": "dinner",
+      "minutes": 35,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 360,
+          "state": "raw"
+        },
+        {
+          "food_id": "rice",
+          "grams": 130,
+          "state": "dry"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 250,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 220,
+          "state": "raw"
+        },
+        {
+          "food_id": "greek_yogurt",
+          "grams": 120,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Сварите 130 г сухого риса. Приготовьте 360 г курицы до 74 °C в центре и нарежьте чистым ножом.",
+        "Вымойте и нарежьте огурец и помидоры.",
+        "Соедините тёплый рис и курицу с овощами, добавьте 120 г холодного йогурта перед подачей и разделите на две порции."
+      ]
+    },
+    {
+      "id": "buckwheat_milk_banana",
+      "name": "Гречневая каша с бананом",
+      "meal": "breakfast",
+      "minutes": 25,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "buckwheat",
+          "grams": 85,
+          "state": "dry"
+        },
+        {
+          "food_id": "milk_2pct",
+          "grams": 200,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "banana",
+          "grams": 100,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Промойте 85 г сухой гречки и сварите в воде до мягкости по инструкции на упаковке.",
+        "Добавьте 200 г молока и прогрейте кашу, не доводя до сильного кипения.",
+        "Очистите и нарежьте 100 г банана, подайте с кашей."
+      ]
+    },
+    {
+      "id": "buckwheat_egg_zucchini",
+      "name": "Гречка с яйцом и кабачком",
+      "meal": "breakfast",
+      "minutes": 30,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "buckwheat",
+          "grams": 140,
+          "state": "dry"
+        },
+        {
+          "food_id": "egg",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "zucchini",
+          "grams": 240,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Промойте и сварите 140 г сухой гречки по инструкции на упаковке.",
+        "Вымойте 240 г кабачка, нарежьте кубиками и потушите на сковороде с 10 г масла до мягкости.",
+        "Добавьте 200 г яйца без скорлупы и готовьте до полного схватывания. Смешайте с гречкой и разделите на две порции."
+      ]
+    },
+    {
+      "id": "chickpea_tomato_salad",
+      "name": "Салат из нута с томатами и огурцом",
+      "meal": "lunch",
+      "minutes": 75,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "chickpeas",
+          "grams": 150,
+          "state": "dry"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 250,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 12,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Замочите 150 г сухого нута в холодной воде на ночь в холодильнике, затем слейте воду и промойте.",
+        "Сварите нут в свежей воде до полной мягкости; время зависит от сорта. Вымойте и нарежьте помидоры и огурцы.",
+        "Остудите нут, смешайте с овощами и 12 г масла. Разделите на две порции."
+      ]
+    },
+    {
+      "id": "salmon_buckwheat_zucchini",
+      "name": "Лосось с гречкой и кабачком",
+      "meal": "lunch",
+      "minutes": 35,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "salmon",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "buckwheat",
+          "grams": 140,
+          "state": "dry"
+        },
+        {
+          "food_id": "zucchini",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Сварите 140 г сухой гречки по инструкции на упаковке. Вымойте и нарежьте 300 г кабачка.",
+        "Положите 300 г сырого лосося и кабачок на противень, сбрызните 10 г масла.",
+        "Запекайте при 190 °C до готовности рыбы: мякоть должна легко разделяться вилкой, либо температура в центре должна достигнуть 63 °C. Разделите рыбу, гречку и овощи на две порции."
+      ]
+    },
+    {
+      "id": "chicken_chickpea_stew",
+      "name": "Курица с нутом и томатами",
+      "meal": "dinner",
+      "minutes": 80,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "chicken_breast",
+          "grams": 320,
+          "state": "raw"
+        },
+        {
+          "food_id": "chickpeas",
+          "grams": 130,
+          "state": "dry"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Замочите 130 г сухого нута на ночь в холодильнике, слейте воду и сварите в свежей воде до мягкости.",
+        "Нарежьте 320 г сырой курицы. Вымойте и нарежьте 300 г помидоров и 150 г моркови.",
+        "Готовьте курицу с 10 г масла до 74 °C в центре. Добавьте овощи и готовый нут, тушите до мягкости моркови. Разделите на две порции."
+      ]
+    },
+    {
+      "id": "zucchini_chicken_boats",
+      "name": "Кабачки с курицей и рисом в духовке",
+      "meal": "dinner",
+      "minutes": 50,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "zucchini",
+          "grams": 500,
+          "state": "raw"
+        },
+        {
+          "food_id": "chicken_breast",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "rice",
+          "grams": 100,
+          "state": "dry"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Сварите 100 г сухого риса. Разрежьте 500 г кабачка вдоль, выньте часть мякоти и мелко нарежьте её.",
+        "Нарежьте 300 г сырой курицы и 180 г помидоров. Смешайте с рисом и мякотью кабачка.",
+        "Наполните половинки кабачка начинкой, смажьте форму 10 г масла. Запекайте при 190 °C примерно 30–35 минут до мягкости кабачка и 74 °C в центре курицы. Разделите на две порции."
+      ]
+    },
+    {
+      "id": "chickpea_zucchini_soup",
+      "name": "Суп из нута и кабачка",
+      "meal": "lunch",
+      "minutes": 80,
+      "servings": 2,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "chickpeas",
+          "grams": 140,
+          "state": "dry"
+        },
+        {
+          "food_id": "zucchini",
+          "grams": 350,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 200,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Замочите 140 г сухого нута на ночь в холодильнике; слейте воду и сварите нут в свежей воде до мягкости.",
+        "Вымойте и нарежьте кабачок, морковь и помидоры. Добавьте к готовому нуту с водой и варите до мягкости овощей.",
+        "Вмешайте 10 г масла и разделите суп на две порции. Вода не входит в расчёт пищевой ценности."
+      ]
+    },
+    {
+      "id": "salmon_potato_spinach",
+      "name": "Лосось с картофелем и шпинатом",
+      "meal": "dinner",
+      "minutes": 40,
+      "servings": 2,
+      "cost_tier": "medium",
+      "vegetarian": false,
+      "ingredients": [
+        {
+          "food_id": "salmon",
+          "grams": 300,
+          "state": "raw"
+        },
+        {
+          "food_id": "potato",
+          "grams": 450,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Вымойте и нарежьте 450 г картофеля; запекайте при 200 °C до мягкости.",
+        "Выложите 300 г сырого лосося в отдельную форму и запекайте до готовности: мякоть легко разделяется вилкой или температура в центре достигает 63 °C.",
+        "Вымойте и быстро прогрейте 180 г шпината с 10 г масла. Разделите рыбу, картофель и шпинат на две порции."
+      ]
+    },
+    {
+      "id": "quick_chickpea_tomato_breakfast",
+      "name": "Нут с помидором и шпинатом",
+      "meal": "breakfast",
+      "minutes": 5,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 220,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 160,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 40,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 8,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 220 г консервированного нута и промойте его, если это указано на упаковке.",
+        "Вымойте 160 г помидора и 40 г шпината; нарежьте помидор.",
+        "Смешайте всё с 8 г оливкового масла и подайте сразу."
+      ]
+    },
+    {
+      "id": "quick_chickpea_cucumber_lunch",
+      "name": "Салат из нута с огурцом",
+      "meal": "lunch",
+      "minutes": 5,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 250 г готового консервированного нута; при необходимости промойте.",
+        "Вымойте и нарежьте 180 г огурца и 150 г помидора.",
+        "Соедините овощи и нут, добавьте 10 г масла, перемешайте и подайте."
+      ]
+    },
+    {
+      "id": "quick_chickpea_spinach_dinner",
+      "name": "Нут со шпинатом и морковью",
+      "meal": "dinner",
+      "minutes": 5,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 80,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 10,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 250 г консервированного нута и переложите его в миску.",
+        "Вымойте 80 г шпината и 120 г моркови; натрите морковь.",
+        "Перемешайте нут, шпинат и морковь с 10 г масла. Подавайте без дополнительной готовки."
+      ]
+    },
+    {
+      "id": "quick_chickpea_carrot_breakfast",
+      "name": "Нут с тёртой морковью и огурцом",
+      "meal": "breakfast",
+      "minutes": 7,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 220,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 110,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 7,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 220 г консервированного нута; при необходимости промойте его.",
+        "Вымойте и натрите 110 г моркови, нарежьте 120 г огурца.",
+        "Смешайте продукты с 7 г масла и подайте сразу."
+      ]
+    },
+    {
+      "id": "quick_chickpea_banana_breakfast",
+      "name": "Нут с бананом и морковью",
+      "meal": "breakfast",
+      "minutes": 6,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 200,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "banana",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 100,
+          "state": "raw"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 200 г консервированного нута; при необходимости промойте.",
+        "Очистите 120 г банана и вымойте 100 г моркови; нарежьте или натрите их.",
+        "Подайте продукты вместе в одной миске, не добавляя ингредиенты с аллергенами."
+      ]
+    },
+    {
+      "id": "quick_chickpea_carrot_lunch",
+      "name": "Нут с морковью и шпинатом",
+      "meal": "lunch",
+      "minutes": 8,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 140,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 70,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 8,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 250 г консервированного нута; при необходимости промойте.",
+        "Вымойте 140 г моркови и 70 г шпината; морковь натрите.",
+        "Смешайте нут, овощи и 8 г масла; подайте сразу."
+      ]
+    },
+    {
+      "id": "quick_chickpea_tomato_spinach_lunch",
+      "name": "Нут с томатом и шпинатом",
+      "meal": "lunch",
+      "minutes": 7,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 240,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 70,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 8,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 240 г консервированного нута; при необходимости промойте.",
+        "Вымойте 180 г помидора и 70 г шпината, помидор нарежьте.",
+        "Соедините продукты с 8 г масла и подайте."
+      ]
+    },
+    {
+      "id": "quick_chickpea_cucumber_spinach_dinner",
+      "name": "Нут с огурцом и шпинатом",
+      "meal": "dinner",
+      "minutes": 7,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 180,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 70,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 9,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 250 г консервированного нута; при необходимости промойте.",
+        "Вымойте и нарежьте 180 г огурца и 70 г шпината.",
+        "Смешайте с 9 г масла и подайте без дополнительной готовки."
+      ]
+    },
+    {
+      "id": "quick_chickpea_tomato_carrot_dinner",
+      "name": "Нут с помидором и морковью",
+      "meal": "dinner",
+      "minutes": 8,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_chickpeas",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 170,
+          "state": "raw"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 120,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 9,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с 250 г консервированного нута; при необходимости промойте.",
+        "Вымойте 170 г помидора и 120 г моркови; помидор нарежьте, морковь натрите.",
+        "Смешайте ингредиенты с 9 г масла и подайте."
+      ]
+    },
+    {
+      "id": "quick_kidney_beans_tomato_breakfast",
+      "name": "Красная фасоль с помидором и огурцом",
+      "meal": "breakfast",
+      "minutes": 8,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_kidney_beans",
+          "grams": 230,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "tomato",
+          "grams": 150,
+          "state": "raw"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 100,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 7,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с готовой консервированной фасоли, промойте и отвесьте 230 г промытых бобов.",
+        "Вымойте и нарежьте 150 г помидора и 100 г огурца.",
+        "Соедините овощи с фасолью и 7 г масла; подайте сразу."
+      ]
+    },
+    {
+      "id": "quick_kidney_beans_carrot_lunch",
+      "name": "Красная фасоль с морковью и шпинатом",
+      "meal": "lunch",
+      "minutes": 9,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_kidney_beans",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "carrot",
+          "grams": 130,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 70,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 8,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с готовой консервированной фасоли, промойте и отвесьте 250 г промытых бобов.",
+        "Вымойте и натрите 130 г моркови, нарежьте 70 г шпината.",
+        "Перемешайте бобы и овощи с 8 г масла; подайте без нагрева."
+      ]
+    },
+    {
+      "id": "quick_kidney_beans_cucumber_dinner",
+      "name": "Красная фасоль с огурцом и шпинатом",
+      "meal": "dinner",
+      "minutes": 8,
+      "servings": 1,
+      "cost_tier": "low",
+      "vegetarian": true,
+      "ingredients": [
+        {
+          "food_id": "canned_kidney_beans",
+          "grams": 250,
+          "state": "as_packaged"
+        },
+        {
+          "food_id": "cucumber",
+          "grams": 170,
+          "state": "raw"
+        },
+        {
+          "food_id": "spinach",
+          "grams": 80,
+          "state": "raw"
+        },
+        {
+          "food_id": "olive_oil",
+          "grams": 9,
+          "state": "as_packaged"
+        }
+      ],
+      "steps": [
+        "Слейте жидкость с готовой консервированной фасоли, промойте и отвесьте 250 г промытых бобов.",
+        "Вымойте и нарежьте 170 г огурца и 80 г шпината.",
+        "Смешайте фасоль и овощи с 9 г масла; подайте сразу."
+      ]
+    }
+  ]
+}

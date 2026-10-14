@@ -1,0 +1,55 @@
+:root{color-scheme:light;--bg:#f3f6fa;--surface:#fff;--surface-raised:#fff;--surface-soft:#edf3f8;--line:#d8e2ed;--text:#17324f;--text-muted:#536a80;--accent:#0877bb;--accent-strong:#07649e;--accent-ink:#fff;color:var(--text);background:var(--bg)}
+body{background:var(--bg);color:var(--text)}
+::selection{background:#c6ebfb;color:#0d365e}
+:focus-visible{outline-color:#0877bb!important}
+h1,h2,h3,h4{color:#14375b}
+h1{font-size:clamp(30px,3.5vw,48px);letter-spacing:-.035em}
+p{color:inherit}
+.pageHeader{padding:0 0 24px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.pageHeader p,.muted,.formHint,.labelHint{color:var(--text-muted)}
+.pageHeader .textButton{color:#256392}
+.card,.summaryCard,.sectionCard{background:#fff;border:1px solid #dbe4ed;border-radius:14px;box-shadow:0 10px 32px rgba(20,55,91,.045)}
+.primaryButton{background:#0877bb;color:#fff;box-shadow:none}
+.primaryButton:hover{background:#0869a4;color:#fff}
+.secondaryButton{background:#fff;border-color:#b9ccdc;color:#18466d}
+.secondaryButton:hover{background:#e9f3fa;border-color:#7babc9;color:#123e64}
+.textButton,.sectionHeading a{color:#126da5}
+.iconButton{background:#fff;border-color:#b9ccdc;color:#225b87}
+input,textarea,select{background:#fff;border-color:#bccddc;color:#183d5e;caret-color:#0877bb}
+input::placeholder,textarea::placeholder{color:#62788e}
+input:hover,textarea:hover,select:hover{border-color:#5696bc}
+input:focus,textarea:focus,select:focus{border-color:#0877bb;box-shadow:0 0 0 3px #0877bb20}
+input[type=checkbox],input[type=radio]{accent-color:#0877bb}
+.formStack label,.healthActions label{color:#274d6c}
+.tabBar{border-color:var(--line)}
+.tabBar button{color:#53708a}.tabBar button:hover{color:#173d61}.tabBar .selectedTab{color:#0d6096;border-color:#0877bb}
+.secondaryFilters>summary{color:#1a587f}
+.emptyState{background:#f9fbfd;border-color:#bed0dc;color:#536a80}.emptyState h3{color:#173d61}.emptyIcon{background:#deeff8;color:#0877bb}
+.successMessage{background:#e6f5ee;border-color:#a9d5c0;color:#195638}.errorMessage{background:#fff0f1;border-color:#e6b5be;color:#813747}
+.outlineLink,.dayJump a{border-color:#b9ccdc;color:#155e8e}.outlineLink:hover,.dayJump a:hover,.dayJump a:focus-visible{background:#e6f2f9}
+.overviewLine,.occurrenceRow,.taskRow,.subtaskRow{border-color:var(--line)}
+.overviewLine,.occurrenceText span,.taskRowMain span,.taskRowMain small{color:#526b81}.overviewLine strong{color:#153a5c}
+.sectionsGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.sectionCard,.sectionCard:nth-child(n){min-height:150px;background:#fff;border-color:#dbe4ed;padding:22px 24px;box-shadow:0 10px 32px rgba(20,55,91,.045)}
+.sectionCard:hover,.sectionCard:nth-child(n):hover{background:#f7fbfe;border-color:#80b4d0;transform:translateY(-2px)}
+.sectionCard h2{color:#153b60;font-size:21px}.sectionCard p{color:#526d83;font-size:14px}.sectionCount{color:#0877bb;font-size:13px}
+.sectionDirectory{border-top:1px solid #d0dfeb}
+.sphereRow{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1fr) 34px;align-items:center;gap:20px;min-height:104px;padding:20px 8px;border-bottom:1px solid #d0dfeb;text-decoration:none;color:#173b60;transition:padding .2s ease,background-color .2s ease}
+.sphereRow:hover{background:#eaf4fa;padding-left:20px}
+.sphereRowName{font-size:clamp(22px,2.3vw,30px);font-weight:740;letter-spacing:-.025em;margin:0;color:#173b60}
+.sphereRowDescription{font-size:14px;color:#526c82;line-height:1.5}
+.sphereRowArrow{display:grid;place-items:center;width:32px;height:32px;border:1px solid #bed2e0;border-radius:50%;font-size:16px;color:#0e6a9f}
+.summaryCard span,.summaryCard small{color:#5c7186}.summaryCard strong{color:#153a5e}
+.todaySummary{background:#fff;border-color:#dbe4ed}.todayMetric+.todayMetric{border-color:#dbe4ed}.todayMetric span,.todayMetric small{color:#597187}.todayMetric strong{color:#153d62}
+.dateToolbar label{color:#45647e}
+.calendarDay{background:#fff;border-color:#d2e0ec;color:#173b5a}.calendarDay:hover{background:#edf6fb}.calendarDay.isToday{border-color:#0877bb}.calendarDay.isSelected{background:#dcedf8;border-color:#0877bb}.calendarDay small{color:#32719c}
+.boardColumn{background:#eaf1f7;border-color:#d5e1eb}.boardCard{background:#fff;border-color:#d5e1eb}.boardCard small{color:#60778c}
+.statusBadge{background:#e4f1fa;color:#185b8a}.status-done{background:#e0f4e8;color:#276347}.status-in_progress{background:#fff0d9;color:#79561e}
+.healthPage a:not(.secondaryButton){color:#0877bb}.healthList{color:#35566f}.healthSession{border-color:#dbe4ed}.healthSession p{color:#526a80}.healthExercise,.healthMeal{background:#f7fafc;border-color:#dbe4ed}.healthMeal small{color:#61788d}.healthMeal label{color:#35556e}
+.healthNotice{background:#eaf4fa;border-color:#afd1e4}.healthCheckGrid label{color:#35566f}.healthHistory{color:#284761}
+.profileBackupPreview{background:#f6fafc;border-color:#ccdce8}.profileBackupPreview p,.profileBackupPreview ul{color:#3b5971}.profileBackupTag{background:#e1f2fa;color:#1c678f}
+.profileBackupLabel,.profileBackupCheck{color:#315471}.profileBackup input[type=file]::file-selector-button{background:#eaf3f9;border-color:#adcbdc;color:#155c88}.profileBackup input[type=file]::file-selector-button:hover{background:#dceefa}
+.weightChart svg{background:#eaf3f9}.weightChart>div{color:#536f85}
+.formOverlay,.formOverlay::backdrop{background:#0a274bcc}.taskFormCard{box-shadow:0 25px 70px #0b294066}
+@media(max-width:750px){.sectionsGrid{grid-template-columns:1fr}.pageHeader{padding-bottom:20px}.sectionCard,.sectionCard:nth-child(n){min-height:125px;padding:20px}.sphereRow{grid-template-columns:minmax(0,1fr) 34px;gap:4px 12px;min-height:96px;padding:17px 4px}.sphereRowName{grid-column:1;font-size:22px}.sphereRowDescription{grid-column:1;font-size:13px}.sphereRowArrow{grid-column:2;grid-row:1/3}}
+@media(prefers-reduced-motion:reduce){.sectionCard,.primaryButton,.secondaryButton,.sphereRow{transition:none}.sphereRow:hover{padding-left:8px}}

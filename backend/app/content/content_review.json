@@ -1,0 +1,1675 @@
+{
+  "version": "2026-10-12-structural-1",
+  "scope": "Ingredient and catalog-structure audit, not clinical or legal approval",
+  "recipes": {
+    "oatmeal_milk_banana": {
+      "allergens": [
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "egg_toast_tomato": {
+      "allergens": [
+        "egg",
+        "gluten"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "yogurt_oats_banana": {
+      "allergens": [
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "oatmeal_water_banana": {
+      "allergens": [
+        "gluten"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "chicken_rice_carrot": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "lentil_rice_tomato": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "chicken_potato_cucumber": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "lentil_potato_soup": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "chicken_spinach_rice": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "egg_potato_salad": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "rice_banana_breakfast": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "egg_potato_tomato_breakfast": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "lentil_tomato_quick_lunch": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "chicken_rice_quick_lunch": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "spinach_tomato_omelette": {
+      "allergens": [
+        "egg",
+        "gluten"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "egg_cucumber_toast": {
+      "allergens": [
+        "egg",
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "milk_rice_banana_porridge": {
+      "allergens": [
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "chicken_lentil_carrot": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "chicken_rice_vegetable_soup": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "warm_lentil_egg_salad": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "rice_egg_carrot_bowl": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "baked_chicken_potato_carrot": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "lentil_spinach_stew": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "chicken_cucumber_yogurt_salad": {
+      "allergens": [
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "potato_spinach_egg_pan": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "baked_chopped_chicken_patties": {
+      "allergens": [
+        "egg",
+        "gluten"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://menunedeli.ru/recipe/recept-pp-kotlet-iz-kurinoj-grudki/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "oat_pancake_yogurt_banana": {
+      "allergens": [
+        "egg",
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://lina.bz/blog/menyu-na-nedelyu-pp/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "spinach_egg_muffins": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "banana_oat_cups": {
+      "allergens": [
+        "egg",
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "yogurt_carrot_oat_bowl": {
+      "allergens": [
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "tomato_spinach_shakshuka": {
+      "allergens": [
+        "egg",
+        "gluten"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "banana_oat_french_toast": {
+      "allergens": [
+        "egg",
+        "gluten",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "rice_yogurt_banana_bowl": {
+      "allergens": [
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "chicken_oat_patty_bowl": {
+      "allergens": [
+        "egg",
+        "gluten"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "lentil_tomato_potato_soup": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "chicken_tomato_rice_skilet": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "lentil_egg_tomato_bowl": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "chicken_potato_yogurt_plate": {
+      "allergens": [
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "spinach_rice_egg_bowl": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "baked_chicken_tomato_potato": {
+      "allergens": [
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "lentil_carrot_patties": {
+      "allergens": [
+        "egg",
+        "gluten"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "chicken_spinach_egg_pan": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "potato_yogurt_egg_salad": {
+      "allergens": [
+        "egg",
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "lentil_rice_spinach_stew": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "chicken_cucumber_rice_salad": {
+      "allergens": [
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "buckwheat_milk_banana": {
+      "allergens": [
+        "milk"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "buckwheat_egg_zucchini": {
+      "allergens": [
+        "egg"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "chickpea_tomato_salad": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "salmon_buckwheat_zucchini": {
+      "allergens": [
+        "fish"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "chicken_chickpea_stew": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "allergens_checked": true
+      }
+    },
+    "zucchini_chicken_boats": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "allergens_checked": true
+      }
+    },
+    "chickpea_zucchini_soup": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "allergens_checked": true
+      }
+    },
+    "salmon_potato_spinach": {
+      "allergens": [
+        "fish"
+      ],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_tomato_breakfast": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_cucumber_lunch": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_spinach_dinner": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "platform original recipe",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_carrot_breakfast": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; ingredient nutrition from USDA FoodData Central",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_banana_breakfast": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; ingredient nutrition from USDA FoodData Central",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_carrot_lunch": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; ingredient nutrition from USDA FoodData Central",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_tomato_spinach_lunch": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; ingredient nutrition from USDA FoodData Central",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_cucumber_spinach_dinner": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; ingredient nutrition from USDA FoodData Central",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_chickpea_tomato_carrot_dinner": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; ingredient nutrition from USDA FoodData Central",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_kidney_beans_tomato_breakfast": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; kidney bean nutrition from USDA SR28 NDB 16335",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_kidney_beans_carrot_lunch": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; kidney bean nutrition from USDA SR28 NDB 16335",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    },
+    "quick_kidney_beans_cucumber_dinner": {
+      "allergens": [],
+      "review": {
+        "license": "platform-authored recipe",
+        "source": "platform original recipe; kidney bean nutrition from USDA SR28 NDB 16335",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "allergens_checked": true
+      }
+    }
+  },
+  "sport": {
+    "fat_loss_home_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_outdoor_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_gym_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_beginner_short_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_outdoor_beginner_short_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_gym_beginner_short_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_bands_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.gloshospitals.nhs.uk/media/documents/Simple_exercises_to_encourage_weight_loss_GHPI1401_03_26.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_outdoor_bands_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.gloshospitals.nhs.uk/media/documents/Simple_exercises_to_encourage_weight_loss_GHPI1401_03_26.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_outdoor_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_gym_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_gym_beginner_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_beginner_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_gym_intermediate_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_intermediate_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_progressive_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_progressive_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_home_progressive_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored text with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-10",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_outdoor_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_outdoor_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_gym_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_gym_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_outdoor_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_outdoor_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_gym_beginner_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_gym_intermediate_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_beginner_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_intermediate_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_gym_beginner_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_gym_intermediate_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_beginner_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_intermediate_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_gym_beginner_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_gym_intermediate_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_intermediate_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_beginner_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_intermediate_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked primary-source guidance",
+        "source": "ACSM resistance training position stand; WHO physical activity guidance",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-12",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_outdoor_beginner_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-04-10",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_outdoor_intermediate_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-05-10",
+        "safety_checked": true
+      }
+    },
+    "maintain_outdoor_beginner_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-06-09",
+        "safety_checked": true
+      }
+    },
+    "maintain_outdoor_intermediate_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-07-09",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_outdoor_beginner_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-08",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_outdoor_intermediate_split_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-09-07",
+        "safety_checked": true
+      }
+    }
+  },
+  "study": {
+    "java:v1": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://dev.java/learn/first-steps/first-java-code/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10"
+      }
+    },
+    "english:v1": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10"
+      }
+    },
+    "java-backend:v1": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://docs.oracle.com/en/java/javase/21/docs/api/jdk.httpserver/com/sun/net/httpserver/HttpServer.html",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09"
+      }
+    },
+    "go:v1": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://go.dev/doc/tutorial/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09"
+      }
+    },
+    "java-backend:v2": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://docs.oracle.com/en/java/javase/21/docs/api/jdk.httpserver/com/sun/net/httpserver/HttpServer.html",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08"
+      }
+    },
+    "java:v2": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://dev.java/learn/first-steps/first-java-code/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10"
+      }
+    },
+    "go:v2": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://go.dev/doc/tutorial/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09"
+      }
+    },
+    "english:v2": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10"
+      }
+    },
+    "java-backend:v3": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://docs.oracle.com/en/java/javase/21/docs/api/jdk.httpserver/com/sun/net/httpserver/HttpServer.html",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08"
+      }
+    }
+  },
+  "book": {
+    "chekhov-chameleon": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/Хамелеон_(Чехов)/Версия_2",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10"
+      }
+    },
+    "tolstoy-after-ball": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/После_бала_(Толстой)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10"
+      }
+    },
+    "grin-scarlet-sails": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/Алые_паруса_(Грин)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09"
+      }
+    },
+    "chekhov-cherry-orchard-mybook": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/Вишнёвый_сад_(Чехов)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09"
+      }
+    },
+    "turgenev-mumu": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/Муму_(Тургенев)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08"
+      }
+    },
+    "pushkin-captains-daughter": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/Капитанская_дочка_(Пушкин)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07"
+      }
+    },
+    "turgenev-hunters-notes": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/Записки_охотника_(Тургенев)/Версия_2",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07"
+      }
+    },
+    "turgenev-bezhin-meadow": {
+      "review": {
+        "license": "Общественное достояние: автор умер более 70 лет назад; экспорт Викитеки, указание источника сохранено в EPUB.",
+        "source": "https://ru.wikisource.org/wiki/Бежин_луг_(Тургенев)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10"
+      }
+    },
+    "gorky-old-izergil": {
+      "review": {
+        "license": "Оригинальный текст в общественном достоянии; экспорт Викитеки с атрибуцией источника.",
+        "source": "https://ru.wikisource.org/wiki/Старуха_Изергиль_(Горький)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10"
+      }
+    },
+    "chekhov-lady-dog": {
+      "review": {
+        "license": "Оригинальный текст в общественном достоянии; экспорт Викитеки с атрибуцией источника.",
+        "source": "https://ru.wikisource.org/wiki/Дама_с_собачкой_(Чехов)/Версия_2",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09"
+      }
+    },
+    "pushkin-queen-spades": {
+      "review": {
+        "license": "Оригинальный текст в общественном достоянии; экспорт Викитеки с атрибуцией источника.",
+        "source": "https://ru.wikisource.org/wiki/Пиковая_дама_(Пушкин)/Версия_2",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09"
+      }
+    },
+    "chekhov-new-villa": {
+      "review": {
+        "license": "Оригинальный текст в общественном достоянии; экспорт Викитеки с атрибуцией источника.",
+        "source": "https://ru.wikisource.org/wiki/Новая_дача_(Чехов)",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08"
+      }
+    }
+  },
+  "guide": {
+    "sport-limitations": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240015128",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10"
+      }
+    },
+    "sport-strength": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19204579/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10"
+      }
+    },
+    "sport-maintain": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240015128",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09"
+      }
+    },
+    "sport-intermediate": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "https://pubmed.ncbi.nlm.nih.gov/19204579/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09"
+      }
+    },
+    "sport-short": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240015128",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08"
+      }
+    },
+    "sport-equipment": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07"
+      }
+    },
+    "sport-schedule": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240015128",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07"
+      }
+    },
+    "personal-day": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10"
+      }
+    },
+    "personal-week": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10"
+      }
+    },
+    "personal-hobby": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09"
+      }
+    },
+    "reading-plan": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-07-09"
+      }
+    },
+    "reading-reflection": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-08-08"
+      }
+    },
+    "finance-entry": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-09-07"
+      }
+    },
+    "finance-month": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-10-07"
+      }
+    },
+    "personal-change": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-04-10"
+      }
+    },
+    "personal-habits": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-05-10"
+      }
+    },
+    "personal-reading": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-12",
+        "checked_by": "Codex structural catalog audit",
+        "recheck_by": "2027-06-09"
+      }
+    }
+  }
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "course_id": "java",
+    "scenario": "valid_hint"
+  },
+  {
+    "course_id": "java",
+    "scenario": "prompt_injection"
+  },
+  {
+    "course_id": "java",
+    "scenario": "wrong_lesson"
+  },
+  {
+    "course_id": "java",
+    "scenario": "wrong_version"
+  },
+  {
+    "course_id": "java",
+    "scenario": "wrong_question"
+  },
+  {
+    "course_id": "java",
+    "scenario": "wrong_stage"
+  },
+  {
+    "course_id": "java",
+    "scenario": "answer_leak"
+  },
+  {
+    "course_id": "java",
+    "scenario": "malformed"
+  },
+  {
+    "course_id": "java",
+    "scenario": "model_unavailable"
+  },
+  {
+    "course_id": "java",
+    "scenario": "valid_explain"
+  },
+  {
+    "course_id": "java",
+    "scenario": "absent_content"
+  },
+  {
+    "course_id": "java",
+    "scenario": "expired_content"
+  },
+  {
+    "course_id": "go",
+    "scenario": "valid_hint"
+  },
+  {
+    "course_id": "go",
+    "scenario": "prompt_injection"
+  },
+  {
+    "course_id": "go",
+    "scenario": "wrong_lesson"
+  },
+  {
+    "course_id": "go",
+    "scenario": "wrong_version"
+  },
+  {
+    "course_id": "go",
+    "scenario": "wrong_question"
+  },
+  {
+    "course_id": "go",
+    "scenario": "wrong_stage"
+  },
+  {
+    "course_id": "go",
+    "scenario": "answer_leak"
+  },
+  {
+    "course_id": "go",
+    "scenario": "malformed"
+  },
+  {
+    "course_id": "go",
+    "scenario": "model_unavailable"
+  },
+  {
+    "course_id": "go",
+    "scenario": "valid_explain"
+  },
+  {
+    "course_id": "go",
+    "scenario": "absent_content"
+  },
+  {
+    "course_id": "go",
+    "scenario": "expired_content"
+  },
+  {
+    "course_id": "english",
+    "scenario": "valid_hint"
+  },
+  {
+    "course_id": "english",
+    "scenario": "prompt_injection"
+  },
+  {
+    "course_id": "english",
+    "scenario": "wrong_lesson"
+  },
+  {
+    "course_id": "english",
+    "scenario": "wrong_version"
+  },
+  {
+    "course_id": "english",
+    "scenario": "wrong_question"
+  },
+  {
+    "course_id": "english",
+    "scenario": "wrong_stage"
+  },
+  {
+    "course_id": "english",
+    "scenario": "answer_leak"
+  },
+  {
+    "course_id": "english",
+    "scenario": "malformed"
+  },
+  {
+    "course_id": "english",
+    "scenario": "model_unavailable"
+  },
+  {
+    "course_id": "english",
+    "scenario": "valid_explain"
+  },
+  {
+    "course_id": "english",
+    "scenario": "absent_content"
+  },
+  {
+    "course_id": "english",
+    "scenario": "expired_content"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "valid_hint"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "prompt_injection"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "wrong_lesson"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "wrong_version"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "wrong_question"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "wrong_stage"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "answer_leak"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "malformed"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "model_unavailable"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "valid_explain"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "absent_content"
+  },
+  {
+    "course_id": "java-backend",
+    "scenario": "expired_content"
+  }
+]

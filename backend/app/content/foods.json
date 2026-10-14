@@ -1,0 +1,291 @@
+{
+  "version": "2026-10-11-1",
+  "basis": "Пищевая ценность на 100 г исходного продукта в указанном состоянии; тепловые потери и изменение веса готового блюда не моделируются.",
+  "foods": {
+    "banana": {
+      "name": "Банан",
+      "source_description": "Bananas, raw",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 173944,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173944/nutrients",
+      "carbs_g": 22.84,
+      "kcal": 89.0,
+      "protein_g": 1.09,
+      "fat_g": 0.33
+    },
+    "carrot": {
+      "name": "Морковь",
+      "source_description": "Carrots, raw",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 170393,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170393/nutrients",
+      "protein_g": 0.93,
+      "fat_g": 0.24,
+      "carbs_g": 9.58,
+      "kcal": 41.0
+    },
+    "chicken_breast": {
+      "name": "Куриная грудка без кожи",
+      "source_description": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 171077,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171077/nutrients",
+      "fat_g": 2.62,
+      "kcal": 120.0,
+      "protein_g": 22.5,
+      "carbs_g": 0.0
+    },
+    "cucumber": {
+      "name": "Огурец",
+      "source_description": "Cucumber, with peel, raw",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 168409,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168409/nutrients",
+      "carbs_g": 3.63,
+      "kcal": 15.0,
+      "fat_g": 0.11,
+      "protein_g": 0.65
+    },
+    "egg": {
+      "name": "Куриное яйцо",
+      "source_description": "Egg, whole, raw, fresh",
+      "state": "raw",
+      "allergens": [
+        "egg"
+      ],
+      "fdc_id": 171287,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+      "kcal": 143.0,
+      "protein_g": 12.56,
+      "fat_g": 9.51,
+      "carbs_g": 0.72
+    },
+    "greek_yogurt": {
+      "name": "Греческий йогурт без добавок 0%",
+      "source_description": "Yogurt, Greek, plain, nonfat (Includes foods for USDA's Food Distribution Program)",
+      "state": "as_packaged",
+      "allergens": [
+        "milk"
+      ],
+      "fdc_id": 170894,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170894/nutrients",
+      "protein_g": 10.19,
+      "fat_g": 0.39,
+      "carbs_g": 3.6,
+      "kcal": 59.0
+    },
+    "lentils": {
+      "name": "Чечевица",
+      "source_description": "Lentils, raw",
+      "state": "dry",
+      "allergens": [],
+      "fdc_id": 172420,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/172420/nutrients",
+      "fat_g": 1.06,
+      "protein_g": 24.63,
+      "carbs_g": 63.35,
+      "kcal": 352.0
+    },
+    "milk_2pct": {
+      "name": "Молоко 2%",
+      "source_description": "Milk, reduced fat, fluid, 2% milkfat, without added vitamin A and vitamin D",
+      "state": "as_packaged",
+      "allergens": [
+        "milk"
+      ],
+      "fdc_id": 172205,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/172205/nutrients",
+      "carbs_g": 4.8,
+      "kcal": 50.0,
+      "fat_g": 1.98,
+      "protein_g": 3.3
+    },
+    "oats": {
+      "name": "Овсяные хлопья",
+      "source_description": "Cereals, oats, regular and quick, not fortified, dry",
+      "state": "dry",
+      "allergens": [
+        "gluten"
+      ],
+      "fdc_id": 173904,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173904/nutrients",
+      "fat_g": 6.52,
+      "carbs_g": 67.7,
+      "kcal": 379.0,
+      "protein_g": 13.15
+    },
+    "olive_oil": {
+      "name": "Оливковое масло",
+      "source_description": "Oil, olive, salad or cooking",
+      "state": "as_packaged",
+      "allergens": [],
+      "fdc_id": 171413,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171413/nutrients",
+      "fat_g": 100.0,
+      "carbs_g": 0.0,
+      "kcal": 884.0,
+      "protein_g": 0.0
+    },
+    "potato": {
+      "name": "Картофель",
+      "source_description": "Potatoes, flesh and skin, raw",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 170026,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170026/nutrients",
+      "fat_g": 0.09,
+      "kcal": 77.0,
+      "protein_g": 2.05,
+      "carbs_g": 17.49
+    },
+    "rice": {
+      "name": "Белый рис",
+      "source_description": "Rice, white, long-grain, regular, raw, unenriched",
+      "state": "dry",
+      "allergens": [],
+      "fdc_id": 169756,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169756/nutrients",
+      "protein_g": 7.13,
+      "fat_g": 0.66,
+      "carbs_g": 79.95,
+      "kcal": 365.0
+    },
+    "spinach": {
+      "name": "Шпинат",
+      "source_description": "Spinach, raw",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 168462,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168462/nutrients",
+      "protein_g": 2.86,
+      "fat_g": 0.39,
+      "carbs_g": 3.63,
+      "kcal": 23.0
+    },
+    "tomato": {
+      "name": "Помидор",
+      "source_description": "Tomatoes, red, ripe, raw, year round average",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 170457,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+      "carbs_g": 3.89,
+      "kcal": 18.0,
+      "fat_g": 0.2,
+      "protein_g": 0.88
+    },
+    "whole_wheat_bread": {
+      "name": "Цельнозерновой хлеб",
+      "source_description": "Bread, whole-wheat, commercially prepared",
+      "state": "as_packaged",
+      "allergens": [
+        "gluten"
+      ],
+      "fdc_id": 172688,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/172688/nutrients",
+      "fat_g": 3.5,
+      "carbs_g": 42.71,
+      "kcal": 252.0,
+      "protein_g": 12.45
+    },
+    "buckwheat": {
+      "name": "Гречневая крупа",
+      "source_description": "Buckwheat groats, roasted, dry",
+      "state": "dry",
+      "allergens": [],
+      "fdc_id": 170685,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170685/nutrients",
+      "kcal": 346,
+      "protein_g": 11.73,
+      "fat_g": 2.71,
+      "carbs_g": 74.95
+    },
+    "zucchini": {
+      "name": "Кабачок",
+      "source_description": "Squash, summer, zucchini, includes skin, raw",
+      "state": "raw",
+      "allergens": [],
+      "fdc_id": 169291,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169291/nutrients",
+      "kcal": 17,
+      "protein_g": 1.21,
+      "fat_g": 0.32,
+      "carbs_g": 3.11
+    },
+    "chickpeas": {
+      "name": "Нут сухой",
+      "source_description": "Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",
+      "state": "dry",
+      "allergens": [],
+      "fdc_id": 173756,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173756/nutrients",
+      "kcal": 378,
+      "protein_g": 20.47,
+      "fat_g": 6.04,
+      "carbs_g": 62.95
+    },
+    "canned_chickpeas": {
+      "name": "Нут консервированный, без жидкости",
+      "source_description": "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",
+      "state": "as_packaged",
+      "allergens": [],
+      "fdc_id": 173800,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173800/nutrients",
+      "kcal": 139,
+      "protein_g": 7.05,
+      "fat_g": 2.77,
+      "carbs_g": 22.53
+    },
+    "salmon": {
+      "name": "Лосось атлантический дикий",
+      "source_description": "Fish, salmon, Atlantic, wild, raw",
+      "state": "raw",
+      "allergens": [
+        "fish"
+      ],
+      "fdc_id": 173686,
+      "source_release": "SR Legacy 2018-04",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173686/nutrients",
+      "kcal": 142,
+      "protein_g": 19.8,
+      "fat_g": 6.34,
+      "carbs_g": 0
+    },
+    "canned_kidney_beans": {
+      "name": "Красная фасоль консервированная, слитая и промытая",
+      "source_description": "Beans, kidney, red, mature seeds, canned, drained solids, rinsed in tap water (NDB 16335)",
+      "state": "as_packaged",
+      "allergens": [],
+      "fdc_id": 175243,
+      "source_release": "SR28 2015",
+      "source_url": "https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg16.pdf",
+      "kcal": 121.0,
+      "protein_g": 8.12,
+      "fat_g": 0.93,
+      "carbs_g": 20.8
+    }
+  }
+}

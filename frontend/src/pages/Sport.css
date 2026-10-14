@@ -1,0 +1,61 @@
+.sportLayout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.sportForm,.sportResult{min-width:0}
+.sportForm>summary,.sportHistory>summary,.sportJournal>summary{cursor:pointer;font-size:23px;font-weight:700;line-height:1.2;list-style:none}
+.sportForm>summary::-webkit-details-marker,.sportHistory>summary::-webkit-details-marker,.sportJournal>summary::-webkit-details-marker{display:none}
+.sportForm>summary::after,.sportHistory>summary::after,.sportJournal>summary::after{content:'+' ;float:right;color:#71d4df}
+.sportForm[open]>summary::after,.sportHistory[open]>summary::after,.sportJournal[open]>summary::after{content:'−' }
+.sportJournal>.formStack{margin-top:20px}
+.sportJournalSelection{margin-top:20px}
+.sportDraftStatus{margin:0;padding:10px 13px;border-radius:9px;background:#edf5f1;color:#24543e;font-size:14px;line-height:1.4}
+.sportForm>p{margin-top:18px}
+.sportForm .eyebrow,.sportOutcome .eyebrow,.sportDetails .eyebrow{display:block;margin-bottom:12px}
+.sportForm .formStack{gap:16px;margin-top:24px}
+.sportForm select{min-width:0;text-overflow:ellipsis}
+.sportForm .weekdayField{gap:12px 16px;padding:16px}
+.sportForm .weekdayField label{min-height:28px}
+.sportForm .formHint{margin:0;line-height:1.5}
+.sportForm .formStack>label,.sportForm .formGrid label{font-size:15px;line-height:1.4;font-weight:650;color:#343434}
+.sportForm .formStack select,.sportForm .formStack input[type=number]{font-size:15px;min-height:48px}
+.sportForm .weekdayField{border-color:#b9b6b0;background:#fff}
+.sportForm .weekdayField legend{color:#343434;font-size:15px;font-weight:700;letter-spacing:0;padding:0 8px}
+.sportForm .weekdayField label{display:inline-flex;align-items:center;color:#393939;font-size:15px;font-weight:550;line-height:1.35;gap:8px}
+.sportForm .weekdayField input[type=checkbox]{width:18px!important;height:18px;flex:none}
+.sportResult{align-content:start}
+.sportOutcome{border-color:#3b5869}
+.sportOutcome h2{max-width:26ch}
+.sportDetails{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.sportDetails #workout-journal,.sportDetails #workout-journal~.card{grid-column:1/-1}
+@media(max-width:1100px){.sportLayout{grid-template-columns:1fr}.sportDetails{grid-column:auto}}
+@media(max-width:700px){.sportDetails{grid-template-columns:1fr}.sportDetails #workout-journal,.sportDetails #workout-journal~.card{grid-column:auto}}
+.sportLayout.hasPlan{display:flex;flex-direction:column;gap:20px}
+.sportLayout.hasPlan>.sportResult{order:1;width:100%}
+.sportLayout.hasPlan>.sportDetails{order:2;width:100%}
+.sportLayout.hasPlan>.sportForm{order:3;width:100%}
+.sportOutcome{border-color:#d7d7d7}
+.sportOutcome h2{max-width:none}
+.sportLevelHint{max-width:70ch;margin:18px 0 0;padding:14px 16px;border-radius:10px;background:#f0eee9;color:#34312d;font-size:15px;line-height:1.5}
+.sportQuickActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.sportQuickActions button,.sportQuickActions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none}
+.sportProgression>summary{cursor:pointer;font-size:20px;font-weight:700;list-style:none}
+.sportProgression>summary::-webkit-details-marker{display:none}
+.sportProgression[open]>summary{margin-bottom:20px}
+.sportDetails{grid-template-columns:repeat(2,minmax(0,1fr))}
+#sport-sessions,#workout-journal{scroll-margin-top:110px}
+@media(max-width:700px){.sportDetails{grid-template-columns:1fr}.sportQuickActions{flex-direction:column}.sportQuickActions>*{width:100%}}
+.sportFurther{margin-top:22px}
+.sportFurther>summary{cursor:pointer;font-size:20px;font-weight:700}
+.sportFurther p,.sportFurther li{max-width:75ch;line-height:1.6;color:#555}
+.sportFurther ul{display:grid;gap:10px;padding-left:22px;margin-bottom:0}
+.sportWeeksHeader{display:flex;align-items:start;justify-content:space-between;gap:16px;margin-bottom:16px}
+.sportWeeksHeader h2{margin:0 0 4px}.sportWeeksHeader p{margin:0}
+.sportWeekCount{font-size:14px;color:#555;white-space:nowrap}
+.sportWeek{border-top:1px solid #dedbd5;padding:14px 0}
+.sportWeek>summary{display:flex;justify-content:space-between;gap:12px;cursor:pointer;font-size:17px;font-weight:700;list-style:none}
+.sportWeek>summary::-webkit-details-marker{display:none}.sportWeek>summary span{font-size:14px;font-weight:500;color:#666}
+.sportWeekGuidance,.sportWeekAdvice{line-height:1.5;margin:14px 0;color:#434343}
+.sportWeekAdvice{padding:12px 14px;border-radius:10px;background:#eaf3ee;color:#214b3a}
+.sportWeekSessions{display:grid;gap:8px}
+.sportWeekSession{display:grid;grid-template-columns:95px minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;background:#f4f3ef;font-size:14px}
+.sportWeekSession strong{font-size:15px;font-weight:650}.sportWeekSession span:last-child{color:#5a5a5a}
+.sportWeekSession button{font-size:14px;white-space:nowrap}
+@media(max-width:700px){.sportWeeksHeader{flex-direction:column}.sportWeekSession{grid-template-columns:1fr auto}.sportWeekSession strong{grid-column:1/-1;grid-row:2}.sportWeekSession button{grid-column:2;grid-row:1}}

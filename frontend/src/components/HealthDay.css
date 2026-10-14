@@ -1,0 +1,9 @@
+.healthDay{margin-bottom:22px}
+.healthDayItem{display:flex;justify-content:space-between;gap:14px;align-items:center;border-top:1px solid #33445b;padding:14px 0}
+.healthDayItem h3{margin:6px 0 4px;font-size:15px}
+.healthDayItem p{margin:0;color:#9eafc5;font-size:12px}
+.healthDayItem a{font-size:12px;color:#a7ccff;text-decoration:none;white-space:nowrap}
+.healthDayMeals{margin-top:14px}
+.healthDayRecipeLink{display:inline-block;margin-top:14px;color:#a7ccff;text-decoration:none;font-size:13px}
+@media(max-width:650px){.healthDayItem{align-items:flex-start;flex-direction:column}}
+.healthDayItem{border-color:#dbe4ed}.healthDayItem p{color:#5b7387}.healthDayItem a,.healthDayRecipeLink{color:#0b689b}

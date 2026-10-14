@@ -1,0 +1,642 @@
+[
+  {
+    "course_id": "java",
+    "course_version": "v1",
+    "lesson_id": "java-01",
+    "question_index": 0,
+    "hint": "Найдите, какая из двух команд работает с текстом программы до запуска.",
+    "next_step": "Сопоставьте исходный файл с результатом подготовки класса: одна команда создаёт байткод, другая его выполняет.",
+    "explanation": "Команда javac Main.java компилирует исходный файл и создаёт Main.class; после этого класс запускают отдельно.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java",
+    "course_version": "v1",
+    "lesson_id": "java-01",
+    "question_index": 1,
+    "hint": "Посмотрите, что изменилось после компиляции: теперь у вас уже есть класс.",
+    "next_step": "Выберите команду для выполнения имени класса без расширения файла.",
+    "explanation": "Команда java Main запускает скомпилированный класс Main; javac используют на предыдущем шаге.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java",
+    "course_version": "v2",
+    "lesson_id": "java-01",
+    "question_index": 0,
+    "hint": "Найдите, какая из двух команд работает с текстом программы до запуска.",
+    "next_step": "Сопоставьте исходный файл с результатом подготовки класса: одна команда создаёт байткод, другая его выполняет.",
+    "explanation": "Команда javac Main.java компилирует исходный файл и создаёт Main.class; после этого класс запускают отдельно.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java",
+    "course_version": "v2",
+    "lesson_id": "java-01",
+    "question_index": 1,
+    "hint": "Посмотрите, что изменилось после компиляции: теперь у вас уже есть класс.",
+    "next_step": "Выберите команду для выполнения имени класса без расширения файла.",
+    "explanation": "Команда java Main запускает скомпилированный класс Main; javac используют на предыдущем шаге.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v1",
+    "lesson_id": "go-01",
+    "question_index": 0,
+    "hint": "Вспомните, для чего проекту нужен модуль до первого запуска.",
+    "next_step": "После создания модуля проверьте список файлов в папке проекта: ищите описание модуля, а не программу.",
+    "explanation": "go mod init записывает имя модуля в файл go.mod. Исходный код остаётся в main.go.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v1",
+    "lesson_id": "go-01",
+    "question_index": 1,
+    "hint": "Ответ нужно проверить фактическим запуском, а не только чтением урока.",
+    "next_step": "Выполните программу из папки модуля и сравните вывод с тем, что вы написали в main.go.",
+    "explanation": "Команда go run . должна вывести строки программы без ошибок. Зафиксируйте результат в практике.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v2",
+    "lesson_id": "go-01",
+    "question_index": 0,
+    "hint": "Вспомните, для чего проекту нужен модуль до первого запуска.",
+    "next_step": "После создания модуля проверьте список файлов в папке проекта: ищите описание модуля, а не программу.",
+    "explanation": "go mod init записывает имя модуля в файл go.mod. Исходный код остаётся в main.go.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v2",
+    "lesson_id": "go-01",
+    "question_index": 1,
+    "hint": "Ответ нужно проверить фактическим запуском, а не только чтением урока.",
+    "next_step": "Выполните программу из папки модуля и сравните вывод с тем, что вы написали в main.go.",
+    "explanation": "Команда go run . должна вывести строки программы без ошибок. Зафиксируйте результат в практике.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v1",
+    "lesson_id": "en-a2-01",
+    "question_index": 0,
+    "hint": "Посмотрите на every Monday: это повторяющаяся привычка.",
+    "next_step": "Нужна форма Present Simple для she; вспомните окончание глагола в третьем лице.",
+    "explanation": "Правильная форма — studies: She studies English every Monday.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v1",
+    "lesson_id": "en-a2-01",
+    "question_index": 1,
+    "hint": "Сначала послушайте фразу о сегодняшней погоде и обычном способе добираться.",
+    "next_step": "Сравните normally walk и today в аудио. Что изменилось именно сегодня?",
+    "explanation": "Говорящий едет на автобусе, потому что сегодня идёт дождь.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v1",
+    "lesson_id": "en-a2-01",
+    "question_index": 2,
+    "hint": "Найдите в тексте причину, связанную с дверью магазина.",
+    "next_step": "Сопоставьте временную работу из дома с тем, что сейчас ремонтируют.",
+    "explanation": "Нора дома, потому что дверь магазина ремонтируют.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v2",
+    "lesson_id": "en-a2-01",
+    "question_index": 0,
+    "hint": "Посмотрите на every Monday: это повторяющаяся привычка.",
+    "next_step": "Нужна форма Present Simple для she; вспомните окончание глагола в третьем лице.",
+    "explanation": "Правильная форма — studies: She studies English every Monday.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v2",
+    "lesson_id": "en-a2-01",
+    "question_index": 1,
+    "hint": "Сначала послушайте фразу о сегодняшней погоде и обычном способе добираться.",
+    "next_step": "Сравните normally walk и today в аудио. Что изменилось именно сегодня?",
+    "explanation": "Говорящий едет на автобусе, потому что сегодня идёт дождь.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v2",
+    "lesson_id": "en-a2-01",
+    "question_index": 2,
+    "hint": "Найдите в тексте причину, связанную с дверью магазина.",
+    "next_step": "Сопоставьте временную работу из дома с тем, что сейчас ремонтируют.",
+    "explanation": "Нора дома, потому что дверь магазина ремонтируют.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v1",
+    "lesson_id": "backend-01",
+    "question_index": 0,
+    "hint": "Представьте, что другой человек только что скачал проект.",
+    "next_step": "Оставьте в репозитории то, что нужно для сборки и запуска; локальные результаты сборки и секреты исключите.",
+    "explanation": "В репозитории нужны исходники и инструкция запуска. Пароль базы и файлы .class не коммитят.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v1",
+    "lesson_id": "backend-01",
+    "question_index": 1,
+    "hint": "Проверьте проект без файлов, которые уже есть на вашем компьютере.",
+    "next_step": "Сделайте новую копию репозитория и последовательно выполните команды из README.",
+    "explanation": "Воспроизводимость доказывает компиляция и запуск из новой копии по README.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v2",
+    "lesson_id": "backend-01",
+    "question_index": 0,
+    "hint": "Представьте, что другой человек только что скачал проект.",
+    "next_step": "Оставьте в репозитории то, что нужно для сборки и запуска; локальные результаты сборки и секреты исключите.",
+    "explanation": "В репозитории нужны исходники и инструкция запуска. Пароль базы и файлы .class не коммитят.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v2",
+    "lesson_id": "backend-01",
+    "question_index": 1,
+    "hint": "Проверьте проект без файлов, которые уже есть на вашем компьютере.",
+    "next_step": "Сделайте новую копию репозитория и последовательно выполните команды из README.",
+    "explanation": "Воспроизводимость доказывает компиляция и запуск из новой копии по README.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v3",
+    "lesson_id": "backend-01",
+    "question_index": 0,
+    "hint": "Представьте, что другой человек только что скачал проект.",
+    "next_step": "Оставьте в репозитории то, что нужно для сборки и запуска; локальные результаты сборки и секреты исключите.",
+    "explanation": "В репозитории нужны исходники и инструкция запуска. Пароль базы и файлы .class не коммитят.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v3",
+    "lesson_id": "backend-01",
+    "question_index": 1,
+    "hint": "Проверьте проект без файлов, которые уже есть на вашем компьютере.",
+    "next_step": "Сделайте новую копию репозитория и последовательно выполните команды из README.",
+    "explanation": "Воспроизводимость доказывает компиляция и запуск из новой копии по README.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java",
+    "course_version": "v1",
+    "lesson_id": "java-02",
+    "question_index": 0,
+    "hint": "Оба числа целые. Подумайте, сохраняется ли дробная часть после деления.",
+    "next_step": "Сначала выполните обычное деление, затем оставьте только целую часть результата.",
+    "explanation": "Для двух значений int выражение 7 / 2 даёт 3: дробная часть отбрасывается.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java",
+    "course_version": "v1",
+    "lesson_id": "java-02",
+    "question_index": 1,
+    "hint": "Здесь снова два целых операнда; это тот же принцип с другими числами.",
+    "next_step": "Найдите целую часть от 460, разделённых на три равные группы.",
+    "explanation": "Целочисленное 460 / 3 даёт 153; для дробного результата используйте 3.0.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java",
+    "course_version": "v2",
+    "lesson_id": "java-02",
+    "question_index": 0,
+    "hint": "Оба числа целые. Подумайте, сохраняется ли дробная часть после деления.",
+    "next_step": "Сначала выполните обычное деление, затем оставьте только целую часть результата.",
+    "explanation": "Для двух значений int выражение 7 / 2 даёт 3: дробная часть отбрасывается.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java",
+    "course_version": "v2",
+    "lesson_id": "java-02",
+    "question_index": 1,
+    "hint": "Здесь снова два целых операнда; это тот же принцип с другими числами.",
+    "next_step": "Найдите целую часть от 460, разделённых на три равные группы.",
+    "explanation": "Целочисленное 460 / 3 даёт 153; для дробного результата используйте 3.0.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v1",
+    "lesson_id": "go-02",
+    "question_index": 0,
+    "hint": "Сравните объявление переменной на уровне пакета и внутри тела функции.",
+    "next_step": "Проверьте, где компилятор позволяет короткое объявление с двоеточием.",
+    "explanation": "Оператор := объявляет переменную внутри функции; на уровне пакета используют var или const.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v1",
+    "lesson_id": "go-02",
+    "question_index": 1,
+    "hint": "Проверьте значение до и после присваивания в запущенной программе.",
+    "next_step": "Выведите возраст после присваивания и сравните его с исходным выводом.",
+    "explanation": "После присваивания программа должна вывести новый возраст; отметьте фактический запуск в рубрике.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v2",
+    "lesson_id": "go-02",
+    "question_index": 0,
+    "hint": "Сравните объявление переменной на уровне пакета и внутри тела функции.",
+    "next_step": "Проверьте, где компилятор позволяет короткое объявление с двоеточием.",
+    "explanation": "Оператор := объявляет переменную внутри функции; на уровне пакета используют var или const.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "go",
+    "course_version": "v2",
+    "lesson_id": "go-02",
+    "question_index": 1,
+    "hint": "Проверьте значение до и после присваивания в запущенной программе.",
+    "next_step": "Выведите возраст после присваивания и сравните его с исходным выводом.",
+    "explanation": "После присваивания программа должна вывести новый возраст; отметьте фактический запуск в рубрике.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v1",
+    "lesson_id": "en-a2-02",
+    "question_index": 0,
+    "hint": "Вопрос уже содержит Did, а yesterday указывает на прошлое.",
+    "next_step": "После Did используйте основную форму смыслового глагола, без окончания прошедшего времени.",
+    "explanation": "Правильная форма — finish: Did you finish the report yesterday?",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v1",
+    "lesson_id": "en-a2-02",
+    "question_index": 1,
+    "hint": "Прослушайте причину остановки транспорта до поездки на поезде.",
+    "next_step": "Сравните, опоздал ли человек сам или автобус задержался по дороге.",
+    "explanation": "Говорящий пропустил поезд, потому что автобус задержался из-за закрытой дороги.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v1",
+    "lesson_id": "en-a2-02",
+    "question_index": 2,
+    "hint": "Найдите в тексте предложение о телефоне во время прогулки.",
+    "next_step": "Обратите внимание на заряд устройства: хватало ли его для многих снимков?",
+    "explanation": "Омар сделал мало фотографий, потому что заряд телефона был низким.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v2",
+    "lesson_id": "en-a2-02",
+    "question_index": 0,
+    "hint": "Вопрос уже содержит Did, а yesterday указывает на прошлое.",
+    "next_step": "После Did используйте основную форму смыслового глагола, без окончания прошедшего времени.",
+    "explanation": "Правильная форма — finish: Did you finish the report yesterday?",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v2",
+    "lesson_id": "en-a2-02",
+    "question_index": 1,
+    "hint": "Прослушайте причину остановки транспорта до поездки на поезде.",
+    "next_step": "Сравните, опоздал ли человек сам или автобус задержался по дороге.",
+    "explanation": "Говорящий пропустил поезд, потому что автобус задержался из-за закрытой дороги.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "english",
+    "course_version": "v2",
+    "lesson_id": "en-a2-02",
+    "question_index": 2,
+    "hint": "Найдите в тексте предложение о телефоне во время прогулки.",
+    "next_step": "Обратите внимание на заряд устройства: хватало ли его для многих снимков?",
+    "explanation": "Омар сделал мало фотографий, потому что заряд телефона был низким.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v1",
+    "lesson_id": "backend-02",
+    "question_index": 0,
+    "hint": "Различайте успешный просмотр и успешное создание нового ресурса.",
+    "next_step": "Для создания ищите код из группы 2xx, который сообщает именно о новом объекте.",
+    "explanation": "Обычно успешное создание ресурса возвращает HTTP 201 Created.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v1",
+    "lesson_id": "backend-02",
+    "question_index": 1,
+    "hint": "Маршрут задан точно. Проверьте, соответствует ли ему дополнительный сегмент.",
+    "next_step": "Сравните строки /health и /health/extra как полные пути, а не общие префиксы.",
+    "explanation": "При точном маршруте /health запрос GET /health/extra получает 404.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v2",
+    "lesson_id": "backend-02",
+    "question_index": 0,
+    "hint": "Различайте успешный просмотр и успешное создание нового ресурса.",
+    "next_step": "Для создания ищите код из группы 2xx, который сообщает именно о новом объекте.",
+    "explanation": "Обычно успешное создание ресурса возвращает HTTP 201 Created.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v2",
+    "lesson_id": "backend-02",
+    "question_index": 1,
+    "hint": "Маршрут задан точно. Проверьте, соответствует ли ему дополнительный сегмент.",
+    "next_step": "Сравните строки /health и /health/extra как полные пути, а не общие префиксы.",
+    "explanation": "При точном маршруте /health запрос GET /health/extra получает 404.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v3",
+    "lesson_id": "backend-02",
+    "question_index": 0,
+    "hint": "Различайте успешный просмотр и успешное создание нового ресурса.",
+    "next_step": "Для создания ищите код из группы 2xx, который сообщает именно о новом объекте.",
+    "explanation": "Обычно успешное создание ресурса возвращает HTTP 201 Created.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  },
+  {
+    "course_id": "java-backend",
+    "course_version": "v3",
+    "lesson_id": "backend-02",
+    "question_index": 1,
+    "hint": "Маршрут задан точно. Проверьте, соответствует ли ему дополнительный сегмент.",
+    "next_step": "Сравните строки /health и /health/extra как полные пути, а не общие префиксы.",
+    "explanation": "При точном маршруте /health запрос GET /health/extra получает 404.",
+    "review": {
+      "license": "original platform-authored educational text",
+      "source": "existing platform lesson and quiz",
+      "checked_at": "2026-10-14",
+      "checked_by": "Codex structural and content review",
+      "recheck_by": "2027-04-14"
+    }
+  }
+]

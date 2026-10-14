@@ -1,0 +1,12 @@
+export type Quiz={prompt:string;options:string[];skill:string}
+export type Word={id:string;word:string;translation:string;example:string}
+export type Lesson={id:string;title:string;level:string;minutes:number;chapter?:string;explanation:string[];example:string;practice:string;retry_practice?:string;solution:string;rubric:string[];quiz:Quiz[];reading?:string;transcript?:string;audio?:string;vocabulary?:Word[];speaking?:string;related_source?:{label:string;url:string}}
+export type Course={id:string;version:string;area:string;title:string;intro:string;prerequisite:string;levels:string[];sources:string[];lessons:Lesson[]}
+export type PlanDraft={course_id:string;version:string;level:string;goal:string;minutes:number;weekdays:number[];start_date:string}
+export type StudyPlan=PlanDraft&{id:string;lesson_ids:string[];archived:boolean;created_at:string}
+export type Preview=PlanDraft&{lesson_ids:string[];lesson_count:number;sessions_per_lesson:number;reason:string;prerequisite:string}
+export type Attempt={id:string;plan_id:string;lesson_id:string;date:string;snapshot:Lesson;score:number;total:number;passed:boolean;evidence:string;self_checks:boolean[];portfolio_url:string;assessment:string;feedback:{prompt:string;answer:string;correct:boolean;accepted:string[];explanation:string}[]}
+export type StudyState={active_plan:StudyPlan|null;plan:StudyPlan|null;plans:StudyPlan[];completed:string[];next_lesson_id:string|null;pending_retry_lesson_id:string|null;attempts:Attempt[];attempt_total:number;history_offset:number}
+export const studyPaths:Record<string,string>={java:'/education/java',go:'/education/go',english:'/languages','java-backend':'/profession'}
+export const goalNames:Record<string,string>={general:'Общее развитие',work:'Для работы',travel:'Для поездок',project:'Создать проект'}
+export const levelNames:Record<string,string>={beginner:'С основ',foundation:'Основы Java уже знакомы',A2:'A2 — закрепить базу',B1:'B1 — перейти к самостоятельной речи',B2:'B2 — практика сложных тем'}
