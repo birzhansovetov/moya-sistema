@@ -12,7 +12,7 @@ from app.db import get_db
 from app.models import StudyPlan, StudyAttempt, StudyDraft, StudyReview, User
 from app.tasks import local_date
 from app.study import (catalog, course, public_course, fingerprint, lock_user, replay, owned_plan,
-                       plan_view, attempts_for, progress, grade, attempt_view)
+                       plan_view, attempts_for, progress, grade, attempt_view, normalize_answer)
 
 router = APIRouter(prefix='/api/study', tags=['study'])
 
@@ -89,6 +89,12 @@ class ReviewCreate(BaseModel):
     create_key: str = Field(min_length=1,max_length=100)
 
 
+class GrammarCheck(BaseModel):
+    version: str = Field(max_length=20)
+    lesson_id: str = Field(max_length=60)
+    answer: str = Field(max_length=300)
+
+
 def preview_values(payload):
     c = course(payload.course_id, payload.version)
     if payload.level not in c['levels']:
@@ -110,6 +116,19 @@ def get_catalog(user: User = Depends(get_current_user)):
 @router.get('/courses/{course_id}')
 def get_course(course_id: str, version: str | None = None, user: User = Depends(get_current_user)):
     return public_course(course(course_id, version))
+
+
+@router.post('/grammar-check')
+def grammar_check(payload: GrammarCheck, context: AuthContext = Depends(require_csrf)):
+    selected = course('english', payload.version)
+    lesson = next((item for item in selected['lessons'] if item['id'] == payload.lesson_id), None)
+    if not lesson or 'grammar' not in lesson:
+        raise HTTPException(404, 'Упражнение не найдено')
+    check = lesson['grammar']['check']
+    if payload.answer not in check['options']:
+        raise HTTPException(422, 'Выберите предложенный ответ')
+    return {'correct': normalize_answer(payload.answer) == normalize_answer(check['answer']),
+            'explanation': check['explanation']}
 
 
 @router.post('/preview')

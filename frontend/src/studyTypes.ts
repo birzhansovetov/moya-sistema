@@ -1,6 +1,7 @@
 export type Quiz={prompt:string;options:string[];skill:string}
 export type Word={id:string;word:string;translation:string;example:string}
-export type Lesson={id:string;title:string;level:string;minutes:number;chapter?:string;explanation:string[];example:string;practice:string;retry_practice?:string;solution:string;rubric:string[];quiz:Quiz[];reading?:string;transcript?:string;audio?:string;vocabulary?:Word[];speaking?:string;related_source?:{label:string;url:string}}
+export type GrammarBlock={kind:'grammar'|'topic_review';rule:string;table:{headers:string[];rows:string[][]};examples:string[];check:{prompt:string;options:string[];explanation:string}}
+export type Lesson={id:string;title:string;level:string;minutes:number;chapter?:string;explanation:string[];example:string;practice:string;retry_practice?:string;solution:string;rubric:string[];quiz:Quiz[];reading?:string;transcript?:string;audio?:string;vocabulary?:Word[];speaking?:string;related_source?:{label:string;url:string};grammar?:GrammarBlock}
 export type Course={id:string;version:string;area:string;title:string;intro:string;prerequisite:string;levels:string[];sources:string[];lessons:Lesson[]}
 export type PlanDraft={course_id:string;version:string;level:string;goal:string;minutes:number;weekdays:number[];start_date:string}
 export type StudyPlan=PlanDraft&{id:string;lesson_ids:string[];archived:boolean;created_at:string}

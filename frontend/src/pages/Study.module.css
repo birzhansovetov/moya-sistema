@@ -54,6 +54,7 @@
 .vocabularyReview{border-top:1px solid #d6d6d6;padding-top:18px}
 .vocabularyReview>summary{cursor:pointer;font-weight:700}
 .reader>[hidden]{display:none}
+.grammarBlock{display:grid;gap:16px;margin-bottom:18px}.grammarBlock h3,.grammarBlock p{margin:0}.grammarTableWrap{max-width:100%;overflow-x:auto}.grammarTableWrap table{width:100%;border-collapse:collapse;min-width:340px}.grammarTableWrap th,.grammarTableWrap td{text-align:left;padding:12px;border-bottom:1px solid #d4d4d4;overflow-wrap:anywhere}.grammarExamples{display:grid;gap:8px}.grammarExamples p{background:#f4f4f2;padding:12px;border-radius:10px}
 @media(max-width:750px){.lessonSteps{grid-template-columns:repeat(2,minmax(0,1fr))}.lessonStepActions{flex-wrap:wrap}.lessonStepActions button{flex:1 1 160px}.vocabularyControls{flex-direction:column}.chapterCurrent strong{font-size:18px}}
 .goPage :global(.pageHeader){align-items:end;gap:32px;padding:0 0 30px;margin-bottom:6px}
 .goPage :global(.pageHeader)>div:first-child{min-width:0;max-width:980px}

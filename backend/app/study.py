@@ -10,7 +10,7 @@ from sqlalchemy import select
 from app.models import StudyAttempt, StudyPlan, User
 
 
-LATEST_VERSIONS = {'java': 'v2', 'go': 'v2', 'english': 'v2', 'java-backend': 'v3'}
+LATEST_VERSIONS = {'java': 'v2', 'go': 'v2', 'english': 'v3', 'java-backend': 'v3'}
 
 
 def latest_version(course_id):
@@ -22,6 +22,11 @@ def latest_version(course_id):
 @lru_cache(maxsize=1)
 def _extensions():
     return json.loads(files('app.content').joinpath('study-extensions-v1.json').read_text(encoding='utf-8'))
+
+
+@lru_cache(maxsize=1)
+def _grammar_guides():
+    return json.loads(files('app.content').joinpath('study-grammar-v1.json').read_text(encoding='utf-8'))
 
 
 def catalog(version='v1'):
@@ -39,6 +44,15 @@ def catalog(version='v1'):
             if extension:
                 item['version'] = extension['version']
                 item['lessons'].extend(copy.deepcopy(extension['lessons']))
+        if effective == 'v3':
+            english = next(item for item in current if item['id'] == 'english')
+            english['version'] = 'v3'
+            for lesson in english['lessons']:
+                guide = copy.deepcopy(_grammar_guides()[lesson['id']])
+                question = next((q for q in lesson['quiz'] if q.get('skill') == 'grammar'), lesson['quiz'][0])
+                guide['check'] = {'prompt': question['prompt'], 'options': question['options'],
+                                  'answer': question['answers'][0], 'explanation': question['explanation']}
+                lesson['grammar'] = guide
     return current
 
 
@@ -56,6 +70,8 @@ def public_course(item):
         for q in lesson['quiz']:
             q.pop('answers')
             q.pop('explanation')
+        if 'grammar' in lesson:
+            lesson['grammar']['check'].pop('answer', None)
     return result
 
 

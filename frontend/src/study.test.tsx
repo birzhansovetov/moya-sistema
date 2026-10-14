@@ -7,12 +7,13 @@ import {StudyPlanForm} from './components/StudyPlanForm'
 import {StudyCards} from './components/StudyCards'
 import {StudyDay} from './components/StudyDay'
 import type {StoredStudyDraft} from './useStudyDrafts'
+import type {Course,Lesson} from './studyTypes'
 const {apiMock,dayState}=vi.hoisted(()=>({apiMock:vi.fn(),dayState:{value:'2026-10-10'}}))
 vi.mock('./api',async original=>({...await original<typeof import('./api')>(),api:apiMock}))
 vi.mock('./auth',()=>({useAuth:()=>({user:{id:'one',timezone:'Asia/Almaty'}})}))
 vi.mock('./useLocalToday',()=>({useLocalToday:()=> dayState.value}))
 const lesson={id:'en-a2-01',title:'Обычный день',level:'A2',minutes:30,explanation:['Объяснение грамматики.','Пример применения.'],example:'I work.',practice:'Напишите о своём дне.',retry_practice:'Составьте три новые фразы о своём дне с he или she, проверьте окончание -s.',solution:'Используйте настоящее время.',rubric:['Я написал текст','Я проверил грамматику','Я говорил вслух'],quiz:[{prompt:'Choose the verb',options:['works','work'],skill:'grammar'}],reading:'An original story.',transcript:'An original recording.',audio:'/audio/study-v1/en-a2-01.wav',speaking:'Расскажите о дне',vocabulary:[{id:'word',word:'routine',translation:'распорядок',example:'My routine.'}]}
-const course={id:'english',version:'v1',area:'languages',title:'Английский A2 → B2',intro:'Готовый маршрут',prerequisite:'Нужен A1',levels:['A2','B1','B2'],sources:[],lessons:[lesson]}
+const course:Course={id:'english',version:'v1',area:'languages',title:'Английский A2 → B2',intro:'Готовый маршрут',prerequisite:'Нужен A1',levels:['A2','B1','B2'],sources:[],lessons:[lesson as Lesson]}
 const plan={id:'p1',course_id:'english',version:'v1',level:'A2',goal:'general',minutes:30,weekdays:[0,2,4],start_date:'2026-10-10',lesson_ids:[lesson.id],archived:false,created_at:'2026-10-10T00:00:00'}
 let active: typeof plan|null
 let archived:boolean
@@ -23,6 +24,7 @@ let storedDraft:StoredStudyDraft|null
 let failDraft:boolean
 beforeEach(()=>{dayState.value='2026-10-10';course.lessons=[lesson];active={...plan};archived=false;fail=false;submissions=[];reviewed=false;storedDraft=null;failDraft=false;apiMock.mockReset().mockImplementation(async(path:string,init?:RequestInit)=>{
  const body=init?.body?JSON.parse(init.body as string):{}
+ if(path==='/study/grammar-check')return {correct:body.answer==='studies',explanation:'С she в привычке нужна форма studies.'}
  if(path.startsWith('/study/assist/availability'))return {question_indices:[0]}
  if(path==='/study/assist'){submissions.push(body);return {request_id:'req1',source:'authored',text:body.stage==='hint'?'Намёк из урока':'Следующий шаг из урока',next_stage_token:body.stage==='hint'?'step-token':null,stage:body.stage}}
  if(path==='/study/assist/feedback'){submissions.push(body);return {saved:true}}
@@ -64,6 +66,16 @@ test('english lesson shows one clear step at a time and lesson words reveal on d
  expect(screen.getByText('An original story.')).toBeVisible()
  fireEvent.click(within(steps).getByRole('button',{name:/Практика и результат/}))
  expect(screen.getByLabelText('Ваш результат и заметки')).toBeVisible()
+})
+test('grammar check explains a wrong answer without saving a final attempt',async()=>{
+ course.version='v3';active={...plan,version:'v3'}
+ course.lessons=[{...lesson,grammar:{kind:'grammar',rule:'Present Simple describes habits. Use the -s form with she.',table:{headers:['Форма','Использование'],rows:[['She studies','Привычка'],['She is studying','Сейчас']]},examples:['She studies every day.','She is studying now.'],check:{prompt:'She ___ every day.',options:['is study','studies'],explanation:'С she в привычке нужна форма studies.'}}}]
+ mount()
+ expect(await screen.findByText('Present Simple describes habits. Use the -s form with she.')).toBeVisible()
+ fireEvent.click(screen.getByLabelText('is study'))
+ fireEvent.click(screen.getByRole('button',{name:'Проверить правило'}))
+ expect(await screen.findByRole('status')).toHaveTextContent('С she в привычке нужна форма studies.')
+ expect(submissions).toHaveLength(0)
 })
 test('lesson help opens a staged hint and keeps free text private by default',async()=>{
  mount();await openPractice()

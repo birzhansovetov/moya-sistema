@@ -22,6 +22,37 @@ def test_go_course_is_complete_and_separate_from_existing_versions():
     assert 'answers' not in public_course(go)['lessons'][0]['quiz'][0]
 
 
+def test_every_current_english_lesson_has_a_valid_grammar_or_review_block():
+    from app.study import course, public_course
+    english=course('english','v3')
+    assert len(english['lessons']) == 27
+    for lesson in english['lessons']:
+        block=lesson['grammar']
+        assert block['kind'] in {'grammar','topic_review'}, lesson['id']
+        assert len(block['rule']) >= 45, lesson['id']
+        assert len(block['table']['headers']) >= 2, lesson['id']
+        assert all(len(row)==len(block['table']['headers']) for row in block['table']['rows']), lesson['id']
+        assert len(block['examples']) >= 2, lesson['id']
+        check=block['check']
+        assert len(check['options']) >= 2 and len(check['explanation']) >= 20, lesson['id']
+        assert check['answer'] in check['options'], lesson['id']
+        assert 'answer' not in public_course(english)['lessons'][english['lessons'].index(lesson)]['grammar']['check'], lesson['id']
+
+
+def test_grammar_check_does_not_expose_answer_or_create_attempt(client, mailbox):
+    from test_spheres import sign_in
+    csrf=sign_in(client,mailbox,'grammar@example.com')
+    public=client.get('/api/study/courses/english?version=v3').json()
+    check=public['lessons'][0]['grammar']['check']
+    assert 'answer' not in check
+    response=client.post('/api/study/grammar-check',headers={'X-CSRF-Token':csrf},json={'version':'v3','lesson_id':'en-a2-01','answer':'is study'})
+    assert response.status_code==200
+    assert response.json()['correct'] is False
+    assert response.json()['explanation']
+    state=client.get('/api/study/state/english').json()
+    assert state['attempt_total']==0
+
+
 def test_ready_courses_have_complete_original_lessons_and_audio():
     path = ROOT / 'backend/app/content/study-v1.json'
     assert path.exists(), 'Approved ready curricula are missing'
@@ -70,14 +101,17 @@ def test_backend_v2_extends_without_mutating_v1():
 def test_latest_routes_add_capstone_practice_without_mutating_old_plans():
     from app.study import course, latest_version
 
-    expected = {'java': ('v2', 14), 'go': ('v2', 32), 'english': ('v2', 27), 'java-backend': ('v3', 14)}
+    expected = {'java': ('v2', 14), 'go': ('v2', 32), 'english': ('v3', 27), 'java-backend': ('v3', 14)}
     for course_id, (version, count) in expected.items():
         old_version = 'v2' if course_id == 'java-backend' else 'v1'
         old = course(course_id, old_version)
         latest = course(course_id, version)
         assert latest_version(course_id) == version
         assert len(latest['lessons']) == count
-        assert latest['lessons'][:len(old['lessons'])] == old['lessons']
+        if course_id == 'english':
+            assert [item['id'] for item in latest['lessons'][:len(old['lessons'])]] == [item['id'] for item in old['lessons']]
+        else:
+            assert latest['lessons'][:len(old['lessons'])] == old['lessons']
         for lesson in latest['lessons'][len(old['lessons']):]:
             assert len(' '.join(lesson['explanation'])) > 200
             assert lesson['practice'] and lesson['solution'] and lesson['retry_practice']

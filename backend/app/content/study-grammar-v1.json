@@ -1,0 +1,650 @@
+{
+  "en-a2-01": {
+    "kind": "grammar",
+    "rule": "Present Simple описывает привычку и расписание; Present Continuous — действие сейчас или временную ситуацию. Для he/she/it в Simple добавьте -s.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "She studies every Monday.",
+          "Привычка, Present Simple"
+        ],
+        [
+          "She is studying now.",
+          "Действие сейчас, Present Continuous"
+        ]
+      ]
+    },
+    "examples": [
+      "She studies every Monday.",
+      "She is studying now."
+    ]
+  },
+  "en-a2-02": {
+    "kind": "grammar",
+    "rule": "Past Simple называет завершённое событие в прошлом. После did в вопросе или отрицании глагол возвращается к начальной форме.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "She finished yesterday.",
+          "Утверждение: форма прошлого"
+        ],
+        [
+          "Did she finish yesterday?",
+          "Вопрос: did + начальная форма"
+        ]
+      ]
+    },
+    "examples": [
+      "She finished yesterday.",
+      "Did she finish yesterday?"
+    ]
+  },
+  "en-a2-03": {
+    "kind": "grammar",
+    "rule": "Going to используют для намерения или прогноза по видимым признакам; Present Continuous может обозначать уже согласованную встречу.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "It is going to rain.",
+          "Прогноз по признакам"
+        ],
+        [
+          "I am meeting Alex at six.",
+          "Договорённость"
+        ]
+      ]
+    },
+    "examples": [
+      "It is going to rain.",
+      "I am meeting Alex at six."
+    ]
+  },
+  "en-a2-04": {
+    "kind": "grammar",
+    "rule": "Much относится к неисчисляемым существительным, many — к исчисляемым во множественном числе. Some подходит для утвердительных фраз.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "How much rice?",
+          "Неисчисляемое"
+        ],
+        [
+          "How many apples?",
+          "Исчисляемое"
+        ]
+      ]
+    },
+    "examples": [
+      "How much rice?",
+      "How many apples?"
+    ]
+  },
+  "en-a2-05": {
+    "kind": "grammar",
+    "rule": "Для сравнения двух вариантов добавьте -er к короткому прилагательному или more перед длинным. После сравнительной формы используйте than.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "This route is shorter than that one.",
+          "Короткое прилагательное"
+        ],
+        [
+          "This route is more convenient.",
+          "Длинное прилагательное"
+        ]
+      ]
+    },
+    "examples": [
+      "This route is shorter than that one.",
+      "This route is more convenient."
+    ]
+  },
+  "en-a2-06": {
+    "kind": "grammar",
+    "rule": "Must not означает запрет; do not have to означает отсутствие обязанности. Should выражает совет, а не обязательное правило.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "You must not smoke here.",
+          "Запрещено"
+        ],
+        [
+          "You do not have to come early.",
+          "Необязательно"
+        ]
+      ]
+    },
+    "examples": [
+      "You must not smoke here.",
+      "You do not have to come early."
+    ]
+  },
+  "en-a2-07": {
+    "kind": "grammar",
+    "rule": "Present Perfect связывает прошлое с результатом сейчас; с точным завершённым временем yesterday используйте Past Simple.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "I have finished the task.",
+          "Результат важен сейчас"
+        ],
+        [
+          "I finished it yesterday.",
+          "Названо точное прошлое время"
+        ]
+      ]
+    },
+    "examples": [
+      "I have finished the task.",
+      "I finished it yesterday."
+    ]
+  },
+  "en-a2-08": {
+    "kind": "topic_review",
+    "rule": "В повторении A2 связывайте причину с because, а результат с so. Различайте привычку, завершённое действие и план по указателям времени.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "I stayed home because I was tired.",
+          "Причина"
+        ],
+        [
+          "I was tired, so I stayed home.",
+          "Следствие"
+        ]
+      ]
+    },
+    "examples": [
+      "I stayed home because I was tired.",
+      "I was tired, so I stayed home."
+    ]
+  },
+  "en-b1-01": {
+    "kind": "grammar",
+    "rule": "Past Continuous задаёт фон или длительное действие в прошлом; Past Simple называет событие, которое его прервало.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "I was cooking when the phone rang.",
+          "Фон и событие"
+        ],
+        [
+          "The phone rang while I was cooking.",
+          "Событие и фон"
+        ]
+      ]
+    },
+    "examples": [
+      "I was cooking when the phone rang.",
+      "The phone rang while I was cooking."
+    ]
+  },
+  "en-b1-02": {
+    "kind": "grammar",
+    "rule": "Since указывает начальную точку периода, for — его длительность. С состоянием, продолжающимся до настоящего, используйте Present Perfect.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "I have known Alex since 2022.",
+          "Начальная точка"
+        ],
+        [
+          "I have known Alex for four years.",
+          "Длительность"
+        ]
+      ]
+    },
+    "examples": [
+      "I have known Alex since 2022.",
+      "I have known Alex for four years."
+    ]
+  },
+  "en-b1-03": {
+    "kind": "grammar",
+    "rule": "First Conditional описывает реальное возможное будущее: if + Present Simple, затем will + глагол. После if обычно не ставят will.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "If she has time, she will help.",
+          "Условие"
+        ],
+        [
+          "She will help if she has time.",
+          "Результат перед условием"
+        ]
+      ]
+    },
+    "examples": [
+      "If she has time, she will help.",
+      "She will help if she has time."
+    ]
+  },
+  "en-b1-04": {
+    "kind": "grammar",
+    "rule": "Second Conditional описывает воображаемую ситуацию: if + Past Simple, затем would + глагол. Это не сообщение о реальном прошлом.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "If I had time, I would travel.",
+          "Воображаемое условие"
+        ],
+        [
+          "I would travel if I had time.",
+          "Результат перед условием"
+        ]
+      ]
+    },
+    "examples": [
+      "If I had time, I would travel.",
+      "I would travel if I had time."
+    ]
+  },
+  "en-b1-05": {
+    "kind": "grammar",
+    "rule": "Who вводит определительное предложение о человеке; which — о предмете. Такое предложение уточняет, кого или что вы имеете в виду.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "The teacher who helped me was patient.",
+          "Человек"
+        ],
+        [
+          "The book which helped me is short.",
+          "Предмет"
+        ]
+      ]
+    },
+    "examples": [
+      "The teacher who helped me was patient.",
+      "The book which helped me is short."
+    ]
+  },
+  "en-b1-06": {
+    "kind": "grammar",
+    "rule": "В пассивном залоге важен объект действия: be в нужном времени + past participle. Исполнитель может быть назван после by.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "They send reports on Friday.",
+          "Активный залог"
+        ],
+        [
+          "Reports are sent on Friday.",
+          "Пассивный залог"
+        ]
+      ]
+    },
+    "examples": [
+      "They send reports on Friday.",
+      "Reports are sent on Friday."
+    ]
+  },
+  "en-b1-07": {
+    "kind": "grammar",
+    "rule": "В косвенном вопросе сохраняйте порядок слов утверждения. При пересказе вопроса из прошлого форма времени часто сдвигается назад.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "Where do you work?",
+          "Прямой вопрос"
+        ],
+        [
+          "He asked where I worked.",
+          "Косвенный вопрос"
+        ]
+      ]
+    },
+    "examples": [
+      "Where do you work?",
+      "He asked where I worked."
+    ]
+  },
+  "en-b1-08": {
+    "kind": "topic_review",
+    "rule": "В аргументе however вводит контраст, therefore — вывод. Подкрепите мнение причиной и примером, а связку выбирайте по смыслу.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "The course is useful. However, it is expensive.",
+          "Контраст"
+        ],
+        [
+          "It is expensive. Therefore, we need a budget.",
+          "Вывод"
+        ]
+      ]
+    },
+    "examples": [
+      "The course is useful. However, it is expensive.",
+      "It is expensive. Therefore, we need a budget."
+    ]
+  },
+  "en-b2-01": {
+    "kind": "grammar",
+    "rule": "Past Perfect обозначает действие, случившееся раньше другого события в прошлом. Позднее событие обычно стоит в Past Simple.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "The meeting had started before I arrived.",
+          "Более раннее действие"
+        ],
+        [
+          "I arrived after the meeting had started.",
+          "Более позднее действие"
+        ]
+      ]
+    },
+    "examples": [
+      "The meeting had started before I arrived.",
+      "I arrived after the meeting had started."
+    ]
+  },
+  "en-b2-02": {
+    "kind": "grammar",
+    "rule": "Third Conditional обсуждает прошлое, которое уже нельзя изменить: if + had + participle, затем would have + participle.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "If she had asked, I would have helped.",
+          "Нереальное прошлое условие"
+        ],
+        [
+          "I would have helped if she had asked.",
+          "Нереальный результат"
+        ]
+      ]
+    },
+    "examples": [
+      "If she had asked, I would have helped.",
+      "I would have helped if she had asked."
+    ]
+  },
+  "en-b2-03": {
+    "kind": "grammar",
+    "rule": "Might выражает неуверенное предположение, must — сильный вывод по признакам. Для невозможного вывода используйте cannot.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "He might be in a meeting.",
+          "Возможно"
+        ],
+        [
+          "He must be in a meeting.",
+          "Сильный вывод"
+        ]
+      ]
+    },
+    "examples": [
+      "He might be in a meeting.",
+      "He must be in a meeting."
+    ]
+  },
+  "en-b2-04": {
+    "kind": "grammar",
+    "rule": "Present Continuous Passive показывает, что действие над объектом происходит сейчас: am/is/are being + past participle.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "They are repairing the system.",
+          "Действующее лицо в фокусе"
+        ],
+        [
+          "The system is being repaired.",
+          "Объект в фокусе"
+        ]
+      ]
+    },
+    "examples": [
+      "They are repairing the system.",
+      "The system is being repaired."
+    ]
+  },
+  "en-b2-05": {
+    "kind": "grammar",
+    "rule": "Despite требует существительное или форму -ing; although вводит целое предложение. Обе связки выражают уступку.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "Despite the price, they enrolled.",
+          "После despite — существительное"
+        ],
+        [
+          "Although it was expensive, they enrolled.",
+          "После although — предложение"
+        ]
+      ]
+    },
+    "examples": [
+      "Despite the price, they enrolled.",
+      "Although it was expensive, they enrolled."
+    ]
+  },
+  "en-b2-06": {
+    "kind": "grammar",
+    "rule": "В формальной просьбе называйте действие и срок прямо, но вежливо. Could you звучит мягче приказа; проверьте, что адресату понятен следующий шаг.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "Could you send the file by Thursday?",
+          "Вежливо и конкретно"
+        ],
+        [
+          "Send me the file.",
+          "Прямо, но для переговоров резко"
+        ]
+      ]
+    },
+    "examples": [
+      "Could you send the file by Thursday?",
+      "Send me the file."
+    ]
+  },
+  "en-b2-07": {
+    "kind": "grammar",
+    "rule": "Критический пересказ отделяет наблюдение от причинного вывода. В небольшом исследовании связь ещё не доказывает причину.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "The survey suggests a possible link.",
+          "Осторожный вывод"
+        ],
+        [
+          "The survey proves the cause.",
+          "Слишком сильное утверждение"
+        ]
+      ]
+    },
+    "examples": [
+      "The survey suggests a possible link.",
+      "The survey proves the cause."
+    ]
+  },
+  "en-b2-08": {
+    "kind": "topic_review",
+    "rule": "В итоговом предложении отделяйте данные пилота от гипотезы. Укажите ограничения и следующий способ проверки, прежде чем советовать масштабирование.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "The pilot suggests a benefit in this group.",
+          "Ограниченный вывод"
+        ],
+        [
+          "The pilot proves it works for everyone.",
+          "Необоснованное обобщение"
+        ]
+      ]
+    },
+    "examples": [
+      "The pilot suggests a benefit in this group.",
+      "The pilot proves it works for everyone."
+    ]
+  },
+  "en-a2-09": {
+    "kind": "topic_review",
+    "rule": "Для переноса встречи используйте вежливый вопрос с could и назовите новое время. Уточняющий вопрос помогает избежать неверной договорённости.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "Could we meet on Thursday?",
+          "Вежливая просьба"
+        ],
+        [
+          "We meet Thursday?",
+          "Слишком неясно"
+        ]
+      ]
+    },
+    "examples": [
+      "Could we meet on Thursday?",
+      "We meet Thursday?"
+    ]
+  },
+  "en-b1-09": {
+    "kind": "topic_review",
+    "rule": "В описании проблемы сначала назовите причину, затем результат. Because вводит причину; so связывает её с последствием.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "The server failed, so we delayed the demo.",
+          "Результат"
+        ],
+        [
+          "We delayed the demo because the server failed.",
+          "Причина"
+        ]
+      ]
+    },
+    "examples": [
+      "The server failed, so we delayed the demo.",
+      "We delayed the demo because the server failed."
+    ]
+  },
+  "en-b2-09": {
+    "kind": "topic_review",
+    "rule": "В возражении признайте ограничение, затем дайте аргумент. Although вводит уступительное предложение; however связывает самостоятельные фразы.",
+    "table": {
+      "headers": [
+        "Форма",
+        "Использование"
+      ],
+      "rows": [
+        [
+          "Although it takes time, it may help.",
+          "Уступка внутри предложения"
+        ],
+        [
+          "It takes time. However, it may help.",
+          "Контраст двух предложений"
+        ]
+      ]
+    },
+    "examples": [
+      "Although it takes time, it may help.",
+      "It takes time. However, it may help."
+    ]
+  }
+}
