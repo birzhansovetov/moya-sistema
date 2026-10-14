@@ -124,6 +124,35 @@ test('workout progress is saved as a draft and restored without completing the s
   expect(await screen.findByLabelText('Приседание до стула — подход 1 (повторения)')).toHaveValue(10)
 })
 
+test('guided workout shows one exercise at a time and resumes at the first unfinished exercise', async () => {
+  const guided = { ...program, sessions: [{ ...program.sessions[0], work: [program.sessions[0].work[0], { exercise_id: 'walk', sets: 1, reps: '10 минут', rest_seconds: 30, note: 'Ровный темп' }] }] }
+  const guides = { ...exercise, walk: { ...exercise.chair_squat, name: 'Быстрая ходьба' } }
+  let savedDraft: unknown = null
+  apiMock.mockReset().mockImplementation(async (path: string, init?: RequestInit) => {
+    if (path === '/health/sport/catalog') return { version: '1', programs: [guided], exercises: guides }
+    if (path === '/health/sport/plan') return { plan: { id: 'plan-1', answers, program: guided, started_on: '2026-10-06', content_version: '1' } }
+    if (path === '/health/sport/workouts') return { items: [] }
+    if (path.startsWith('/health/sport/draft?')) return { draft: savedDraft }
+    if (path === '/health/sport/draft' && init?.method === 'PUT') { savedDraft = JSON.parse(init.body as string); return { draft: savedDraft } }
+    throw new Error(`Unexpected ${path}`)
+  })
+  mount()
+  fireEvent.click(await screen.findByRole('button', { name: 'Записать тренировку' }))
+  expect(await screen.findByText('Упражнение 1 из 2')).toBeInTheDocument()
+  expect(screen.getByLabelText('Приседание до стула — подход 1 (повторения)')).toBeInTheDocument()
+  expect(screen.queryByLabelText('Быстрая ходьба — подход 1 (повторения)')).not.toBeInTheDocument()
+  fireEvent.change(screen.getByLabelText('Приседание до стула — подход 1 (повторения)'), { target: { value: '10' } })
+  fireEvent.change(screen.getByLabelText('Приседание до стула — подход 2 (повторения)'), { target: { value: '9' } })
+  fireEvent.click(screen.getByRole('button', { name: 'Следующее упражнение' }))
+  expect(screen.getByLabelText('Быстрая ходьба — подход 1 (повторения)')).toBeInTheDocument()
+  expect(screen.getByText('Отдых: 01:15')).toBeInTheDocument()
+  await waitFor(() => expect(savedDraft).not.toBeNull(), { timeout: 2500 })
+  cleanup()
+  mount()
+  fireEvent.click(await screen.findByRole('button', { name: 'Записать тренировку' }))
+  expect(await screen.findByText('Упражнение 2 из 2')).toBeInTheDocument()
+})
+
 test('eight-week home plan shows a dated training calendar and progression guidance', async () => {
   const fullProgram = { ...program, duration_weeks: 8, progression: Array.from({ length: 8 }, (_, index) => `Неделя ${index + 1}: прогресс`), sessions: [program.sessions[0], { ...program.sessions[0], id: 'B', title: 'Дом B' }] }
   apiMock.mockReset().mockImplementation(async (path: string) => {

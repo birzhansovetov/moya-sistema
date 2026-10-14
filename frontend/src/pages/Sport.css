@@ -62,3 +62,17 @@
 .sportWeekSession strong{font-size:15px;font-weight:650}.sportWeekSession span:last-child{color:#5a5a5a}
 .sportWeekSession button{font-size:14px;white-space:nowrap}
 @media(max-width:700px){.sportWeeksHeader{flex-direction:column}.sportWeekSession{grid-template-columns:1fr auto}.sportWeekSession strong{grid-column:1/-1;grid-row:2}.sportWeekSession button{grid-column:2;grid-row:1}}
+.sportWorkoutStep{display:grid;gap:12px;padding:20px;border:1px solid #d7d3cb;border-radius:16px;background:#f5f3ee}
+.sportWorkoutStep p{margin:0;line-height:1.5}
+.sportWorkoutStepHeader{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.sportWorkoutStepHeader>div{display:grid;gap:7px}
+.sportWorkoutStepHeader strong{font-size:clamp(21px,3vw,28px);line-height:1.15}
+.sportWorkoutStepHeader progress{width:min(220px,100%);height:9px;accent-color:#33483b}
+.sportRestTimer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 15px;border-radius:12px;background:#e1eee6}
+.sportRestTimer strong{font-variant-numeric:tabular-nums;font-size:20px}
+.sportActiveExercise{display:grid;gap:14px;padding:22px;border:1px solid #d7d3cb;border-radius:16px;background:#fff}
+.sportActiveExercise h3,.sportActiveExercise p{margin:0}
+.sportActiveExercise details{padding:12px 0;border-block:1px solid #e0ddd7}
+.sportActiveExercise details summary{cursor:pointer;font-weight:650}
+.sportStepActions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:600px){.sportWorkoutStep,.sportActiveExercise{padding:16px}.sportStepActions button{flex:1 1 160px}}

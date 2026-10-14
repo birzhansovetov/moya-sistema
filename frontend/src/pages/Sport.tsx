@@ -58,6 +58,9 @@ export function SportPage() {
   const [draftLoadedKey, setDraftLoadedKey] = useState('')
   const [draftDirty, setDraftDirty] = useState(false)
   const [draftError, setDraftError] = useState('')
+  const [exerciseIndex, setExerciseIndex] = useState(0)
+  const [restUntil, setRestUntil] = useState<number | null>(null)
+  const [restRemaining, setRestRemaining] = useState(0)
   const finishingRef = useRef(false)
 
   useEffect(() => {
@@ -99,14 +102,27 @@ export function SportPage() {
     onSuccess: (saved, payload) => { if (!finishingRef.current) queryClient.setQueryData(['sport-draft', user?.id, payload.key], saved); setDraftError('') },
     onError: cause => { if (!finishingRef.current) setDraftError(message(cause)) } })
 
-  useEffect(() => { finishingRef.current = false; setActual({}); setDifficulty(5); setNote(''); setDraftLoadedKey(''); setDraftDirty(false); setDraftError('') }, [draftKey])
+  useEffect(() => { finishingRef.current = false; setActual({}); setDifficulty(5); setNote(''); setDraftLoadedKey(''); setDraftDirty(false); setDraftError(''); setExerciseIndex(0); setRestUntil(null) }, [draftKey])
   useEffect(() => {
     if (!draftKey || !draftQuery.isSuccess || draftLoadedKey === draftKey) return
     setActual(draftQuery.data.draft?.actual || {})
+    const savedActual = draftQuery.data.draft?.actual || {}
+    const next = activeSession?.work.findIndex(work => {
+      const result = savedActual[work.exercise_id]
+      return !result || result.reps.slice(0, result.sets).some(value => !value.trim())
+    }) ?? 0
+    setExerciseIndex(next < 0 ? Math.max(0, (activeSession?.work.length || 1) - 1) : next)
     setDifficulty(draftQuery.data.draft?.difficulty || 5)
     setNote(draftQuery.data.draft?.note || '')
     setDraftLoadedKey(draftKey)
-  }, [draftKey, draftQuery.isSuccess, draftQuery.data, draftLoadedKey])
+  }, [draftKey, draftQuery.isSuccess, draftQuery.data, draftLoadedKey, activeSession])
+  useEffect(() => {
+    if (restUntil === null) { setRestRemaining(0); return }
+    const tick = () => { const seconds = Math.max(0, Math.ceil((restUntil - Date.now()) / 1000)); setRestRemaining(seconds); if (!seconds) setRestUntil(null) }
+    tick()
+    const interval = window.setInterval(tick, 1000)
+    return () => window.clearInterval(interval)
+  }, [restUntil])
   useEffect(() => {
     if (!draftDirty || draftLoadedKey !== draftKey || !plan || !activeSession || draftMutation.isPending || finishingRef.current) return
     const timer = window.setTimeout(() => {
@@ -165,6 +181,11 @@ export function SportPage() {
     setJournalOpen(true)
     journal.scrollIntoView?.({ behavior: 'smooth', block: 'start' })
   }
+  function nextExercise() {
+    if (!activeSession || exerciseIndex >= activeSession.work.length - 1) return
+    setRestUntil(Date.now() + activeSession.work[exerciseIndex].rest_seconds * 1000)
+    setExerciseIndex(index => index + 1)
+  }
 
   return <div className="healthPage">
     <div className="pageHeader"><div><h1>Спорт</h1><p>{plan ? 'Тренировка и прогресс по программе.' : 'Подберите программу под свою цель и условия.'}</p></div><Link className="secondaryButton" to="/health">К здоровью</Link></div>
@@ -211,18 +232,21 @@ export function SportPage() {
           <p className="sportDraftStatus" role="status">{draftError ? 'Не удалось сохранить черновик. Проверьте соединение.' : draftDirty || draftMutation.isPending ? 'Сохраняем черновик…' : draftQuery.data.draft ? 'Черновик сохранён. Можно продолжить позже.' : 'Результаты будут сохраняться по мере заполнения.'}</p>
           {draftError && <button type="button" className="textButton" onClick={() => { setDraftError(''); setDraftDirty(true) }}>Повторить сохранение</button>}
           <p className="formHint">Заполняйте только выполненные упражнения. Повторения или минуты указываются отдельно для каждого подхода.</p>
+          {activeSession && <div className="sportWorkoutStep"><div className="sportWorkoutStepHeader"><div><span className="eyebrow">ЗАНЯТИЕ · {activeSession.title}</span><strong>Упражнение {exerciseIndex + 1} из {activeSession.work.length}</strong></div><progress aria-label="Прогресс занятия" value={exerciseIndex + 1} max={activeSession.work.length}/></div><p><strong>Разминка:</strong> {activeSession.warmup}</p>{restUntil !== null && <div className="sportRestTimer" role="timer"><strong>Отдых: {String(Math.floor(restRemaining / 60)).padStart(2, '0')}:{String(restRemaining % 60).padStart(2, '0')}</strong><button type="button" className="secondaryButton" onClick={() => setRestUntil(null)}>Пропустить отдых</button></div>}</div>}
           {activeSession?.work.map((work, index) => {
+            if (index !== exerciseIndex) return null
             const name = catalog.data?.exercises[work.exercise_id]?.name || work.exercise_id
             const entry = actual[work.exercise_id] || { sets: work.sets, reps: Array(work.sets).fill(''), weight: '' }
             const alternatives = catalog.data?.exercises[work.exercise_id]?.alternatives?.filter(option => option.places.includes(plan.answers.place) && option.required_equipment.every(item => plan.answers.equipment.includes(item)) && !activeSession.work.some(item => item.exercise_id === option.exercise_id)) || []
-            return <details className="healthLogExercise" key={work.exercise_id} open={index === 0}><summary>{name}</summary>
+            return <section className="healthLogExercise sportActiveExercise" key={work.exercise_id}><h3>{name}</h3><p>{work.sets} подхода · {work.reps} · отдых {work.rest_seconds} сек. {work.note}</p><details><summary>Техника и частые ошибки</summary><p>{catalog.data?.exercises[entry.performed || work.exercise_id]?.technique}</p><p>{catalog.data?.exercises[entry.performed || work.exercise_id]?.common_errors}</p></details>
               {alternatives.length > 0 && <label>Заменить упражнение: {name}<select value={entry.performed || ''} onChange={event => changeActual(work, current => ({ ...current, performed: event.target.value }))}><option value="">По плану: {name}</option>{alternatives.map(option => <option key={option.exercise_id} value={option.exercise_id}>{catalog.data?.exercises[option.exercise_id]?.name || option.exercise_id}</option>)}</select></label>}
               {entry.performed && <p className="formHint">Техника замены: {catalog.data?.exercises[entry.performed]?.technique} <a href={catalog.data?.exercises[entry.performed]?.source} target="_blank" rel="noreferrer">Источник</a></p>}
               <label>Выполнено подходов: {name}<input type="number" min="1" max={work.sets + 1} value={entry.sets} onChange={event => changeActual(work, current => { const sets = Math.max(1, Math.min(work.sets + 1, Number(event.target.value) || 1)); return { ...current, sets, reps: Array.from({ length: sets }, (_, position) => current.reps[position] || '') } })} /></label>
               <div className="formGrid">{Array.from({ length: entry.sets }, (_, position) => <label key={position}>{name} — подход {position + 1} ({work.exercise_id === 'brisk_walk' ? 'минуты' : 'повторения'})<input type="number" min="0" max="1000" value={entry.reps[position] || ''} onChange={event => changeActual(work, current => { const reps = [...current.reps]; reps[position] = event.target.value; return { ...current, reps } })} placeholder="Фактически выполнено" /></label>)}</div>
               <label>Вес снаряда, кг: {name} (если был)<input type="number" min="0" max="1000" step="0.5" value={entry.weight} onChange={event => changeActual(work, current => ({ ...current, weight: event.target.value }))} placeholder="Без веса" /></label>
-            </details>
+            </section>
           })}
+          {activeSession && <div className="sportStepActions">{exerciseIndex > 0 && <button type="button" className="secondaryButton" onClick={() => { setRestUntil(null); setExerciseIndex(index => index - 1) }}>Предыдущее упражнение</button>}{exerciseIndex < activeSession.work.length - 1 && <button type="button" className="primaryButton" onClick={nextExercise}>Следующее упражнение</button>}</div>}
           <label>Сложность от 1 до 10<input type="number" min="1" max="10" value={difficulty} onChange={event => { setDifficulty(Number(event.target.value)); setDraftDirty(true) }} /></label><label>Заметка<textarea value={note} onChange={event => { setNote(event.target.value); setDraftDirty(true) }} placeholder="Как прошло занятие" /></label><button className="primaryButton" disabled={logMutation.isPending || workoutDate > today || workoutDate > lastPlanDate || workoutDate < plan.started_on} onClick={saveWorkout}>Завершить тренировку</button></div>}</details>}
         {plan && <details className="card sportHistory"><summary>История тренировок</summary>{workouts.isLoading ? <p className="muted">Загружаем историю…</p> : workouts.isError ? <p role="alert" className="errorMessage">Не удалось загрузить историю. <button className="textButton" onClick={() => void workouts.refetch()}>Повторить</button></p> : workouts.data?.items.length ? <div>{workouts.data.items.map(item => <details className="healthSession" key={item.id}><summary>{item.date} · {item.program_title ? `${item.program_title} · ` : ''}{item.session_title || `занятие ${item.session_id}`}</summary><p>Сложность {item.difficulty}/10{item.note ? ` · ${item.note}` : ''}</p>{item.results?.map(result => <div className="healthExercise" key={result.exercise_id}><h3>{result.performed_exercise_name || catalog.data?.exercises[result.performed_exercise_id || result.exercise_id]?.name || result.performed_exercise_id || result.exercise_id}</h3>{result.performed_exercise_id && <p>Вместо: {catalog.data?.exercises[result.exercise_id]?.name || result.exercise_id}</p>}<p>Подходы: {result.completed_sets} · {result.exercise_id === 'brisk_walk' ? 'минуты' : 'повторения'}: {result.reps_per_set.join(', ')}{result.weight_kg !== null ? ` · вес: ${result.weight_kg} кг` : ''}</p></div>)}</details>)}</div> : <p className="muted">Выполненных занятий пока нет.</p>}</details>}
       </div>
