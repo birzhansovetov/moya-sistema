@@ -25,7 +25,7 @@ from app.study import course as study_course, fingerprint, lock_user
 from app.tasks import local_date
 
 router = APIRouter(prefix='/api/onboarding', tags=['onboarding'])
-SURVEY_VERSION = 1
+SURVEY_VERSION = 2
 
 class Strict(BaseModel):
     model_config = ConfigDict(extra='forbid')
@@ -37,7 +37,7 @@ class Health(Strict):
     allergies: list[Literal['gluten','milk','egg','fish']] = Field(default_factory=list)
 class Education(Strict):
     track: Literal['java','go','reading','both','go-reading','none']
-    reading_interest: str = Field(max_length=80)
+    reading_genres: list[Literal['classic','detective','horror','fiction','self_development']] = Field(min_length=1,max_length=5)
     minutes: Literal[15,30,45,60]
     weekdays: list[int] = Field(min_length=1,max_length=7)
 class Profession(Strict):
@@ -102,7 +102,7 @@ def build_preview(payload, timezone):
     elif payload.health.nutrition_goal == 'fat_loss':
         recipe_list.sort(key=lambda recipe: recipe['nutrition_per_serving']['protein_g'] / max(recipe['nutrition_per_serving']['kcal'], 1), reverse=True)
     books = json.loads(files('app.content').joinpath('book_suggestions.json').read_text(encoding='utf-8'))
-    book = (next((item for item in books if item['interest']==payload.education.reading_interest), books[0] if books else None)
+    book = (next((item for item in books if any(genre in item.get('genres', []) for genre in payload.education.reading_genres)), None)
             if payload.education.track in ('reading', 'both', 'go-reading') else None)
     education, backend, english = choices(payload, timezone)
     return {'areas':{

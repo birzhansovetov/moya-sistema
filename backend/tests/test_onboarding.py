@@ -10,7 +10,7 @@ def answers():
             "nutrition_goal": "maintain",
             "allergies": [],
         },
-        "education": {"track": "java", "reading_interest": "Короткие истории", "minutes": 30, "weekdays": [0, 2, 4]},
+        "education": {"track": "java", "reading_genres": ["classic"], "minutes": 30, "weekdays": [0, 2, 4]},
         "profession": {"track": "java-backend", "minutes": 30, "weekdays": [1, 3]},
         "languages": {"level": "A2", "goal": "general", "minutes": 30, "weekdays": [0, 2, 4]},
         "finance": {"currency": "KZT", "focus": "record"},
@@ -20,10 +20,10 @@ def answers():
 
 def test_survey_version_is_saved_with_answers(client, mailbox):
     csrf = sign_in(client, mailbox, "version@example.com")
-    assert client.get("/api/onboarding").json()["survey_version"] == 1
+    assert client.get("/api/onboarding").json()["survey_version"] == 2
     assert client.post("/api/onboarding/start", json=answers(), headers={"X-CSRF-Token": csrf}).status_code == 200
     state = client.get("/api/onboarding").json()
-    assert state["survey_version"] == 1
+    assert state["survey_version"] == 2
     assert state["answers"] == answers()
 
 
@@ -36,10 +36,10 @@ def test_future_survey_version_requires_reconfirmation(client, mailbox):
     with Session(client.app.state.engine) as db:
         user = db.scalar(select(User).where(User.email == "future@example.com"))
         user.onboarding_answers = answers()
-        user.onboarding_version = 2
+        user.onboarding_version = 3
         db.commit()
     state = client.get("/api/onboarding").json()
-    assert state["survey_version"] == 2
+    assert state["survey_version"] == 3
     assert state["needs_reconfirmation"] is True
 
 
@@ -79,6 +79,22 @@ def test_reading_recommendation_only_appears_for_reading_choices(client, mailbox
         assert response.status_code == 200, response.text
         book = response.json()["areas"]["education"]["book"]
         assert bool(book) is expected, track
+
+
+def test_reading_genres_match_only_tagged_books(client, mailbox):
+    csrf = sign_in(client, mailbox, "genre-choice@example.com")
+    selected = answers()
+    selected["education"]["track"] = "reading"
+    selected["education"]["reading_genres"] = ["horror"]
+    response = client.post('/api/onboarding/preview', json=selected, headers={"X-CSRF-Token": csrf})
+    assert response.status_code == 200, response.text
+    assert response.json()["areas"]["education"]["book"]["title"] == "Пиковая дама"
+    selected["education"]["reading_genres"] = ["detective"]
+    response = client.post('/api/onboarding/preview', json=selected, headers={"X-CSRF-Token": csrf})
+    assert response.status_code == 200, response.text
+    assert response.json()["areas"]["education"]["book"] is None
+    selected["education"]["reading_genres"] = []
+    assert client.post('/api/onboarding/preview', json=selected, headers={"X-CSRF-Token": csrf}).status_code == 422
 
 
 def test_go_route_previews_and_preserves_java_history_on_switch(client, mailbox):

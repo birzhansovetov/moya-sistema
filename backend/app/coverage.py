@@ -59,7 +59,7 @@ def _survey(goal: str, level: str, place: str, days: int, limitations: bool, rou
                              "days_per_week": days, "minutes_per_session": 90, "limitations": limitations,
                              "weekdays": weekdays},
                    "vegetarian": False, "allergies": [], "max_cooking_minutes": 90, "nutrition_goal": "maintain"},
-        "education": {"track": route, "reading_interest": "Короткие истории", "minutes": 45, "weekdays": [0, 2, 4]},
+        "education": {"track": route, "reading_genres": ["classic"], "minutes": 45, "weekdays": [0, 2, 4]},
         "profession": {"track": "java-backend", "minutes": 45, "weekdays": [1, 3]},
         "languages": {"level": language, "goal": "general", "minutes": 45, "weekdays": [0, 2, 4]},
         "finance": {"currency": "KZT", "focus": "record"},

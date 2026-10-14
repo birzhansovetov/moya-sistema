@@ -78,7 +78,7 @@ test('a previously saved home value is not silently reused for a new recommendat
     const url = new URL(String(input), 'http://localhost')
     if (url.pathname === '/api/onboarding') return new Response(JSON.stringify({ answers: {
       health: { sport: { goal: 'fat_loss_muscle_focus', level: 'beginner', place: 'home', equipment: [], days_per_week: 2, minutes_per_session: 45, limitations: false, weekdays: [1, 4] }, vegetarian: false, max_cooking_minutes: 45 },
-      education: { track: 'java', reading_interest: 'Короткие истории', minutes: 30, weekdays: [0, 2, 4] },
+      education: { track: 'java', reading_genres: ['classic'], minutes: 30, weekdays: [0, 2, 4] },
       profession: { track: 'java-backend', minutes: 30, weekdays: [1, 3] },
       languages: { level: 'A2', goal: 'general', minutes: 30, weekdays: [0, 2, 4] },
       finance: { currency: 'KZT', focus: 'record' }, personal: { focus: 'journal' },
@@ -104,7 +104,7 @@ test('weekly review links open the sport question without losing saved answers',
     const path = new URL(String(input), 'http://localhost').pathname
     if (path === '/api/onboarding') return new Response(JSON.stringify({ answers: {
       health: { sport: { goal: 'fat_loss_muscle_focus', level: 'beginner', place: 'gym', equipment: ['machines'], days_per_week: 3, minutes_per_session: 60, limitations: false, weekdays: [1, 3, 5] }, vegetarian: false, max_cooking_minutes: 45, nutrition_goal: 'maintain', allergies: [] },
-      education: { track: 'java', reading_interest: 'Короткие истории', minutes: 30, weekdays: [0, 2, 4] },
+      education: { track: 'java', reading_genres: ['classic'], minutes: 30, weekdays: [0, 2, 4] },
       profession: { track: 'java-backend', minutes: 30, weekdays: [1, 3] },
       languages: { level: 'A2', goal: 'general', minutes: 30, weekdays: [0, 2, 4] },
       finance: { currency: 'KZT', focus: 'record' }, personal: { focus: 'journal' },
