@@ -84,3 +84,31 @@
 .activityStreakDay b{width:37px;height:37px;border:1px solid #d3d0c9;border-radius:11px;background:#f5f3ef;color:#4d4b45}
 .activityStreakDay.isActive b{border-color:#2d4037;background:#2d4037;color:#fff}
 @media(max-width:700px){.activityStreak{gap:20px;padding:20px}.activityStreakIntro strong{font-size:32px}.activityStreakDay{min-width:30px}.activityStreakDay b{width:31px;height:31px}}
+.todayPage .pageHeader{margin-bottom:18px;padding-bottom:0;border:0}
+.todayPage .pageHeader h1{margin:0 0 5px}
+.todayPage .pageHeader p{margin:0}
+.todayPage .dateToolbar{margin:0 0 16px}
+.todayPage .todayTasks{margin:0 0 16px}
+.todayPage .todayTasks .sectionHeading{gap:12px;flex-wrap:wrap}
+.todayPage .todayTasks .sectionHeading .muted{margin:4px 0 0;font-size:13px}
+.todayPage .todayTasks .sectionHeading a{min-height:44px;display:inline-flex;align-items:center}
+.todayPage .todayMore,.todayPage .todayAnalytics{border-top:1px solid #d8d5cf;border-bottom:1px solid #d8d5cf;margin:0;background:transparent}
+.todayPage .todayMore>summary,.todayPage .todayAnalytics>summary{min-height:56px;display:flex;align-items:center;padding:12px 2px;font-size:15px}
+.todayPage .todayMore>summary::after{margin-left:auto}
+.todayPage .todayNextExtra{border-top:1px solid #555;margin-top:18px}
+.todayPage .todayNextExtra>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:#e7e6e1;font-size:13px;font-weight:600}
+.todayPage .todayNextExtra>summary:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.todayPage .todayNextQueue{margin:0 0 12px;padding:4px 0 0;border:0;align-items:flex-start}
+.todayPage .todayBudget{margin:0 0 8px}
+.todayPage .todayBudget button{min-height:40px}
+.todayPage .activityStreak{margin-bottom:18px}
+@media(max-width:650px){
+  .todayPage .pageHeader{margin-bottom:14px}
+  .todayPage .pageHeader h1{font-size:30px}
+  .todayPage .todayTasks .sectionHeading{align-items:flex-start}
+  .todayPage .todayTasks .sectionHeading a{font-size:13px}
+  .todayPage .todayMore{padding:0;border:0;border-top:1px solid #d8d5cf;border-radius:0;box-shadow:none}
+  .todayPage .todayMore>summary{padding:12px 2px}
+  .todayPage .activityStreak{gap:12px;padding:16px}
+  .todayPage .activityStreakIntro strong{font-size:28px}
+}

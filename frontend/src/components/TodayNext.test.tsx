@@ -19,6 +19,8 @@ test('nearest planned workout is shown before study and links to the exact sessi
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter><TodayNext date="2026-10-12" /></MemoryRouter></QueryClientProvider>)
   expect(await screen.findByRole('heading', { name: 'Силовая дома' })).toBeInTheDocument()
   expect(screen.getByRole('link', { name: 'Открыть материал' })).toHaveAttribute('href', '/health/sport?plan=plan-1&date=2026-10-12&session=session-1#sport-sessions')
+  fireEvent.click(screen.getByText('На сегодня: 60 мин · изменить время'))
   fireEvent.click(screen.getByRole('button', { name: '90 мин' }))
+  fireEvent.click(screen.getByText('Следом ещё 1'))
   expect(screen.getByRole('link', { name: 'Java: Классы · 25 мин' })).toHaveAttribute('href', '/education/java?plan=study-1&lesson=lesson-1&date=2026-10-12')
 })

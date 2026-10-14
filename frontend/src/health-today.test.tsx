@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MemoryRouter } from 'react-router-dom'
 import { vi } from 'vitest'
@@ -26,7 +26,8 @@ test('my day shows sport and a recipe link while task counts remain zero', async
   expect(screen.queryByText('Овсяная каша')).not.toBeInTheDocument()
   expect(screen.getByRole('link', { name: /Открыть тренировку/ })).toHaveAttribute('href', '/health/sport?plan=sport-1&date=2026-10-06&session=A#workout-journal')
   expect(screen.getByRole('link', { name: /Рецепты с граммами/ })).toHaveAttribute('href', '/health/nutrition')
-  expect(within(screen.getByText('На дату').closest('section')!).getByText('0')).toBeInTheDocument()
+  expect(screen.getByRole('heading', { name: 'Задачи на сегодня' })).toBeInTheDocument()
+  expect(screen.getByRole('link', { name: 'Добавить задачу' })).toHaveAttribute('href', '/tasks?new=1&date=2026-10-06')
   await waitFor(() => expect(screen.queryByText('1 запланировано задач')).not.toBeInTheDocument())
 })
 

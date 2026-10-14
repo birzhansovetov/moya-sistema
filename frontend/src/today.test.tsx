@@ -1,5 +1,5 @@
 import { afterEach, expect, test, vi } from 'vitest'
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { MemoryRouter } from 'react-router-dom'
 
@@ -41,11 +41,9 @@ test('rescheduled completion stays in history but is not counted as a planned ta
     { task_id: 'old', title: 'Перенесённая задача', date: '2026-10-06', completed: true, historical: true, priority: 'medium', section: 'personal', status: 'todo' },
     { task_id: 'new', title: 'Новая дата', date: '2026-10-07', completed: false, historical: false, priority: 'medium', section: 'personal', status: 'todo' },
   ])
-  await waitFor(() => expect(within(screen.getByText('На дату').closest('section')!).getByText('0')).toBeInTheDocument())
+  await waitFor(() => expect(screen.getByText('На этот период задач нет')).toBeInTheDocument())
   expect(await screen.findByLabelText('Серия активных дней')).toHaveTextContent('2 дня подряд')
-  expect(within(screen.getByText('Выполнено').closest('section')!).getByText('0')).toBeInTheDocument()
-  expect(within(screen.getByText('Неделя').closest('section')!).getByText('0/1')).toBeInTheDocument()
-  expect(screen.getByText('На этот период задач нет')).toBeInTheDocument()
+  expect(screen.queryByText('Выполнено 1 из 1')).not.toBeInTheDocument()
 })
 
 test('today task view excludes historical completions from the current plan', async () => {
@@ -97,10 +95,10 @@ test('completion changes progress only after the server confirms it', async () =
   fireEvent.click(checkbox)
   await waitFor(() => expect(confirm).toBeTypeOf('function'))
   expect(checkbox).not.toBeChecked()
-  expect(within(screen.getByText('Неделя').closest('section')!).getByText('0/1')).toBeInTheDocument()
+  expect(screen.getByText('Выполнено 0 из 1')).toBeInTheDocument()
   confirm()
   await waitFor(() => expect(checkbox).toBeChecked())
-  expect(within(screen.getByText('Неделя').closest('section')!).getByText('1/1')).toBeInTheDocument()
+  await waitFor(() => expect(screen.getByText('Выполнено 1 из 1')).toBeInTheDocument())
   await waitFor(() => expect(screen.getByLabelText('Серия активных дней')).toHaveTextContent('1 день подряд'))
 })
 
@@ -123,7 +121,7 @@ test('date controls move through adjacent days and preserve the chosen date', as
   expect(screen.getByLabelText('Дата')).toHaveValue('2026-10-06')
   fireEvent.click(screen.getByRole('button', { name: 'Следующий день' }))
   expect(screen.getByLabelText('Дата')).toHaveValue('2026-10-07')
-  expect(screen.getByRole('link', { name: '+ Новая задача' })).toHaveAttribute('href', '/tasks?new=1&date=2026-10-07')
+  expect(screen.getByRole('link', { name: 'Добавить задачу' })).toHaveAttribute('href', '/tasks?new=1&date=2026-10-07')
   fireEvent.click(screen.getByRole('button', { name: 'Предыдущий день' }))
   expect(screen.getByLabelText('Дата')).toHaveValue('2026-10-06')
 })
