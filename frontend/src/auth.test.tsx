@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
 
 import { AuthPage } from './pages/Auth'
 import { api } from './api'
@@ -27,4 +27,19 @@ test('email owner chooses the password when opening the verification link', asyn
   await waitFor(() => expect(api).toHaveBeenCalledWith('/auth/verify', expect.objectContaining({
     method: 'POST', body: JSON.stringify({ token: 'mail-token', password: 'owner password value' }),
   })))
+})
+
+test('successful verification opens sign-in and cannot be submitted again', async () => {
+  vi.mocked(api).mockResolvedValueOnce(undefined)
+  render(<MemoryRouter initialEntries={['/verify-email#token=mail-token']}>
+    <Routes>
+      <Route path="/verify-email" element={<AuthPage onAuthenticated={() => undefined} />} />
+      <Route path="/login" element={<AuthPage onAuthenticated={() => undefined} />} />
+    </Routes>
+  </MemoryRouter>)
+  fireEvent.change(screen.getByLabelText('Пароль'), { target: { value: 'owner password value' } })
+  fireEvent.click(screen.getByRole('button', { name: 'Подтвердить адрес' }))
+  await waitFor(() => expect(screen.getByRole('heading', { name: 'С возвращением' })).toBeInTheDocument())
+  expect(screen.getByRole('status')).toHaveTextContent('Адрес подтверждён')
+  expect(screen.queryByRole('button', { name: 'Подтвердить адрес' })).not.toBeInTheDocument()
 })

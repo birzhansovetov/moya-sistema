@@ -143,8 +143,14 @@ def register(payload: EmailOnly, request: Request, db: Session = Depends(get_db)
 
 @router.post("/verify", status_code=status.HTTP_204_NO_CONTENT)
 def verify_email(payload: VerifyConfirm, db: Session = Depends(get_db)):
-    entry = get_valid_email_token(db, payload.token, "verify")
+    entry = db.scalar(
+        select(EmailToken).where(EmailToken.token_hash == token_hash(payload.token), EmailToken.kind == "verify")
+    )
+    if entry is None or entry.expires_at <= utc_now():
+        raise HTTPException(status_code=400, detail="Ссылка недействительна или срок её действия истёк")
     user = db.get(User, entry.user_id)
+    if entry.used_at is not None and user is not None and user.verified_at is not None:
+        raise HTTPException(status_code=409, detail="Адрес уже подтверждён. Войдите с ранее сохранённым паролем.")
     if user is None or user.verified_at is not None:
         raise HTTPException(status_code=400, detail="Ссылка недействительна")
     user.password_hash = password_hash(payload.password)

@@ -23,7 +23,11 @@ def test_email_verification_is_one_time(client: TestClient, mailbox: Mailbox) ->
     ).status_code == 202
     token = extract_token(mailbox)
     assert client.post("/api/auth/verify", json={"token": token, "password": "correct horse battery staple"}).status_code == 204
-    assert client.post("/api/auth/verify", json={"token": token, "password": "correct horse battery staple"}).status_code == 400
+    repeated = client.post("/api/auth/verify", json={"token": token, "password": "different password value"})
+    assert repeated.status_code == 409
+    assert repeated.json()["detail"] == "Адрес уже подтверждён. Войдите с ранее сохранённым паролем."
+    assert client.post("/api/auth/login", json={"email": "one@example.com", "password": "correct horse battery staple"}).status_code == 200
+    assert client.post("/api/auth/login", json={"email": "one@example.com", "password": "different password value"}).status_code == 401
 
 
 def test_address_owner_sets_password_after_competing_registration(client: TestClient, mailbox: Mailbox) -> None:

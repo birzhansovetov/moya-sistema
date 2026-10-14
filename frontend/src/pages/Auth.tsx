@@ -43,8 +43,9 @@ export function AuthPage({ onAuthenticated }: { onAuthenticated: (value: AuthRes
         setMessage('Если адрес зарегистрирован, мы отправили ссылку для сброса пароля.')
       } else if (mode === 'verify') {
         await api('/auth/verify', json('POST', { token: linkToken, password }))
-        setMessage('Адрес подтверждён, пароль сохранён. Теперь можно войти.')
-        history.replaceState({}, '', location.pathname)
+        setLinkToken('')
+        setPassword('')
+        navigate('/login', { replace: true, state: { emailVerified: true } })
       } else {
         await api('/auth/password-reset/confirm', json('POST', { token: linkToken, password }))
         setMessage('Пароль обновлён. Войдите с новым паролем.')
@@ -55,7 +56,7 @@ export function AuthPage({ onAuthenticated }: { onAuthenticated: (value: AuthRes
     } finally { setBusy(false) }
   }
 
-  const title = { login: 'С возвращением', register: 'Создать аккаунт', forgot: 'Восстановить доступ', verify: 'Подтвердить email', reset: 'Новый пароль' }[mode]
+  const title = { login: 'С возвращением', register: 'Создать аккаунт', forgot: 'Восстановить доступ', verify: 'Подтвердить почту', reset: 'Новый пароль' }[mode]
   const description = {
     login: 'Войдите, чтобы продолжить свой план.',
     register: 'Начните с адреса электронной почты.',
@@ -68,6 +69,7 @@ export function AuthPage({ onAuthenticated }: { onAuthenticated: (value: AuthRes
     <Card className={styles.card}>
       <h1>{title}</h1>
       <p className={styles.subtitle}>{description}</p>
+      {mode === 'login' && (location.state as { emailVerified?: boolean } | null)?.emailVerified && <p role="status" className={styles.success}>Адрес подтверждён. Войдите с новым паролем.</p>}
       <form onSubmit={submit}>
         <div className={styles.fields}>
           {['login', 'register', 'forgot'].includes(mode) && <Input label="Email" type="email" autoComplete="email" required value={email} onChange={event => setEmail(event.target.value)} placeholder="you@example.com" />}
