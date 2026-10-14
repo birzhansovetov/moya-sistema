@@ -8,6 +8,7 @@
 .viewNav button:hover { color: #111; background: #f4f3ef; }
 .viewNav button:focus-visible { outline: 2px solid #22708b; outline-offset: -3px; }
 .viewPanel { display: grid; gap: 22px; min-width: 0; }
+.operationHistory{min-width:0}.operationHistory h2{margin-bottom:4px}.operationHistory>p{margin:0 0 14px}.operationHistory ol{list-style:none;margin:0;padding:0}.operationHistory li{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:15px 0;border-top:1px solid #dedede}.operationHistory li span{display:grid;gap:4px;min-width:0}.operationHistory li strong{overflow-wrap:anywhere}.operationHistory li>strong{text-align:right;font-variant-numeric:tabular-nums}.operationHistory li small{color:#666}.incomeAmount{color:#256648}
 .recordActions { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
 .recordActions h2 { margin: 0 0 4px; }
 .recordActions p { margin: 0; color: #555; }

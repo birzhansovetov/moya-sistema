@@ -99,6 +99,21 @@ test('finance starts with one clear overview and opens records only on request',
   expect(screen.getByRole('button', { name: 'Добавить расход' })).toBeInTheDocument()
 })
 
+test('selected month keeps income, expenses and difference separate', async () => {
+  incomes=[{id:'salary',amount:'300.00',currency:'KZT',source:'Работа',date:'2026-10-09',note:'',deleted:false}]
+  items=[{id:'food',amount:'120.00',currency:'KZT',category_id:'food',category_name:'Продукты',date:'2026-10-10',note:'Обед',deleted:false}]
+  mount()
+  expect(await screen.findByTestId('finance-income-total')).toHaveTextContent('300,00 KZT')
+  expect(screen.getByTestId('finance-month-total')).toHaveTextContent('120,00 KZT')
+  expect(screen.getByTestId('finance-net-total')).toHaveTextContent('180,00 KZT')
+  fireEvent.click(screen.getByRole('button',{name:'Записи'}))
+  const history=await screen.findByRole('region',{name:'Операции за период'})
+  expect(within(history).getByText('Работа')).toBeInTheDocument()
+  expect(within(history).getByText('Продукты')).toBeInTheDocument()
+  fireEvent.change(screen.getByLabelText('Месяц обзора'),{target:{value:'2026-09'}})
+  await waitFor(()=>expect(screen.getByTestId('finance-net-total')).toHaveTextContent('0,00 KZT'))
+})
+
 test('failed expense save retains the draft and retry key, success adds it to history', async () => {
   failCreate = true
   mount()
