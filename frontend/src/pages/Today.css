@@ -21,6 +21,10 @@
 .todayFinanceLink{display:inline-block;margin-top:20px;font-size:12px;color:#9be9ee;text-decoration:none}
 .todayFinanceLink:hover{text-decoration:underline}
 .todayTasks{margin-top:18px}
+.todayAnalytics{margin:0 0 18px;border-top:1px solid #d8d5cf;border-bottom:1px solid #d8d5cf}
+.todayAnalytics>summary{cursor:pointer;padding:16px 2px;font-size:16px;font-weight:700}
+.todayAnalytics>summary:focus-visible{outline:2px solid #22708b;outline-offset:2px}
+.todayAnalytics>section{margin:0 0 18px}
 .todayTasks .sectionHeading{margin-bottom:12px}
 .todayTasks .sectionHeading h2{margin:0}
 .todayTasks .emptyState{display:flex;align-items:center;text-align:left;gap:15px;padding:16px 18px}

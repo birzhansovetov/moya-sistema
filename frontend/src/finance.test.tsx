@@ -85,10 +85,24 @@ function expenseForm() { return within(screen.getByRole('button', { name: 'До�
 function mount() {
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter><FinancePage /></MemoryRouter></QueryClientProvider>)
 }
+async function openRecords() { fireEvent.click(await screen.findByRole('button', { name: 'Записи' })) }
+async function openExpense() { await openRecords(); fireEvent.click(screen.getByRole('button', { name: 'Записать расход' })) }
+async function openIncome() { await openRecords(); fireEvent.click(screen.getByRole('button', { name: 'Записать доход' })) }
+
+test('finance starts with one clear overview and opens records only on request', async () => {
+  mount()
+  expect(await screen.findByTestId('finance-net-total')).toBeInTheDocument()
+  expect(screen.queryByRole('heading', { name: 'История расходов' })).not.toBeInTheDocument()
+  expect(screen.queryByRole('button', { name: 'Добавить расход' })).not.toBeInTheDocument()
+  fireEvent.click(screen.getByRole('button', { name: 'Записать расход' }))
+  expect(screen.getByRole('heading', { name: 'История расходов' })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Добавить расход' })).toBeInTheDocument()
+})
 
 test('failed expense save retains the draft and retry key, success adds it to history', async () => {
   failCreate = true
   mount()
+  await openExpense()
   fireEvent.change((await screen.findAllByLabelText('Сумма'))[1], { target: { value: '12,34' } })
   fireEvent.change(expenseForm().getByLabelText('Комментарий'), { target: { value: 'Кофе' } })
   fireEvent.click(screen.getByRole('button', { name: 'Добавить расход' }))
@@ -139,6 +153,7 @@ test('dashboard shows six months in the selected currency and category share', a
 test('expense editing and reversible deletion refresh visible history and totals', async () => {
   items = [{ id: 'one', amount: '1250.50', currency: 'KZT', category_id: 'home', category_name: 'Жильё', date: '2026-10-10', note: 'Квартира', deleted: false }]
   mount()
+  await openRecords()
   fireEvent.click(await screen.findByRole('button', { name: 'Изменить расход Квартира' }))
   const dialog = within(screen.getByRole('dialog', { name: 'Редактировать расход' }))
   fireEvent.change(dialog.getByLabelText('Сумма'), { target: { value: '1500' } })
@@ -156,6 +171,7 @@ test('expense editing and reversible deletion refresh visible history and totals
 test('currency view is separate from an unfinished expense and categories are editable', async () => {
   items = [{ id: 'dollar', amount: '9.50', currency: 'USD', category_id: 'home', category_name: 'Жильё', date: '2026-10-10', note: 'Долларовый расход', deleted: false }]
   mount()
+  await openExpense()
   fireEvent.change((await screen.findAllByLabelText('Сумма'))[1], { target: { value: '80' } })
   fireEvent.change(screen.getByLabelText('Валюта обзора'), { target: { value: 'USD' } })
   await screen.findByText('Долларовый расход', { selector: 'p' })
@@ -178,6 +194,7 @@ test('currency view is separate from an unfinished expense and categories are ed
 test('a failed background category refresh retains the expense draft through retry', async () => {
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   render(<QueryClientProvider client={client}><MemoryRouter><FinancePage /></MemoryRouter></QueryClientProvider>)
+  await openExpense()
   fireEvent.change((await screen.findAllByLabelText('Сумма'))[1], { target: { value: '77' } })
   fireEvent.change(expenseForm().getByLabelText('Комментарий'), { target: { value: 'Незаконченный расход' } })
   apiMock.mockRejectedValueOnce(new Error('Обновление недоступно'))
@@ -194,6 +211,7 @@ test('a failed expense retry preserves its original date and key after local mid
   failCreate = true
   const client = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   const view = render(<QueryClientProvider client={client}><MemoryRouter><FinancePage /></MemoryRouter></QueryClientProvider>)
+  await openExpense()
   fireEvent.change((await screen.findAllByLabelText('Сумма'))[1], { target: { value: '77' } })
   fireEvent.click(screen.getByRole('button', { name: 'Добавить расход' }))
   await screen.findByText('Сеть недоступна')
@@ -208,6 +226,7 @@ test('a failed expense retry preserves its original date and key after local mid
 
 test('income is saved, included in monthly difference, and can be edited or removed', async () => {
   mount()
+  await openIncome()
   const incomeForm = within((await screen.findByRole('button', { name: 'Добавить доход' })).closest('form')!)
   fireEvent.change(incomeForm.getByLabelText('Сумма'), { target: { value: '250000' } })
   fireEvent.change(incomeForm.getByLabelText('Источник'), { target: { value: 'Зарплата' } })

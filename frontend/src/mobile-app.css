@@ -29,8 +29,8 @@
   .tabBar::-webkit-scrollbar{display:none}
   .tabBar button{min-height:44px;border:1px solid #dedbd3;border-radius:12px;background:#fff;color:#54514c;padding:9px 15px;font-size:13px}
   .tabBar .selectedTab{background:#242424;border-color:#242424;color:#fff}
-  .dateToolbar{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:8px;margin:0 0 16px}
-  .dateToolbar .secondaryButton{width:44px;min-width:44px;padding:0}
+  .dateToolbar{display:grid;grid-template-columns:60px minmax(0,1fr) 60px;gap:8px;margin:0 0 16px}
+  .dateToolbar .secondaryButton{width:60px;min-width:60px;padding:0;white-space:nowrap;font-size:12px}
   .dateToolbar label{min-width:0;justify-content:space-between;gap:6px;padding:0 10px;background:#fff;border:1px solid #e6e3dc;border-radius:13px;color:#57534d;font-size:13px}
   .dateToolbar input{min-width:0;max-width:145px;border:0;background:transparent;padding:0 2px;font-size:13px;box-shadow:none}
   .dateToolbar>.textButton{grid-column:1/-1;min-height:44px;justify-self:start}

@@ -31,6 +31,7 @@
 .mainArea{min-width:0}.topbar{display:none}
 .content{max-width:1440px;padding:50px 48px 120px}
 @media(max-width:900px){.sidebar{padding:0 20px;gap:16px}.content{padding:38px 24px 110px}.profileText{display:none}}
+@media(min-width:651px) and (max-width:900px){.sidebar{padding:0 12px;gap:8px}.brand{font-size:18px;white-space:nowrap}.brandMark{font-size:23px}.sidebar nav{gap:0}.link{padding:7px 8px;font-size:12px}.link .icon{display:none}.profile{margin-left:auto}}
 @media(max-width:650px){.sidebar{display:none}.topbar{position:sticky;top:0;z-index:20;display:flex;height:60px;background:#ececec;border-color:#d2d2d2;padding:0 18px}.mobileBrand{color:#202020}.location strong{color:#202020}.content{padding:28px 18px 120px}.mobileNav{left:10px;right:10px;bottom:10px;border:0;border-radius:14px;background:#222;box-shadow:0 14px 30px #0003;padding:5px 5px calc(5px + env(safe-area-inset-bottom))}.mobileNav .link{color:#ddd;border-radius:9px;font-size:10px}.mobileNav .link:hover{background:#444;color:#fff}.mobileNav .active{background:#f4f4f4!important;color:#202020!important}}
 .appHeader{display:none}
 @media(max-width:650px){

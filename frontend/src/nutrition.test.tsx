@@ -19,6 +19,16 @@ function mount(entry = '/health/nutrition') {
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter initialEntries={[entry]}><NutritionPage view={entry.startsWith('/health/calories') ? 'calculator' : 'nutrition'} /></MemoryRouter></QueryClientProvider>)
 }
 
+test('recipe preferences are optional and recipes remain the first visible content', async () => {
+  apiMock.mockReset().mockResolvedValue(recipes)
+  mount()
+  expect(await screen.findByText('Овсяная каша с бананом')).toBeInTheDocument()
+  expect(screen.getByText('Настроить подбор').closest('details')).not.toHaveAttribute('open')
+  fireEvent.click(screen.getByText('Настроить подбор'))
+  expect(screen.getByText('Настроить подбор').closest('details')).toHaveAttribute('open')
+  expect(screen.getByLabelText('Показывать сначала')).toBeInTheDocument()
+})
+
 test('nutrition contains recipes and recalculates ingredient grams for selected portions', async () => {
   apiMock.mockReset().mockImplementation(async (path: string) => {
     if (path === '/health/nutrition/recipes') return recipes

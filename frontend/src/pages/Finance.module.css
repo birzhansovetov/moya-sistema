@@ -1,4 +1,21 @@
 .page { display: grid; gap: 24px; }
+.page :global(.pageHeader) { margin-bottom: 0; }
+.overviewAction { display: flex; flex-wrap: wrap; gap: 10px; }
+.page [hidden] { display: none !important; }
+.viewNav { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #d2d2d2; }
+.viewNav button { cursor: pointer; min-height: 46px; padding: 10px 18px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: #555; font: inherit; font-weight: 650; }
+.viewNav button[aria-current="page"] { border-bottom-color: #222; color: #222; }
+.viewNav button:hover { color: #111; background: #f4f3ef; }
+.viewNav button:focus-visible { outline: 2px solid #22708b; outline-offset: -3px; }
+.viewPanel { display: grid; gap: 22px; min-width: 0; }
+.recordActions { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
+.recordActions h2 { margin: 0 0 4px; }
+.recordActions p { margin: 0; color: #555; }
+.entryWorkspace { max-width: 700px; }
+.historyFilters summary, .help summary { cursor: pointer; font-weight: 650; }
+.historyFilters .filters { margin-top: 20px; }
+.historyFilters p, .help p { margin-bottom: 0; }
+.help { color: #555; }
 .page h2 { margin-top: 0; }
 .overview, .twoColumns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .overview { max-width: 540px; }
@@ -42,6 +59,8 @@
 .dashboardLead > strong { font-size: clamp(34px, 5vw, 62px); line-height: 1.05; letter-spacing: -.05em; overflow-wrap: anywhere; }
 .dashboardLead > strong small { font-size: .42em; font-weight: 500; letter-spacing: 0; }
 .dashboard .insight { padding: 0; margin-top: 10px; border: 0; background: transparent; color: #d7d7d7; }
+.dashboard .insight summary { cursor: pointer; font-weight: 650; color: #fff; }
+.dashboard .insight p:first-of-type { margin-top: 12px; }
 .dashboardSecondary { display: grid; grid-template-rows: 1fr 1fr; border-left: 1px solid #494949; }
 .dashboardSecondary > div { display: grid; align-content: center; gap: 8px; padding: 24px 30px; min-width: 0; }
 .dashboardSecondary > div + div { border-top: 1px solid #494949; }

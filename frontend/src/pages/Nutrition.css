@@ -12,6 +12,11 @@
 .calorieMethod p{line-height:1.55}
 @media(max-width:560px){.calorieForm .formGrid{grid-template-columns:1fr}}
 .nutritionDiscovery{display:grid;gap:16px;margin-bottom:16px}
+.nutritionPreferences{margin:0 0 20px;border-top:1px solid #dedbd4;padding-top:12px}
+.nutritionPreferences>summary,.nutritionSource>summary{cursor:pointer;color:#313b38;font-weight:650;min-height:40px;display:flex;align-items:center}
+.nutritionPreferences>summary:focus-visible,.nutritionSource>summary:focus-visible{outline:2px solid #22708b;outline-offset:2px}
+.nutritionPreferences .nutritionGoalRow{margin-top:12px}
+.nutritionSource{margin-top:8px;color:#565f5b;font-size:14px}
 .nutritionMealFilter{display:flex;flex-wrap:wrap;gap:8px}
 .nutritionMealFilter button{min-height:42px;padding:8px 13px;border:1px solid #42536b;border-radius:9px;background:#1b2636;color:#d9e6f6;font-weight:650}
 .nutritionMealFilter button[aria-pressed=true]{background:#254760;border-color:#70b9cc;color:#e7fbff}
@@ -47,6 +52,7 @@
 .nutritionBasis{margin-top:18px;font-size:13px}
 @media(max-width:850px){.nutritionRecipes{grid-template-columns:1fr}}
 @media(max-width:650px){.nutritionMealFilter button{flex:1 1 auto}.nutritionGoalRow{padding:16px}}
+@media(max-width:650px){.nutritionPage .pageHeader>.secondaryButton{display:none}}
 .nutritionMealFilter button{background:#fff;border-color:#c8d9e5;color:#315975}
 .nutritionMealFilter button[aria-pressed=true]{background:#dceff9;border-color:#68a9cb;color:#105c8a}
 .nutritionMealFilter button:hover{background:#e9f4fa}

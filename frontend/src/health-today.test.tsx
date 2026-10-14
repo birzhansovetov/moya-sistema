@@ -19,6 +19,7 @@ test('my day shows sport and a recipe link while task counts remain zero', async
     throw new Error(`Unexpected ${path}`)
   })
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter><TodayPage /></MemoryRouter></QueryClientProvider>)
+  expect(screen.getByText('Моя аналитика за 4 недели').closest('details')).not.toHaveAttribute('open')
   await screen.findByRole('heading', { name: 'Дом A', level: 2 })
   expect(screen.getByRole('link', { name: 'Открыть материал' })).toHaveAttribute('href', '/health/sport?plan=sport-1&date=2026-10-06&session=A#sport-sessions')
   fireEvent.click(screen.getByText('Все планы и записи на дату'))
