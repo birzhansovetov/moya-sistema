@@ -15,6 +15,7 @@ from app.models import PersonalEntry, User
 
 router = APIRouter(prefix='/api/personal/entries', tags=['personal'])
 Kind = Literal['diary', 'event', 'experiment']
+Activity = Literal['meeting', 'hobby', 'travel', 'rest', 'other']
 
 
 class EntryValues(BaseModel):
@@ -23,18 +24,22 @@ class EntryValues(BaseModel):
     body: str = Field(default='', max_length=20000)
     date: DateValue | None = None
     mood: Literal['great', 'good', 'neutral', 'low', 'hard'] | None = None
-    activity: Literal['meeting', 'hobby', 'travel', 'rest', 'other'] = 'other'
+    activity: Activity = 'other'
+    activities: list[Activity] | None = Field(default=None, max_length=10)
     completed: bool = False
     impression: str = Field(default='', max_length=10000)
 
     @model_validator(mode='after')
     def validate_entry(self):
         self.title, self.body, self.impression = self.title.strip(), self.body.strip(), self.impression.strip()
+        if self.activities is None:
+            self.activities = [self.activity]
+        self.activities = list(dict.fromkeys(self.activities))
         if self.kind == 'diary':
             if self.date is None:
                 raise ValueError('Укажите дату записи дневника')
-            if not self.title and not self.body:
-                raise ValueError('Добавьте текст или заголовок записи')
+            if not self.title and not self.body and not self.mood and not self.activities:
+                raise ValueError('Выберите настроение, занятие или добавьте текст')
         elif not self.title:
             raise ValueError('Укажите название события или идеи')
         return self
@@ -45,7 +50,7 @@ class EntryCreate(EntryValues):
 
 
 def serialize(item):
-    return {**{key: getattr(item, key) for key in EntryValues.model_fields}, 'id': item.id,
+    return {**{key: getattr(item, key) for key in EntryValues.model_fields}, 'activities': item.activities if item.activities is not None else [item.activity], 'id': item.id,
             'date': item.date.isoformat() if item.date else None, 'deleted': item.deleted_at is not None}
 
 

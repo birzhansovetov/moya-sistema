@@ -13,7 +13,7 @@ from app.backup_archive import (
     snapshot_user,
     validate_snapshot,
 )
-from app.models import Expense, ExpenseCategory, Income, Task, User
+from app.models import Expense, ExpenseCategory, Income, PersonalEntry, Task, User
 from conftest import Mailbox
 from test_spheres import sign_in
 
@@ -107,6 +107,18 @@ def test_archive_before_income_feature_restores_with_empty_incomes():
     del old["tables"]["incomes"]
     checked = validate_snapshot(old, "one@example.com")
     assert checked["tables"]["incomes"] == []
+
+
+def test_old_diary_archive_without_activities_still_restores(client, mailbox):
+    sign_in(client, mailbox, "diary-archive@example.com")
+    with client.app.state.sessionmaker() as db:
+        user = db.scalar(select(User).where(User.email == "diary-archive@example.com"))
+        db.add(PersonalEntry(user_id=user.id, kind="diary", activity="rest", title="Отдых", body="", date=date(2026, 10, 10), create_key="old", create_fingerprint="old"))
+        db.commit()
+        old = snapshot_user(db, user)
+    old["tables"]["personal_entries"][0].pop("activities")
+    checked = validate_snapshot(old, "diary-archive@example.com")
+    assert checked["tables"]["personal_entries"][0]["activities"] == ["rest"]
 
 
 def test_validation_rejects_unusable_profile_settings():

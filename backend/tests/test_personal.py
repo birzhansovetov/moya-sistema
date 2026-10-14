@@ -32,7 +32,7 @@ def test_personal_private_crud_and_retry(client, mailbox):
 def test_personal_ideas_dates_validation_and_filters(client, mailbox):
     headers = {'X-CSRF-Token': sign_in(client, mailbox, 'one@example.com')}
     base = entry()
-    for fields in [{'date': None}, {'body':'', 'title':''}, {'mood':'random'}, {'kind':'random'}]:
+    for fields in [{'date': None}, {'body':'', 'title':'', 'mood':None, 'activities':[]}, {'mood':'random'}, {'kind':'random'}]:
         assert client.post('/api/personal/entries', json={**base, **fields}, headers=headers).status_code == 422
     idea = {**base, 'kind':'experiment', 'date': None, 'title':'Попробовать рисование', 'body':'20 минут', 'mood':None}
     assert client.post('/api/personal/entries', json=idea, headers=headers).status_code == 201
@@ -63,3 +63,23 @@ def test_calendar_includes_only_owned_dated_events_and_never_diary_content(clien
     client.post('/api/personal/entries/'+saved['id']+'/restore',headers=h)
     sign_in(client,mailbox,'two@example.com')
     assert client.get(path).json()['personal_items']==[]
+
+
+def test_mood_and_multiple_activities_are_a_complete_private_diary_entry(client, mailbox):
+    headers = {'X-CSRF-Token': sign_in(client, mailbox, 'one@example.com')}
+    payload = {**entry(), 'body': '', 'activities': ['meeting', 'rest'], 'create_key': 'quick-day'}
+    response = client.post('/api/personal/entries', json=payload, headers=headers)
+    assert response.status_code == 201
+    saved = response.json()
+    assert saved['activities'] == ['meeting', 'rest']
+    assert client.post('/api/personal/entries', json=payload, headers=headers).json()['id'] == saved['id']
+    assert client.get('/api/personal/entries?start=2026-10-10&end=2026-10-10').json()['items'][0]['activities'] == ['meeting', 'rest']
+    assert client.post('/api/personal/entries', json={**payload, 'activities': ['unknown'], 'create_key': 'bad-day'}, headers=headers).status_code == 422
+    sign_in(client, mailbox, 'two@example.com')
+    assert client.get('/api/personal/entries/' + saved['id']).status_code == 404
+
+
+def test_old_diary_activity_is_exposed_as_a_single_activity(client, mailbox):
+    headers = {'X-CSRF-Token': sign_in(client, mailbox, 'one@example.com')}
+    saved = client.post('/api/personal/entries', json=entry(), headers=headers).json()
+    assert saved['activities'] == ['other']

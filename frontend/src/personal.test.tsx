@@ -87,3 +87,24 @@ test('an inline creation finishing cannot close another entry editor',async()=>{
   await waitFor(()=>expect(screen.getByRole('status')).toHaveTextContent('Запись сохранена'))
   expect(within(screen.getByRole('dialog')).getByLabelText('Что хотите записать?')).toHaveValue('Не потерять этот черновик')
 })
+
+test('quick diary saves mood and multiple activities without prose', async () => {
+  mount()
+  fireEvent.click(await screen.findByRole('button', {name:'Хорошее'}))
+  fireEvent.click(screen.getByLabelText('Встреча'))
+  fireEvent.click(screen.getByLabelText('Отдых'))
+  fireEvent.click(screen.getByRole('button',{name:'Сохранить запись'}))
+  await screen.findByText('Настроение: Хорошее')
+  expect(entries[0]).toMatchObject({kind:'diary',mood:'good',activities:['meeting','rest'],body:''})
+  expect(screen.getByRole('article')).toHaveTextContent('Встреча')
+  expect(screen.getByRole('article')).toHaveTextContent('Отдых')
+})
+
+test('dated diary history can be opened from its calendar day', async () => {
+  entries=[{id:'dated',kind:'diary',title:'',body:'Прогулка вечером',date:'2026-10-10',mood:'good',activity:'walk',activities:['walk'],completed:false,impression:'',deleted:false}]
+  mount()
+  expect(await screen.findByText('Прогулка вечером')).toBeInTheDocument()
+  fireEvent.click(await screen.findByRole('button',{name:'10 октября, 1 запись'}))
+  expect(screen.getByLabelText('С')).toHaveValue('2026-10-10')
+  expect(screen.getByLabelText('По')).toHaveValue('2026-10-10')
+})

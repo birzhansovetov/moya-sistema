@@ -341,6 +341,7 @@ class PersonalEntry(Base):
     date: Mapped[DateValue | None] = mapped_column(Date, nullable=True)
     mood: Mapped[str | None] = mapped_column(String(12), nullable=True)
     activity: Mapped[str] = mapped_column(String(12), default='other')
+    activities: Mapped[list] = mapped_column(JSON, default=list)
     completed: Mapped[bool] = mapped_column(Boolean, default=False)
     impression: Mapped[str] = mapped_column(Text, default='')
     search_text: Mapped[str] = mapped_column(Text, default='')

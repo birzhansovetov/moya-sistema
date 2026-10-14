@@ -43,6 +43,7 @@ SPHERES = {"health", "education", "profession", "languages", "finance", "persona
 FINANCE_CURRENCIES = {"KZT", "USD", "EUR", "RUB", "GBP"}
 SNAPSHOT_FIELDS = {"schema_version", "created_at", "email", "source_user_id", "profile", "tables"}
 JSON_SHAPES = {
+    "personal_entries": {"activities": (list,)},
     "tasks": {"weekdays": (list, type(None))},
     "sport_plans": {"answers": (dict,), "program_snapshot": (dict,)},
     "workout_logs": {"results": (list,)},
@@ -236,6 +237,8 @@ def validate_snapshot(value: object, email: str) -> dict[str, Any]:
         identity = "user_id" if model is NutritionProfile else "id"
         seen: set[str] = set()
         for row in rows:
+            if table == "personal_entries" and isinstance(row, dict) and "activities" not in row:
+                row["activities"] = [row["activity"]] if row.get("activity") not in (None, "other") else []
             if not isinstance(row, dict) or set(row) != expected:
                 raise ArchiveError("Неверная структура архива")
             if any(not _valid_column_value(table, column, row[column.name]) for column in model.__table__.columns):
