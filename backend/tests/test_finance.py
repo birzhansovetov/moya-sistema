@@ -117,3 +117,44 @@ def test_finance_rejects_invalid_amounts_dates_and_filters(client: TestClient, m
     assert client.get("/api/finance/summary?month=2026-13&currency=KZT").status_code == 422
     assert client.get("/api/finance/expenses?start=2026-03-01&end=2026-02-01&currency=KZT").status_code == 422
     assert client.get("/api/finance/expenses?limit=0&currency=KZT").status_code == 422
+
+
+def test_income_is_private_idempotent_editable_and_in_monthly_balance(client: TestClient, mailbox: Mailbox):
+    headers, categories = setup_finance(client, mailbox)
+    assert client.get("/api/finance/incomes").status_code == 200
+    payload = {"amount": "120000.50", "currency": "KZT", "source": "Зарплата", "date": "2026-02-28", "note": " Февраль ", "create_key": "salary-feb"}
+    assert client.post("/api/finance/incomes", json=payload).status_code == 403
+    saved = client.post("/api/finance/incomes", json=payload, headers=headers)
+    assert saved.status_code == 201
+    item = saved.json()
+    assert item["note"] == "Февраль"
+    assert client.post("/api/finance/incomes", json=payload, headers=headers).json()["id"] == item["id"]
+    assert client.post("/api/finance/incomes", json={**payload, "amount": "1.00"}, headers=headers).status_code == 409
+    assert client.post("/api/finance/expenses", json=expense(categories[0]["id"]), headers=headers).status_code == 201
+    summary = client.get("/api/finance/summary?month=2026-02&currency=KZT").json()
+    assert summary["income_total"] == "120000.50"
+    assert summary["net_total"] == "119990.40"
+    assert summary["income_sources"] == [{"name": "Зарплата", "amount": "120000.50"}]
+    assert client.get("/api/finance/incomes?start=2026-02-01&end=2026-02-28").json()["total"] == 1
+    other_headers, _ = setup_finance(client, mailbox, "other-income@example.com")
+    assert client.get("/api/finance/incomes?start=2026-02-01&end=2026-02-28").json()["total"] == 0
+    assert client.patch(f'/api/finance/incomes/{item["id"]}', json={k: v for k, v in payload.items() if k != "create_key"}, headers=other_headers).status_code == 404
+    assert client.delete(f'/api/finance/incomes/{item["id"]}', headers=other_headers).status_code == 404
+    assert client.post(f'/api/finance/incomes/{item["id"]}/restore', headers=other_headers).status_code == 404
+    login = client.post("/api/auth/login", json={"email": "finance@example.com", "password": "correct horse battery staple"})
+    assert login.status_code == 200
+    headers = {"X-CSRF-Token": login.json()["csrf_token"]}
+    edited = client.patch(f'/api/finance/incomes/{item["id"]}', json={**{k: v for k, v in payload.items() if k != "create_key"}, "amount": "100000.00", "source": "Подработка"}, headers=headers)
+    assert edited.status_code == 200 and edited.json()["source"] == "Подработка"
+    assert client.delete(f'/api/finance/incomes/{item["id"]}', headers=headers).status_code == 204
+    assert client.get("/api/finance/summary?month=2026-02&currency=KZT").json()["income_total"] == "0.00"
+    assert client.post(f'/api/finance/incomes/{item["id"]}/restore', headers=headers).status_code == 200
+    assert client.get("/api/finance/summary?month=2026-02&currency=KZT").json()["income_total"] == "100000.00"
+
+
+def test_income_validation(client: TestClient, mailbox: Mailbox):
+    headers, _ = setup_finance(client, mailbox)
+    base = {"amount": "10.00", "currency": "KZT", "source": "Подарок", "date": "2026-02-28", "create_key": "one"}
+    for changes in ({"amount": "0"}, {"amount": "1.001"}, {"source": "   "}, {"currency": "XXX"}, {"date": "9999-01-01"}):
+        assert client.post("/api/finance/incomes", json={**base, **changes}, headers=headers).status_code == 422
+    assert client.get("/api/finance/incomes?start=2026-03-01&end=2026-02-01").status_code == 422

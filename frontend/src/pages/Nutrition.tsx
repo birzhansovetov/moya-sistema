@@ -17,6 +17,22 @@ const initialPreferences: NutritionPreferences = { vegetarian: false, allergies:
 const errorText = (cause: unknown) => cause instanceof Error ? cause.message : 'Не удалось выполнить действие. Попробуйте ещё раз.'
 const readable = (value: number) => Number.isInteger(value) ? `${value}` : value.toFixed(1)
 
+function recipePhotoIndex(id: string): number {
+  if (id.includes('salmon')) return 11
+  if (id.includes('patty') || id.includes('patties')) return 9
+  if (id.includes('soup')) return 7
+  if (id.includes('omelette') || id.includes('shakshuka') || id.includes('spinach_egg')) return 8
+  if (id.includes('yogurt') && (id.includes('oat') || id.includes('banana'))) return 2
+  if (id.includes('rice') && id.includes('banana')) return 3
+  if (id.includes('oat') || id.includes('buckwheat_milk')) return 0
+  if (id.includes('toast') || id.includes('egg') && id.includes('breakfast')) return 1
+  if (id.includes('chickpea') || id.includes('kidney_beans') || id.includes('salad')) return 10
+  if (id.includes('lentil')) return 5
+  if (id.includes('potato') || id.includes('zucchini_chicken')) return 6
+  if (id.includes('chicken')) return 4
+  return 10
+}
+
 export function NutritionPage({ view = 'nutrition' }: { view?: 'nutrition' | 'calculator' }) {
   return view === 'calculator' ? <CalorieCalculatorPage /> : <RecipePage />
 }
@@ -57,7 +73,7 @@ function RecipePage() {
     }))
   }
   return <div className="healthPage nutritionPage">
-    <div className="pageHeader"><div><span className="eyebrow">ЗДОРОВЬЕ · РЕЦЕПТЫ</span><h1>Питание</h1><p>Готовые рецепты с точным количеством продуктов. Укажите порции, чтобы пересчитать граммы.</p></div><Link className="secondaryButton" to="/health">К здоровью</Link></div>
+    <div className="pageHeader"><div><span className="eyebrow">ЗДОРОВЬЕ · РЕЦЕПТЫ</span><h1>Питание</h1><p>Готовые рецепты с точным количеством продуктов. Укажите порции, чтобы пересчитать граммы. Фото показывают пример подачи; состав блюда указан в рецепте.</p></div><Link className="secondaryButton" to="/health">К здоровью</Link></div>
     {recipes.isLoading && <p className="muted">Загружаем рецепты…</p>}
     {recipes.isError && <p role="alert" className="errorMessage">Не удалось загрузить рецепты. <button className="textButton" onClick={() => void recipes.refetch()}>Повторить</button></p>}
     {recipes.data && <><div className="nutritionDiscovery"><Input className="nutritionSearch" label="Найти рецепт или продукт" type="search" value={search} onChange={event => setSearch(event.target.value)} placeholder="Например, рис или курица" /><div className="nutritionMealFilter" aria-label="Приём пищи">{(['all', 'breakfast', 'lunch', 'dinner'] as const).map(value => <button key={value} type="button" aria-pressed={meal === value} onClick={() => setMeal(value)}>{value === 'all' ? 'Все' : value === 'breakfast' ? 'Завтраки' : value === 'lunch' ? 'Обеды' : 'Ужины'} ({value === 'all' ? recipes.data.recipes.length : recipes.data.recipes.filter(recipe => recipe.meal === value).length})</button>)}</div></div><div className="nutritionGoalRow"><Select label="Показывать сначала" value={goal} onChange={event => setGoalOverride(event.target.value as 'fat_loss' | 'maintain' | 'gain')} options={[{value:'maintain',label:'Повседневные блюда'},{value:'fat_loss',label:'Для снижения веса'},{value:'gain',label:'Для набора массы'}]} hint={goal === 'gain' ? 'Выше блюда с большей калорийностью и белком. Количество порций выбираете вы.' : goal === 'fat_loss' ? 'Выше блюда с большим количеством белка относительно калорийности.' : 'Все подходящие рецепты без сортировки по цели.'} /></div>{onboarding.data?.answers && <label className="inlineCheck"><input type="checkbox" checked={showAll} onChange={event => setShowAll(event.target.checked)} />Показать блюда вне предпочтений по времени и вегетарианству; аллергены остаются исключены</label>}{visible.length ? <div className="nutritionRecipes">{visible.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} library={recipes.data} initiallyOpen={recipe.id === selectedRecipe} alternatives={alternativesFor(recipe)} />)}</div> : <p className="card nutritionNoResults">{onboarding.data?.answers ? "Под ваши настройки рецептов не найдено. Попробуйте другой поиск или измените предпочтения." : "Ничего не найдено. Попробуйте другой приём пищи или запрос."}</p>}<p className="muted nutritionBasis">{recipes.data.basis}</p></>}
@@ -71,8 +87,9 @@ function RecipeCard({ recipe, library, initiallyOpen, alternatives }: { recipe: 
   useEffect(() => { if (initiallyOpen) detailsRef.current?.setAttribute('open', '') }, [initiallyOpen])
   const factor = portions / recipe.servings
   const totalGrams = recipe.ingredients.reduce((sum, item) => sum + item.grams * factor, 0)
+  const photo = recipePhotoIndex(recipe.id)
   return <details ref={detailsRef} className="card nutritionRecipe" id={`recipe-${recipe.id}`}>
-    <summary><span className="nutritionRecipeHeading"><strong>{recipe.name}</strong><small>{mealNames[recipe.meal]} · {recipe.minutes} мин · {readable(recipe.nutrition_per_serving.kcal)} ккал на порцию</small></span><span className="nutritionRecipeOpen"><span className="nutritionRecipeOpenText">Открыть рецепт</span><span className="nutritionRecipeCloseText">Свернуть рецепт</span></span></summary>
+    <summary><span className="nutritionRecipePhoto" aria-hidden="true" style={{ backgroundPosition: `${(photo % 4) * 100 / 3}% ${Math.floor(photo / 4) * 50}%` }} /><span className="nutritionRecipeHeading"><strong>{recipe.name}</strong><small>{mealNames[recipe.meal]} · {recipe.minutes} мин · {readable(recipe.nutrition_per_serving.kcal)} ккал на порцию</small></span><span className="nutritionRecipeOpen"><span className="nutritionRecipeOpenText">Открыть рецепт</span><span className="nutritionRecipeCloseText">Свернуть рецепт</span></span></summary>
     <div className="nutritionRecipeBody">
       <label className="nutritionPortions">Количество порций<input type="number" min="0.5" max="10" step="0.5" value={portions} onChange={event => { const value = Number(event.target.value); if (Number.isFinite(value) && value >= 0.5 && value <= 10) setPortions(value) }} /></label>
       <p className="nutritionRecipeTotal">Продукты: {readable(totalGrams)} г на {readable(portions)} порц.</p>

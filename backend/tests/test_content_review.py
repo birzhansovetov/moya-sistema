@@ -61,7 +61,7 @@ def test_study_books_and_guides_have_review_records() -> None:
     courses = json.loads(content.joinpath("study-v1.json").read_text())
     courses += [json.loads(content.joinpath(name).read_text()) for name in ("study-go-v1.json", "study-backend-v2.json")]
     for course in courses:
-        assert reviewed_variant("study", {**course, "review": reviews["study"][f"{course['id']}:{course['version']}"]["review"]}, date(2026, 10, 12))
+        assert reviewed_variant("study", {**course, "review": reviews["study"][f"{course['id']}:{course['version']}"]["review"]}, date(2026, 10, 14))
     for kind, name in (("book", "book_suggestions.json"), ("guide", "guides.json")):
         for item in json.loads(content.joinpath(name).read_text()):
-            assert reviewed_variant(kind, {**item, "review": reviews[kind][item["id"]]["review"]}, date(2026, 10, 12))
+            assert reviewed_variant(kind, {**item, "review": reviews[kind][item["id"]]["review"]}, date(2026, 10, 14))

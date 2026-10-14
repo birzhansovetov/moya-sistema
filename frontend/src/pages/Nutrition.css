@@ -23,6 +23,7 @@
 .nutritionNoResults{margin:0}
 .nutritionRecipes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
 .nutritionRecipe.card{padding:0;overflow:hidden}
+.nutritionRecipePhoto{display:block;flex:none;width:88px;aspect-ratio:1;background-image:url('/images/recipe-atlas.webp');background-size:400% 300%;background-repeat:no-repeat;background-color:#eee9e2;border-radius:12px}
 .nutritionRecipe>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:96px;cursor:pointer;padding:18px 20px;list-style:none}
 .nutritionRecipe[open]>summary{border-bottom:1px solid #e5e5e5}
 .nutritionRecipe>summary:focus-visible{outline:2px solid #202020;outline-offset:-4px;border-radius:12px}
@@ -54,7 +55,8 @@
 .nutritionRecipeOpen{color:#0b709f}
 .nutritionIngredients li{border-color:#d8e3ec}
 .cookingStart{margin:0 0 20px;min-height:48px}
-@media(max-width:650px){.nutritionRecipe>summary{min-height:88px;padding:16px}.nutritionRecipeOpen{min-width:0;padding:8px 10px}.nutritionRecipeBody{padding:18px 16px 20px}}
+@media(max-width:650px){.nutritionRecipe>summary{min-height:88px;padding:16px;gap:10px}.nutritionRecipePhoto{width:66px}.nutritionRecipeOpen{min-width:0;padding:8px 10px}.nutritionRecipeBody{padding:18px 16px 20px}}
+@media(max-width:390px){.nutritionRecipe>summary{flex-wrap:wrap}.nutritionRecipeHeading{flex-basis:calc(100% - 78px)}.nutritionRecipeOpen{margin-left:76px}}
 .cookingBackdrop{position:fixed;inset:0;z-index:1000;background:rgba(15,20,27,.7);display:grid;place-items:center;padding:16px}
 .cookingDialog{width:min(920px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:#f7f8f8;color:#17202a;border-radius:18px;box-shadow:0 25px 80px rgba(0,0,0,.3)}
 .cookingHeader{display:flex;justify-content:space-between;gap:20px;align-items:start;padding:24px 28px;border-bottom:1px solid #d9e0e2}

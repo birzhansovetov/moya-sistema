@@ -15,7 +15,7 @@ const spheres: { key: Sphere; name: string; icon: string; description: string; r
   { key: 'education', name: 'Обучение', icon: '◇', description: 'Курсы Java и Go, книги и дневник чтения', ready: true },
   { key: 'profession', name: 'Профессия', icon: '▣', description: 'Backend-разработка: сервис, база данных и портфолио', ready: true },
   { key: 'languages', name: 'Языки', icon: '◌', description: 'Английский от A2 до B2: уроки, аудио и повторение', ready: true },
-  { key: 'finance', name: 'Финансы', icon: '◫', description: 'Расходы и аналитика по категориям', ready: true },
+  { key: 'finance', name: 'Финансы', icon: '◫', description: 'Доходы, расходы и анализ бюджета', ready: true },
   { key: 'personal', name: 'Личное', icon: '○', description: 'События, отдых и личный дневник', ready: true },
 ]
 

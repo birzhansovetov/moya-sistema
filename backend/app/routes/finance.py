@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 
 from app.auth import AuthContext, get_current_user, require_csrf
 from app.db import get_db, utc_now
-from app.models import Expense, ExpenseCategory, User
+from app.models import Expense, ExpenseCategory, Income, User
 
 router = APIRouter(prefix="/api/finance", tags=["finance"])
 Currency = Literal["KZT", "USD", "EUR", "RUB", "GBP"]
@@ -47,6 +47,26 @@ class ExpenseValues(BaseModel):
 
 
 class ExpenseCreate(ExpenseValues):
+    create_key: str = Field(min_length=1, max_length=100)
+
+
+class IncomeValues(BaseModel):
+    amount: Decimal = Field(gt=0, le=Decimal("9999999999.99"), max_digits=12, decimal_places=2, allow_inf_nan=False)
+    currency: Currency
+    source: str = Field(min_length=1, max_length=60)
+    date: DateValue | None = None
+    note: str = Field(default="", max_length=500)
+
+    @field_validator("source")
+    @classmethod
+    def clean_source(cls, value):
+        value = value.strip()
+        if not value:
+            raise ValueError("Укажите источник дохода")
+        return value
+
+
+class IncomeCreate(IncomeValues):
     create_key: str = Field(min_length=1, max_length=100)
 
 
@@ -101,6 +121,27 @@ def _expense(item, category):
     return {"id": item.id, "amount": _money(item.amount_minor), "currency": item.currency,
             "category_id": item.category_id, "category_name": category.name, "date": item.expense_date.isoformat(),
             "note": item.note, "deleted": item.deleted_at is not None}
+
+
+def _income(item):
+    return {"id": item.id, "amount": _money(item.amount_minor), "currency": item.currency,
+            "source": item.source, "date": item.income_date.isoformat(), "note": item.note,
+            "deleted": item.deleted_at is not None}
+
+
+def _owned_income(db, user_id, income_id):
+    item = db.get(Income, income_id)
+    if item is None or item.user_id != user_id:
+        raise HTTPException(404, "Доход не найден")
+    return item
+
+
+def _income_values(payload, user):
+    day = payload.date or _today(user)
+    if day > _today(user):
+        raise HTTPException(422, "Укажите дату уже полученного дохода")
+    return {"amount_minor": int(payload.amount * 100), "currency": payload.currency,
+            "source": payload.source, "income_date": day, "note": payload.note.strip()}
 
 
 def _values(payload, user):
@@ -242,6 +283,77 @@ def restore_expense(expense_id: str, context: AuthContext = Depends(require_csrf
     return _expense(item, _owned_category(db, context.user.id, item.category_id))
 
 
+@router.get("/incomes")
+def incomes(start: DateValue | None = None, end: DateValue | None = None, currency: Currency | None = None,
+            deleted: bool = False, limit: int = Query(default=30, ge=1, le=100), offset: int = Query(default=0, ge=0),
+            user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    default_start, default_end = _month(_today(user).strftime("%Y-%m"))
+    start, end = start or default_start, end or default_end
+    if start > end:
+        raise HTTPException(422, "Начало периода позже его окончания")
+    filters = [Income.user_id == user.id, Income.currency == (currency or user.finance_currency),
+               Income.income_date.between(start, end),
+               Income.deleted_at.is_not(None) if deleted else Income.deleted_at.is_(None)]
+    count = db.scalar(select(func.count()).select_from(Income).where(*filters))
+    items = db.scalars(select(Income).where(*filters).order_by(Income.income_date.desc(), Income.created_at.desc(), Income.id)
+                       .limit(limit).offset(offset)).all()
+    return {"items": [_income(item) for item in items], "total": count, "limit": limit, "offset": offset}
+
+
+@router.post("/incomes", status_code=201)
+def add_income(payload: IncomeCreate, context: AuthContext = Depends(require_csrf), db: Session = Depends(get_db)):
+    values = _income_values(payload, context.user)
+    fingerprint = hashlib.sha256(json.dumps(values, default=str, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+
+    def replay(item):
+        if item.create_fingerprint != fingerprint:
+            raise HTTPException(409, "Этот ключ сохранения уже использован для другого дохода")
+        if item.deleted_at is not None:
+            raise HTTPException(409, "Доход уже удалён. Его можно восстановить в удалённых записях.")
+        return _income(item)
+
+    existing = db.scalar(select(Income).where(Income.user_id == context.user.id, Income.create_key == payload.create_key))
+    if existing:
+        return replay(existing)
+    item = Income(user_id=context.user.id, create_key=payload.create_key, create_fingerprint=fingerprint, **values)
+    db.add(item)
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        existing = db.scalar(select(Income).where(Income.user_id == context.user.id, Income.create_key == payload.create_key))
+        if existing:
+            return replay(existing)
+        raise HTTPException(409, "Не удалось сохранить доход. Повторите попытку.") from None
+    return _income(item)
+
+
+@router.patch("/incomes/{income_id}")
+def edit_income(income_id: str, payload: IncomeValues, context: AuthContext = Depends(require_csrf), db: Session = Depends(get_db)):
+    item = _owned_income(db, context.user.id, income_id)
+    if item.deleted_at is not None:
+        raise HTTPException(409, "Сначала восстановите удалённый доход")
+    for key, value in _income_values(payload, context.user).items():
+        setattr(item, key, value)
+    db.commit()
+    return _income(item)
+
+
+@router.delete("/incomes/{income_id}", status_code=204)
+def delete_income(income_id: str, context: AuthContext = Depends(require_csrf), db: Session = Depends(get_db)):
+    item = _owned_income(db, context.user.id, income_id)
+    item.deleted_at = item.deleted_at or utc_now()
+    db.commit()
+
+
+@router.post("/incomes/{income_id}/restore")
+def restore_income(income_id: str, context: AuthContext = Depends(require_csrf), db: Session = Depends(get_db)):
+    item = _owned_income(db, context.user.id, income_id)
+    item.deleted_at = None
+    db.commit()
+    return _income(item)
+
+
 @router.get("/summary")
 def summary(month: str = Query(pattern=r"^\d{4}-\d{2}$"), currency: Currency | None = None,
             user: User = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -260,6 +372,15 @@ def summary(month: str = Query(pattern=r"^\d{4}-\d{2}$"), currency: Currency | N
                          .join(Expense, Expense.category_id == ExpenseCategory.id)
                          .where(*scope, Expense.expense_date.between(month_start, month_end))
                          .group_by(ExpenseCategory.id, ExpenseCategory.name).order_by(func.sum(Expense.amount_minor).desc())).all()
+    income_total = db.scalar(select(func.sum(Income.amount_minor)).where(
+        Income.user_id == user.id, Income.currency == currency, Income.deleted_at.is_(None),
+        Income.income_date.between(month_start, month_end))) or 0
+    income_sources = db.execute(select(Income.source, func.sum(Income.amount_minor))
+        .where(Income.user_id == user.id, Income.currency == currency, Income.deleted_at.is_(None),
+               Income.income_date.between(month_start, month_end))
+        .group_by(Income.source).order_by(func.sum(Income.amount_minor).desc(), Income.source)).all()
     return {"currency": currency, "today": today.isoformat(), "week_start": week_start.isoformat(), "week_end": week_end.isoformat(),
             "month": month, "today_total": _money(today_sum), "week_total": _money(week_sum), "month_total": _money(month_sum),
+            "income_total": _money(income_total), "net_total": _money(income_total - (month_sum or 0)),
+            "income_sources": [{"name": source, "amount": _money(total)} for source, total in income_sources],
             "categories": [{"id": category_id, "name": name, "amount": _money(total)} for category_id, name, total in grouped]}

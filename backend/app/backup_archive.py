@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 
 from app.db import utc_now
 from app.models import (
-    Expense, ExpenseCategory, FoodLog, NutritionMenu, NutritionProfile,
+    Expense, ExpenseCategory, Income, FoodLog, NutritionMenu, NutritionProfile,
     PersonalEntry, ReadingBook, ReadingLog, SportPlan, StudyAttempt,
     StudyDraft, StudyPlan, StudyReview, Subtask, Task, TaskCompletion,
     TrainingFeedback, User, WeightLog, WorkoutDraft, WorkoutLog,
@@ -30,7 +30,7 @@ PERSONAL_MODELS = (
     Task, Subtask, TaskCompletion,
     SportPlan, WorkoutLog, WorkoutDraft, TrainingFeedback,
     NutritionProfile, NutritionMenu, FoodLog, WeightLog,
-    ExpenseCategory, Expense,
+    ExpenseCategory, Expense, Income,
     PersonalEntry, ReadingBook, ReadingLog,
     StudyPlan, StudyAttempt, StudyDraft, StudyReview,
 )
@@ -196,7 +196,7 @@ def validate_snapshot(value: object, email: str) -> dict[str, Any]:
         raise ArchiveError("Неверная структура архива")
     current_tables = set(PERSONAL_TABLES)
     missing_tables = current_tables - set(tables)
-    if set(tables) - current_tables or not missing_tables <= {"training_feedback", "workout_drafts"}:
+    if set(tables) - current_tables or not missing_tables <= {"training_feedback", "workout_drafts", "incomes"}:
         raise ArchiveError("Неверная структура архива")
     for table in missing_tables:
         tables[table] = []

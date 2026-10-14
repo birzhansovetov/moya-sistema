@@ -1639,9 +1639,18 @@
       "review": {
         "license": "platform-authored guide with linked source attribution",
         "source": "platform",
-        "checked_at": "2026-10-12",
-        "checked_by": "Codex structural catalog audit",
+        "checked_at": "2026-10-14",
+        "checked_by": "Codex source and structure check",
         "recheck_by": "2027-10-07"
+      }
+    },
+    "finance-budget": {
+      "review": {
+        "license": "platform-authored guide with linked source attribution",
+        "source": "platform",
+        "checked_at": "2026-10-14",
+        "checked_by": "Codex source and structure check",
+        "recheck_by": "2027-04-14"
       }
     },
     "personal-change": {

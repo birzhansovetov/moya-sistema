@@ -13,7 +13,7 @@ from app.backup_archive import (
     snapshot_user,
     validate_snapshot,
 )
-from app.models import Expense, ExpenseCategory, Task, User
+from app.models import Expense, ExpenseCategory, Income, Task, User
 from conftest import Mailbox
 from test_spheres import sign_in
 
@@ -21,7 +21,7 @@ from test_spheres import sign_in
 EXPECTED_TABLES = {
     "tasks", "subtasks", "task_completions", "sport_plans", "workout_logs", "workout_drafts",
     "nutrition_profiles", "nutrition_menus", "food_logs", "weight_logs",
-    "expense_categories", "expenses", "personal_entries", "reading_books",
+    "expense_categories", "expenses", "incomes", "personal_entries", "reading_books",
     "reading_logs", "study_plans", "study_attempts", "study_drafts", "study_reviews", "training_feedback",
 }
 
@@ -65,6 +65,7 @@ def test_snapshot_covers_all_personal_tables_but_no_auth_secrets(client, mailbox
         db.add(ExpenseCategory(id="category-one", user_id=one.id, name="Еда", name_key="еда"))
         db.flush()
         db.add(Expense(id="expense-one", user_id=one.id, category_id="category-one", amount_minor=12345, currency="KZT", expense_date=date(2026, 10, 10), create_key="expense-key", create_fingerprint="fingerprint"))
+        db.add(Income(id="income-one", user_id=one.id, amount_minor=20000, currency="KZT", source="Работа", income_date=date(2026, 10, 10), create_key="income-key", create_fingerprint="fingerprint"))
         db.commit()
         snapshot = snapshot_user(db, one)
     assert set(PERSONAL_TABLES) == EXPECTED_TABLES
@@ -72,6 +73,7 @@ def test_snapshot_covers_all_personal_tables_but_no_auth_secrets(client, mailbox
     assert snapshot["tables"]["tasks"][0]["title"] == "Моя задача"
     assert snapshot["tables"]["expenses"][0]["amount_minor"] == 12345
     assert snapshot["tables"]["expenses"][0]["expense_date"] == "2026-10-10"
+    assert snapshot["tables"]["incomes"][0]["amount_minor"] == 20000
     assert "password_hash" not in json.dumps(snapshot)
     assert "login_sessions" not in snapshot["tables"]
     sign_in(client, mailbox, "two@example.com")
@@ -98,6 +100,13 @@ def test_validation_rejects_foreign_email_unknown_fields_and_broken_links():
     bad["tables"]["tasks"] = [{"id": "same", "user_id": "owner-1"}, {"id": "same", "user_id": "owner-1"}]
     with pytest.raises(ArchiveError):
         validate_snapshot(bad, "one@example.com")
+
+
+def test_archive_before_income_feature_restores_with_empty_incomes():
+    old = empty_snapshot()
+    del old["tables"]["incomes"]
+    checked = validate_snapshot(old, "one@example.com")
+    assert checked["tables"]["incomes"] == []
 
 
 def test_validation_rejects_unusable_profile_settings():

@@ -10,8 +10,8 @@ vi.mock('../auth', () => ({ useAuth: () => ({ user: { id: 'one', onboarding_comp
 
 test('unsuitable book offers another book from the same interest', async () => {
   apiMock.mockImplementation(async (path: string) => path === '/library/books' ? { items: [
-    { id: 'first', title: 'Книга А', author: 'Автор', interest: 'growth', description: 'Первое описание', questions: [], check: '', source: '', available_offline: true },
-    { id: 'second', title: 'Книга Б', author: 'Автор', interest: 'growth', description: 'Второе описание', questions: [], check: '', source: '', available_offline: true },
+    { id: 'first', title: 'Книга А', author: 'Автор', interest: 'growth', genres: ['self_development'], description: 'Первое описание', questions: [], check: '', source: '', available_offline: true },
+    { id: 'second', title: 'Книга Б', author: 'Автор', interest: 'growth', genres: ['self_development'], description: 'Второе описание', questions: [], check: '', source: '', available_offline: true },
   ] } : { paragraphs: ['Текст книги'], total: 1, next_offset: null })
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter><BookSuggestions onChoose={vi.fn()} /></MemoryRouter></QueryClientProvider>)
   await screen.findByText('Книга А · Автор')

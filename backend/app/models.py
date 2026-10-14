@@ -310,6 +310,26 @@ class Expense(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
 
 
+class Income(Base):
+    __tablename__ = "incomes"
+    __table_args__ = (
+        UniqueConstraint("user_id", "create_key", name="uq_income_create_key"),
+        Index("ix_incomes_scope_date", "user_id", "currency", "income_date"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
+    amount_minor: Mapped[int] = mapped_column(BigInteger)
+    currency: Mapped[str] = mapped_column(String(3))
+    source: Mapped[str] = mapped_column(String(60))
+    income_date: Mapped[date] = mapped_column(Date)
+    note: Mapped[str] = mapped_column(String(500), default="")
+    create_key: Mapped[str] = mapped_column(String(100))
+    create_fingerprint: Mapped[str] = mapped_column(String(64))
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
+
+
 class PersonalEntry(Base):
     __tablename__ = 'personal_entries'
     __table_args__ = (UniqueConstraint('user_id', 'create_key', name='uq_personal_create_key'),)
