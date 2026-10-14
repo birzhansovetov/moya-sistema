@@ -19,7 +19,7 @@ export function ProfilePage() {
     finally { setBusy(false) }
   }
   return <div className="pageNarrow">
-    <div className="pageHeader"><div><span className="eyebrow">АККАУНТ</span><h1>Профиль</h1><p>Данные для вашего личного пространства.</p></div></div>
+    <div className="pageHeader"><div><h1>Профиль</h1></div></div>
     <section className="card"><form className="formStack" onSubmit={save}>
       <label>Email<input value={user?.email || ''} disabled /></label>
       <label>Имя<input value={name} maxLength={80} onChange={event => setName(event.target.value)} placeholder="Как к вам обращаться" /></label>

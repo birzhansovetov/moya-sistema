@@ -41,6 +41,9 @@
 .sportProgression[open]>summary{margin-bottom:20px}
 .sportDetails{grid-template-columns:repeat(2,minmax(0,1fr))}
 #sport-sessions,#workout-journal{scroll-margin-top:110px}
+.sportPlanInfo{margin-top:16px;border-top:1px solid #d8d5cf}
+.sportPlanInfo>summary{display:flex;align-items:center;min-height:48px;cursor:pointer;font-weight:650}
+.sportPlanInfo>summary:focus-visible{outline:2px solid #22708b;outline-offset:2px}
 @media(max-width:700px){.sportDetails{grid-template-columns:1fr}.sportQuickActions{flex-direction:column}.sportQuickActions>*{width:100%}}
 .sportFurther{margin-top:22px}
 .sportFurther>summary{cursor:pointer;font-size:20px;font-weight:700}

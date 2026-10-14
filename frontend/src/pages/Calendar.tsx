@@ -32,7 +32,7 @@ export function CalendarPage() {
     setMonth(next); setSelectedDate(`${next}-01`)
   }
   return <div>
-    <div className="pageHeader"><div><span className="eyebrow">ПЛАНИРОВАНИЕ</span><h1>Календарь</h1><p>Ваши задачи и личные события по датам.</p></div></div>
+    <div className="pageHeader"><div><h1>Календарь</h1></div></div>
     <div className="calendarLayout"><section className="card calendarCard">
       <div className="calendarHeader"><h2>{label}</h2><div><button className="iconButton" aria-label="Предыдущий месяц" onClick={() => moveMonth(-1)}>‹</button><button className="iconButton" aria-label="Следующий месяц" onClick={() => moveMonth(1)}>›</button></div></div>
       {calendar.isError && <p role="alert" className="errorMessage">Не удалось загрузить календарь. <button className="textButton" onClick={() => void calendar.refetch()}>Повторить</button></p>}

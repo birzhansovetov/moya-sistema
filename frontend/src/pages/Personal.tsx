@@ -31,11 +31,11 @@ export function PersonalPage(){
     <h3>{item.title||'Запись дневника'}</h3>{item.body&&<p>{item.body}</p>}{item.kind==='diary'&&item.mood&&<p className="muted">Настроение: {moodNames[item.mood]}</p>}{item.impression&&<><h4>Впечатление</h4><p>{item.impression}</p></>}
     <div className={styles.actions}>{item.deleted?<button className="secondaryButton" disabled={busy} onClick={()=>restore.mutate(item.id)}>Восстановить запись</button>:<><button className="textButton" disabled={busy} onClick={event=>setEditing({entry:item,opener:event.currentTarget})}>Изменить запись</button><button className="textButton" disabled={busy} onClick={()=>remove.mutate(item.id)}>Удалить запись</button></>}</div>
   </article>
-  return <div className={styles.page}><div className="pageHeader"><div><Link to="/sections" className="textButton">Разделы</Link><span className="eyebrow">ЛИЧНОЕ ПРОСТРАНСТВО</span><h1>Личное</h1><p>Место для событий, новых интересов и собственных мыслей.</p></div><a className="secondaryButton" href="#personal-guides">Открыть гайды</a></div>
+  return <div className={styles.page}><div className="pageHeader"><div><Link to="/sections" className="textButton">Разделы</Link><h1>Дневник</h1><p>Запишите мысль или событие. Записи видны только вам.</p></div></div>
     {notice&&<div className="successMessage" role="status">{notice} {undo&&<button className="textButton" disabled={busy} onClick={()=>restore.mutate(undo)}>Отменить удаление</button>}</div>}
     {(remove.error||restore.error)&&<p role="alert" className="errorMessage">{(remove.error||restore.error)?.message}</p>}
-    <div className={styles.workspace}><section className="card"><h2>Новая запись</h2><p className="muted">Дневник виден только вам. Его текст не выводится в календарь.</p><PersonalForm date={params.get('date')&&/^\d{4}-\d{2}-\d{2}$/.test(params.get('date')!)?params.get('date')!:today} onSaved={saved}/></section>
-      <section className={styles.stack}><h2>Ваши записи</h2><details className="card secondaryFilters"><summary>Поиск и фильтры</summary><div className={styles.filters}>
+    <div className={`${styles.workspace} ${styles.diaryWorkspace}`}><section className={`card ${styles.compose}`}><h2>Новая запись</h2><PersonalForm date={params.get('date')&&/^\d{4}-\d{2}-\d{2}$/.test(params.get('date')!)?params.get('date')!:today} onSaved={saved}/></section>
+      <section className={styles.stack}><div className={styles.historyHeading}><h2>История</h2><span className="muted">{entries.data ? `${entries.data.total} записей` : ''}</span></div><details className="card secondaryFilters"><summary>Поиск и фильтры</summary><div className={styles.filters}>
         <label>Тип в истории<select value={kind} onChange={event=>{setKind(event.target.value);setOffset(0)}}><option value="">Все записи</option>{Object.entries(kindNames).map(([value,name])=><option key={value} value={value}>{name}</option>)}</select></label>
         <label>Поиск по записям<input type="search" maxLength={100} value={q} onChange={event=>{setQ(event.target.value);setOffset(0)}}/></label>
         <label>С<input type="date" value={start} onChange={event=>{setStart(event.target.value);setOffset(0)}}/></label><label>По<input type="date" value={end} onChange={event=>{setEnd(event.target.value);setOffset(0)}}/></label>
@@ -47,7 +47,7 @@ export function PersonalPage(){
         <div className={styles.actions}><span className="muted">Всего: {entries.data.total}</span>{offset>0&&<button className="secondaryButton" onClick={()=>setOffset(Math.max(0,offset-30))}>Назад</button>}{offset+30<entries.data.total&&<button className="secondaryButton" onClick={()=>setOffset(offset+30)}>Далее</button>}</div>
       </>}
     </section></div>
-    <Guides area="personal" />
+    <div className={styles.guidesLink}><a href="#personal-guides">Гайды по личному развитию</a></div><Guides area="personal" collapsePreferred />
     {editing&&<TaskDialog label="Редактировать запись" returnFocusTo={editing.opener} onClose={()=>{if(!editorPending)setEditing(null)}}><section className={`card ${styles.dialog}`}><h2>Редактировать запись</h2><PersonalForm initial={editing.entry} date={today} onSaved={()=>{setEditing(current=>current===editing?null:current);saved()}} onPendingChange={setEditorPending} onCancel={()=>{if(!editorPending)setEditing(null)}}/></section></TaskDialog>}
   </div>
 }

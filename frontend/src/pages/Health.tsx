@@ -8,7 +8,7 @@ export function HealthPage(){
   {id:'calories',index:'03',title:'Калькулятор калорий',description:'Получите ориентир по возрасту, росту, весу и активности.',meta:'Личный расчёт',to:'/health/calories'},
  ]
  return <div className={styles.page}>
-  <div className="pageHeader"><div><Link className="textButton" to="/sections">Все сферы</Link><span className="eyebrow">ДВИЖЕНИЕ И ПИТАНИЕ</span><h1>Здоровье</h1><p>Тренировки, рецепты и расчёт питания собраны отдельно, чтобы было проще найти нужное.</p></div></div>
+  <div className="pageHeader"><div><Link className="textButton" to="/sections">Все сферы</Link><h1>Здоровье</h1><p>Выберите тренировку, рецепт или расчёт калорий.</p></div></div>
   <div className={styles.grid}>{areas.map(area=><Link className={`${styles.card} ${styles[area.id]}`} to={area.to} key={area.id}><div className={styles.top}><span>{area.index}</span><span>{area.meta}</span></div><div><h2>{area.title}</h2><p>{area.description}</p></div><span className={styles.action}>Открыть {area.id==='calories'?'расчёт':area.title.toLowerCase()}</span></Link>)}</div>
  </div>
 }

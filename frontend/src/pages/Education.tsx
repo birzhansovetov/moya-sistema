@@ -22,8 +22,8 @@ export function EducationPage(){
   {id:'java',title:'Основы Java',description:'Язык, примеры и упражнения в своём темпе.',chapters:'Основы',to:'/education/java',state:java},
  ]
  return <div className={styles.page}>
-  <div className={styles.header}><Link className="textButton" to="/sections">Разделы</Link><span className={styles.eyebrow}>ВАША БИБЛИОТЕКА</span><h1>Обучение</h1><p>Продолжайте выбранный курс или откройте книгу. Материалы и ваши результаты хранятся здесь.</p></div>
-  <section className={styles.featured} aria-labelledby="education-courses"><div className={styles.sectionHeading}><div><span className={styles.eyebrow}>КУРСЫ</span><h2 id="education-courses">Учитесь шаг за шагом</h2></div><span>2 маршрута</span></div><div className={styles.courseGrid}>{courses.map(course=>{
+  <div className={styles.header}><Link className="textButton" to="/sections">Разделы</Link><h1>Обучение</h1><p>Выберите курс или продолжите чтение.</p></div>
+  <section className={styles.featured} aria-labelledby="education-courses"><div className={styles.sectionHeading}><h2 id="education-courses">Курсы</h2></div><div className={styles.courseGrid}>{courses.map(course=>{
    const state=course.state.data
    const catalogCount=catalog.data?.items.find(item=>item.id===course.id)?.lesson_count
    const total=state?.plan?.lesson_ids.length||catalogCount||0
