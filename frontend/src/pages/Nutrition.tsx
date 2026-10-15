@@ -1,3 +1,4 @@
+import { AssistantMaterialButton } from '../components/SectionAssistant'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
@@ -90,7 +91,7 @@ function RecipeCard({ recipe, library, initiallyOpen, alternatives }: { recipe: 
   const photo = recipePhotoIndex(recipe.id)
   return <details ref={detailsRef} className="card nutritionRecipe" id={`recipe-${recipe.id}`}>
     <summary><span className={`nutritionRecipePhoto${photo === null ? ' nutritionRecipePhoto--placeholder' : ''}`} aria-hidden="true" style={photo === null ? undefined : { backgroundPosition: `${(photo % 4) * 100 / 3}% ${Math.floor(photo / 4) * 50}%` }}>{photo === null ? 'Фото не добавлено' : null}</span><span className="nutritionRecipeHeading"><strong>{recipe.name}</strong><small>{mealNames[recipe.meal]} · {recipe.minutes} мин · {readable(recipe.nutrition_per_serving.kcal)} ккал на порцию</small></span><span className="nutritionRecipeOpen"><span className="nutritionRecipeOpenText">Открыть рецепт</span><span className="nutritionRecipeCloseText">Свернуть рецепт</span></span></summary>
-    <div className="nutritionRecipeBody">
+    <div className="nutritionRecipeBody"><AssistantMaterialButton section={'nutrition'} material={{kind:'recipe',id:recipe.id}}/>
       <label className="nutritionPortions">Количество порций<input type="number" min="0.5" max="10" step="0.5" value={portions} onChange={event => { const value = Number(event.target.value); if (Number.isFinite(value) && value >= 0.5 && value <= 10) setPortions(value) }} /></label>
       <p className="nutritionRecipeTotal">Продукты: {readable(totalGrams)} г на {readable(portions)} порц.</p>
       <h3>Ингредиенты</h3>
