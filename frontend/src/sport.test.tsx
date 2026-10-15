@@ -52,7 +52,7 @@ test('questionnaire chooses a prepared plan and keeps answers after failed save'
   expect(screen.getByLabelText('Место тренировки')).toHaveValue('home')
   expect(screen.getByText('Сила и ходьба дома')).toBeInTheDocument()
   const request = apiMock.mock.calls.find(([path, init]) => path === '/health/sport/match' && init)
-  expect(JSON.parse(request?.[1]?.body as string)).toMatchObject(answers)
+  expect(JSON.parse(request?.[1]?.body as string)).toMatchObject({ ...answers, level: 'returning', minutes_per_session: 45 })
 })
 
 test('questionnaire offers four days and a home barbell', async () => {
@@ -65,7 +65,7 @@ test('questionnaire offers four days and a home barbell', async () => {
   })
   mount()
   await screen.findByRole('heading', { name: 'Спорт' })
-  expect(screen.getByText(/Если приседания к стулу и отжимания от стены уже лёгкие/)).toBeInTheDocument()
+  expect(screen.getByText(/Опыт — это частота и устойчивость занятий/)).toBeInTheDocument()
   fireEvent.change(screen.getByLabelText('Занятий в неделю'), { target: { value: '4' } })
   fireEvent.click(screen.getByLabelText('Штанга'))
   expect(screen.getByLabelText('Штанга')).toBeChecked()
@@ -139,6 +139,7 @@ test('guided workout shows one exercise at a time and resumes at the first unfin
   mount()
   fireEvent.click(await screen.findByRole('button', { name: 'Записать тренировку' }))
   expect(await screen.findByText('Упражнение 1 из 2')).toBeInTheDocument()
+  expect(screen.getByRole('region', { name: 'Активное занятие' })).toHaveTextContent('Разминка:')
   expect(screen.getByLabelText('Приседание до стула — подход 1 (повторения)')).toBeInTheDocument()
   expect(screen.queryByLabelText('Быстрая ходьба — подход 1 (повторения)')).not.toBeInTheDocument()
   fireEvent.change(screen.getByLabelText('Приседание до стула — подход 1 (повторения)'), { target: { value: '10' } })
@@ -204,12 +205,26 @@ test('unavailable new match stays separate from the saved plan', async () => {
   })
   mount()
   await screen.findByRole('heading', { name: 'Сила и ходьба дома' })
-  fireEvent.change(screen.getByLabelText('Уровень'), { target: { value: 'intermediate' } })
+  fireEvent.change(screen.getByLabelText('Опыт тренировок'), { target: { value: 'irregular' } })
   fireEvent.click(screen.getByRole('button', { name: 'Подобрать программу' }))
   await screen.findByRole('heading', { name: 'Для этих условий программы пока нет' })
   expect(screen.getByText('Для среднего уровня программы пока нет.')).toBeInTheDocument()
   expect(screen.getByText(/Сейчас действует этот план/)).toBeInTheDocument()
   expect(screen.getByRole('heading', { name: 'Сила и ходьба дома' })).toBeInTheDocument()
+})
+
+test('experience selector explains all three new paths while preserving an old plan', async () => {
+  apiMock.mockReset().mockImplementation(async (path: string) => {
+    if (path === '/health/sport/catalog') return { version: '1', programs: [program], exercises: exercise }
+    if (path === '/health/sport/plan') return { plan: { id: 'plan-1', answers, program, started_on: '2026-10-06', content_version: '1' } }
+    if (path === '/health/sport/workouts') return { items: [] }
+    throw new Error(`Unexpected ${path}`)
+  })
+  mount()
+  await screen.findByRole('heading', { name: 'Сила и ходьба дома' })
+  const selector = screen.getByLabelText('Опыт тренировок') as HTMLSelectElement
+  expect(Array.from(selector.options).map(option => option.value)).toEqual(['returning', 'irregular', 'regular'])
+  expect(Array.from(selector.options).some(option => option.textContent?.includes('Занимался регулярно'))).toBe(true)
 })
 
 test('workout journal saves distinct reps for each set and optional weight', async () => {

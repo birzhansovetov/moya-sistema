@@ -17,7 +17,7 @@ const initialPreferences: NutritionPreferences = { vegetarian: false, allergies:
 const errorText = (cause: unknown) => cause instanceof Error ? cause.message : 'Не удалось выполнить действие. Попробуйте ещё раз.'
 const readable = (value: number) => Number.isInteger(value) ? `${value}` : value.toFixed(1)
 
-function recipePhotoIndex(id: string): number {
+function recipePhotoIndex(id: string): number | null {
   if (id.includes('salmon')) return 11
   if (id.includes('patty') || id.includes('patties')) return 9
   if (id.includes('soup')) return 7
@@ -30,7 +30,7 @@ function recipePhotoIndex(id: string): number {
   if (id.includes('lentil')) return 5
   if (id.includes('potato') || id.includes('zucchini_chicken')) return 6
   if (id.includes('chicken')) return 4
-  return 10
+  return null
 }
 
 export function NutritionPage({ view = 'nutrition' }: { view?: 'nutrition' | 'calculator' }) {
@@ -89,7 +89,7 @@ function RecipeCard({ recipe, library, initiallyOpen, alternatives }: { recipe: 
   const totalGrams = recipe.ingredients.reduce((sum, item) => sum + item.grams * factor, 0)
   const photo = recipePhotoIndex(recipe.id)
   return <details ref={detailsRef} className="card nutritionRecipe" id={`recipe-${recipe.id}`}>
-    <summary><span className="nutritionRecipePhoto" aria-hidden="true" style={{ backgroundPosition: `${(photo % 4) * 100 / 3}% ${Math.floor(photo / 4) * 50}%` }} /><span className="nutritionRecipeHeading"><strong>{recipe.name}</strong><small>{mealNames[recipe.meal]} · {recipe.minutes} мин · {readable(recipe.nutrition_per_serving.kcal)} ккал на порцию</small></span><span className="nutritionRecipeOpen"><span className="nutritionRecipeOpenText">Открыть рецепт</span><span className="nutritionRecipeCloseText">Свернуть рецепт</span></span></summary>
+    <summary><span className={`nutritionRecipePhoto${photo === null ? ' nutritionRecipePhoto--placeholder' : ''}`} aria-hidden="true" style={photo === null ? undefined : { backgroundPosition: `${(photo % 4) * 100 / 3}% ${Math.floor(photo / 4) * 50}%` }}>{photo === null ? 'Фото не добавлено' : null}</span><span className="nutritionRecipeHeading"><strong>{recipe.name}</strong><small>{mealNames[recipe.meal]} · {recipe.minutes} мин · {readable(recipe.nutrition_per_serving.kcal)} ккал на порцию</small></span><span className="nutritionRecipeOpen"><span className="nutritionRecipeOpenText">Открыть рецепт</span><span className="nutritionRecipeCloseText">Свернуть рецепт</span></span></summary>
     <div className="nutritionRecipeBody">
       <label className="nutritionPortions">Количество порций<input type="number" min="0.5" max="10" step="0.5" value={portions} onChange={event => { const value = Number(event.target.value); if (Number.isFinite(value) && value >= 0.5 && value <= 10) setPortions(value) }} /></label>
       <p className="nutritionRecipeTotal">Продукты: {readable(totalGrams)} г на {readable(portions)} порц.</p>
@@ -134,7 +134,7 @@ function CalorieCalculatorPage() {
   function update<K extends keyof NutritionAnswers>(key: K, value: NutritionAnswers[K]) { setAnswers(current => ({ ...current, [key]: value })); setEstimate(null); setNotice('') }
   function validate() { if (answers.age < 1 || answers.height_cm < 100 || answers.weight_kg < 25 || answers.formula_sex === 'unspecified' || answers.activity === 'unspecified') { setError('Укажите возраст, рост, вес, пол и активность для расчёта.'); return false } setError(''); return true }
   return <div className="healthPage nutritionCalculatorLayout">
-    <div className="pageHeader"><div><span className="eyebrow">ЗДОРОВЬЕ · РАСЧЁТ</span><h1>Калькулятор калорий</h1><p>Укажите свои данные и цель — покажем ориентир калорий на день для похудения, поддержания или набора веса.</p></div><Link className="secondaryButton" to="/health">К здоровью</Link></div>
+    <div className="pageHeader"><div><h1>Калькулятор калорий</h1><p>Укажите свои данные и цель — покажем ориентир калорий на день для похудения, поддержания или набора веса.</p></div><Link className="secondaryButton" to="/health">К здоровью</Link></div>
     {error && <p role="alert" className="errorMessage">{error}</p>}{notice && <p role="status" className="successMessage">{notice}</p>}
     {profile.isError && <p role="alert" className="errorMessage">Не удалось загрузить сохранённые данные. <button className="textButton" onClick={() => void profile.refetch()}>Повторить</button></p>}
     <div className="healthContent"><Card className="calorieForm"><h2>Ваши данные</h2><div className="formStack">
@@ -145,7 +145,7 @@ function CalorieCalculatorPage() {
       <details className="calorieConditions"><summary>Состояния, при которых обычный расчёт может не подойти</summary><div className="formStack"><label className="inlineCheck"><input type="checkbox" checked={answers.pregnant} onChange={event => update('pregnant', event.target.checked)} />Беременность</label><label className="inlineCheck"><input type="checkbox" checked={answers.breastfeeding} onChange={event => update('breastfeeding', event.target.checked)} />Грудное вскармливание</label><label className="inlineCheck"><input type="checkbox" checked={answers.special_condition} onChange={event => update('special_condition', event.target.checked)} />Есть состояние, влияющее на питание или обмен веществ</label></div></details>
       <Button className="calorieCalculate" loading={calculate.isPending} onClick={() => { if (validate()) calculate.mutate() }}>Рассчитать калории</Button>
     </div></Card>
-    {estimate && <section className="card calorieResult"><h2>{answers.goal === 'fat_loss' ? 'Для похудения' : answers.goal === 'gain' ? 'Для набора веса' : 'Для поддержания веса'}</h2>{estimate.estimate ? <><p className="muted">Ориентир на день</p><strong className="healthHeroNumber">{estimate.estimate.target_kcal} ккал</strong><p>Для поддержания текущего веса: {estimate.estimate.maintenance_kcal} ккал/день.</p><p>Белки {estimate.estimate.protein_g} г · жиры {estimate.estimate.fat_g} г · углеводы {estimate.estimate.carbs_g} г</p><button className="secondaryButton" disabled={save.isPending} onClick={() => { if (validate()) save.mutate() }}>Сохранить расчёт</button><details className="calorieMethod"><summary>Как получено число</summary><p>Расход в покое: {estimate.estimate.resting_kcal} ккал.</p><p>{estimate.estimate.explanation}</p><p className="muted">{estimate.estimate.limits}</p></details></> : <><h3>Готового расчёта нет</h3>{estimate.reasons.map(reason => <p key={reason}>{reason}</p>)}</>}{Object.entries(estimate.sources).map(([key, url]) => <a className="healthSource" key={key} href={url} target="_blank" rel="noreferrer">Источник: {key}</a>)}</section>}
+    {estimate && <section className="card calorieResult"><h2>{answers.goal === 'fat_loss' ? 'Для похудения' : answers.goal === 'gain' ? 'Для набора веса' : 'Для поддержания веса'}</h2>{estimate.estimate ? <><p className="muted">Ориентир на день, ккал/день</p><strong className="healthHeroNumber">{estimate.estimate.target_kcal} ккал</strong><p>Для поддержания текущего веса: {estimate.estimate.maintenance_kcal} ккал/день.</p><p>Белки {estimate.estimate.protein_g} г · жиры {estimate.estimate.fat_g} г · углеводы {estimate.estimate.carbs_g} г</p><button className="secondaryButton" disabled={save.isPending} onClick={() => { if (validate()) save.mutate() }}>Сохранить расчёт</button><details className="calorieMethod"><summary>Как получено число</summary><p>Расход в покое: {estimate.estimate.resting_kcal} ккал.</p><p>{estimate.estimate.explanation}</p><p className="muted">{estimate.estimate.limits}</p></details></> : <><h3>Готового расчёта нет</h3>{estimate.reasons.map(reason => <p key={reason}>{reason}</p>)}</>}{Object.entries(estimate.sources).map(([key, url]) => <a className="healthSource" key={key} href={url} target="_blank" rel="noreferrer">Источник: {key}</a>)}</section>}
     </div>
   </div>
 }

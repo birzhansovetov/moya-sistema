@@ -15,14 +15,15 @@ import './Sport.css'
 
 type Place = 'home' | 'outdoor' | 'gym'
 type Equipment = 'low_bar' | 'bench' | 'machines' | 'dumbbells' | 'bands' | 'barbell'
-type Answers = { goal: 'fat_loss_muscle_focus' | 'maintain' | 'strength_gain'; level: 'beginner' | 'intermediate'; place: Place; equipment: Equipment[]; days_per_week: number; minutes_per_session: number; limitations: boolean; weekdays: number[] }
+type Experience = 'returning' | 'irregular' | 'regular'
+type Answers = { goal: 'fat_loss_muscle_focus' | 'maintain' | 'strength_gain'; level: Experience; place: Place; equipment: Equipment[]; days_per_week: number; minutes_per_session: number; limitations: boolean; weekdays: number[] }
 type Work = { exercise_id: string; sets: number; reps: string; rest_seconds: number; note: string }
 type Session = { id: string; title: string; estimated_minutes?: number; warmup: string; work: Work[]; cooldown: string }
 type Program = { id: string; title: string; level?: 'beginner' | 'intermediate'; overview: string; duration_weeks: number; progression: string[]; sources: string[]; sessions: Session[] }
 type Exercise = { name: string; technique: string; common_errors: string; easier_version: string; substitution: string; source: string; alternatives?: Array<{ exercise_id: string; places: Place[]; required_equipment: Equipment[] }> }
 type Catalog = { version: string; programs: Program[]; exercises: Record<string, Exercise> }
 type Match = { program: Program | null; sessions: Session[]; reasons: string[]; material?: { title: string; intro: string; steps: string[]; example: string }; why?: string[]; version: string }
-type Plan = { id: string; answers: Answers; program: Program; started_on: string; content_version: string; revoked?: boolean }
+type Plan = { id: string; answers: Omit<Answers, 'level'> & { level: Experience | 'beginner' | 'intermediate' }; program: Program; started_on: string; content_version: string; revoked?: boolean }
 type PlanResponse = { plan: Plan | null }
 type SaveResponse = { status: 'saved' | 'replaced' | 'unchanged' | 'preview'; plan: Plan; proposed?: Program }
 type Workout = { id: string; plan_id: string; date: string; session_id: string; program_title?: string; session_title?: string; difficulty: number; note: string; results?: Array<{ exercise_id: string; performed_exercise_id?: string; performed_exercise_name?: string; completed_sets: number; reps_per_set: number[]; weight_kg: number | null }> }
@@ -30,7 +31,10 @@ type ActualExercise = { sets: number; reps: string[]; weight: string; performed?
 
 const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 const equipmentNames: Record<Equipment, string> = { low_bar: 'Низкая перекладина', bench: 'Устойчивая скамья', machines: 'Тренажёры', dumbbells: 'Гантели', bands: 'Резинки', barbell: 'Штанга' }
-const initialAnswers: Answers = { goal: 'fat_loss_muscle_focus', level: 'beginner', place: 'home', equipment: [], days_per_week: 2, minutes_per_session: 35, limitations: false, weekdays: [1, 4] }
+const initialAnswers: Answers = { goal: 'fat_loss_muscle_focus', level: 'returning', place: 'home', equipment: [], days_per_week: 2, minutes_per_session: 45, limitations: false, weekdays: [1, 4] }
+function editAnswers(saved: Plan['answers']): Answers {
+  return { ...saved, level: saved.level === 'beginner' ? 'returning' : saved.level === 'intermediate' ? 'irregular' : saved.level }
+}
 
 export function SportPage() {
   const { user } = useAuth()
@@ -65,7 +69,7 @@ export function SportPage() {
 
   useEffect(() => {
     if (!initialized && planQuery.data) {
-      if (planQuery.data.plan) setAnswers(planQuery.data.plan.answers)
+      if (planQuery.data.plan) setAnswers(editAnswers(planQuery.data.plan.answers))
       setInitialized(true)
     }
   }, [initialized, planQuery.data])
@@ -193,8 +197,8 @@ export function SportPage() {
       <details id="sport-form" className="card sportForm" open={!plan || !!match}><summary>{plan ? 'Изменить программу' : 'Подобрать программу'}</summary><p className="muted">Выберите 2–3 занятия на всё тело или четыре разных дня PUSH/PULL/LEGS/UPPER. Для четырёхдневного плана нужны 60 минут и расписание Пн, Вт, Чт, Сб.</p>
         <div className="formStack">
           <Select label="Цель" value={answers.goal} onChange={event => update('goal', event.target.value as Answers['goal'])} options={[{value:'fat_loss_muscle_focus',label:'Снизить вес с акцентом на сохранение мышц'},{value:'maintain',label:'Поддерживать форму'},{value:'strength_gain',label:'Увеличить силу'}]} />
-          <Select label="Уровень" value={answers.level} onChange={event => { const level=event.target.value as Answers['level'];setAnswers(current=>({...current,level,minutes_per_session:level==='intermediate'?Math.max(55,current.minutes_per_session):current.minutes_per_session}));setMatch(null);setProposed(null) }} options={[{value:'beginner',label:'Начинающий'},{value:'intermediate',label:'Средний'}]} />
-          <p className="formHint">Если приседания к стулу и отжимания от стены уже лёгкие, выберите средний уровень. Для полного домашнего маршрута нужны 55–60 минут и указанное оборудование.</p>
+          <Select label="Опыт тренировок" value={answers.level} onChange={event => { const level=event.target.value as Answers['level'];setAnswers(current=>({...current,level,minutes_per_session:level==='regular'?Math.max(60,current.minutes_per_session):current.minutes_per_session}));setMatch(null);setProposed(null) }} options={[{value:'returning',label:'Начинаю или возвращаюсь после перерыва'},{value:'irregular',label:'Тренировался время от времени'},{value:'regular',label:'Занимался регулярно последние месяцы'}]} />
+          <p className="formHint">Опыт — это частота и устойчивость занятий, а не одно упражнение. Покажем цельную программу только при подходящем времени, месте и оборудовании.</p>
           <Select label="Место тренировки" value={answers.place} onChange={event => { const place=event.target.value as Place;setAnswers(current=>({...current,place,equipment:place==='gym'?['machines']:[]}));setMatch(null);setProposed(null) }} options={[{value:'home',label:'Дома'},{value:'outdoor',label:'На улице'},{value:'gym',label:'В зале'}]} />
           {answers.place!=='gym'&&<fieldset className="weekdayField"><legend>Что есть для тренировки</legend>{(Object.keys(equipmentNames) as Equipment[]).filter(key=>key!=='machines'&&(answers.place==='home'?key!=='low_bar':true)).map(key => <label key={key}><input type="checkbox" checked={answers.equipment.includes(key)} onChange={() => toggleEquipment(key)} />{equipmentNames[key]}</label>)}</fieldset>}
           <div className="formGrid"><Select label="Занятий в неделю" value={answers.days_per_week} onChange={event => { const value = Number(event.target.value); setAnswers(current => ({ ...current, days_per_week: value, weekdays: value === 2 ? [1, 4] : value === 3 ? [1, 3, 5] : [1, 2, 4, 6], minutes_per_session: value === 4 ? Math.max(60, current.minutes_per_session) : current.minutes_per_session })); setMatch(null) }} options={[{value:'2',label:'2'},{value:'3',label:'3'},{value:'4',label:'4 · PUSH/PULL/LEGS/UPPER'}]} /><Input label="Минут на занятие" type="number" min={10} max={180} value={answers.minutes_per_session} onChange={event => update('minutes_per_session', Number(event.target.value))} /></div>
@@ -211,7 +215,7 @@ export function SportPage() {
         {match?.program && <section className="card"><span className="eyebrow">ПРЕДЛОЖЕНИЕ</span><h2>{match.program.title}</h2>{match.why?.map(reason => <p key={reason} className="muted">{reason}</p>)}<p>{match.program.overview}</p><button className="primaryButton" disabled={saveMutation.isPending} onClick={() => saveMutation.mutate(false)}>Сохранить план</button></section>}
         {proposed && <section className="card"><h2>Заменить текущий план?</h2><p>Новая программа: {proposed.title}. Предыдущие записи тренировок сохранятся.</p><div className="healthActions"><button className="primaryButton" disabled={saveMutation.isPending} onClick={() => saveMutation.mutate(true)}>Подтвердить замену</button><button className="secondaryButton" onClick={() => setProposed(null)}>Оставить прежний</button></div></section>}
         {plan?.revoked && <p role="alert" className="errorMessage">Эта программа отозвана. Перед следующей тренировкой выберите другую.</p>}
-        {plan && <section className="card sportOutcome"><h2>{plan.program.title}</h2><p className="muted">{plan.program.duration_weeks} недели · {plan.answers.weekdays.map(day => days[day - 1]).join(' и ')} · начало {plan.started_on}</p><div className="sportQuickActions"><button className="primaryButton" onClick={openJournal}>Записать тренировку</button><a className="secondaryButton" href="#sport-sessions">Посмотреть занятия</a></div><details className="sportPlanInfo"><summary>О программе и настройках</summary><p>{plan.program.overview}</p>{plan.program.level==='beginner'&&<p className="sportLevelHint">Если упражнения уже даются легко, откройте «Изменить программу» и выберите средний уровень. Для занятий дома проверьте оборудование перед подбором нового плана.</p>}{match && <p className="formHint">Сейчас действует этот план. Новый вариант можно сохранить после просмотра.</p>}<MaterialFit title={plan.program.title} alternatives={[]} reasons={['other','time','hard','equipment','goal']} onConfigure={()=>{const form=document.getElementById('sport-form') as HTMLDetailsElement | null;if(form){form.open=true;form.scrollIntoView?.({behavior:'smooth',block:'start'})}}}/></details></section>}
+        {plan && <section className="card sportOutcome"><h2>{plan.program.title}</h2><p className="muted">{plan.program.duration_weeks} недели · {plan.answers.weekdays.map(day => days[day - 1]).join(' и ')} · начало {plan.started_on}</p><div className="sportQuickActions"><button className="primaryButton" onClick={openJournal}>Записать тренировку</button><a className="secondaryButton" href="#sport-sessions">Посмотреть занятия</a></div><details className="sportPlanInfo"><summary>О программе и настройках</summary><p>{plan.program.overview}</p>{match && <p className="formHint">Сейчас действует этот план. Новый вариант можно сохранить после просмотра.</p>}<MaterialFit title={plan.program.title} alternatives={[]} reasons={['other','time','hard','equipment','goal']} onConfigure={()=>{const form=document.getElementById('sport-form') as HTMLDetailsElement | null;if(form){form.open=true;form.scrollIntoView?.({behavior:'smooth',block:'start'})}}}/></details></section>}
         {plan && planWeeks.length > 0 && <section className="card sportWeeks"><div className="sportWeeksHeader"><div><h2>План по неделям</h2><p className="muted">Неделя {currentWeek + 1} из {planWeeks.length}</p></div><span className="sportWeekCount">{workouts.data?.items.filter(item => item.plan_id === plan.id).length || 0} занятий записано</span></div>
           {planWeeks.map((week, index) => {
             const logs = (workouts.data?.items || []).filter(item => item.plan_id === plan.id && week.sessions.some(entry => entry.date === item.date && entry.sessionId === item.session_id))
@@ -232,7 +236,7 @@ export function SportPage() {
           <p className="sportDraftStatus" role="status">{draftError ? 'Не удалось сохранить черновик. Проверьте соединение.' : draftDirty || draftMutation.isPending ? 'Сохраняем черновик…' : draftQuery.data.draft ? 'Черновик сохранён. Можно продолжить позже.' : 'Результаты будут сохраняться по мере заполнения.'}</p>
           {draftError && <button type="button" className="textButton" onClick={() => { setDraftError(''); setDraftDirty(true) }}>Повторить сохранение</button>}
           <p className="formHint">Заполняйте только выполненные упражнения. Повторения или минуты указываются отдельно для каждого подхода.</p>
-          {activeSession && <div className="sportWorkoutStep"><div className="sportWorkoutStepHeader"><div><span className="eyebrow">ЗАНЯТИЕ · {activeSession.title}</span><strong>Упражнение {exerciseIndex + 1} из {activeSession.work.length}</strong></div><progress aria-label="Прогресс занятия" value={exerciseIndex + 1} max={activeSession.work.length}/></div><p><strong>Разминка:</strong> {activeSession.warmup}</p>{restUntil !== null && <div className="sportRestTimer" role="timer"><strong>Отдых: {String(Math.floor(restRemaining / 60)).padStart(2, '0')}:{String(restRemaining % 60).padStart(2, '0')}</strong><button type="button" className="secondaryButton" onClick={() => setRestUntil(null)}>Пропустить отдых</button></div>}</div>}
+          {activeSession && <section className="sportWorkoutStep" aria-label="Активное занятие"><div className="sportWorkoutStepHeader"><div><span className="sportWorkoutSession">{activeSession.title}</span><strong>Упражнение {exerciseIndex + 1} из {activeSession.work.length}</strong></div><progress aria-label="Прогресс занятия" value={exerciseIndex + 1} max={activeSession.work.length}/></div><p><strong>Разминка:</strong> {activeSession.warmup}</p>{restUntil !== null && <div className="sportRestTimer" role="timer"><strong>Отдых: {String(Math.floor(restRemaining / 60)).padStart(2, '0')}:{String(restRemaining % 60).padStart(2, '0')}</strong><button type="button" className="secondaryButton" onClick={() => setRestUntil(null)}>Пропустить отдых</button></div>}</section>}
           {activeSession?.work.map((work, index) => {
             if (index !== exerciseIndex) return null
             const name = catalog.data?.exercises[work.exercise_id]?.name || work.exercise_id

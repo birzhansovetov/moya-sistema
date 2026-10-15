@@ -16,6 +16,14 @@ import { HealthPage } from './pages/Health'
 import { SportPage } from './pages/Sport'
 import { NutritionPage } from './pages/Nutrition'
 import { OnboardingPage } from './pages/Onboarding'
+import { LanguagesPage } from './pages/Languages'
+import { useParams } from 'react-router-dom'
+
+function LanguageRoute() {
+  const { courseId } = useParams()
+  return ['english', 'kazakh', 'korean', 'turkish', 'spanish'].includes(courseId || '')
+    ? <StudyPage key={courseId} courseId={courseId!} /> : <Navigate to="/languages" replace />
+}
 
 export function App() {
   const { user, loading, setAuthenticated } = useAuth()
@@ -33,7 +41,8 @@ export function App() {
       <Route path="education" element={<EducationPage />} />
       <Route path="education/java" element={<StudyPage key="java" courseId="java" />} />
       <Route path="education/go" element={<StudyPage key="go" courseId="go" />} />
-      <Route path="languages" element={<StudyPage key="english" courseId="english" />} />
+      <Route path="languages" element={<LanguagesPage />} />
+      <Route path="languages/:courseId" element={<LanguageRoute />} />
       <Route path="profession" element={<StudyPage key="java-backend" courseId="java-backend" />} />
       <Route path="education/reading" element={<ReadingPage />} />
       <Route path="personal" element={<PersonalPage />} />

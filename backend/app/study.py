@@ -10,7 +10,9 @@ from sqlalchemy import select
 from app.models import StudyAttempt, StudyPlan, User
 
 
-LATEST_VERSIONS = {'java': 'v2', 'go': 'v2', 'english': 'v3', 'java-backend': 'v3'}
+LANGUAGE_COURSES = ('kazakh', 'korean', 'turkish', 'spanish')
+LATEST_VERSIONS = {'java': 'v2', 'go': 'v2', 'english': 'v3', 'java-backend': 'v3',
+                   **{language: 'v1' for language in LANGUAGE_COURSES}}
 
 
 def latest_version(course_id):
@@ -53,11 +55,16 @@ def catalog(version='v1'):
                 guide['check'] = {'prompt': question['prompt'], 'options': question['options'],
                                   'answer': question['answers'][0], 'explanation': question['explanation']}
                 lesson['grammar'] = guide
+    if version == 'latest':
+        current.extend(json.loads(files('app.content').joinpath(f'study-{language}-v1.json').read_text(encoding='utf-8'))
+                       for language in LANGUAGE_COURSES)
     return current
 
 
 def course(course_id, version=None):
     selected_version = version or latest_version(course_id)
+    if course_id in LANGUAGE_COURSES and selected_version == 'v1':
+        return json.loads(files('app.content').joinpath(f'study-{course_id}-v1.json').read_text(encoding='utf-8'))
     item = next((c for c in catalog(selected_version) if c['id'] == course_id and c['version'] == selected_version), None)
     if not item:
         raise HTTPException(404, 'Маршрут не найден')

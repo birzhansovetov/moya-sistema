@@ -14,6 +14,8 @@ def test_coverage_report_has_no_unreachable_active_variants():
     report = build_report()
     assert report["profiles"] >= 100
     assert report["unreachable"] == {"sport": [], "recipe": [], "study": []}
+    assert len(report['language_profiles']) == 16
+    assert all(item['matched'] for item in report['language_profiles'])
     profiles = {(item['track'], item['language']): item for item in report['education_profiles']}
     assert len(profiles) == 18
     for level in ('A2', 'B1', 'B2'):

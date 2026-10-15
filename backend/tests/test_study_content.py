@@ -4,6 +4,40 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def test_new_language_courses_have_full_level_routes_and_playable_content():
+    from app.study import catalog, course, latest_version, public_course
+
+    ids = ('kazakh', 'korean', 'turkish', 'spanish')
+    assert set(ids) <= {item['id'] for item in catalog('latest')}
+    for course_id in ids:
+        item = course(course_id)
+        assert latest_version(course_id) == 'v1'
+        assert item['area'] == 'languages' and item['levels'] == ['A1', 'A2', 'B1', 'B2']
+        assert len(item['lessons']) >= 48
+        assert len({lesson['id'] for lesson in item['lessons']}) == len(item['lessons'])
+        for level in item['levels']:
+            assert sum(lesson['level'] == level for lesson in item['lessons']) >= 12
+        for lesson in item['lessons']:
+            assert lesson['chapter'] and len(lesson['explanation']) >= 2
+            assert len(' '.join(lesson['explanation'])) >= 160
+            assert lesson['example'] and lesson['reading'] and lesson['speaking']
+            assert lesson['practice'] and lesson['solution'] and lesson['retry_practice']
+            assert len(lesson['vocabulary']) >= 4 and len(lesson['quiz']) >= 2
+            grammar = lesson['grammar']
+            assert grammar['kind'] == 'grammar' and len(grammar['rule']) >= 80
+            assert grammar['table']['rows'] and grammar['examples']
+            assert grammar['check']['answer'] in grammar['check']['options']
+            assert all(word['word'] and word['translation'] and word['example'] for word in lesson['vocabulary'])
+            assert all(question['answers'] and all(answer in question['options'] for answer in question['answers']) for question in lesson['quiz'])
+            assert not lesson.get('audio')
+        answer_positions = {
+            question['options'].index(question['answers'][0])
+            for lesson in item['lessons'] for question in lesson['quiz']
+        }
+        assert len(answer_positions) > 1, course_id
+        assert 'answers' not in public_course(item)['lessons'][0]['quiz'][0]
+
+
 def test_go_course_is_complete_and_separate_from_existing_versions():
     from app.study import catalog, course, public_course
     go = json.loads((ROOT / 'backend/app/content/study-go-v1.json').read_text())
@@ -154,3 +188,17 @@ def test_follow_up_practice_is_specific_and_java_checks_are_distinct():
                 prompts.append(question['prompt'])
         assert len(retries) == len(set(retries)), course['id']
         assert len(prompts) == len(set(prompts)), course['id']
+
+
+def test_new_language_grammar_check_accepts_course_id(client, mailbox):
+    from test_spheres import sign_in
+    from app.study import course
+
+    csrf = sign_in(client, mailbox, 'grammar-kazakh@example.com')
+    lesson = course('kazakh', 'v1')['lessons'][0]
+    check = lesson['grammar']['check']
+    result = client.post('/api/study/grammar-check', headers={'X-CSRF-Token': csrf}, json={
+        'course_id': 'kazakh', 'version': 'v1', 'lesson_id': lesson['id'], 'answer': check['answer'],
+    })
+    assert result.status_code == 200, result.text
+    assert result.json()['correct'] is True

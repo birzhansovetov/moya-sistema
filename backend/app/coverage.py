@@ -49,7 +49,8 @@ def study_help_coverage(help_entries: list[dict] | None = None) -> dict:
     return {"courses": courses, "missing": sorted(available - supplied), "unreachable": sorted(supplied - available)}
 
 
-def _survey(goal: str, level: str, place: str, days: int, limitations: bool, route: str, language: str) -> Survey:
+def _survey(goal: str, level: str, place: str, days: int, limitations: bool, route: str, language: str,
+            language_course: str = 'english') -> Survey:
     equipment = {"home": ["low_bar", "bench", "dumbbells", "bands", "barbell"],
                  "outdoor": ["low_bar", "bench", "bands"],
                  "gym": ["low_bar", "bench", "machines", "dumbbells", "bands", "barbell"]}[place]
@@ -61,7 +62,7 @@ def _survey(goal: str, level: str, place: str, days: int, limitations: bool, rou
                    "vegetarian": False, "allergies": [], "max_cooking_minutes": 90, "nutrition_goal": "maintain"},
         "education": {"track": route, "reading_genres": ["classic"], "minutes": 45, "weekdays": [0, 2, 4]},
         "profession": {"track": "java-backend", "minutes": 45, "weekdays": [1, 3]},
-        "languages": {"level": language, "goal": "general", "minutes": 45, "weekdays": [0, 2, 4]},
+        "languages": {"course_id": language_course, "level": language, "goal": "general", "minutes": 45, "weekdays": [0, 2, 4]},
         "finance": {"currency": "KZT", "focus": "record"},
         "personal": {"focus": "journal"},
     })
@@ -73,10 +74,11 @@ def build_report() -> dict:
     seen = {kind: set() for kind in ("sport", "recipe", "study")}
     study_pairs: set[tuple[str, str]] = set()
     education_profiles = []
+    language_profiles = []
     signatures = []
     with Session(engine) as db:
         dimensions = itertools.product(("fat_loss_muscle_focus", "maintain", "strength_gain"),
-            ("beginner", "intermediate"), ("home", "outdoor", "gym"), (2, 3, 4), (False, True))
+            ("beginner", "intermediate", "returning", "irregular", "regular"), ("home", "outdoor", "gym"), (2, 3, 4), (False, True))
         for index, values in enumerate(dimensions):
             survey = _survey(*values, ("java", "go", "reading")[index % 3], ("A2", "B1", "B2")[(index // 3) % 3])
             survey.health.vegetarian = index % 2 == 0
@@ -107,10 +109,18 @@ def build_report() -> dict:
             education_profiles.append({"track": route, "language": language,
                                        "course": courses[0]["id"] if courses else None,
                                        "book": bool(matched["areas"]["education"].get("book"))})
+        for language, level in itertools.product(("kazakh", "korean", "turkish", "spanish"),
+                                                 ("A1", "A2", "B1", "B2")):
+            survey = _survey("maintain", "returning", "home", 2, False, "java", level, language)
+            matched = match_survey(survey, "Asia/Almaty", db)
+            candidates = matched["candidates_by_sphere"]["languages"]
+            language_profiles.append({"course_id": language, "level": level,
+                                      "matched": bool(candidates and candidates[0]["id"] == language)})
+            seen["study"].update(item["id"] for item in candidates)
     sport = {item["id"] for item in load_sport_catalog()["programs"]}
     recipe = {item["id"] for item in load_recipes()["recipes"]}
-    study = {"java", "go", "java-backend", "english"}
-    catalog = {"sport": sport, "recipe": recipe, "study": study}
+    study = {item["id"] for item in catalog("latest")}
+    catalog_ids = {"sport": sport, "recipe": recipe, "study": study}
     due = []
     reviews = load_reviews()
     for kind, key in (("sport", "sport"), ("recipe", "recipes"), ("study", "study"), ("book", "book"), ("guide", "guide")):
@@ -124,7 +134,8 @@ def build_report() -> dict:
     canonical = json.dumps(signatures, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return {"profiles": len(signatures), "study_pairs": [list(pair) for pair in sorted(study_pairs)],
             "education_profiles": education_profiles,
-            "unreachable": {kind: sorted(ids - seen[kind]) for kind, ids in catalog.items()},
+            "language_profiles": language_profiles,
+            "unreachable": {kind: sorted(ids - seen[kind]) for kind, ids in catalog_ids.items()},
             "due_soon": sorted(due), "signature": hashlib.sha256(canonical.encode("utf-8")).hexdigest(),
             "study_help": study_help_coverage()}
 

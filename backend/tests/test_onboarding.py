@@ -1,4 +1,5 @@
 from test_spheres import sign_in
+import pytest
 
 
 def answers():
@@ -12,19 +13,60 @@ def answers():
         },
         "education": {"track": "java", "reading_genres": ["classic"], "minutes": 30, "weekdays": [0, 2, 4]},
         "profession": {"track": "java-backend", "minutes": 30, "weekdays": [1, 3]},
-        "languages": {"level": "A2", "goal": "general", "minutes": 30, "weekdays": [0, 2, 4]},
+        "languages": {"course_id": "english", "level": "A2", "goal": "general", "minutes": 30, "weekdays": [0, 2, 4]},
         "finance": {"currency": "KZT", "focus": "record"},
         "personal": {"focus": "journal"},
     }
 
 
+@pytest.mark.parametrize('language', ['kazakh', 'korean', 'turkish', 'spanish'])
+@pytest.mark.parametrize('level', ['A1', 'A2', 'B1', 'B2'])
+def test_new_language_level_previews(client, mailbox, language, level):
+    csrf = sign_in(client, mailbox, f'{language}-{level}@example.com')
+    payload = answers()
+    payload['languages'].update(course_id=language, level=level)
+    response = client.post('/api/onboarding/preview', json=payload, headers={'X-CSRF-Token': csrf})
+    assert response.status_code == 200, response.text
+    assert response.json()['areas']['languages']['study']['status'] == 'matched'
+
+
+def test_english_a1_is_rejected_and_legacy_english_is_accepted(client, mailbox):
+    csrf = sign_in(client, mailbox, 'language-compat@example.com')
+    payload = answers()
+    payload['languages']['level'] = 'A1'
+    assert client.post('/api/onboarding/preview', json=payload, headers={'X-CSRF-Token': csrf}).status_code == 422
+    payload['languages']['level'] = 'A2'
+    del payload['languages']['course_id']
+    assert client.post('/api/onboarding/preview', json=payload, headers={'X-CSRF-Token': csrf}).status_code == 200
+
+
+def test_language_switch_archives_old_plan_and_preserves_history(client, mailbox):
+    csrf = sign_in(client, mailbox, 'language-switch@example.com')
+    headers = {'X-CSRF-Token': csrf}
+    first = answers()
+    assert client.post('/api/onboarding/start', json=first, headers=headers).status_code == 200
+    old_id = client.get('/api/study/state/english').json()['active_plan']['id']
+    selected = answers()
+    selected['languages'].update(course_id='kazakh', level='A1')
+    preview = client.post('/api/onboarding/preview', json=selected, headers=headers)
+    assert preview.status_code == 200, preview.text
+    assert preview.json()['areas']['languages']['study']['status'] == 'matched'
+    started = client.post('/api/onboarding/start?confirm_replace=true', json=selected, headers=headers)
+    assert started.status_code == 200, started.text
+    assert client.post('/api/onboarding/start?confirm_replace=true', json=selected, headers=headers).json()['status'] == 'unchanged'
+    assert client.get('/api/study/state/kazakh').json()['active_plan']['course_id'] == 'kazakh'
+    assert client.get('/api/study/state/english').json()['active_plan'] is None
+    old = client.get('/api/study/state/english?plan_id=' + old_id)
+    assert old.status_code == 200 and old.json()['plan']['archived']
+
+
 def test_survey_version_is_saved_with_answers(client, mailbox):
     csrf = sign_in(client, mailbox, "version@example.com")
-    assert client.get("/api/onboarding").json()["survey_version"] == 2
+    assert client.get("/api/onboarding").json()["survey_version"] == 3
     assert client.post("/api/onboarding/start", json=answers(), headers={"X-CSRF-Token": csrf}).status_code == 200
     state = client.get("/api/onboarding").json()
-    assert state["survey_version"] == 2
-    assert state["answers"] == answers()
+    assert state["survey_version"] == 3
+    assert state["answers"]["languages"]["course_id"] == "english"
 
 
 def test_future_survey_version_requires_reconfirmation(client, mailbox):
@@ -36,11 +78,29 @@ def test_future_survey_version_requires_reconfirmation(client, mailbox):
     with Session(client.app.state.engine) as db:
         user = db.scalar(select(User).where(User.email == "future@example.com"))
         user.onboarding_answers = answers()
-        user.onboarding_version = 3
+        user.onboarding_version = 4
         db.commit()
     state = client.get("/api/onboarding").json()
-    assert state["survey_version"] == 3
+    assert state["survey_version"] == 4
     assert state["needs_reconfirmation"] is True
+
+
+def test_saved_v2_answers_default_to_english_without_reconfirmation(client, mailbox):
+    from sqlalchemy import select
+    from sqlalchemy.orm import Session
+    from app.models import User
+
+    sign_in(client, mailbox, 'old-language@example.com')
+    old = answers()
+    del old['languages']['course_id']
+    with Session(client.app.state.engine) as db:
+        user = db.scalar(select(User).where(User.email == 'old-language@example.com'))
+        user.onboarding_answers = old
+        user.onboarding_version = 2
+        db.commit()
+    state = client.get('/api/onboarding').json()
+    assert state['needs_reconfirmation'] is False
+    assert state['answers']['languages']['course_id'] == 'english'
 
 
 def test_onboarding_previews_six_spheres_and_starts_only_after_confirmation(client, mailbox):
@@ -62,7 +122,7 @@ def test_onboarding_previews_six_spheres_and_starts_only_after_confirmation(clie
     assert client.get("/api/health/sport/plan").json()["plan"] is not None
     for course in ("java", "java-backend", "english"):
         assert client.get(f"/api/study/state/{course}").json()["active_plan"] is not None
-    assert client.get("/api/onboarding").json()["answers"] == answers()
+    assert client.get("/api/onboarding").json()["answers"]["languages"]["course_id"] == "english"
     again = client.post("/api/onboarding/start", json=answers(), headers={"X-CSRF-Token": csrf})
     assert again.status_code == 200
     assert again.json()["status"] == "unchanged"

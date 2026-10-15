@@ -1,75 +1,61 @@
-.nutritionCalculatorLayout{max-width:760px;margin:0 auto}
-.calorieForm .formStack{gap:18px}
-.calorieForm .formGrid{gap:14px}
-.calorieForm .muted{margin:0;font-size:14px;line-height:1.5}
-.calorieConditions{border-top:1px solid var(--border,#d8d8d8);padding-top:14px}
-.calorieConditions summary,.calorieMethod summary{cursor:pointer;font-weight:600}
-.calorieConditions .formStack{margin-top:16px;gap:12px}
-.calorieCalculate{width:100%;min-height:52px;font-size:16px}
-.calorieResult .healthHeroNumber{font-size:clamp(42px,8vw,64px);line-height:1.05;margin:8px 0 18px}
-.calorieResult>p{line-height:1.5}
-.calorieMethod{margin-top:18px;padding-top:16px;border-top:1px solid var(--border,#d8d8d8)}
-.calorieMethod p{line-height:1.55}
-@media(max-width:560px){.calorieForm .formGrid{grid-template-columns:1fr}}
-.nutritionDiscovery{display:grid;gap:16px;margin-bottom:16px}
-.nutritionPreferences{margin:0 0 20px;border-top:1px solid #dedbd4;padding-top:12px}
-.nutritionPreferences>summary,.nutritionSource>summary{cursor:pointer;color:#313b38;font-weight:650;min-height:40px;display:flex;align-items:center}
-.nutritionPreferences>summary:focus-visible,.nutritionSource>summary:focus-visible{outline:2px solid #22708b;outline-offset:2px}
-.nutritionPreferences .nutritionGoalRow{margin-top:12px}
-.nutritionSource{margin-top:8px;color:#565f5b;font-size:14px}
+.nutritionCalculatorLayout{max-width:780px;margin-inline:auto}
+.calorieForm .formStack{gap:var(--space-4,16px)}
+.calorieForm .formGrid{gap:var(--space-4,16px)}
+.calorieForm .muted{margin:0;line-height:1.5}
+.calorieConditions,.calorieMethod{border-top:1px solid var(--line);padding-top:var(--space-4,16px)}
+.calorieConditions summary,.calorieMethod summary,.nutritionPreferences>summary,.nutritionSource>summary{cursor:pointer;font-weight:650}
+.calorieConditions .formStack{margin-top:var(--space-4,16px)}
+.calorieCalculate{width:100%;min-height:48px}
+.calorieResult .healthHeroNumber{display:block;margin:8px 0 16px;font-size:clamp(36px,6vw,52px);line-height:1.1}
+.calorieResult>p,.calorieMethod p{line-height:1.55}
+.calorieMethod{margin-top:18px}
+.nutritionDiscovery{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
 .nutritionMealFilter{display:flex;flex-wrap:wrap;gap:8px}
-.nutritionMealFilter button{min-height:42px;padding:8px 13px;border:1px solid #42536b;border-radius:9px;background:#1b2636;color:#d9e6f6;font-weight:650}
-.nutritionMealFilter button[aria-pressed=true]{background:#254760;border-color:#70b9cc;color:#e7fbff}
-.nutritionMealFilter button:hover{background:#30445e}
-.nutritionSearch{width:min(100%,540px)}
+.nutritionMealFilter button{min-height:42px;padding:8px 13px;border:1px solid var(--line);border-radius:var(--radius-sm,8px);background:var(--surface);color:var(--text);font:inherit;font-weight:600;cursor:pointer}
+.nutritionMealFilter button[aria-pressed=true]{background:var(--text);border-color:var(--text);color:var(--surface)}
+.nutritionMealFilter button:hover:not([aria-pressed=true]){background:var(--surface-soft)}
+.nutritionSearch{width:min(100%,340px)}
 .nutritionSearch input{width:100%}
-.nutritionGoalRow{display:grid;grid-template-columns:minmax(0,540px);margin:0 0 18px;padding:16px 18px;border:1px solid #d8e3ec;border-radius:14px;background:#f7fafb}
-.nutritionGoalRow select{width:100%}
+.nutritionPreferences{margin:0 0 20px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nutritionPreferences>summary,.nutritionSource>summary{min-height:40px;display:flex;align-items:center}
+.nutritionGoalRow{max-width:540px;margin:12px 0 18px}
 .nutritionNoResults{margin:0}
-.nutritionRecipes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-.nutritionRecipe.card{padding:0;overflow:hidden}
-.nutritionRecipePhoto{display:block;flex:none;width:88px;aspect-ratio:1;background-image:url('/images/recipe-atlas.webp');background-size:400% 300%;background-repeat:no-repeat;background-color:#eee9e2;border-radius:12px}
-.nutritionRecipe>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:96px;cursor:pointer;padding:18px 20px;list-style:none}
-.nutritionRecipe[open]>summary{border-bottom:1px solid #e5e5e5}
-.nutritionRecipe>summary:focus-visible{outline:2px solid #202020;outline-offset:-4px;border-radius:12px}
+.nutritionRecipes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.nutritionRecipe.card{min-width:0;padding:0;overflow:hidden}
+.nutritionRecipe>summary{display:grid;grid-template-columns:76px minmax(0,1fr) auto;align-items:center;gap:14px;min-height:96px;padding:16px;cursor:pointer;list-style:none}
 .nutritionRecipe>summary::-webkit-details-marker{display:none}
-.nutritionRecipeHeading{min-width:0;flex:1}
-.nutritionRecipe>summary strong,.nutritionRecipe>summary small{display:block}
-.nutritionRecipe>summary strong{font-size:16px;line-height:1.3}
-.nutritionRecipe>summary small{margin-top:6px;color:#b5c7da;font-size:12px;font-weight:400}
-.nutritionRecipeOpen{display:inline-flex;align-items:center;justify-content:center;flex:none;min-width:128px;min-height:38px;padding:8px 12px;border:1px solid #d1d1d1;border-radius:9px;color:#252525;font-size:13px;font-weight:650;white-space:nowrap}
-.nutritionRecipe>summary:hover .nutritionRecipeOpen{background:#ededed}
+.nutritionRecipe[open]>summary{border-bottom:1px solid var(--line)}
+.nutritionRecipePhoto{display:block;flex:none;width:76px;aspect-ratio:1;background:#ece9e3 url('/images/recipe-atlas.webp') no-repeat;background-size:400% 300%;border-radius:var(--radius-sm,8px)}
+.nutritionRecipePhoto--placeholder{display:grid;place-items:center;padding:8px;background-image:none;color:var(--text-muted);font-size:11px;line-height:1.2;text-align:center}
+.nutritionRecipeHeading{min-width:0;overflow-wrap:break-word}
+.nutritionRecipeHeading strong,.nutritionRecipeHeading small{display:block}
+.nutritionRecipeHeading strong{line-height:1.35}
+.nutritionRecipeHeading small{margin-top:5px;color:var(--text-muted);font-size:13px;line-height:1.4}
+.nutritionRecipeOpen{flex:none;padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius-sm,8px);font-size:13px;font-weight:600}
+.nutritionRecipe>summary:hover .nutritionRecipeOpen{background:var(--surface-soft)}
 .nutritionRecipeCloseText,.nutritionRecipe[open] .nutritionRecipeOpenText{display:none}
 .nutritionRecipe[open] .nutritionRecipeCloseText{display:inline}
-.nutritionRecipeBody{padding:20px 20px 22px}
-.nutritionPortions{display:flex!important;align-items:center;justify-content:space-between;gap:16px;font-weight:650!important}
-.nutritionPortions input{width:110px!important;text-align:center}
-.nutritionRecipeTotal{margin:12px 0 24px;color:#a9bacd}
-.nutritionIngredients{list-style:none;margin:0 0 24px;padding:0}
-.nutritionIngredients li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid #34465d}
-.nutritionIngredients li small{display:block;margin-top:3px;color:#a9bacd}
+.nutritionRecipeBody{padding:18px}
+.nutritionPortions{display:flex!important;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:650!important}
+.nutritionPortions input{width:105px!important;text-align:center}
+.nutritionRecipeTotal{margin:12px 0 20px;color:var(--text-muted)}
+.nutritionIngredients{list-style:none;margin:0 0 22px;padding:0}
+.nutritionIngredients li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.nutritionIngredients li small{display:block;margin-top:3px;color:var(--text-muted)}
 .nutritionIngredients li strong{white-space:nowrap;font-variant-numeric:tabular-nums}
 .nutritionBasis{margin-top:18px;font-size:13px}
+.nutritionSource{margin-top:18px;color:var(--text-muted);font-size:14px}
+.cookingStart{margin:0 0 20px;min-height:44px}
+.cookingBackdrop{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:16px;background:#1119}
+.cookingDialog{width:min(900px,100%);max-height:calc(100dvh - 32px);overflow:auto;border:1px solid var(--line);border-radius:var(--radius-lg,12px);background:var(--surface);color:var(--text)}
+.cookingHeader{display:flex;align-items:start;justify-content:space-between;gap:16px;padding:22px;border-bottom:1px solid var(--line)}
+.cookingHeader h2{margin:4px 0 8px;font-size:clamp(22px,3vw,30px);line-height:1.2}.cookingHeader p{margin:0;color:var(--text-muted)}
+.cookingEyebrow{font-size:13px!important;font-weight:650;color:var(--text-muted)!important}
+.cookingClose{flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:var(--radius-sm,8px);background:var(--surface);color:var(--text);font-size:26px;cursor:pointer}
+.cookingContent{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr)}
+.cookingIngredients{padding:22px;border-right:1px solid var(--line);overflow:auto}.cookingIngredients h3{margin:0 0 4px}.cookingIngredients>p{margin:0 0 16px;color:var(--text-muted);font-size:14px}.cookingIngredients ul{list-style:none;margin:0;padding:0}.cookingIngredients li{border-top:1px solid var(--line)}.cookingIngredients label{display:flex;align-items:center;gap:12px;min-height:48px;padding:7px 0;cursor:pointer}.cookingIngredients input{width:20px;height:20px;flex:none;accent-color:var(--accent)}.cookingIngredients span{flex:1;line-height:1.4}.cookingIngredients input:checked+span{text-decoration:line-through;color:var(--text-muted)}.cookingIngredients strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+.cookingStep{display:flex;flex-direction:column;padding:24px}.cookingInstruction{max-width:38ch;margin:24px 0 32px;font-size:clamp(20px,2.5vw,27px);line-height:1.45;font-weight:600}.cookingProgress{height:5px;margin-top:auto;background:var(--line);overflow:hidden}.cookingProgress span{display:block;height:100%;background:var(--accent);transition:width .2s}.cookingActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.cookingActions button{min-height:46px;padding:10px 16px;border-radius:var(--radius-sm,8px);font:inherit;font-weight:650;cursor:pointer}.cookingActions button:first-child{border:1px solid var(--line);background:var(--surface);color:var(--text)}.cookingActions button:disabled{opacity:.5;cursor:not-allowed}.cookingActions button:last-child{margin-left:auto}
+.nutritionRecipe>summary:focus-visible,.nutritionPreferences>summary:focus-visible,.nutritionSource>summary:focus-visible,.nutritionMealFilter button:focus-visible,.cookingClose:focus-visible,.cookingActions button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media(max-width:850px){.nutritionRecipes{grid-template-columns:1fr}}
-@media(max-width:650px){.nutritionMealFilter button{flex:1 1 auto}.nutritionGoalRow{padding:16px}}
-@media(max-width:650px){.nutritionPage .pageHeader>.secondaryButton{display:none}}
-.nutritionMealFilter button{background:#fff;border-color:#c8d9e5;color:#315975}
-.nutritionMealFilter button[aria-pressed=true]{background:#dceff9;border-color:#68a9cb;color:#105c8a}
-.nutritionMealFilter button:hover{background:#e9f4fa}
-.nutritionSearch{color:#355b78}
-.nutritionRecipe>summary small,.nutritionRecipeTotal,.nutritionIngredients li small{color:#5c7589}
-.nutritionRecipeOpen{color:#0b709f}
-.nutritionIngredients li{border-color:#d8e3ec}
-.cookingStart{margin:0 0 20px;min-height:48px}
-@media(max-width:650px){.nutritionRecipe>summary{min-height:88px;padding:16px;gap:10px}.nutritionRecipePhoto{width:66px}.nutritionRecipeOpen{min-width:0;padding:8px 10px}.nutritionRecipeBody{padding:18px 16px 20px}}
-@media(max-width:390px){.nutritionRecipe>summary{flex-wrap:wrap}.nutritionRecipeHeading{flex-basis:calc(100% - 78px)}.nutritionRecipeOpen{margin-left:76px}}
-.cookingBackdrop{position:fixed;inset:0;z-index:1000;background:rgba(15,20,27,.7);display:grid;place-items:center;padding:16px}
-.cookingDialog{width:min(920px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:#f7f8f8;color:#17202a;border-radius:18px;box-shadow:0 25px 80px rgba(0,0,0,.3)}
-.cookingHeader{display:flex;justify-content:space-between;gap:20px;align-items:start;padding:24px 28px;border-bottom:1px solid #d9e0e2}
-.cookingHeader h2{font-size:clamp(22px,3vw,32px);line-height:1.15;margin:6px 0 8px}.cookingHeader p{margin:0;color:#687785}
-.cookingEyebrow{font-size:13px!important;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#32627c!important}
-.cookingClose{width:48px;height:48px;flex:none;border:1px solid #becbd0;border-radius:12px;background:#fff;font-size:30px;line-height:1;cursor:pointer}
-.cookingContent{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr);min-height:400px}
-.cookingIngredients{padding:24px 28px;border-right:1px solid #d9e0e2;overflow:auto}.cookingIngredients h3{margin:0 0 4px}.cookingIngredients>p{margin:0 0 16px;color:#687785;font-size:14px}.cookingIngredients ul{list-style:none;margin:0;padding:0}.cookingIngredients li{border-top:1px solid #e1e6e9}.cookingIngredients label{display:flex;gap:12px;align-items:center;min-height:54px;padding:7px 0;cursor:pointer}.cookingIngredients input{width:22px;height:22px;flex:none;accent-color:#1b697e}.cookingIngredients span{flex:1;line-height:1.35}.cookingIngredients input:checked+span{text-decoration:line-through;color:#7a858b}.cookingIngredients strong{white-space:nowrap;font-variant-numeric:tabular-nums}
-.cookingStep{display:flex;flex-direction:column;padding:26px 30px}.cookingStep>.cookingEyebrow{margin:0}.cookingInstruction{font-size:clamp(21px,2.6vw,29px);line-height:1.45;font-weight:600;margin:28px 0 36px;max-width:36ch}.cookingProgress{height:6px;border-radius:999px;background:#dce5e9;margin-top:auto;overflow:hidden}.cookingProgress span{display:block;height:100%;background:#278398;transition:width .2s}.cookingActions{display:flex;gap:12px;margin-top:22px}.cookingActions button{min-height:54px;min-width:132px;padding:12px 20px;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer}.cookingActions button:first-child{border:1px solid #bdcbd1;background:#fff}.cookingActions button:disabled{opacity:.45;cursor:not-allowed}.cookingActions button:last-child{margin-left:auto}
-@media(max-width:650px){.cookingBackdrop{padding:0}.cookingDialog{width:100%;height:100dvh;max-height:100dvh;border-radius:0;display:flex;flex-direction:column}.cookingHeader{padding:18px 20px}.cookingContent{display:flex;flex-direction:column;flex:1;min-height:0}.cookingIngredients{border-right:0;border-bottom:1px solid #d9e0e2;max-height:34dvh;padding:15px 20px}.cookingIngredients ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.cookingIngredients label{font-size:13px}.cookingStep{padding:20px;flex:1;min-height:0}.cookingInstruction{margin:15px 0 20px}.cookingActions button{min-width:0;flex:1}.cookingActions button:last-child{margin-left:0}}
+@media(max-width:600px){.calorieForm .formGrid{grid-template-columns:1fr}.nutritionDiscovery{align-items:stretch}.nutritionSearch{width:100%}.nutritionMealFilter{width:100%}.nutritionMealFilter button{flex:1 1 auto}.nutritionPage .pageHeader>.secondaryButton{display:none}.nutritionRecipe>summary{grid-template-columns:76px minmax(0,1fr)}.nutritionRecipeOpen{grid-column:2;justify-self:start}.cookingBackdrop{padding:0}.cookingDialog{width:100%;height:100dvh;max-height:100dvh;border:0;border-radius:0;display:flex;flex-direction:column}.cookingHeader{padding:16px}.cookingContent{display:flex;flex-direction:column;flex:1;min-height:0}.cookingIngredients{border-right:0;border-bottom:1px solid var(--line);max-height:32dvh;padding:16px}.cookingStep{padding:18px;flex:1;min-height:0}.cookingInstruction{margin:16px 0 22px}.cookingActions button{flex:1}.cookingActions button:last-child{margin-left:0}}
+@media(max-width:390px){.nutritionRecipePhoto{width:64px}.nutritionRecipe>summary{grid-template-columns:64px minmax(0,1fr)}}

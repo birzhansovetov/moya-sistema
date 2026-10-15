@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.content_review import is_revoked, load_reviews, reviewed_variant, variant_digest
 from app.nutrition import NutritionPreferences, compatible_recipes, load_recipes
 from app.sport import load_sport_catalog, select_program
+from app.sport_coverage import audit_coverage
 from app.study import course as study_course
 
 if TYPE_CHECKING:
@@ -54,8 +55,12 @@ def match_survey(survey: "Survey", timezone: str, db: Session) -> dict:
     sport = survey.health.sport
     if sport and select_program(sport)["program"]:
         catalog = load_sport_catalog()
+        requested_level = {"returning": "beginner", "irregular": "intermediate"}.get(sport.level, sport.level)
+        complete_ids = {item["id"] for item in audit_coverage(catalog["programs"], catalog["exercises"])["available_combinations"]}
         for program in catalog["programs"]:
-            if program["goal"] != sport.goal or program["place"] != sport.place or program["level"] != sport.level or sport.days_per_week not in program["supported_days"]:
+            if program["goal"] != sport.goal or program["place"] != sport.place or program["level"] != requested_level or sport.days_per_week not in program["supported_days"]:
+                continue
+            if sport.level in ("returning", "irregular", "regular") and program["id"] not in complete_ids:
                 continue
             if program["min_minutes"] > sport.minutes_per_session or not set(program["required_equipment"]) <= set(sport.equipment):
                 continue

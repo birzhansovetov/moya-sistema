@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../auth'
 import styles from './Shell.module.css'
@@ -25,9 +26,27 @@ const links: { to: string; text: string; icon: IconName; end?: boolean }[] = [
 const spherePaths = ['/health', '/education', '/profession', '/languages', '/finance', '/personal']
 const sphereNames: Record<string, string> = { health: 'Здоровье', education: 'Обучение', profession: 'Профессия', languages: 'Языки', finance: 'Финансы', personal: 'Личное' }
 
+export function themeForPath(pathname: string) {
+  if (pathname === '/health/sport') return 'sport'
+  if (pathname === '/health/nutrition') return 'nutrition'
+  if (pathname === '/health/calories') return 'calories'
+  if (pathname === '/education/java' || pathname === '/education/go') return 'study-code'
+  if (pathname === '/profession') return 'profession'
+  if (pathname === '/languages' || pathname.startsWith('/languages/')) return 'language'
+  if (pathname === '/education/reading') return 'reading'
+  if (pathname === '/finance') return 'finance'
+  if (pathname === '/personal') return 'personal'
+  return 'neutral'
+}
+
 export function Shell() {
   const { user } = useAuth()
   const { pathname } = useLocation()
+  const theme = themeForPath(pathname)
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    return () => { delete document.documentElement.dataset.theme }
+  }, [theme])
   const sectionPage = spherePaths.some(path => pathname === path || pathname.startsWith(`${path}/`))
   const sphere = pathname.split('/')[1]
   const current = pathname === '/' ? 'Мой день' : pathname === '/profile' ? 'Профиль' : pathname.startsWith('/tasks') ? 'Задачи' : pathname.startsWith('/calendar') ? 'Календарь' : sphereNames[sphere] || 'Разделы'
@@ -40,10 +59,9 @@ export function Shell() {
     <span className={styles.icon}><Icon name={link.icon} /></span><span>{link.text}</span>
     </Link>
   }
-  return <div className={styles.layout}>
+  return <div className={styles.layout} data-theme={theme}>
     <aside className={styles.sidebar}>
       <div className={styles.brand}><span className={styles.brandMark}>М</span><span>Моя система</span></div>
-      <div className={styles.navLabel}>РАБОЧЕЕ ПРОСТРАНСТВО</div>
       <nav aria-label="Основная навигация">{links.map(navLink)}</nav>
       <div className={styles.spacer} />
       <NavLink to="/profile" className={({ isActive }) => isActive ? `${styles.profile} ${styles.active}` : styles.profile}>
@@ -53,7 +71,7 @@ export function Shell() {
       </NavLink>
     </aside>
     <div className={styles.mainArea}>
-      <header className={styles.topbar}><div className={styles.location}><span className={styles.mobileBrand}>Моя система</span><span className={styles.desktopRoot}>{sectionPage ? 'Разделы' : 'Пространство'}</span><span className={styles.divider}>/</span><strong>{current}</strong></div><span className={styles.topbarRight}><span className={styles.statusDot} /> Личное пространство</span><div className={styles.appHeader}>{parent ? <NavLink className={styles.backLink} to={parent.to} aria-label={`Назад к ${parent.label}`}>Назад</NavLink> : <span className={styles.appMark} aria-hidden="true">М</span>}<div className={styles.appTitle}><small>МОЯ СИСТЕМА</small><strong>{current}</strong></div><NavLink className={styles.headerProfile} to="/profile" aria-label="Открыть профиль"><Icon name="profile" /></NavLink></div></header>
+      <header className={styles.topbar}><div className={styles.location}><span className={styles.mobileBrand}>Моя система</span><span className={styles.desktopRoot}>{sectionPage ? 'Разделы' : 'Пространство'}</span><span className={styles.divider}>/</span><strong>{current}</strong></div><div className={styles.appHeader}>{parent ? <NavLink className={styles.backLink} to={parent.to} aria-label={`Назад к ${parent.label}`}>Назад</NavLink> : <span className={styles.appMark} aria-hidden="true">М</span>}<div className={styles.appTitle}><strong>{current}</strong></div><NavLink className={styles.headerProfile} to="/profile" aria-label="Открыть профиль"><Icon name="profile" /></NavLink></div></header>
       <main className={styles.content}><Outlet /></main>
     </div>
     <nav className={styles.mobileNav} aria-label="Мобильная навигация">

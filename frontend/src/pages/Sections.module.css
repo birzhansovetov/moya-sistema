@@ -1,23 +1,4 @@
-.page :global(.pageHeader){align-items:end;margin-bottom:24px;padding-bottom:0;border:0}
-.page :global(.pageHeader) h1{margin:0 0 9px}
-.page :global(.pageHeader) p{margin:0;color:#67645f}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
-.card{display:flex;flex-direction:column;min-width:0;min-height:184px;background:#fff;border:1px solid #e2dfd8;border-radius:16px;overflow:hidden;transition:border-color .2s ease,box-shadow .2s ease}
-.card:hover,.card:focus-within{border-color:#aaa69e;box-shadow:0 8px 24px #2424240b}
-.main{display:block;flex:1;min-width:0;padding:25px 27px 20px;text-decoration:none;color:#242424}
-.main h2{margin:0 0 10px;color:#242424;font-size:25px;font-weight:720;line-height:1.15;letter-spacing:-.025em}
-.main p{max-width:43ch;margin:0;color:#625f59;font-size:14px;line-height:1.5}
-.continue{display:flex;align-items:center;min-height:51px;margin:0 27px;border-top:1px solid #ebe8e1;color:#34322f;font-size:13px;font-weight:650;line-height:1.35;text-decoration:none}
-.continue:hover{text-decoration:underline;text-underline-offset:3px}
-.single .main{display:flex;flex-direction:column;justify-content:center}
-.main:focus-visible,.continue:focus-visible{outline:2px solid #242424;outline-offset:-4px;border-radius:5px}
-@media(max-width:760px){.grid{grid-template-columns:1fr;gap:11px}.card{min-height:0;border-radius:15px}.main{padding:20px 20px 17px}.main h2{font-size:21px;margin-bottom:7px}.main p{font-size:13px;max-width:none}.continue{min-height:47px;margin:0 20px;font-size:13px}.page :global(.pageHeader){align-items:start;margin-bottom:20px}}
-@media(prefers-reduced-motion:reduce){.card{transition:none}}
-.card{position:relative;min-height:204px;border-radius:20px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
-.card:hover{transform:translateY(-2px)}
-.main{padding:26px 28px 18px}
-.cardLabel{display:block;margin:0 0 24px;color:#77736c;font-size:10px;font-weight:800;letter-spacing:.16em}
-.main h2{font-size:clamp(25px,2.4vw,32px);letter-spacing:-.045em}
-.continue{min-height:54px;color:#242424}
-.health{background:#e9eee9;border-color:#d6ded5}.education{background:#f0ece4;border-color:#e0d9ce}.profession{background:#e5e8ec;border-color:#d3d8df}.languages{background:#ebe8ef;border-color:#dcd7e3}.finance{background:#eeeae6;border-color:#dfd9d2}.personal{background:#e9ece8;border-color:#d8ded6}
-@media(max-width:760px){.card{min-height:0}.main{padding:20px 20px 16px}.cardLabel{margin-bottom:13px}.continue{min-height:46px}}
+.page{min-width:0}.page :global(.pageHeader){align-items:end;margin-bottom:24px;padding-bottom:0;border:0}.page :global(.pageHeader) h1{margin:0 0 9px}.page :global(.pageHeader) p{margin:0;color:var(--text-muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}.card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:var(--radius-card,12px);background:var(--surface);overflow:hidden}.card:hover,.card:focus-within{border-color:var(--accent)}.main{display:block;flex:1;min-width:0;padding:22px;text-decoration:none;color:var(--text)}.main h2{margin:0 0 8px;font-size:clamp(22px,2.3vw,28px);font-weight:700;line-height:1.2;overflow-wrap:anywhere}.main p{max-width:48ch;margin:0;color:var(--text-muted);font-size:14px;line-height:1.5;overflow-wrap:anywhere}.continue{display:flex;align-items:center;min-height:50px;margin:0 22px;border-top:1px solid var(--line);color:var(--text);font-size:13px;font-weight:650;line-height:1.4;text-decoration:none;overflow-wrap:anywhere}.continue:hover{text-decoration:underline;text-underline-offset:3px}.main:focus-visible,.continue:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}.single .main{display:flex;flex-direction:column;justify-content:center}
+.health{border-left:3px solid #557e6a}.education{border-left:3px solid #947b54}.profession{border-left:3px solid #667485}.languages{border-left:3px solid #7d6791}.finance{border-left:3px solid #a07b56}.personal{border-left:3px solid #748375}
+@media(max-width:760px){.grid{grid-template-columns:1fr;gap:11px}.main{padding:18px}.main h2{font-size:21px}.continue{min-height:46px;margin:0 18px}.page :global(.pageHeader){align-items:start;margin-bottom:20px}}

@@ -24,7 +24,7 @@ def test_catalog_audio_and_plan_preview_do_not_activate(client,mailbox):
     headers=h(client,mailbox)
     catalog=client.get('/api/study/catalog')
     assert catalog.status_code==200
-    assert len(catalog.json()['items'])==4
+    assert len(catalog.json()['items'])==8
     go=next(item for item in catalog.json()['items'] if item['id']=='go')
     assert go['version']=='v2' and go['lesson_count']==32
     backend=next(item for item in catalog.json()['items'] if item['id']=='java-backend')
@@ -41,6 +41,17 @@ def test_catalog_audio_and_plan_preview_do_not_activate(client,mailbox):
     assert client.post('/api/study/plans',json=values()).status_code==403
     for change in [dict(level='C2'),dict(weekdays=[]),dict(minutes=5),dict(course_id='python'),dict(version='v99')]:
         assert client.post('/api/study/preview',json={**values(),**change},headers=headers).status_code in (404,422)
+
+
+def test_direct_language_plan_switch_keeps_one_active_course(client, mailbox):
+    headers=h(client, mailbox, 'direct-language-switch@example.com')
+    english=activate(client, headers)
+    kazakh=client.post('/api/study/plans', json=values(course='kazakh', level='A1', key='kz-direct') | {'version':'v1'}, headers=headers)
+    assert kazakh.status_code == 201, kazakh.text
+    assert client.get('/api/study/state/english').json()['active_plan'] is None
+    assert client.get('/api/study/state/kazakh').json()['active_plan']['id'] == kazakh.json()['id']
+    old=client.get('/api/study/state/english?plan_id='+english['id'])
+    assert old.status_code == 200 and old.json()['plan']['archived']
 
 
 def test_weak_topics_use_latest_attempt_and_disappear_after_success(client, mailbox):

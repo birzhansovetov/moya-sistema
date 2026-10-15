@@ -29,6 +29,13 @@ test('recipe preferences are optional and recipes remain the first visible conte
   expect(screen.getByLabelText('Показывать сначала')).toBeInTheDocument()
 })
 
+test('unmapped recipe uses a stable photo placeholder', async () => {
+  apiMock.mockReset().mockResolvedValue({ ...recipes, recipes: [{ ...recipe, id: 'new_unmapped_dish' }] })
+  mount()
+  await screen.findByText('Овсяная каша с бананом')
+  expect(screen.getByText('Фото не добавлено')).toHaveClass('nutritionRecipePhoto--placeholder')
+})
+
 test('nutrition contains recipes and recalculates ingredient grams for selected portions', async () => {
   apiMock.mockReset().mockImplementation(async (path: string) => {
     if (path === '/health/nutrition/recipes') return recipes
@@ -118,6 +125,7 @@ test('calculator calculates and keeps entered values after failed save', async (
   fireEvent.change(screen.getByLabelText('Активность за день'), { target: { value: 'light' } })
   fireEvent.click(screen.getByRole('button', { name: 'Рассчитать калории' }))
   await screen.findByText('2451 ккал')
+  expect(screen.getByText('Ориентир на день, ккал/день')).toBeInTheDocument()
   fireEvent.click(screen.getByRole('button', { name: 'Сохранить расчёт' }))
   expect(await screen.findByRole('alert')).toHaveTextContent('Сохранение недоступно')
   expect(screen.getByLabelText('Возраст')).toHaveValue(30)

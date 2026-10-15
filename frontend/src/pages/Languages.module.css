@@ -1,0 +1,7 @@
+.page { min-width: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: var(--space-4, 16px); align-items: stretch; }
+.card { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card h2 { margin: 0; overflow-wrap: anywhere; }
+.card p { margin: 0; color: var(--text-muted); }
+.card a { margin-top: auto; align-self: flex-start; white-space: normal; text-align: center; }
+@media (max-width: 390px) { .grid { grid-template-columns: minmax(0, 1fr); } .card a { width: 100%; } }

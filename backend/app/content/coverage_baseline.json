@@ -1,5 +1,5 @@
 {
-  "profiles": 108,
+  "profiles": 270,
   "study_pairs": [
     [
       "go",
@@ -148,13 +148,95 @@
       "book": false
     }
   ],
+  "language_profiles": [
+    {
+      "course_id": "kazakh",
+      "level": "A1",
+      "matched": true
+    },
+    {
+      "course_id": "kazakh",
+      "level": "A2",
+      "matched": true
+    },
+    {
+      "course_id": "kazakh",
+      "level": "B1",
+      "matched": true
+    },
+    {
+      "course_id": "kazakh",
+      "level": "B2",
+      "matched": true
+    },
+    {
+      "course_id": "korean",
+      "level": "A1",
+      "matched": true
+    },
+    {
+      "course_id": "korean",
+      "level": "A2",
+      "matched": true
+    },
+    {
+      "course_id": "korean",
+      "level": "B1",
+      "matched": true
+    },
+    {
+      "course_id": "korean",
+      "level": "B2",
+      "matched": true
+    },
+    {
+      "course_id": "turkish",
+      "level": "A1",
+      "matched": true
+    },
+    {
+      "course_id": "turkish",
+      "level": "A2",
+      "matched": true
+    },
+    {
+      "course_id": "turkish",
+      "level": "B1",
+      "matched": true
+    },
+    {
+      "course_id": "turkish",
+      "level": "B2",
+      "matched": true
+    },
+    {
+      "course_id": "spanish",
+      "level": "A1",
+      "matched": true
+    },
+    {
+      "course_id": "spanish",
+      "level": "A2",
+      "matched": true
+    },
+    {
+      "course_id": "spanish",
+      "level": "B1",
+      "matched": true
+    },
+    {
+      "course_id": "spanish",
+      "level": "B2",
+      "matched": true
+    }
+  ],
   "unreachable": {
     "sport": [],
     "recipe": [],
     "study": []
   },
   "due_soon": [],
-  "signature": "6767be5c794fb0182b625e98eadb3057e312059b314535ab59561b2af7ea7474",
+  "signature": "5c04be90f8573eee90e3b3c6b4e16dd350e6297c27d7ed0c2af7d96052afa533",
   "study_help": {
     "courses": {
       "java": {

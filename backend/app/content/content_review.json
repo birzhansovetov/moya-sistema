@@ -1322,6 +1322,303 @@
         "recheck_by": "2027-09-07",
         "safety_checked": true
       }
+    },
+    "fat_loss_muscle_focus_home_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_outdoor_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_gym_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_outdoor_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_gym_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_outdoor_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://www.who.int/publications/i/item/9789240014886",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_gym_regular_4day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored program with linked source attribution",
+        "source": "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_home_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_home_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_outdoor_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_outdoor_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_gym_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "fat_loss_muscle_focus_gym_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_home_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_outdoor_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_outdoor_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_gym_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "maintain_gym_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_home_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_outdoor_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_outdoor_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_gym_regular_2day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
+    },
+    "strength_gain_gym_regular_3day_v1": {
+      "limitations_supported": false,
+      "review": {
+        "license": "platform-authored adaptation with linked source attribution",
+        "source": "https://acsm.org/resistance-training-guidelines-update-2026/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural catalog and exercise-source review",
+        "recheck_by": "2027-08-15",
+        "safety_checked": true
+      }
     }
   },
   "study": {
@@ -1404,6 +1701,51 @@
         "checked_at": "2026-10-12",
         "checked_by": "Codex structural catalog audit",
         "recheck_by": "2027-08-08"
+      }
+    },
+    "kazakh:v1": {
+      "review": {
+        "license": "original in-platform lessons; sources linked for grammar reference",
+        "source": "https://learnercorpus.kz/en/grammar",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural audit and editorial sample; native-speaker review pending",
+        "recheck_by": "2027-04-15"
+      }
+    },
+    "korean:v1": {
+      "review": {
+        "license": "original in-platform lessons; sources linked for grammar reference",
+        "source": "https://krdict.korean.go.kr/rus/mainAction",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural audit and editorial sample; native-speaker review pending",
+        "recheck_by": "2027-04-15"
+      }
+    },
+    "turkish:v1": {
+      "review": {
+        "license": "original in-platform lessons; sources linked for grammar reference",
+        "source": "https://tdk.gov.tr/icerik/yazim-kurallari/buyuk-unlu-uyumu/",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural audit and editorial sample; native-speaker review pending",
+        "recheck_by": "2027-04-15"
+      }
+    },
+    "spanish:v1": {
+      "review": {
+        "license": "original in-platform lessons; sources linked for grammar reference",
+        "source": "https://cvc.cervantes.es/ENSENANZA/biblioteca_ele/plan_curricular/indice.htm",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex structural audit and editorial sample; native-speaker review pending",
+        "recheck_by": "2027-04-15"
+      }
+    },
+    "english:v3": {
+      "review": {
+        "license": "platform-authored lessons with linked source attribution",
+        "source": "https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions",
+        "checked_at": "2026-10-15",
+        "checked_by": "Codex catalog audit",
+        "recheck_by": "2027-04-15"
       }
     }
   },

@@ -16,7 +16,18 @@
       "common_errors": "Колени сильно сводятся внутрь; пятки отрываются; тело резко падает на сиденье.",
       "easier_version": "Сядьте полностью и вставайте с поддержкой рук о подлокотники или устойчивую опору.",
       "substitution": "Если стула нет, делайте неглубокий присед с опорой на стену.",
-      "source": "https://www.nhs.uk/live-well/exercise/strength-exercises/"
+      "source": "https://www.nhs.uk/live-well/exercise/strength-exercises/",
+      "movement_pattern": "squat",
+      "places": [
+        "home"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "wall_pushup": {
       "name": "Отжимание от стены",
@@ -24,7 +35,18 @@
       "common_errors": "Поясница провисает; плечи поднимаются к ушам; движение делается рывком.",
       "easier_version": "Встаньте ближе к стене и уменьшите амплитуду.",
       "substitution": "Отжимание от устойчивой высокой опоры с тем же контролем корпуса.",
-      "source": "https://www.nhs.uk/live-well/exercise/strength-exercises/"
+      "source": "https://www.nhs.uk/live-well/exercise/strength-exercises/",
+      "movement_pattern": "push",
+      "places": [
+        "home"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "glute_bridge": {
       "name": "Ягодичный мост",
@@ -32,7 +54,20 @@
       "common_errors": "Таз поднимается за счёт прогиба поясницы; стопы скользят; движение выполняется рывком.",
       "easier_version": "Поднимайте таз на меньшую высоту и сделайте паузу вверху на одну секунду.",
       "substitution": "Сведение ягодиц лёжа без подъёма таза, если подъём пока неудобен.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/49/glute-bridge/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/49/glute-bridge/",
+      "movement_pattern": "hinge",
+      "places": [
+        "gym",
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "bird_dog": {
       "name": "Диагональное вытяжение на четвереньках",
@@ -40,7 +75,20 @@
       "common_errors": "Поясница сильно прогибается; таз разворачивается; голова запрокидывается.",
       "easier_version": "Вытягивайте только руку или только ногу, сохраняя устойчивый корпус.",
       "substitution": "Удержание нейтрального положения на четвереньках в течение 20 секунд.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "core",
+      "places": [
+        "gym",
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "calf_raise": {
       "name": "Подъём на носки",
@@ -48,7 +96,20 @@
       "common_errors": "Раскачивание корпусом; разворот стоп; быстрое падение на пятки.",
       "easier_version": "Держитесь двумя руками за устойчивую опору и выполняйте меньшую амплитуду.",
       "substitution": "Подъём пяток сидя, если стоять неудобно.",
-      "source": "https://www.nhs.uk/live-well/exercise/strength-exercises/"
+      "source": "https://www.nhs.uk/live-well/exercise/strength-exercises/",
+      "movement_pattern": "squat",
+      "places": [
+        "gym",
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "brisk_walk": {
       "name": "Быстрая ходьба",
@@ -56,7 +117,20 @@
       "common_errors": "Слишком быстрый старт; сутулость; игнорирование боли или головокружения.",
       "easier_version": "Идите в комфортном темпе и постепенно увеличивайте время.",
       "substitution": "Спокойная ходьба по ровной поверхности при недостаточной готовности к быстрому темпу.",
-      "source": "https://www.nhs.uk/live-well/exercise/walking-for-health/"
+      "source": "https://www.nhs.uk/live-well/exercise/walking-for-health/",
+      "movement_pattern": "cardio",
+      "places": [
+        "gym",
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "bodyweight_squat": {
       "name": "Приседание с собственным весом",
@@ -64,7 +138,20 @@
       "common_errors": "Пятки отрываются; колени сводятся; спина резко округляется.",
       "easier_version": "Приседайте до устойчивой скамьи и касайтесь её без падения.",
       "substitution": "Приседание до стула дома или неглубокое приседание с опорой.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/135/bodyweight-squat/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/135/bodyweight-squat/",
+      "movement_pattern": "squat",
+      "places": [
+        "gym",
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "incline_pushup": {
       "name": "Отжимание от высокой опоры",
@@ -72,7 +159,20 @@
       "common_errors": "Опора шатается; поясница провисает; плечи поднимаются к ушам.",
       "easier_version": "Выберите более высокую устойчивую опору или уменьшите амплитуду.",
       "substitution": "Отжимание от стены при отсутствии безопасной уличной опоры.",
-      "source": "https://www.nhs.uk/live-well/exercise/strength-and-flex-exercise-plan-how-to-videos/"
+      "source": "https://www.nhs.uk/live-well/exercise/strength-and-flex-exercise-plan-how-to-videos/",
+      "movement_pattern": "push",
+      "places": [
+        "outdoor"
+      ],
+      "required_equipment": [
+        "bench"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "supported_row": {
       "name": "Тяга к низкой перекладине с опорой ног",
@@ -80,7 +180,20 @@
       "common_errors": "Ненадёжная перекладина; таз провисает; рывок корпусом; подбородок тянется вместо груди.",
       "easier_version": "Сделайте корпус почти вертикальным и помогайте ногами.",
       "substitution": "Если низкой устойчивой перекладины нет, эту программу не выбирают; для тяги нужен другой проверенный вариант.",
-      "source": "https://yogiathletics.com/library/inverted-row"
+      "source": "https://yogiathletics.com/library/inverted-row",
+      "movement_pattern": "pull",
+      "places": [
+        "outdoor"
+      ],
+      "required_equipment": [
+        "low_bar"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "step_up": {
       "alternatives": [
@@ -97,7 +210,20 @@
       "common_errors": "Скамья скользит; колено заваливается внутрь; спуск слишком быстрый.",
       "easier_version": "Используйте низкую ступень и держитесь за устойчивую опору.",
       "substitution": "Приседание с собственным весом, если подходящей платформы нет.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/28/step-up/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/28/step-up/",
+      "movement_pattern": "squat",
+      "places": [
+        "outdoor"
+      ],
+      "required_equipment": [
+        "bench"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "leg_press": {
       "alternatives": [
@@ -114,7 +240,20 @@
       "common_errors": "Пятки отрываются; колени полностью блокируются; таз отрывается от сиденья; вес слишком тяжёлый.",
       "easier_version": "Уменьшите вес и амплитуду, пока сохраняется контроль движения.",
       "substitution": "Приседание до скамьи без отягощения.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/154/seated-leg-press/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/154/seated-leg-press/",
+      "movement_pattern": "squat",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "chest_press": {
       "name": "Жим от груди в тренажёре",
@@ -122,7 +261,20 @@
       "common_errors": "Плечи поднимаются; спина прогибается; рукояти отпускаются резко.",
       "easier_version": "Уменьшите вес и сократите амплитуду до комфортной.",
       "substitution": "Отжимание от стены или устойчивой высокой опоры.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/188/seated-chest-press/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/188/seated-chest-press/",
+      "movement_pattern": "push",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "seated_row": {
       "name": "Горизонтальная тяга в тренажёре",
@@ -130,7 +282,20 @@
       "common_errors": "Отклонение всем корпусом назад; округление плеч; рывок весом.",
       "easier_version": "Уменьшите вес и тяните с паузой в конце движения.",
       "substitution": "Тяга резинки к корпусу при наличии надёжно закреплённой резинки.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/168/seated-row/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/168/seated-row/",
+      "movement_pattern": "pull",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "lat_pulldown": {
       "name": "Вертикальная тяга в тренажёре",
@@ -138,7 +303,20 @@
       "common_errors": "Тяга за голову; сильный прогиб поясницы; рывок корпусом; слишком большой вес.",
       "easier_version": "Уменьшите вес и выполняйте медленное движение в комфортной амплитуде.",
       "substitution": "Горизонтальная тяга в тренажёре при отсутствии вертикального блока.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/158/seated-lat-pulldown/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/158/seated-lat-pulldown/",
+      "movement_pattern": "pull",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "band_row": {
       "name": "Тяга резинки сидя",
@@ -146,7 +324,21 @@
       "common_errors": "Резинка соскальзывает со стоп; плечи поднимаются; корпус резко отклоняется назад.",
       "easier_version": "Используйте более мягкую резинку и меньшую амплитуду.",
       "substitution": "Если нет безопасной резинки, выберите программу без неё.",
-      "source": "https://www.gloshospitals.nhs.uk/media/documents/Simple_exercises_to_encourage_weight_loss_GHPI1401_03_26.pdf"
+      "source": "https://www.gloshospitals.nhs.uk/media/documents/Simple_exercises_to_encourage_weight_loss_GHPI1401_03_26.pdf",
+      "movement_pattern": "pull",
+      "places": [
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [
+        "bands"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "band_chest_press": {
       "name": "Жим резинки от груди",
@@ -154,7 +346,21 @@
       "common_errors": "Резинка проходит по шее; спина сильно прогибается; руки резко возвращаются назад.",
       "easier_version": "Возьмите более мягкую резинку и разгибайте руки в комфортной амплитуде.",
       "substitution": "Отжимание от стены, если есть подходящая устойчивая стена.",
-      "source": "https://www.gloshospitals.nhs.uk/media/documents/Simple_exercises_to_encourage_weight_loss_GHPI1401_03_26.pdf"
+      "source": "https://www.gloshospitals.nhs.uk/media/documents/Simple_exercises_to_encourage_weight_loss_GHPI1401_03_26.pdf",
+      "movement_pattern": "push",
+      "places": [
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [
+        "bands"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "pushup": {
       "name": "Отжимание от пола",
@@ -162,7 +368,18 @@
       "common_errors": "Провисание таза; резкие движения; задержка дыхания.",
       "easier_version": "Отжимания с колен или от высокой устойчивой опоры.",
       "substitution": "Жим штанги на полу при безопасной подаче снаряда.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "home"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "barbell_row": {
       "name": "Тяга штанги в наклоне",
@@ -170,7 +387,20 @@
       "common_errors": "Округление спины; рывок корпусом; запрокидывание головы.",
       "easier_version": "Уменьшите вес и угол наклона; используйте более короткую амплитуду.",
       "substitution": "Тяга горизонтального блока в зале или тяга лёгкой гантели с опорой дома.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "pull",
+      "places": [
+        "home"
+      ],
+      "required_equipment": [
+        "barbell"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "barbell_rdl": {
       "name": "Румынская тяга со штангой",
@@ -178,7 +408,20 @@
       "common_errors": "Округление спины; штанга уходит далеко от ног; избыточная глубина.",
       "easier_version": "Уменьшите вес и амплитуду; сначала разучите движение без штанги.",
       "substitution": "Ягодичный мост.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "hinge",
+      "places": [
+        "home"
+      ],
+      "required_equipment": [
+        "barbell"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "reverse_lunge": {
       "name": "Выпад назад",
@@ -186,7 +429,19 @@
       "common_errors": "Переднее колено заваливается внутрь; потеря равновесия; рывок.",
       "easier_version": "Держитесь за устойчивую опору и делайте меньший шаг.",
       "substitution": "Приседание до стула.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "squat",
+      "places": [
+        "gym",
+        "home"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "dumbbell_lateral_raise": {
       "name": "Подъём лёгких гантелей в стороны",
@@ -194,7 +449,21 @@
       "common_errors": "Раскачивание; рывок; боль в плечах.",
       "easier_version": "Поднимайте руки без веса или в меньшей амплитуде.",
       "substitution": "Разведение рук без веса.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "pull",
+      "places": [
+        "gym",
+        "home"
+      ],
+      "required_equipment": [
+        "dumbbells"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "dumbbell_rear_raise": {
       "name": "Разведение лёгких гантелей в наклоне",
@@ -202,7 +471,21 @@
       "common_errors": "Раскачивание корпусом; подъём плеч к ушам.",
       "easier_version": "Выполняйте без веса.",
       "substitution": "Разведение рук без веса в наклоне.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "pull",
+      "places": [
+        "gym",
+        "home"
+      ],
+      "required_equipment": [
+        "dumbbells"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "barbell_curl": {
       "name": "Сгибание рук со штангой",
@@ -210,7 +493,21 @@
       "common_errors": "Раскачивание корпусом; движение плечами; слишком тяжёлый вес.",
       "easier_version": "Используйте гантели 1 кг с медленным опусканием.",
       "substitution": "Сгибания с лёгкими гантелями.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "pull",
+      "places": [
+        "gym",
+        "home"
+      ],
+      "required_equipment": [
+        "barbell"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "dumbbell_curl": {
       "name": "Сгибание рук с гантелями",
@@ -218,7 +515,20 @@
       "common_errors": "Рывок корпусом; поднятые плечи.",
       "easier_version": "Сократите амплитуду или выполняйте поочерёдно.",
       "substitution": "Сгибание рук со штангой, если вес подходящий.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "pull",
+      "places": [
+        "home"
+      ],
+      "required_equipment": [
+        "dumbbells"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "triceps_extension": {
       "name": "Разгибание руки с лёгкой гантелью",
@@ -226,7 +536,20 @@
       "common_errors": "Рывок; боль в локте; прогиб поясницы.",
       "easier_version": "Работайте без веса или в меньшей амплитуде.",
       "substitution": "Разгибание рук на верхнем блоке в зале.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "home"
+      ],
+      "required_equipment": [
+        "dumbbells"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "cable_pushdown": {
       "name": "Разгибание рук на верхнем блоке",
@@ -234,7 +557,20 @@
       "common_errors": "Раскачивание корпусом; локти уезжают вперёд.",
       "easier_version": "Уменьшите вес.",
       "substitution": "Разгибание руки с лёгкой гантелью.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "leg_curl": {
       "name": "Сгибание ног в тренажёре",
@@ -242,7 +578,20 @@
       "common_errors": "Отрыв таза; рывки; слишком тяжёлый вес.",
       "easier_version": "Уменьшите нагрузку и амплитуду.",
       "substitution": "Румынская тяга с лёгким весом.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "hinge",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "leg_extension": {
       "name": "Разгибание ног в тренажёре",
@@ -250,7 +599,20 @@
       "common_errors": "Рывок; боль в колене; чрезмерный вес.",
       "easier_version": "Уменьшите вес и амплитуду.",
       "substitution": "Приседание до стула.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "squat",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "plank": {
       "name": "Планка на предплечьях",
@@ -258,7 +620,20 @@
       "common_errors": "Провисание поясницы; поднятый таз; задержка дыхания.",
       "easier_version": "Планка с колен или короткие удержания.",
       "substitution": "Диагональное вытяжение на четвереньках.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "core",
+      "places": [
+        "gym",
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "crunch": {
       "name": "Скручивание лёжа",
@@ -266,7 +641,20 @@
       "common_errors": "Тянуть шею руками; большой рывок; задержка дыхания.",
       "easier_version": "Меньшая амплитуда.",
       "substitution": "Планка с колен.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "core",
+      "places": [
+        "gym",
+        "home",
+        "outdoor"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "incline_dumbbell_press": {
       "name": "Жим гантелей на наклонной скамье",
@@ -274,7 +662,21 @@
       "common_errors": "Слишком большой прогиб; рывок; неустойчивая скамья.",
       "easier_version": "Уменьшите вес или наклон.",
       "substitution": "Жим в грудном тренажёре.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "dumbbells",
+        "bench"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "chest_fly_machine": {
       "name": "Сведение рук в тренажёре",
@@ -282,7 +684,20 @@
       "common_errors": "Плечи подняты; чрезмерная амплитуда; слишком большой вес.",
       "easier_version": "Уменьшите вес и амплитуду.",
       "substitution": "Жим в грудном тренажёре.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "dumbbell_shoulder_press": {
       "name": "Жим гантелей сидя",
@@ -290,7 +705,21 @@
       "common_errors": "Сильный прогиб поясницы; рывок; боль в плечах.",
       "easier_version": "Уменьшите вес или амплитуду.",
       "substitution": "Подъём лёгких гантелей в стороны.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "gym",
+        "home"
+      ],
+      "required_equipment": [
+        "dumbbells"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "back_extension": {
       "name": "Гиперэкстензия",
@@ -298,7 +727,20 @@
       "common_errors": "Переразгибание поясницы; рывок; слишком большая амплитуда.",
       "easier_version": "Уменьшите амплитуду.",
       "substitution": "Ягодичный мост.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "hinge",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "machines"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "barbell_squat": {
       "name": "Приседание со штангой в стойке",
@@ -306,7 +748,20 @@
       "common_errors": "Нет страховочных ограничителей; колени сводятся; спина округляется.",
       "easier_version": "Приседание без веса или жим ногами.",
       "substitution": "Жим ногами.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "squat",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "barbell"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "dumbbell_bench_press": {
       "name": "Жим гантелей лёжа",
@@ -314,7 +769,21 @@
       "common_errors": "Рывок; чрезмерный прогиб; нестабильная скамья.",
       "easier_version": "Уменьшите вес.",
       "substitution": "Жим в грудном тренажёре.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "dumbbells",
+        "bench"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "hammer_curl": {
       "name": "Молотковые сгибания",
@@ -322,7 +791,20 @@
       "common_errors": "Раскачивание корпусом; локти уходят вперёд.",
       "easier_version": "Уменьшите вес.",
       "substitution": "Обычные сгибания рук с гантелями.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "pull",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "dumbbells"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "barbell_bench_press": {
       "name": "Жим штанги лёжа",
@@ -330,7 +812,21 @@
       "common_errors": "Нет страховочных ограничителей; отрыв таза от скамьи; резкий отбив от груди.",
       "easier_version": "Жим в грудном тренажёре с меньшим весом.",
       "substitution": "Жим в грудном тренажёре.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "gym"
+      ],
+      "required_equipment": [
+        "barbell",
+        "bench"
+      ],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     },
     "close_grip_pushup": {
       "name": "Отжимание с узкой постановкой рук",
@@ -338,7 +834,19 @@
       "common_errors": "Слишком узкая постановка ладоней; провисание поясницы; рывок; боль в запястьях.",
       "easier_version": "Отжимания с колен или от устойчивой высокой опоры.",
       "substitution": "Обычные отжимания от пола.",
-      "source": "https://www.acefitness.org/resources/everyone/exercise-library/"
+      "source": "https://www.acefitness.org/resources/everyone/exercise-library/",
+      "movement_pattern": "push",
+      "places": [
+        "gym",
+        "home"
+      ],
+      "required_equipment": [],
+      "experience": [
+        "beginner",
+        "intermediate",
+        "regular"
+      ],
+      "harder_version": "Увеличивайте нагрузку только после устойчивой техники и выполнения всех повторений в комфортном темпе."
     }
   }
 }

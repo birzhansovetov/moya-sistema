@@ -33,7 +33,7 @@ export function TodayPage() {
       </section>
     </div>
     <section className="activityStreak" aria-label="Серия активных дней">
-      <div className="activityStreakIntro"><span className="activityStreakLabel">СЕРИЯ АКТИВНОСТИ</span><strong>{streak.isError ? '—' : streak.isLoading ? '…' : streakCount} <small>{streakUnit} подряд</small></strong><p>{streak.isError ? 'Не удалось загрузить активность.' : streak.data?.today_active ? 'Сегодня уже есть активность' : streakCount ? 'Одно действие сегодня сохранит серию' : 'Начните серию с одного действия сегодня'}</p></div>
+      <div className="activityStreakIntro"><span className="activityStreakLabel">Активность</span><strong>{streak.isError ? '—' : streak.isLoading ? '…' : streakCount} <small>{streakUnit} подряд</small></strong><p>{streak.isError ? 'Не удалось загрузить активность.' : streak.data?.today_active ? 'Сегодня уже есть активность' : streakCount ? 'Одно действие сегодня сохранит серию' : 'Начните серию с одного действия сегодня'}</p></div>
       <div className="activityStreakDays" aria-label="Активность за последние семь дней">{streak.data?.days.map(day => <div key={day.date} className={`activityStreakDay ${day.active ? 'isActive' : ''}`} title={`${displayDate(day.date)} — ${day.active ? 'есть активность' : 'нет активности'}`} aria-label={`${displayDate(day.date)}: ${day.active ? 'есть активность' : 'нет активности'}`}><span>{new Intl.DateTimeFormat('ru-RU', { timeZone: 'UTC', weekday: 'short' }).format(new Date(`${day.date}T12:00:00Z`))}</span><b>{new Date(`${day.date}T12:00:00Z`).getUTCDate()}</b></div>)}</div>
     </section>
     <div className="todaySecondary">

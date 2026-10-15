@@ -34,7 +34,7 @@
   .dateToolbar label{min-width:0;justify-content:space-between;gap:6px;padding:0 10px;background:#fff;border:1px solid #e6e3dc;border-radius:13px;color:#57534d;font-size:13px}
   .dateToolbar input{min-width:0;max-width:145px;border:0;background:transparent;padding:0 2px;font-size:13px;box-shadow:none}
   .dateToolbar>.textButton{grid-column:1/-1;min-height:44px;justify-self:start}
-  .todayNext{padding:22px;margin-bottom:14px;background:#242424!important;border-color:#242424!important;color:#fff;box-shadow:0 10px 24px #24242424}
+  .todayNext{--color-text:#fff;--color-text-muted:#cfcdc8;--color-surface:#242424;--color-line:#55524c;--color-action:#fff;--color-action-hover:#eee;--color-action-text:#242424;--text:var(--color-text);--text-muted:var(--color-text-muted);--surface:var(--color-surface);--line:var(--color-line);--accent:var(--color-action);--accent-ink:var(--color-action-text);padding:22px;margin-bottom:14px;background:#242424!important;border-color:#242424!important;color:#fff;box-shadow:0 10px 24px #24242424}
   .todayNext .eyebrow{color:#b9b7b2}
   .todayNext h2{color:#fff;font-size:clamp(24px,7vw,31px);line-height:1.12}
   .todayNext p{color:#cfcdc8;font-size:14px}

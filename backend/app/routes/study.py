@@ -8,11 +8,11 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from app.auth import AuthContext, get_current_user, require_csrf
 from app.content_review import is_revoked
-from app.db import get_db
+from app.db import get_db, utc_now
 from app.models import StudyPlan, StudyAttempt, StudyDraft, StudyReview, User
 from app.tasks import local_date
 from app.study import (catalog, course, public_course, fingerprint, lock_user, replay, owned_plan,
-                       plan_view, attempts_for, progress, grade, attempt_view, normalize_answer)
+                       plan_view, attempts_for, progress, grade, attempt_view, normalize_answer, LANGUAGE_COURSES)
 
 router = APIRouter(prefix='/api/study', tags=['study'])
 
@@ -90,6 +90,7 @@ class ReviewCreate(BaseModel):
 
 
 class GrammarCheck(BaseModel):
+    course_id: str = Field(default='english',max_length=40)
     version: str = Field(max_length=20)
     lesson_id: str = Field(max_length=60)
     answer: str = Field(max_length=300)
@@ -120,7 +121,7 @@ def get_course(course_id: str, version: str | None = None, user: User = Depends(
 
 @router.post('/grammar-check')
 def grammar_check(payload: GrammarCheck, context: AuthContext = Depends(require_csrf)):
-    selected = course('english', payload.version)
+    selected = course(payload.course_id, payload.version)
     lesson = next((item for item in selected['lessons'] if item['id'] == payload.lesson_id), None)
     if not lesson or 'grammar' not in lesson:
         raise HTTPException(404, 'Упражнение не найдено')
@@ -150,8 +151,14 @@ def create_plan(payload: PlanCreate, context: AuthContext = Depends(require_csrf
         raise HTTPException(409, 'Активный план изменился. Обновите страницу и заново проверьте замену.')
     if payload.start_date < local_date(context.user.timezone):
         raise HTTPException(422, 'Новый план начинается сегодня или позже')
-    if active:
-        active.active_slot = None
+    language_ids = {'english', *LANGUAGE_COURSES}
+    active_group = (db.scalars(select(StudyPlan).where(StudyPlan.user_id == context.user.id,
+        StudyPlan.course_id.in_(language_ids), StudyPlan.active_slot.is_not(None))).all()
+        if payload.course_id in language_ids else [active] if active else [])
+    for previous in active_group:
+        previous.active_slot = None
+        previous.archived_at = utc_now()
+    if active_group:
         db.flush()
     item = StudyPlan(user_id=context.user.id,course_id=payload.course_id,version=payload.version,active_slot=payload.course_id,
                      config=payload.model_dump(mode='json',exclude={'course_id','version','create_key','expected_plan_id'}),

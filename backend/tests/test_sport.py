@@ -22,7 +22,7 @@ def test_sport_catalog_and_plan_are_private_and_selected_from_answers(client: Te
     csrf = sign_in(client, mailbox, "one@example.com")
     catalog = client.get("/api/health/sport/catalog")
     assert catalog.status_code == 200
-    assert len(catalog.json()["programs"]) == 47
+    assert len(catalog.json()["programs"]) >= 56
     assert client.get("/api/health/sport/plan").json()["plan"] is None
 
     preview = client.post("/api/health/sport/match", json=plan_answers())

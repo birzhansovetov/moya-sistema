@@ -6,7 +6,7 @@ from importlib.resources import files
 from typing import Literal
 from uuid import uuid4
 from fastapi import APIRouter, Depends, HTTPException, Request
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
@@ -21,11 +21,11 @@ from app.nutrition import NutritionPreferences, compatible_recipes
 from app.routes.auth import user_info
 from app.routes.study import PlanValues, preview_values
 from app.sport import SportAnswers, select_program, load_sport_catalog
-from app.study import course as study_course, fingerprint, lock_user
+from app.study import LANGUAGE_COURSES, course as study_course, fingerprint, lock_user, latest_version
 from app.tasks import local_date
 
 router = APIRouter(prefix='/api/onboarding', tags=['onboarding'])
-SURVEY_VERSION = 2
+SURVEY_VERSION = 3
 
 class Strict(BaseModel):
     model_config = ConfigDict(extra='forbid')
@@ -45,10 +45,19 @@ class Profession(Strict):
     minutes: Literal[15,30,45,60]
     weekdays: list[int] = Field(min_length=1,max_length=7)
 class Languages(Strict):
-    level: Literal['A2','B1','B2','none']
+    course_id: Literal['english','kazakh','korean','turkish','spanish','none'] = 'english'
+    level: Literal['A1','A2','B1','B2','none']
     goal: Literal['general','work','travel','project']
     minutes: Literal[15,30,45,60]
     weekdays: list[int] = Field(min_length=1,max_length=7)
+
+    @model_validator(mode='after')
+    def compatible_level(self):
+        if self.course_id == 'english' and self.level == 'A1':
+            raise ValueError('Английский начинается с A2')
+        if (self.course_id == 'none') != (self.level == 'none') and self.course_id != 'english':
+            raise ValueError('Выберите язык и уровень вместе')
+        return self
 class Finance(Strict):
     currency: Literal['KZT','USD','EUR','RUB']
     focus: Literal['record','review']
@@ -81,14 +90,15 @@ def choices(payload, timezone):
     return [
         study_values('go' if payload.education.track in ('go','go-reading') else 'java','beginner',payload.education.minutes,payload.education.weekdays,timezone,version='v2') if payload.education.track in ('java','go','both','go-reading') else None,
         study_values('java-backend','foundation',payload.profession.minutes,payload.profession.weekdays,timezone,version='v3') if payload.profession.track == 'java-backend' else None,
-        study_values('english',payload.languages.level,payload.languages.minutes,payload.languages.weekdays,timezone,goal=payload.languages.goal,version='v2') if payload.languages.level != 'none' else None,
+        study_values(payload.languages.course_id,payload.languages.level,payload.languages.minutes,payload.languages.weekdays,timezone,goal=payload.languages.goal,version=latest_version(payload.languages.course_id)) if payload.languages.level != 'none' else None,
     ]
 
 def study_match(value, fallback_title, fallback_route):
     if value is None: return {'status':'skipped','reason':'Маршрут пока не выбран.','material':{'title':fallback_title,'route':fallback_route}}
     try: data = preview_values(value)
     except HTTPException as error: return {'status':'unavailable','reason':str(error.detail)}
-    return {'status':'matched','lesson_count':data['lesson_count'],'route':{'java':'/education/java','go':'/education/go','java-backend':'/profession','english':'/languages'}[value.course_id]}
+    route={'java':'/education/java','go':'/education/go','java-backend':'/profession','english':'/languages'}.get(value.course_id,f'/languages/{value.course_id}')
+    return {'status':'matched','lesson_count':data['lesson_count'],'route':route}
 
 def build_preview(payload, timezone):
     sport = select_program(payload.health.sport) if payload.health.sport else None
@@ -104,20 +114,24 @@ def build_preview(payload, timezone):
     books = json.loads(files('app.content').joinpath('book_suggestions.json').read_text(encoding='utf-8'))
     book = (next((item for item in books if any(genre in item.get('genres', []) for genre in payload.education.reading_genres)), None)
             if payload.education.track in ('reading', 'both', 'go-reading') else None)
-    education, backend, english = choices(payload, timezone)
+    education, backend, language = choices(payload, timezone)
     return {'areas':{
         'health':{'title':'Здоровье','sport':sport_match,'recipes':{'status':'matched' if recipe_list else 'unavailable','count':len(recipe_list),'example':recipe_list[0]['name'] if recipe_list else None,'route':'/health/nutrition'}},
         'education':{'title':'Обучение','study':study_match(education,'Готовые курсы Java и Go','/education'),'book':{'title':book['title'],'author':book['author'],'route':'/education/reading'} if book else None},
         'profession':{'title':'Профессия','study':study_match(backend,'Уроки Java backend','/profession')},
-        'languages':{'title':'Языки','study':study_match(english,'Уроки английского A2–B2','/languages')},
+        'languages':{'title':'Языки','study':study_match(language,'Курсы языков','/languages')},
         'finance':{'title':'Финансы','guide':{'title':'Учитывать расходы' if payload.finance.focus=='record' else 'Разбирать расходы за месяц','route':'/finance'}},
         'personal':{'title':'Личное','guide':{'title':{'journal':'Вести дневник','habits':'Работать с привычками','reading':'Размышлять о прочитанном'}[payload.personal.focus],'route':'/personal'}}}}
 
 @router.get('')
 def state(user:User=Depends(get_current_user)):
-    return {'complete':user.onboarding_completed_at is not None,'answers':user.onboarding_answers,
+    answers=user.onboarding_answers
+    if answers and user.onboarding_version == 2 and 'course_id' not in answers.get('languages', {}):
+        answers={**answers,'languages':{**answers['languages'],
+            'course_id':'none' if answers['languages'].get('level')=='none' else 'english'}}
+    return {'complete':user.onboarding_completed_at is not None,'answers':answers,
             'survey_version':user.onboarding_version or SURVEY_VERSION,
-            'needs_reconfirmation':user.onboarding_answers is not None and user.onboarding_version not in (None, SURVEY_VERSION)}
+            'needs_reconfirmation':user.onboarding_answers is not None and user.onboarding_version not in (None, 2, SURVEY_VERSION)}
 @router.post('/preview')
 def preview(payload:Survey,request:Request,context:AuthContext=Depends(require_csrf),db:Session=Depends(get_db)):
     if not request.app.state.settings.shared_matching_enabled:
@@ -290,7 +304,7 @@ def _start_selected(payload:StartSelection,context:AuthContext,db:Session) -> di
     active_studies={p.course_id:p for p in db.scalars(select(StudyPlan).where(StudyPlan.user_id==user.id,StudyPlan.active_slot.is_not(None))).all()}
     if (active_sport.id if active_sport else None)!=snapshot.expected_active['sport'] or {k:v.id for k,v in active_studies.items()}!=snapshot.expected_active['study']:
         raise HTTPException(409,'Планы изменились после предпросмотра; обновите подбор')
-    replacement=bool((active_sport and 'health' in payload.selected) or any(s in payload.selected and any(p.course_id in ({'java','go'} if s=='education' else {'java-backend'} if s=='profession' else {'english'}) for p in active_studies.values()) for s in ('education','profession','languages')))
+    replacement=bool((active_sport and 'health' in payload.selected) or any(s in payload.selected and any(p.course_id in ({'java','go'} if s=='education' else {'java-backend'} if s=='profession' else {'english',*LANGUAGE_COURSES}) for p in active_studies.values()) for s in ('education','profession','languages')))
     if replacement and not payload.confirm_replace:
         raise HTTPException(409,'Подтвердите замену существующего плана')
     today=local_date(user.timezone)
@@ -309,7 +323,7 @@ def _start_selected(payload:StartSelection,context:AuthContext,db:Session) -> di
         value=study_by_sphere[sphere]
         if value is None or value.course_id!=payload.selected[sphere]:
             raise HTTPException(409,'Курс больше не соответствует анкете')
-        sphere_courses={'education':{'java','go'},'profession':{'java-backend'},'languages':{'english'}}[sphere]
+        sphere_courses={'education':{'java','go'},'profession':{'java-backend'},'languages':{'english',*LANGUAGE_COURSES}}[sphere]
         for active in active_studies.values():
             if active.course_id in sphere_courses:
                 active.active_slot=None; active.archived_at=utc_now()
@@ -366,11 +380,16 @@ def restore(payload:RestoreRequest,request:Request,context:AuthContext=Depends(r
         review=load_reviews()['study'].get(f'{old.course_id}:{old.version}',{}).get('review')
         if course is None or not reviewed_variant('study',{**course,'review':review},local_date(user.timezone)):
             raise HTTPException(409,'Курс больше не проходит проверку каталога')
-        active=db.scalar(select(StudyPlan).where(StudyPlan.user_id==user.id,StudyPlan.active_slot==old.course_id))
-        if active and not payload.confirm_progress:
+        language_ids={'english',*LANGUAGE_COURSES}
+        active_courses=(db.scalars(select(StudyPlan).where(StudyPlan.user_id==user.id,
+            StudyPlan.course_id.in_(language_ids),StudyPlan.active_slot.is_not(None))).all()
+            if old.course_id in language_ids else
+            db.scalars(select(StudyPlan).where(StudyPlan.user_id==user.id,StudyPlan.active_slot==old.course_id)).all())
+        if active_courses and not payload.confirm_progress:
             raise HTTPException(409,'Подтвердите замену текущего курса и сохранение его прогресса')
-        if active:
-            active.active_slot=None; active.archived_at=now; db.flush()
+        for active in active_courses:
+            active.active_slot=None; active.archived_at=now
+        if active_courses: db.flush()
         old.active_slot=old.course_id; old.archived_at=None
     db.commit()
     return {'status':'restored','kind':payload.kind,'plan_id':payload.plan_id}

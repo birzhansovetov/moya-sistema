@@ -14,7 +14,7 @@ body{background:var(--app-bg);color:var(--app-ink)}
 .secondaryButton{background:transparent;border-color:#c5c1b9;color:#292929}
 input,select,textarea{border-color:#c9c5bd;border-radius:10px;background:#fff;color:#262626}
 input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #343434;outline-offset:1px}
-.formStack label{color:#45413b}
+.formStack label{color:var(--color-text)}
 .sectionCard{display:flex;flex-direction:column;justify-content:space-between;gap:22px;min-height:210px;padding:24px;border-radius:18px;background:#fff}
 .sectionCard h2{font-size:clamp(22px,2.3vw,29px);letter-spacing:-.04em}
 .sectionCard p{font-size:14px;line-height:1.5;color:#625f59}

@@ -30,7 +30,7 @@ def test_current_catalog_items_carry_reviewed_matching_metadata() -> None:
     for recipe in load_recipes()["recipes"]:
         assert reviewed_variant("recipe", recipe, date(2026, 10, 12)), recipe["id"]
     for program in load_sport_catalog()["programs"]:
-        assert reviewed_variant("sport", program, date(2026, 10, 12)), program["id"]
+        assert reviewed_variant("sport", program, date(2026, 10, 15)), program["id"]
 
 
 def test_missing_ingredient_allergens_excludes_only_affected_recipes(monkeypatch) -> None:

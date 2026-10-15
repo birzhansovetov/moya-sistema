@@ -231,3 +231,82 @@ def test_every_valid_sport_choice_has_a_program_or_a_ready_material():
                                 assert selected["material"]["steps"] and selected["material"]["sources"]
                             else:
                                 assert selected["program"]["sessions"]
+
+
+def test_exercise_metadata_and_program_coverage_are_explicit():
+    from app.sport_coverage import audit_coverage
+    catalog = sport_module().load_sport_catalog()
+    report = audit_coverage(catalog['programs'], catalog['exercises'])
+    assert report['missing_exercise_metadata'] == []
+    assert report['unknown_exercises'] == []
+    excluded = {item['id'] for item in report['incomplete_programs']}
+    excluded.update(item.split(':')[0] for item in report['incompatible_exercises'] if ':' in item)
+    assert all(item['id'] not in excluded for item in report['available_combinations'])
+    assert report['available_combinations']
+    assert report['unavailable_combinations']
+
+
+def test_home_without_equipment_has_real_pull_or_explicit_gap():
+    from app.sport_coverage import audit_coverage
+    catalog = sport_module().load_sport_catalog()
+    report = audit_coverage(catalog['programs'], catalog['exercises'])
+    no_equipment = [item for item in report['available_combinations'] if item['place'] == 'home' and not item['equipment']]
+    assert all('pull' in item['movement_patterns'] for item in no_equipment)
+
+
+def test_regular_experience_has_distinct_full_programs_for_each_place():
+    sport = sport_module()
+    for place, equipment in (
+        ('home', ['barbell', 'dumbbells']),
+        ('outdoor', ['low_bar', 'bench', 'bands']),
+        ('gym', ['machines']),
+    ):
+        selected = sport.select_program(answers(level='regular', place=place, equipment=equipment,
+                                                 days_per_week=4, minutes_per_session=60,
+                                                 weekdays=[1, 2, 4, 6]))
+        assert selected['program'] is not None
+        assert selected['program']['level'] == 'regular'
+        assert selected['program']['place'] == place
+        assert len(selected['sessions']) == 4
+
+
+def test_regular_with_limitations_never_gets_universal_program():
+    selected = sport_module().select_program(answers(level='regular', place='gym', equipment=['machines'],
+                                               days_per_week=4, minutes_per_session=60,
+                                               weekdays=[1, 2, 4, 6], limitations=True))
+    assert selected['program'] is None
+    assert selected['material']['id'] == 'sport-limitations'
+
+
+def test_regular_routes_cover_all_three_goals_without_unavailable_equipment():
+    sport = sport_module()
+    for goal in ('fat_loss_muscle_focus', 'maintain', 'strength_gain'):
+        for place, equipment in (('home', ['barbell', 'dumbbells']),
+                                 ('outdoor', ['low_bar', 'bench', 'bands']),
+                                 ('gym', ['machines'])):
+            selected = sport.select_program(answers(goal=goal, level='regular', place=place,
+                equipment=equipment, days_per_week=4, minutes_per_session=60,
+                weekdays=[1, 2, 4, 6]))
+            assert selected['program'] is not None, (goal, place, selected['reasons'])
+            assert selected['program']['goal'] == goal
+
+
+def test_regular_has_complete_two_and_three_day_routes():
+    sport = sport_module()
+    for days, weekdays in ((2, [1, 4]), (3, [1, 3, 5])):
+        for goal in ('fat_loss_muscle_focus', 'maintain', 'strength_gain'):
+            for place, equipment in (('home', ['barbell', 'dumbbells']),
+                                     ('outdoor', ['low_bar', 'bench', 'bands']),
+                                     ('gym', ['machines'])):
+                selected = sport.select_program(answers(goal=goal, level='regular', place=place,
+                    equipment=equipment, days_per_week=days, minutes_per_session=60,
+                    weekdays=weekdays))
+                assert selected['program'] is not None, (days, goal, place, selected['reasons'])
+                assert len(selected['sessions']) == days
+
+
+def test_new_experience_never_offers_incomplete_legacy_program():
+    selected = sport_module().select_program(answers(level='returning', place='home',
+        equipment=[], days_per_week=2, minutes_per_session=35, weekdays=[1, 4]))
+    assert selected['program'] is None
+    assert selected['reasons']

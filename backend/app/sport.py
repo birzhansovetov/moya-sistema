@@ -11,7 +11,7 @@ from app.content_review import reviewed_variant
 
 class SportAnswers(BaseModel):
     goal: Literal["fat_loss_muscle_focus", "maintain", "strength_gain"]
-    level: Literal["beginner", "intermediate"]
+    level: Literal["beginner", "intermediate", "returning", "irregular", "regular"]
     place: Literal["home", "outdoor", "gym"]
     equipment: list[Literal["low_bar", "bench", "machines", "dumbbells", "bands", "barbell"]] = Field(default_factory=list)
     days_per_week: int = Field(ge=1, le=7)
@@ -67,14 +67,20 @@ def load_sport_catalog() -> dict[str, Any]:
 
 def select_program(answers: SportAnswers, excluded_ids: set[str] | None = None) -> dict[str, Any]:
     catalog = load_sport_catalog()
+    if answers.level in ("returning", "irregular", "regular"):
+        from app.sport_coverage import audit_coverage
+        complete_ids = {item["id"] for item in audit_coverage(catalog["programs"], catalog["exercises"])["available_combinations"]}
+    else:
+        complete_ids = {item["id"] for item in catalog["programs"]}
     reasons: list[str] = []
     if answers.limitations:
         reasons.append("При указанных ограничениях проверенной программы пока нет.")
     today = datetime.now(ZoneInfo("Asia/Almaty")).date()
-    candidates = [program for program in catalog["programs"] if program["id"] not in (excluded_ids or set())
+    requested_level = {"returning": "beginner", "irregular": "intermediate"}.get(answers.level, answers.level)
+    candidates = [program for program in catalog["programs"] if program["id"] in complete_ids and program["id"] not in (excluded_ids or set())
                   and reviewed_variant("sport", program, today)
                   and program["goal"] == answers.goal and program["place"] == answers.place
-                  and program["level"] == answers.level and answers.days_per_week in program["supported_days"]]
+                  and program["level"] == requested_level and answers.days_per_week in program["supported_days"]]
     if not candidates:
         reasons.append("Для выбранного места программы пока нет.")
     elif answers.days_per_week not in (2, 3, 4):

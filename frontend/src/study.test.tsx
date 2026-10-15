@@ -41,6 +41,11 @@ beforeEach(()=>{dayState.value='2026-10-10';course.lessons=[lesson];active={...p
  throw new Error(path)
 })})
 function mount(url='/languages',day=false,client=new QueryClient({defaultOptions:{queries:{retry:false},mutations:{retry:false}}})){const view=render(<QueryClientProvider client={client}><MemoryRouter initialEntries={[url]}>{day?<StudyDay date="2026-10-10"/>:<StudyPage courseId="english"/>}</MemoryRouter></QueryClientProvider>);return {client,...view}}
+test('course view marks its lesson layout for the language theme',async()=>{
+ const view=mount()
+ await screen.findByRole('heading',{name:/Английский A2/})
+ expect(view.container.querySelector('[data-course-kind="language"]')).toBeInTheDocument()
+})
 async function openPractice(){fireEvent.click(await screen.findByRole('button',{name:/Практика и результат/}));return screen.findByLabelText('Ваш результат и заметки')}
 test('english route offers level-specific optional practice with direct tasks',async()=>{
  mount()

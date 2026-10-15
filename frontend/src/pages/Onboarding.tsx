@@ -5,12 +5,12 @@ import { useAuth } from '../auth'
 import { readingGenres, type ReadingGenre } from '../readingGenres'
 import './Onboarding.css'
 
-type Sport = { goal: 'fat_loss_muscle_focus' | 'maintain' | 'strength_gain'; level: 'beginner' | 'intermediate'; place: 'home' | 'outdoor' | 'gym' | null; equipment: ('low_bar' | 'bench' | 'machines' | 'dumbbells' | 'bands' | 'barbell')[]; days_per_week: number; minutes_per_session: number; limitations: boolean; weekdays: number[] }
+type Sport = { goal: 'fat_loss_muscle_focus' | 'maintain' | 'strength_gain'; level: 'returning' | 'irregular' | 'regular'; place: 'home' | 'outdoor' | 'gym' | null; equipment: ('low_bar' | 'bench' | 'machines' | 'dumbbells' | 'bands' | 'barbell')[]; days_per_week: number; minutes_per_session: number; limitations: boolean; weekdays: number[] }
 type Survey = {
   health: { sport: Sport | null; vegetarian: boolean; max_cooking_minutes: number; nutrition_goal: 'fat_loss' | 'maintain' | 'gain'; allergies: ('gluten' | 'milk' | 'egg' | 'fish')[] }
   education: { track: 'java' | 'go' | 'reading' | 'both' | 'go-reading' | 'none'; reading_genres: ReadingGenre[]; minutes: 15 | 30 | 45 | 60; weekdays: number[] }
   profession: { track: 'java-backend' | 'none'; minutes: 15 | 30 | 45 | 60; weekdays: number[] }
-  languages: { level: 'A2' | 'B1' | 'B2' | 'none'; goal: 'general' | 'work' | 'travel' | 'project'; minutes: 15 | 30 | 45 | 60; weekdays: number[] }
+  languages: { course_id: 'english' | 'kazakh' | 'korean' | 'turkish' | 'spanish' | 'none'; level: 'A1' | 'A2' | 'B1' | 'B2' | 'none'; goal: 'general' | 'work' | 'travel' | 'project'; minutes: 15 | 30 | 45 | 60; weekdays: number[] }
   finance: { currency: 'KZT' | 'USD' | 'EUR' | 'RUB'; focus: 'record' | 'review' }
   personal: { focus: 'journal' | 'habits' | 'reading' }
 }
@@ -24,10 +24,10 @@ function correctionStep(reason: string) {
 }
 const sphereStep: Record<string, number> = { health: 0, education: 4, profession: 6, languages: 7, finance: 9, personal: 10 }
 const initial: Survey = {
-  health: { sport: { goal: 'fat_loss_muscle_focus', level: 'beginner', place: null, equipment: [], days_per_week: 2, minutes_per_session: 45, limitations: false, weekdays: [1, 4] }, vegetarian: false, max_cooking_minutes: 45, nutrition_goal: 'maintain', allergies: [] },
+  health: { sport: { goal: 'fat_loss_muscle_focus', level: 'returning', place: null, equipment: [], days_per_week: 2, minutes_per_session: 45, limitations: false, weekdays: [1, 4] }, vegetarian: false, max_cooking_minutes: 45, nutrition_goal: 'maintain', allergies: [] },
   education: { track: 'java', reading_genres: ['classic'], minutes: 30, weekdays: [0, 2, 4] },
   profession: { track: 'java-backend', minutes: 30, weekdays: [1, 3] },
-  languages: { level: 'A2', goal: 'general', minutes: 30, weekdays: [0, 2, 4] },
+  languages: { course_id: 'english', level: 'A2', goal: 'general', minutes: 30, weekdays: [0, 2, 4] },
   finance: { currency: 'KZT', focus: 'record' }, personal: { focus: 'journal' },
 }
 const steps = [
@@ -38,7 +38,7 @@ const steps = [
   { sphere: 'Обучение', title: 'Что хотите изучать?', lead: 'Подберём готовый курс и книгу по вашему интересу.' },
   { sphere: 'Обучение', title: 'Когда будете учиться?', lead: 'Выберите посильный ритм. Его можно изменить позже.' },
   { sphere: 'Профессия', title: 'Куда двигаться в профессии?', lead: 'Сейчас доступен готовый маршрут Java backend.' },
-  { sphere: 'Языки', title: 'Для чего вам английский?', lead: 'Начнём с вашего уровня и подходящей цели.' },
+  { sphere: 'Языки', title: 'Какой язык хотите изучать?', lead: 'Выберите один язык и начальный уровень. Позже выбор можно изменить.' },
   { sphere: 'Языки', title: 'Как часто заниматься языком?', lead: 'Небольшие регулярные занятия помогут держать темп.' },
   { sphere: 'Финансы', title: 'Что важно в финансах?', lead: 'Начните с учёта расходов или разбора месяца.' },
   { sphere: 'Личное', title: 'Что хотите развивать?', lead: 'Выберите подходящий способ наблюдать за своим прогрессом.' },
@@ -101,13 +101,12 @@ export function OnboardingPage() {
     if (active && result.needs_reconfirmation) { setReconfirmation(true); return }
     if (active && !draftTouched.current && result.answers) {
       setHasSavedAnswers(true)
-      setAnswers({ ...result.answers, health: { ...result.answers.health,
+      setAnswers({ ...result.answers, languages: { ...result.answers.languages, course_id: result.answers.languages.course_id || (result.answers.languages.level === 'none' ? 'none' : 'english') }, health: { ...result.answers.health,
       nutrition_goal: result.answers.health.nutrition_goal || 'maintain', allergies: result.answers.health.allergies || [],
-      sport: result.answers.health.sport?.place === 'home'
-        ? { ...result.answers.health.sport, place: null, equipment: [] }
-        : result.answers.health.sport?.place === 'gym'
-          ? { ...result.answers.health.sport, equipment: ['machines'] }
-          : result.answers.health.sport } })
+      sport: result.answers.health.sport ? { ...result.answers.health.sport,
+        level: (result.answers.health.sport.level as string) === 'beginner' ? 'returning' : (result.answers.health.sport.level as string) === 'intermediate' ? 'irregular' : result.answers.health.sport.level,
+        ...(result.answers.health.sport.place === 'home' ? { place: null, equipment: [] } : {}),
+      } : null } })
       if (result.answers.health.sport && sportFocus === 'sport-program') setStep(1)
       if (result.answers.health.sport && sportFocus === 'sport-schedule')
         setStep(result.answers.health.sport.place === 'home' ? 1 : 2)
@@ -199,7 +198,7 @@ export function OnboardingPage() {
           {sport && <Choices label="Главная цель" value={sport.goal} options={[{ value: 'fat_loss_muscle_focus', title: 'Снизить вес и сохранить мышцы', detail: 'Программы для начинающих' }, { value: 'maintain', title: 'Поддерживать форму', detail: 'Готовый гид; цельная программа пока не подготовлена' }, { value: 'strength_gain', title: 'Стать сильнее', detail: 'Готовый гид; цельная программа пока не подготовлена' }]} onChange={goal => sportUpdate({ goal })} />}
         </>}
         {step === 1 && (sport ? <>
-          <Choices label="Ваш опыт" value={sport.level} options={[{ value: 'beginner', title: 'Начинаю' }, { value: 'intermediate', title: 'Уже тренировался' }]} onChange={level => sportUpdate({ level })} />
+          <Choices label="Ваш опыт" value={sport.level} options={[{ value: 'returning', title: 'Начинаю или возвращаюсь', detail: 'Долгий перерыв или первый устойчивый ритм' }, { value: 'irregular', title: 'Тренировался нерегулярно', detail: 'Техника знакома, но расписание было с перерывами' }, { value: 'regular', title: 'Занимался регулярно', detail: 'Несколько месяцев системных тренировок' }]} onChange={level => sportUpdate({ level })} />
           <Choices label="Место занятий" value={sport.place} options={[{ value: 'home', title: 'Дома' }, { value: 'outdoor', title: 'На улице' }, { value: 'gym', title: 'В зале' }]} onChange={place => sportUpdate({ place, equipment: place === 'gym' ? ['machines'] : [] })} />
           {(sport.place === 'home' || sport.place === 'outdoor') && <div className="onboardingField onboardingWide"><span>Что есть под рукой</span><div className="onboardingEquipment">{([['low_bar','Турник'],['bench','Скамья'],['dumbbells','Гантели'],['bands','Резинки'],['barbell','Штанга']] as const).map(([id,label]) => <label key={id}><input type="checkbox" checked={sport.equipment.includes(id)} onChange={event => sportUpdate({ equipment: event.target.checked ? [...sport.equipment, id] : sport.equipment.filter(item => item !== id) })} />{label}</label>)}</div></div>}
           <label className="onboardingCheck"><input type="checkbox" checked={sport.limitations} onChange={event => sportUpdate({ limitations: event.target.checked })} />Есть ограничения для тренировок</label>
@@ -217,8 +216,8 @@ export function OnboardingPage() {
         </>}
         {step === 5 && <><Field label="Минут на учёбу"><select value={answers.education.minutes} onChange={event => update('education', { minutes: Number(event.target.value) as Survey['education']['minutes'] })}>{[15, 30, 45, 60].map(n => <option key={n}>{n}</option>)}</select></Field><div className="onboardingField onboardingWide"><span>Дни учёбы</span><DayPicker value={answers.education.weekdays} onChange={weekdays => update('education', { weekdays })} /></div></>}
         {step === 6 && <><Choices label="Профессиональное направление" value={answers.profession.track} options={[{ value: 'java-backend', title: 'Java backend', detail: 'Готовый маршрут с уроками и практикой' }, { value: 'none', title: 'Пока не выбираю' }]} onChange={track => update('profession', { track })} />{answers.profession.track !== 'none' && <><Field label="Минут на занятие"><select value={answers.profession.minutes} onChange={event => update('profession', { minutes: Number(event.target.value) as Survey['profession']['minutes'] })}>{[15, 30, 45, 60].map(n => <option key={n}>{n}</option>)}</select></Field><div className="onboardingField onboardingWide"><span>Дни занятий</span><DayPicker value={answers.profession.weekdays} onChange={weekdays => update('profession', { weekdays })} /></div></>}</>}
-        {step === 7 && <><Choices label="Текущий уровень" value={answers.languages.level} options={[{ value: 'A2', title: 'A2 · основы знакомы' }, { value: 'B1', title: 'B1 · могу объясниться' }, { value: 'B2', title: 'B2 · уверенно общаюсь' }, { value: 'none', title: 'Пока без английского' }]} onChange={level => update('languages', { level })} />{answers.languages.level !== 'none' && <Choices label="Зачем нужен язык" value={answers.languages.goal} options={[{ value: 'general', title: 'Для себя' }, { value: 'work', title: 'Для работы' }, { value: 'travel', title: 'Для поездок' }, { value: 'project', title: 'Для проекта' }]} onChange={goal => update('languages', { goal })} />}</>}
-        {step === 8 && (answers.languages.level !== 'none' ? <><Field label="Минут на занятие"><select value={answers.languages.minutes} onChange={event => update('languages', { minutes: Number(event.target.value) as Survey['languages']['minutes'] })}>{[15, 30, 45, 60].map(n => <option key={n}>{n}</option>)}</select></Field><div className="onboardingField onboardingWide"><span>Дни занятий</span><DayPicker value={answers.languages.weekdays} onChange={weekdays => update('languages', { weekdays })} /></div></> : <p className="onboardingHint">Английский пока пропущен. Позже вы сможете вернуться к нему.</p>)}
+        {step === 7 && <><Choices label="Выберите язык" value={answers.languages.course_id} options={[{ value: 'english', title: 'Английский · A2–B2' }, { value: 'kazakh', title: 'Казахский · A1–B2' }, { value: 'korean', title: 'Корейский · A1–B2' }, { value: 'turkish', title: 'Турецкий · A1–B2' }, { value: 'spanish', title: 'Испанский · A1–B2' }, { value: 'none', title: 'Пока пропустить' }]} onChange={course_id => update('languages', { course_id, level: course_id === 'none' ? 'none' : course_id === 'english' && (answers.languages.level === 'A1' || answers.languages.level === 'none') ? 'A2' : answers.languages.level === 'none' ? 'A1' : answers.languages.level })} />{answers.languages.course_id !== 'none' && <><Choices label="Текущий уровень" value={answers.languages.level} options={[...(answers.languages.course_id === 'english' ? [] : [{ value: 'A1' as const, title: 'A1 · начинаю с основ' }]), { value: 'A2' as const, title: 'A2 · основы знакомы' }, { value: 'B1' as const, title: 'B1 · могу объясниться' }, { value: 'B2' as const, title: 'B2 · уверенно общаюсь' }]} onChange={level => update('languages', { level })} /><Choices label="Зачем нужен язык" value={answers.languages.goal} options={[{ value: 'general', title: 'Для себя' }, { value: 'work', title: 'Для работы' }, { value: 'travel', title: 'Для поездок' }, { value: 'project', title: 'Для проекта' }]} onChange={goal => update('languages', { goal })} /></>}</>}
+        {step === 8 && (answers.languages.course_id !== 'none' ? <><Field label="Минут на занятие"><select value={answers.languages.minutes} onChange={event => update('languages', { minutes: Number(event.target.value) as Survey['languages']['minutes'] })}>{[15, 30, 45, 60].map(n => <option key={n}>{n}</option>)}</select></Field><div className="onboardingField onboardingWide"><span>Дни занятий</span><DayPicker value={answers.languages.weekdays} onChange={weekdays => update('languages', { weekdays })} /></div></> : <p className="onboardingHint">Язык пока пропущен. Позже вы сможете вернуться к выбору.</p>)}
         {step === 9 && <><Field label="Валюта расходов"><select value={answers.finance.currency} onChange={event => update('finance', { currency: event.target.value as Survey['finance']['currency'] })}><option>KZT</option><option>USD</option><option>EUR</option><option>RUB</option></select></Field><Choices label="Первый шаг" value={answers.finance.focus} options={[{ value: 'record', title: 'Записывать расходы' }, { value: 'review', title: 'Разбирать расходы за месяц' }]} onChange={focus => update('finance', { focus })} /></>}
         {step === 10 && <Choices label="Личный фокус" value={answers.personal.focus} options={[{ value: 'journal', title: 'Вести дневник' }, { value: 'habits', title: 'Работать с привычками' }, { value: 'reading', title: 'Размышлять о прочитанном' }]} onChange={focus => update('personal', { focus })} />}
       </section>
