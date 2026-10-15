@@ -21,6 +21,12 @@ def test_production_cloud_help_receives_only_catalog_data(client, mailbox, monke
     outgoing=json.dumps(captured)
     assert 'SECRET_PRIVATE_ANSWER' not in outgoing and 'private-user' not in outgoing and plan['id'] not in outgoing
     assert response.json()['allow_local_answer'] is False
+    from app.models import AuthRateEvent
+    from sqlalchemy import select
+    from sqlalchemy.orm import Session
+    with Session(client.app.state.engine) as db:
+        actions=db.scalars(select(AuthRateEvent.action)).all()
+        assert all(len(action)<=AuthRateEvent.__table__.c.action.type.length for action in actions)
     # Generic cached explanation must be reusable without a second upstream request.
     again=client.post('/api/study/assist',json=help_request(plan,stage='explain'),headers=headers)
     assert again.json()['source']=='cloud_ai' and len(captured)==1

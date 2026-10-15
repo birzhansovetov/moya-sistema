@@ -144,8 +144,8 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
                 raise
     if generated is None and settings.cloud_ai_enabled and settings.gemini_api_key and payload.stage != 'review':
         try:
-            enforce(db, request, "cloud_study_assist", context.user.id, account_limit=20, source_limit=1000, minutes=60)
-            record(db, request, "cloud_study_assist", context.user.id)
+            enforce(db, request, "cloud_assist", context.user.id, account_limit=20, source_limit=1000, minutes=60)
+            record(db, request, "cloud_assist", context.user.id)
             generated = explain_catalog_fragment(fragment, stage=payload.stage,
                 api_key=settings.gemini_api_key, model=settings.gemini_model)
         except HTTPException as error:
