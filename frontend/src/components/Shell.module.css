@@ -17,10 +17,10 @@
 .profileText strong{font-size:13px}
 .profileText small{color:var(--color-text-muted);font-size:11px}
 .mainArea{min-width:0}
-.content{box-sizing:border-box;max-width:1340px;margin:0 auto;padding:32px 32px 96px;min-width:0}
+.content{box-sizing:border-box;max-width:1120px;margin:0 auto;padding:24px 32px 96px;min-width:0}
 .topbar,.mobileNav{display:none}
 @media(max-width:900px){.sidebar{gap:10px;padding-inline:16px}.brand{font-size:17px}.sidebar nav{gap:0}.link{padding-inline:8px;font-size:12px}.profileText{display:none}.content{padding-inline:24px}}
-@media(max-width:650px){
+@media(max-width:1023px){
  .sidebar{display:none}
  .topbar{position:sticky;top:0;z-index:25;display:flex;align-items:center;min-height:calc(60px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 16px 0;background:var(--color-surface);border-bottom:1px solid var(--color-line)}
  .location{display:none}

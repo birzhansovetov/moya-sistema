@@ -1,0 +1,52 @@
+/* Consistent app layout across all routes. */
+:root{--text-title:28px;--radius-card:12px;--radius-control:8px}
+[data-app-shell] main{font-size:16px;line-height:1.5}
+[data-app-shell] .pageHeader{align-items:flex-start;gap:16px;margin-bottom:20px;padding-bottom:0;border:0}
+[data-app-shell] .pageHeader h1{font-size:28px;line-height:1.25;letter-spacing:-.025em;margin:0 0 8px}
+[data-app-shell] .pageHeader p{font-size:14px;line-height:1.5;margin:0;max-width:62ch}
+[data-app-shell] .pageHeader .eyebrow{display:none}
+[data-app-shell] .card,[data-app-shell] .uiCard{padding:20px;border-radius:12px;box-shadow:none}
+[data-app-shell] .card h2{font-size:21px;line-height:1.3}
+[data-app-shell] .card h3{font-size:17px;line-height:1.4}
+[data-app-shell] details>summary{min-height:48px;align-content:center;font-size:15px;line-height:1.4}
+[data-app-shell] .emptyState{padding:16px;gap:12px}
+[data-app-shell] .emptyState h3{font-size:16px}
+[data-app-shell] .emptyState p{font-size:14px}
+[data-app-shell] .tabBar{display:flex;gap:8px;flex-wrap:wrap;border:0;padding:0}
+[data-app-shell] .tabBar button{border-radius:8px;min-height:44px;font-size:14px;padding:10px 14px}
+[data-app-shell] .todayNext{padding:20px;box-shadow:none}
+[data-app-shell] .todayNext h2{font-size:24px;line-height:1.3}
+[data-app-shell] .todayNext p{font-size:14px;line-height:1.5}
+[data-app-shell] .activityStreak{padding:16px;border-radius:12px}
+[data-app-shell] .todayMore,[data-app-shell] .todayAnalytics{border:1px solid var(--color-line);border-radius:12px;padding:0 16px;background:var(--color-surface)}
+[data-app-shell] .todaySecondary{display:grid;gap:12px}
+[data-app-shell] .todayColumns{padding-bottom:16px}
+.uiDialog{scroll-padding-block:20px;overscroll-behavior:contain}
+@media(max-width:1023px){
+ [data-app-shell] .pageHeader .textButton{display:none}
+ [data-app-shell] .pageHeader{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+ [data-app-shell] .pageHeader h1{font-size:26px;line-height:1.25}
+ [data-app-shell] .pageHeader>button,[data-app-shell] .pageHeader>a{align-self:flex-start;width:auto}
+ [data-app-shell] .pageHeader>div{min-width:0}
+ [data-app-shell] .todayNextInner{display:grid;gap:16px}
+ [data-app-shell] .todayNextInner>.primaryButton{width:100%}
+ [data-app-shell] .dateToolbar{display:grid;grid-template-columns:64px minmax(0,1fr) 64px;gap:8px}
+ [data-app-shell] .dateToolbar label{min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px}
+ [data-app-shell] .dateToolbar input{min-width:0;max-width:160px;font-size:14px}
+ [data-app-shell] .dateToolbar .secondaryButton{min-width:0;width:100%;font-size:13px;padding:8px}
+ [data-app-shell] .dateToolbar>.textButton{grid-column:1/-1}
+ .uiDialog[open]{inset:auto 0 0;margin:0 auto;width:100%;max-width:640px;max-height:calc(100dvh - max(16px,env(safe-area-inset-top)));padding:20px 16px calc(24px + env(safe-area-inset-bottom));border-radius:16px 16px 0 0;border-bottom:0}
+ .uiDialog .card{padding:0;border:0;background:transparent}
+ .uiDialog h2{font-size:22px;margin:0 0 20px}
+}
+@media(max-width:600px){
+ [data-app-shell] .card,[data-app-shell] .uiCard{padding:16px}
+ [data-app-shell] .card h2{font-size:20px}
+ [data-app-shell] .todayTasks .emptyState{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:start}
+ [data-app-shell] .todayTasks .emptyState p{grid-column:2;margin:0}
+ [data-app-shell] .todayTasks .emptyState .emptyIcon{grid-row:1/3}
+ [data-app-shell] .formActions{display:flex;flex-wrap:wrap;gap:12px}
+ [data-app-shell] .formActions>*{flex:1 1 140px}
+ [data-app-shell] .healthActions{gap:12px}
+}
+@media(prefers-reduced-motion:no-preference){.uiDialog[open]{animation:app-sheet-enter .18s ease-out}@keyframes app-sheet-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}

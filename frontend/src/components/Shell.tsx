@@ -42,6 +42,7 @@ export function themeForPath(pathname: string) {
 export function Shell() {
   const { user } = useAuth()
   const { pathname } = useLocation()
+  useEffect(() => { document.documentElement.scrollTop = 0 }, [pathname])
   const theme = themeForPath(pathname)
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -49,7 +50,8 @@ export function Shell() {
   }, [theme])
   const sectionPage = spherePaths.some(path => pathname === path || pathname.startsWith(`${path}/`))
   const sphere = pathname.split('/')[1]
-  const current = pathname === '/' ? 'Мой день' : pathname === '/profile' ? 'Профиль' : pathname.startsWith('/tasks') ? 'Задачи' : pathname.startsWith('/calendar') ? 'Календарь' : sphereNames[sphere] || 'Разделы'
+  const pageNames: Record<string, string> = { '/health/sport': 'Тренировки', '/health/nutrition': 'Рецепты', '/health/calories': 'Калории', '/education/reading': 'Книги', '/education/java': 'Java', '/education/go': 'Go' }
+  const current = pageNames[pathname] || (pathname === '/' ? 'Мой день' : pathname === '/profile' ? 'Профиль' : pathname.startsWith('/tasks') ? 'Задачи' : pathname.startsWith('/calendar') ? 'Календарь' : sphereNames[sphere] || 'Разделы')
   const parent = pathname.startsWith('/health/') ? { to: '/health', label: 'здоровью' }
     : pathname.startsWith('/education/') ? { to: '/education', label: 'обучению' }
       : sectionPage ? { to: '/sections', label: 'разделам' } : null
@@ -59,7 +61,7 @@ export function Shell() {
     <span className={styles.icon}><Icon name={link.icon} /></span><span>{link.text}</span>
     </Link>
   }
-  return <div className={styles.layout} data-theme={theme}>
+  return <div className={styles.layout} data-app-shell data-theme={theme}>
     <aside className={styles.sidebar}>
       <div className={styles.brand}><span className={styles.brandMark}>М</span><span>Моя система</span></div>
       <nav aria-label="Основная навигация">{links.map(navLink)}</nav>
