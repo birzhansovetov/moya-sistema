@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-15-experience-regular-v1",
+  "version": "2026-10-15-complete-coverage-v2",
   "programs": [
     {
       "id": "fat_loss_home_beginner_v1",
@@ -7,14 +7,16 @@
       "goal": "fat_loss_muscle_focus",
       "level": "beginner",
       "place": "home",
-      "required_equipment": [],
+      "required_equipment": [
+        "bands"
+      ],
       "duration_weeks": 4,
       "min_minutes": 35,
       "supported_days": [
         2,
         3
       ],
-      "overview": "Две или три силовые тренировки всего тела в неделю с отдыхом между ними. Ходьбу можно добавлять в другие дни по самочувствию. Программа не обещает сохранение мышц при любой диете и не заменяет консультацию специалиста.",
+      "overview": "Две или три силовые тренировки всего тела в неделю с отдыхом между ними. Ходьбу можно добавлять в другие дни по самочувствию. Программа не обещает сохранение мышц при любой диете и не заменяет консультацию специалиста. Для полноценной тяги в этом варианте нужна резинка. Без неё программа не назначается; доступен гид по подбору оборудования.",
       "progression": [
         "Неделя 1: изучите технику, выполняйте два подхода каждого движения в комфортной амплитуде.",
         "Неделя 2: сохраняйте два подхода; если техника стабильна, добавьте 1–2 повторения.",
@@ -23,7 +25,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/publications/i/item/9789240014886"
+        "https://www.who.int/publications/i/item/9789240014886",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -91,11 +94,11 @@
               "note": "Можно встать ближе к стене."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "band_row",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "8–12",
               "rest_seconds": 60,
-              "note": "Держитесь за опору."
+              "note": "Резинка под стопами, спина устойчива; проверьте целостность резинки."
             },
             {
               "exercise_id": "glute_bridge",
@@ -167,8 +170,8 @@
       "level": "beginner",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 4,
       "min_minutes": 35,
@@ -185,7 +188,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/publications/i/item/9789240014886"
+        "https://www.who.int/publications/i/item/9789240014886",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -223,11 +227,11 @@
               "note": "Только низкая сухая платформа."
             },
             {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "8 минут",
-              "rest_seconds": 30,
-              "note": "Ровная дорожка."
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "8–12",
+              "rest_seconds": 60,
+              "note": "Поднимайте таз за счёт ягодиц, без переразгибания поясницы."
             }
           ],
           "cooldown": "3–5 минут спокойной ходьбы. При скользкой поверхности или ненадёжной опоре откажитесь от силовой части."
@@ -260,11 +264,11 @@
               "note": "Без провисания поясницы."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "Держитесь за опору."
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             },
             {
               "exercise_id": "brisk_walk",
@@ -346,7 +350,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/publications/i/item/9789240014886"
+        "https://www.who.int/publications/i/item/9789240014886",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -421,11 +426,11 @@
               "note": "Контролируйте возврат рукоятей."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "У устойчивой опоры."
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             },
             {
               "exercise_id": "brisk_walk",
@@ -489,14 +494,16 @@
       "goal": "fat_loss_muscle_focus",
       "level": "beginner",
       "place": "home",
-      "required_equipment": [],
+      "required_equipment": [
+        "bands"
+      ],
       "duration_weeks": 4,
       "min_minutes": 25,
       "supported_days": [
         2,
         3
       ],
-      "overview": "Короткие силовые занятия всего тела 2–3 раза в неделю с отдыхом между ними. Это вариант для ограниченного времени; для общего недельного объёма активности добавляйте доступную ходьбу в другие дни. Не тренируйтесь через боль или головокружение.",
+      "overview": "Короткие силовые занятия всего тела 2–3 раза в неделю с отдыхом между ними. Это вариант для ограниченного времени; для общего недельного объёма активности добавляйте доступную ходьбу в другие дни. Не тренируйтесь через боль или головокружение. Для полноценной тяги в этом варианте нужна резинка. Без неё программа не назначается; доступен гид по подбору оборудования.",
       "progression": [
         "Неделя 1: выполните по два спокойных подхода, изучая технику и выбирая лёгкую нагрузку.",
         "Неделя 2: если техника устойчива, добавьте 1–2 повторения без спешки.",
@@ -505,7 +512,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/publications/i/item/9789240014886"
+        "https://www.who.int/publications/i/item/9789240014886",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -566,11 +574,11 @@
               "note": "Можно встать ближе к стене."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "band_row",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "8–12",
               "rest_seconds": 60,
-              "note": "Держитесь за опору."
+              "note": "Резинка под стопами, спина устойчива; проверьте целостность резинки."
             },
             {
               "exercise_id": "glute_bridge",
@@ -628,8 +636,8 @@
       "level": "beginner",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 4,
       "min_minutes": 25,
@@ -646,7 +654,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/publications/i/item/9789240014886"
+        "https://www.who.int/publications/i/item/9789240014886",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -677,11 +686,11 @@
               "note": "Оставьте ноги на земле."
             },
             {
-              "exercise_id": "step_up",
+              "exercise_id": "glute_bridge",
               "sets": 2,
-              "reps": "8 на ногу",
-              "rest_seconds": 75,
-              "note": "Только низкая сухая платформа."
+              "reps": "8–12",
+              "rest_seconds": 60,
+              "note": "Поднимайте таз за счёт ягодиц, без переразгибания поясницы."
             }
           ],
           "cooldown": "3 минуты постепенно замедляйте движения и восстанавливайте дыхание. При боли, головокружении или недомогании прекратите занятие."
@@ -714,11 +723,11 @@
               "note": "Без провисания поясницы."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "Держитесь за опору."
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             }
           ],
           "cooldown": "3 минуты постепенно замедляйте движения и восстанавливайте дыхание. При боли, головокружении или недомогании прекратите занятие."
@@ -786,7 +795,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/publications/i/item/9789240014886"
+        "https://www.who.int/publications/i/item/9789240014886",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -854,11 +864,11 @@
               "note": "Контролируйте возврат рукоятей."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "У устойчивой опоры."
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             }
           ],
           "cooldown": "3 минуты постепенно замедляйте движения и восстанавливайте дыхание. При боли, головокружении или недомогании прекратите занятие."
@@ -1001,11 +1011,11 @@
               "note": "Мягкая резинка, движение без рывков."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–12",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "Комфортная амплитуда и ровное дыхание."
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             },
             {
               "exercise_id": "brisk_walk",
@@ -1163,11 +1173,11 @@
               "note": "Мягкая резинка, движение без рывков."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–12",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "Комфортная амплитуда и ровное дыхание."
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             },
             {
               "exercise_id": "brisk_walk",
@@ -1393,8 +1403,8 @@
       "level": "intermediate",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 4,
       "min_minutes": 45,
@@ -1411,7 +1421,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/initiatives/behealthy/physical-activity/"
+        "https://www.who.int/initiatives/behealthy/physical-activity/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -1449,11 +1460,11 @@
               "note": "Подберите сопротивление так, чтобы последние повторения были трудными, но техника оставалась контролируемой."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "glute_bridge",
               "sets": 3,
-              "reps": "12–15",
-              "rest_seconds": 90,
-              "note": "Двигайтесь без рывков и сохраняйте контроль."
+              "reps": "8–12",
+              "rest_seconds": 60,
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             }
           ],
           "cooldown": "3–5 минут спокойного движения. При боли, головокружении или ухудшении самочувствия завершите занятие."
@@ -1610,11 +1621,11 @@
               "note": "Подберите сопротивление так, чтобы последние повторения были трудными, но техника оставалась контролируемой."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 3,
-              "reps": "12–15",
-              "rest_seconds": 90,
-              "note": "Двигайтесь без рывков и сохраняйте контроль."
+              "reps": "6–8 на сторону",
+              "rest_seconds": 60,
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             }
           ],
           "cooldown": "3–5 минут спокойного движения. При боли, головокружении или ухудшении самочувствия завершите занятие."
@@ -1716,6 +1727,9 @@
       "level": "beginner",
       "place": "gym",
       "required_equipment": [
+        "barbell",
+        "bench",
+        "dumbbells",
         "machines"
       ],
       "duration_weeks": 4,
@@ -1732,7 +1746,8 @@
       ],
       "sources": [
         "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
-        "https://www.acefitness.org/resources/everyone/exercise-library/"
+        "https://www.acefitness.org/resources/everyone/exercise-library/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -2139,6 +2154,9 @@
       "level": "intermediate",
       "place": "gym",
       "required_equipment": [
+        "barbell",
+        "bench",
+        "dumbbells",
         "machines"
       ],
       "duration_weeks": 4,
@@ -2155,7 +2173,8 @@
       ],
       "sources": [
         "https://www.acsm.org/wp-content/uploads/2026/03/Resistance-Training-Position-Stand-infographic.pdf",
-        "https://www.acefitness.org/resources/everyone/exercise-library/"
+        "https://www.acefitness.org/resources/everyone/exercise-library/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -3101,14 +3120,16 @@
       "goal": "maintain",
       "level": "beginner",
       "place": "home",
-      "required_equipment": [],
+      "required_equipment": [
+        "bands"
+      ],
       "duration_weeks": 6,
       "min_minutes": 40,
       "supported_days": [
         2,
         3
       ],
-      "overview": "Силовые занятия всего тела с отдыхом между ними. Нагрузка поддерживается на уровне, при котором последние повторения ощутимы, но техника сохраняется. Умеренную ходьбу добавляйте отдельно по самочувствию.",
+      "overview": "Силовые занятия всего тела с отдыхом между ними. Нагрузка поддерживается на уровне, при котором последние повторения ощутимы, но техника сохраняется. Умеренную ходьбу добавляйте отдельно по самочувствию. Для полноценной тяги в этом варианте нужна резинка. Без неё программа не назначается; доступен гид по подбору оборудования.",
       "progression": [
         "Недели 1–2: освоить движения и записать повторения; начинать с нагрузки, оставляющей запас 2–3 повтора.",
         "Недели 3–4: если техника устойчива, увеличить на 1–2 повтора или немного сопротивление в упражнениях с оборудованием.",
@@ -3116,7 +3137,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -3184,11 +3206,11 @@
               "note": "Можно встать ближе к стене."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "band_row",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "8–12",
               "rest_seconds": 60,
-              "note": "Держитесь за опору."
+              "note": "Резинка под стопами, спина устойчива; проверьте целостность резинки."
             },
             {
               "exercise_id": "glute_bridge",
@@ -3390,8 +3412,8 @@
       "level": "beginner",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 40,
@@ -3407,7 +3429,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -3445,11 +3468,11 @@
               "note": "Только низкая сухая платформа."
             },
             {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "8 минут",
-              "rest_seconds": 30,
-              "note": "Ровная дорожка."
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "8–12",
+              "rest_seconds": 60,
+              "note": "Поднимайте таз за счёт ягодиц, без переразгибания поясницы."
             }
           ],
           "cooldown": "3–5 минут спокойной ходьбы. При скользкой поверхности или ненадёжной опоре откажитесь от силовой части."
@@ -3482,11 +3505,11 @@
               "note": "Без провисания поясницы."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "Держитесь за опору."
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             },
             {
               "exercise_id": "brisk_walk",
@@ -3551,8 +3574,8 @@
       "level": "intermediate",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 40,
@@ -3568,7 +3591,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -3606,11 +3630,11 @@
               "note": "Подберите сопротивление так, чтобы последние повторения были трудными, но техника оставалась контролируемой."
             },
             {
-              "exercise_id": "calf_raise",
-              "sets": 3,
-              "reps": "12–15",
-              "rest_seconds": 90,
-              "note": "Двигайтесь без рывков и сохраняйте контроль."
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "8–12",
+              "rest_seconds": 60,
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             }
           ],
           "cooldown": "3–5 минут спокойного движения. При боли, головокружении или ухудшении самочувствия завершите занятие."
@@ -3728,7 +3752,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -3803,11 +3828,11 @@
               "note": "Контролируйте возврат рукоятей."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "10–15",
+              "reps": "6–8 на сторону",
               "rest_seconds": 60,
-              "note": "У устойчивой опоры."
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             },
             {
               "exercise_id": "brisk_walk",
@@ -3926,11 +3951,11 @@
               "note": "Подберите сопротивление так, чтобы последние повторения были трудными, но техника оставалась контролируемой."
             },
             {
-              "exercise_id": "calf_raise",
-              "sets": 3,
-              "reps": "12–15",
-              "rest_seconds": 90,
-              "note": "Двигайтесь без рывков и сохраняйте контроль."
+              "exercise_id": "bird_dog",
+              "sets": 2,
+              "reps": "6–8 на сторону",
+              "rest_seconds": 60,
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             }
           ],
           "cooldown": "3–5 минут спокойного движения. При боли, головокружении или ухудшении самочувствия завершите занятие."
@@ -4302,8 +4327,8 @@
       "level": "beginner",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 45,
@@ -4319,7 +4344,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -4357,11 +4383,11 @@
               "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
             },
             {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "8 минут",
-              "rest_seconds": 30,
-              "note": "Ровная дорожка."
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "8–12",
+              "rest_seconds": 60,
+              "note": "Поднимайте таз за счёт ягодиц, без переразгибания поясницы."
             }
           ],
           "cooldown": "3–5 минут спокойной ходьбы. При скользкой поверхности или ненадёжной опоре откажитесь от силовой части."
@@ -4394,11 +4420,11 @@
               "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "8–12",
-              "rest_seconds": 90,
-              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+              "reps": "6–8 на сторону",
+              "rest_seconds": 60,
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             },
             {
               "exercise_id": "brisk_walk",
@@ -4463,8 +4489,8 @@
       "level": "intermediate",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 45,
@@ -4480,7 +4506,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -4518,11 +4545,11 @@
               "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
             },
             {
-              "exercise_id": "calf_raise",
-              "sets": 3,
+              "exercise_id": "glute_bridge",
+              "sets": 2,
               "reps": "8–12",
-              "rest_seconds": 90,
-              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+              "rest_seconds": 60,
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             }
           ],
           "cooldown": "3–5 минут спокойного движения. При боли, головокружении или ухудшении самочувствия завершите занятие."
@@ -4640,7 +4667,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -4715,11 +4743,11 @@
               "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
             },
             {
-              "exercise_id": "calf_raise",
+              "exercise_id": "bird_dog",
               "sets": 2,
-              "reps": "8–12",
-              "rest_seconds": 90,
-              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+              "reps": "6–8 на сторону",
+              "rest_seconds": 60,
+              "note": "Двигайте противоположные руку и ногу медленно, без разворота таза."
             },
             {
               "exercise_id": "brisk_walk",
@@ -4838,11 +4866,11 @@
               "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
             },
             {
-              "exercise_id": "calf_raise",
-              "sets": 3,
-              "reps": "8–12",
-              "rest_seconds": 90,
-              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+              "exercise_id": "bird_dog",
+              "sets": 2,
+              "reps": "6–8 на сторону",
+              "rest_seconds": 60,
+              "note": "Двигайтесь медленно и без боли; сохраняйте ровное дыхание и устойчивый корпус."
             }
           ],
           "cooldown": "3–5 минут спокойного движения. При боли, головокружении или ухудшении самочувствия завершите занятие."
@@ -5381,7 +5409,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -5556,13 +5585,6 @@
               "reps": "5–10 минут",
               "rest_seconds": 30,
               "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
-            },
-            {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "10 минут",
-              "rest_seconds": 30,
-              "note": "Умеренный темп: можно говорить во время ходьбы. В зале используйте дорожку; дома — ходьбу на месте или поблизости."
             }
           ],
           "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
@@ -5591,7 +5613,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -5766,13 +5789,6 @@
               "reps": "5–10 минут",
               "rest_seconds": 30,
               "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
-            },
-            {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "10 минут",
-              "rest_seconds": 30,
-              "note": "Умеренный темп: можно говорить во время ходьбы. В зале используйте дорожку; дома — ходьбу на месте или поблизости."
             }
           ],
           "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
@@ -6223,7 +6239,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -6398,13 +6415,6 @@
               "reps": "5–10 минут",
               "rest_seconds": 30,
               "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
-            },
-            {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "10 минут",
-              "rest_seconds": 30,
-              "note": "Умеренный темп: можно говорить во время ходьбы. В зале используйте дорожку; дома — ходьбу на месте или поблизости."
             }
           ],
           "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
@@ -6433,7 +6443,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -6608,13 +6619,6 @@
               "reps": "5–10 минут",
               "rest_seconds": 30,
               "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
-            },
-            {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "10 минут",
-              "rest_seconds": 30,
-              "note": "Умеренный темп: можно говорить во время ходьбы. В зале используйте дорожку; дома — ходьбу на месте или поблизости."
             }
           ],
           "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
@@ -7181,9 +7185,9 @@
       "level": "beginner",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 4,
       "min_minutes": 60,
@@ -7199,7 +7203,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -7387,9 +7392,9 @@
       "level": "intermediate",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 60,
@@ -7407,7 +7412,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -7595,9 +7601,9 @@
       "level": "beginner",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 4,
       "min_minutes": 60,
@@ -7613,7 +7619,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -7801,9 +7808,9 @@
       "level": "intermediate",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 60,
@@ -7821,7 +7828,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -8009,9 +8017,9 @@
       "level": "beginner",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 4,
       "min_minutes": 60,
@@ -8027,7 +8035,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -8215,9 +8224,9 @@
       "level": "intermediate",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 60,
@@ -8235,7 +8244,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -8638,9 +8648,9 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 60,
@@ -8658,7 +8668,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -8865,7 +8876,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -9033,13 +9045,6 @@
               "reps": "20–40 секунд",
               "rest_seconds": 60,
               "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
-            },
-            {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "8 минут",
-              "rest_seconds": 30,
-              "note": "Умеренная ходьба после силовой части; сохраняйте возможность разговаривать."
             },
             {
               "exercise_id": "brisk_walk",
@@ -9276,9 +9281,9 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 60,
@@ -9296,7 +9301,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -9503,7 +9509,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -9671,13 +9678,6 @@
               "reps": "20–40 секунд",
               "rest_seconds": 60,
               "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
-            },
-            {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "8 минут",
-              "rest_seconds": 30,
-              "note": "Умеренная ходьба после силовой части; сохраняйте возможность разговаривать."
             },
             {
               "exercise_id": "brisk_walk",
@@ -9914,9 +9914,9 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
+        "bands",
         "bench",
-        "bands"
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 60,
@@ -9934,7 +9934,8 @@
       ],
       "sources": [
         "https://www.who.int/publications/i/item/9789240014886",
-        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/"
+        "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -10141,7 +10142,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -10309,13 +10311,6 @@
               "reps": "20–40 секунд",
               "rest_seconds": 60,
               "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
-            },
-            {
-              "exercise_id": "brisk_walk",
-              "sets": 1,
-              "reps": "8 минут",
-              "rest_seconds": 30,
-              "note": "Умеренная ходьба после силовой части; сохраняйте возможность разговаривать."
             },
             {
               "exercise_id": "brisk_walk",
@@ -10652,8 +10647,8 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 55,
@@ -10669,7 +10664,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/initiatives/behealthy/physical-activity/"
+        "https://www.who.int/initiatives/behealthy/physical-activity/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -10777,8 +10773,8 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 55,
@@ -10794,7 +10790,8 @@
       ],
       "sources": [
         "https://www.nhs.uk/live-well/exercise/how-to-improve-strength-flexibility/",
-        "https://www.who.int/initiatives/behealthy/physical-activity/"
+        "https://www.who.int/initiatives/behealthy/physical-activity/",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -11539,8 +11536,8 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 55,
@@ -11556,7 +11553,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -11664,8 +11662,8 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 55,
@@ -11681,7 +11679,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -12426,8 +12425,8 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 55,
@@ -12443,7 +12442,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -12551,8 +12551,8 @@
       "level": "regular",
       "place": "outdoor",
       "required_equipment": [
-        "low_bar",
-        "bench"
+        "bench",
+        "low_bar"
       ],
       "duration_weeks": 6,
       "min_minutes": 55,
@@ -12568,7 +12568,8 @@
       ],
       "sources": [
         "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
-        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
       ],
       "sessions": [
         {
@@ -12990,6 +12991,735 @@
         }
       ],
       "series": "regular_fullbody_v1"
+    },
+    {
+      "id": "fat_loss_gym_beginner_machines_4day_v2",
+      "title": "Зал · четыре дня на тренажёрах · возвращение к занятиям",
+      "goal": "fat_loss_muscle_focus",
+      "level": "beginner",
+      "place": "gym",
+      "required_equipment": [
+        "machines"
+      ],
+      "duration_weeks": 6,
+      "min_minutes": 60,
+      "supported_days": [
+        4
+      ],
+      "overview": "Четыре занятия PUSH / PULL / LEGS / UPPER с упражнениями на тренажёрах и без штанги. Оставляйте запас 2–3 повторения; вес подбирается по технике. Разминка и спокойная ходьба входят в 60 минут.",
+      "progression": [
+        "Недели 1–2: освоить технику, записать нагрузку и оставить запас 2–3 повторения.",
+        "Недели 3–4: если техника стабильна, повысить сопротивление или число повторений в основных движениях, не в каждом упражнении сразу.",
+        "Недели 5–6: закрепить нагрузку; при ухудшении восстановления снизить объём и пересмотреть записи."
+      ],
+      "sources": [
+        "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
+      ],
+      "sessions": [
+        {
+          "id": "PUSH",
+          "title": "Понедельник · PUSH — грудь, плечи, трицепс",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "chest_press",
+              "sets": 3,
+              "reps": "6–10",
+              "rest_seconds": 120,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "chest_fly_machine",
+              "sets": 2,
+              "reps": "8–10",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "close_grip_pushup",
+              "sets": 2,
+              "reps": "12–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "cable_pushdown",
+              "sets": 2,
+              "reps": "10–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        },
+        {
+          "id": "PULL",
+          "title": "Вторник · PULL — спина и бицепс",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "lat_pulldown",
+              "sets": 3,
+              "reps": "8–10",
+              "rest_seconds": 120,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "seated_row",
+              "sets": 2,
+              "reps": "10–12",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "10–12",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "bird_dog",
+              "sets": 2,
+              "reps": "8–10 на сторону",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        },
+        {
+          "id": "LEGS",
+          "title": "Четверг · LEGS — ноги и ягодицы",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "leg_press",
+              "sets": 3,
+              "reps": "8–10",
+              "rest_seconds": 120,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "leg_curl",
+              "sets": 2,
+              "reps": "8–10 на ногу",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "leg_extension",
+              "sets": 2,
+              "reps": "10–12",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "calf_raise",
+              "sets": 2,
+              "reps": "12–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        },
+        {
+          "id": "UPPER",
+          "title": "Суббота · UPPER — верх тела и корпус",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "chest_press",
+              "sets": 2,
+              "reps": "8–10",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "seated_row",
+              "sets": 2,
+              "reps": "8–10",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "lat_pulldown",
+              "sets": 2,
+              "reps": "12–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "plank",
+              "sets": 2,
+              "reps": "20–40 секунд",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        }
+      ]
+    },
+    {
+      "id": "fat_loss_gym_intermediate_machines_4day_v2",
+      "title": "Зал · четыре дня на тренажёрах · нерегулярный опыт",
+      "goal": "fat_loss_muscle_focus",
+      "level": "intermediate",
+      "place": "gym",
+      "required_equipment": [
+        "machines"
+      ],
+      "duration_weeks": 6,
+      "min_minutes": 60,
+      "supported_days": [
+        4
+      ],
+      "overview": "Четыре занятия PUSH / PULL / LEGS / UPPER с упражнениями на тренажёрах и без штанги. Оставляйте запас 2–3 повторения; вес подбирается по технике. Разминка и спокойная ходьба входят в 60 минут.",
+      "progression": [
+        "Недели 1–2: освоить технику, записать нагрузку и оставить запас 2–3 повторения.",
+        "Недели 3–4: если техника стабильна, повысить сопротивление или число повторений в основных движениях, не в каждом упражнении сразу.",
+        "Недели 5–6: закрепить нагрузку; при ухудшении восстановления снизить объём и пересмотреть записи."
+      ],
+      "sources": [
+        "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity",
+        "https://acsm.org/resistance-training-guidelines-update-2026/"
+      ],
+      "sessions": [
+        {
+          "id": "PUSH",
+          "title": "Понедельник · PUSH — грудь, плечи, трицепс",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "chest_press",
+              "sets": 4,
+              "reps": "6–10",
+              "rest_seconds": 120,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "chest_fly_machine",
+              "sets": 3,
+              "reps": "8–10",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "close_grip_pushup",
+              "sets": 3,
+              "reps": "12–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "cable_pushdown",
+              "sets": 3,
+              "reps": "10–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        },
+        {
+          "id": "PULL",
+          "title": "Вторник · PULL — спина и бицепс",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "lat_pulldown",
+              "sets": 4,
+              "reps": "8–10",
+              "rest_seconds": 120,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "seated_row",
+              "sets": 3,
+              "reps": "10–12",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "glute_bridge",
+              "sets": 3,
+              "reps": "10–12",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "bird_dog",
+              "sets": 2,
+              "reps": "8–10 на сторону",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        },
+        {
+          "id": "LEGS",
+          "title": "Четверг · LEGS — ноги и ягодицы",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "leg_press",
+              "sets": 4,
+              "reps": "8–10",
+              "rest_seconds": 120,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "leg_curl",
+              "sets": 3,
+              "reps": "8–10 на ногу",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "leg_extension",
+              "sets": 3,
+              "reps": "10–12",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "calf_raise",
+              "sets": 3,
+              "reps": "12–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        },
+        {
+          "id": "UPPER",
+          "title": "Суббота · UPPER — верх тела и корпус",
+          "estimated_minutes": 60,
+          "warmup": "5–7 минут лёгкой ходьбы и 1–2 разминочных подхода перед первым силовым упражнением.",
+          "work": [
+            {
+              "exercise_id": "chest_press",
+              "sets": 3,
+              "reps": "8–10",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "seated_row",
+              "sets": 3,
+              "reps": "8–10",
+              "rest_seconds": 90,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "lat_pulldown",
+              "sets": 3,
+              "reps": "12–15",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "plank",
+              "sets": 2,
+              "reps": "20–40 секунд",
+              "rest_seconds": 60,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "5–10 минут",
+              "rest_seconds": 30,
+              "note": "Подберите посильное сопротивление и сохраняйте технику; для упражнения без тренажёра используйте собственный вес."
+            }
+          ],
+          "cooldown": "2–3 минуты спокойной ходьбы. При боли, головокружении или недомогании остановите занятие."
+        }
+      ]
+    },
+    {
+      "id": "maintain_home_beginner_barbell_2day_v2",
+      "title": "Дома со штангой · поддержание формы · 2 дня",
+      "goal": "maintain",
+      "level": "beginner",
+      "place": "home",
+      "required_equipment": [
+        "barbell",
+        "dumbbells"
+      ],
+      "duration_weeks": 8,
+      "min_minutes": 55,
+      "supported_days": [
+        2
+      ],
+      "overview": "Полноценная нагрузка для поддержания формы со штангой и гантелями. Начинайте с посильного веса; оставляйте запас 2–3 повторения. Нагрузку повышайте только после устойчивого выполнения всех подходов.",
+      "progression": [
+        "Неделя 1: подберите сопротивление с запасом 2–3 повтора и запишите результат.",
+        "Неделя 2: повторите движения; повышайте повторы только при стабильной технике.",
+        "Неделя 3: если все рабочие подходы комфортны, немного увеличьте сопротивление.",
+        "Неделя 4: удерживайте нагрузку и проверьте восстановление.",
+        "Неделя 5: при устойчивой технике снова добавьте небольшое сопротивление или более сложный вариант.",
+        "Неделя 6: закрепите достигнутое число повторений; при усталости уменьшите объём.",
+        "Неделя 7: вернитесь к посильной нагрузке и сравните записи с первой неделей.",
+        "Неделя 8: выполните контрольную неделю без работы до отказа и решите, нужен ли новый цикл."
+      ],
+      "sources": [
+        "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+      ],
+      "sessions": [
+        {
+          "id": "A",
+          "title": "Всё тело A · приседание, жим и тяга",
+          "estimated_minutes": 55,
+          "warmup": "7 минут: спокойная ходьба, движения плеч и таза, затем 1 лёгкий разминочный подход первого упражнения.",
+          "work": [
+            {
+              "exercise_id": "bodyweight_squat",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "pushup",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "barbell_row",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 120,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "8–12",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "plank",
+              "sets": 2,
+              "reps": "30–60 секунд",
+              "rest_seconds": 60,
+              "note": "Остановитесь до потери положения корпуса."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "8 минут",
+              "rest_seconds": 30,
+              "note": "Отдельно после силовой части."
+            }
+          ],
+          "cooldown": "3–5 минут спокойной ходьбы. При боли, головокружении или недомогании прекратите занятие."
+        },
+        {
+          "id": "B",
+          "title": "Всё тело B · таз, выпад и плечи",
+          "estimated_minutes": 55,
+          "warmup": "7 минут: спокойная ходьба, движения плеч и таза, затем 1 лёгкий разминочный подход первого упражнения.",
+          "work": [
+            {
+              "exercise_id": "barbell_rdl",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 120,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "reverse_lunge",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "pushup",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "dumbbell_rear_raise",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "bird_dog",
+              "sets": 2,
+              "reps": "8–10 на сторону",
+              "rest_seconds": 60,
+              "note": "Не поворачивайте таз."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "8 минут",
+              "rest_seconds": 30,
+              "note": "Отдельно после силовой части."
+            }
+          ],
+          "cooldown": "3–5 минут спокойной ходьбы. При боли, головокружении или недомогании прекратите занятие."
+        }
+      ]
+    },
+    {
+      "id": "maintain_home_beginner_barbell_3day_v2",
+      "title": "Дома со штангой · поддержание формы · 3 дня",
+      "goal": "maintain",
+      "level": "beginner",
+      "place": "home",
+      "required_equipment": [
+        "barbell",
+        "dumbbells"
+      ],
+      "duration_weeks": 8,
+      "min_minutes": 55,
+      "supported_days": [
+        3
+      ],
+      "overview": "Полноценная нагрузка для поддержания формы со штангой и гантелями. Начинайте с посильного веса; оставляйте запас 2–3 повторения. Нагрузку повышайте только после устойчивого выполнения всех подходов.",
+      "progression": [
+        "Неделя 1: подберите сопротивление с запасом 2–3 повтора и запишите результат.",
+        "Неделя 2: повторите движения; повышайте повторы только при стабильной технике.",
+        "Неделя 3: если все рабочие подходы комфортны, немного увеличьте сопротивление.",
+        "Неделя 4: удерживайте нагрузку и проверьте восстановление.",
+        "Неделя 5: при устойчивой технике снова добавьте небольшое сопротивление или более сложный вариант.",
+        "Неделя 6: закрепите достигнутое число повторений; при усталости уменьшите объём.",
+        "Неделя 7: вернитесь к посильной нагрузке и сравните записи с первой неделей.",
+        "Неделя 8: выполните контрольную неделю без работы до отказа и решите, нужен ли новый цикл."
+      ],
+      "sources": [
+        "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+        "https://www.who.int/europe/news-room/fact-sheets/item/physical-activity"
+      ],
+      "sessions": [
+        {
+          "id": "A",
+          "title": "Всё тело A · приседание, жим и тяга",
+          "estimated_minutes": 55,
+          "warmup": "7 минут: спокойная ходьба, движения плеч и таза, затем 1 лёгкий разминочный подход первого упражнения.",
+          "work": [
+            {
+              "exercise_id": "bodyweight_squat",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "pushup",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "barbell_row",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 120,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "8–12",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "plank",
+              "sets": 2,
+              "reps": "30–60 секунд",
+              "rest_seconds": 60,
+              "note": "Остановитесь до потери положения корпуса."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "8 минут",
+              "rest_seconds": 30,
+              "note": "Отдельно после силовой части."
+            }
+          ],
+          "cooldown": "3–5 минут спокойной ходьбы. При боли, головокружении или недомогании прекратите занятие."
+        },
+        {
+          "id": "B",
+          "title": "Всё тело B · таз, выпад и плечи",
+          "estimated_minutes": 55,
+          "warmup": "7 минут: спокойная ходьба, движения плеч и таза, затем 1 лёгкий разминочный подход первого упражнения.",
+          "work": [
+            {
+              "exercise_id": "barbell_rdl",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 120,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "reverse_lunge",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "pushup",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "dumbbell_rear_raise",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Подберите вариант или сопротивление, сохраняя технику и запас 2–3 повторения."
+            },
+            {
+              "exercise_id": "bird_dog",
+              "sets": 2,
+              "reps": "8–10 на сторону",
+              "rest_seconds": 60,
+              "note": "Не поворачивайте таз."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "8 минут",
+              "rest_seconds": 30,
+              "note": "Отдельно после силовой части."
+            }
+          ],
+          "cooldown": "3–5 минут спокойной ходьбы. При боли, головокружении или недомогании прекратите занятие."
+        },
+        {
+          "id": "C",
+          "title": "Всё тело C · повторная силовая практика",
+          "estimated_minutes": 55,
+          "warmup": "7 минут: спокойная ходьба, движения плеч и таза, затем 1 лёгкий разминочный подход первого упражнения.",
+          "work": [
+            {
+              "exercise_id": "bodyweight_squat",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Если легко, делайте более медленное опускание."
+            },
+            {
+              "exercise_id": "barbell_row",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 120,
+              "note": "Оставляйте 2–3 повтора в запасе."
+            },
+            {
+              "exercise_id": "close_grip_pushup",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Если техника не держится, обычные отжимания."
+            },
+            {
+              "exercise_id": "glute_bridge",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Пауза 2 секунды сверху."
+            },
+            {
+              "exercise_id": "calf_raise",
+              "sets": 2,
+              "reps": "6–10",
+              "rest_seconds": 90,
+              "note": "Медленно опускайтесь."
+            },
+            {
+              "exercise_id": "brisk_walk",
+              "sets": 1,
+              "reps": "8 минут",
+              "rest_seconds": 30,
+              "note": "Отдельно после силовой части."
+            }
+          ],
+          "cooldown": "3–5 минут спокойной ходьбы. При боли, головокружении или недомогании прекратите занятие."
+        }
+      ]
     }
   ]
 }

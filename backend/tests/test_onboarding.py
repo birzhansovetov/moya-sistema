@@ -5,7 +5,7 @@ import pytest
 def answers():
     return {
         "health": {
-            "sport": {"goal": "fat_loss_muscle_focus", "level": "beginner", "place": "home", "equipment": [], "days_per_week": 2, "minutes_per_session": 35, "limitations": False, "weekdays": [1, 4]},
+            "sport": {"goal": "fat_loss_muscle_focus", "level": "beginner", "place": "home", "equipment": ["bands"], "days_per_week": 2, "minutes_per_session": 35, "limitations": False, "weekdays": [1, 4]},
             "vegetarian": False,
             "max_cooking_minutes": 45,
             "nutrition_goal": "maintain",

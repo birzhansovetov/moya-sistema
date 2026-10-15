@@ -43,9 +43,16 @@ def audit_coverage(programs: list[dict], exercises: dict[str, dict]) -> dict:
         if program_incompatible:
             continue
         for days in program['supported_days']:
+            week_patterns = {exercises[work['exercise_id']].get('movement_pattern')
+                             for session in program['sessions'][:days] for work in session['work']
+                             if work['exercise_id'] in exercises}
+            if not PATTERNS <= week_patterns:
+                incomplete.append({'id': program['id'], 'days': days,
+                                   'missing_patterns': sorted(PATTERNS - week_patterns)})
+                continue
             available.append({'id': program['id'], 'experience': program['level'], 'place': program['place'],
                               'goal': program['goal'], 'days': days, 'equipment': sorted(equipment),
-                              'movement_patterns': sorted(patterns)})
+                              'movement_patterns': sorted(week_patterns)})
     keys = {(item['experience'], item['place'], item['goal'], item['days']) for item in available}
     unavailable = [{'experience': experience, 'place': place, 'goal': goal, 'days': days}
                    for experience, place, goal, days in product(EXPERIENCES, PLACES, GOALS, DAYS)

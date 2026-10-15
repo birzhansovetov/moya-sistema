@@ -9,7 +9,7 @@ def answers(**overrides):
         "goal": "fat_loss_muscle_focus",
         "level": "beginner",
         "place": "home",
-        "equipment": [],
+        "equipment": ["bands"],
         "days_per_week": 2,
         "minutes_per_session": 35,
         "limitations": False,
@@ -43,7 +43,7 @@ def test_complete_catalog_has_three_distinct_places_and_usable_guides():
 def test_match_selects_entire_program_for_each_supported_place():
     sport = sport_module()
     cases = [
-        ("home", [], "fat_loss_home_beginner_v1"),
+        ("home", ["bands"], "fat_loss_home_bands_beginner_v1"),
         ("outdoor", ["low_bar", "bench"], "fat_loss_outdoor_beginner_v1"),
         ("gym", ["machines"], "fat_loss_gym_beginner_v1"),
     ]
@@ -92,7 +92,7 @@ def test_match_respects_days_time_and_missing_equipment():
 
 def test_four_day_split_matches_gym_and_barbell_home_with_real_sessions():
     sport = sport_module()
-    cases = (("gym", ["machines"], "gym"), ("home", ["barbell", "dumbbells"], "home"))
+    cases = (("gym", ["machines", "barbell", "dumbbells", "bench"], "gym"), ("home", ["barbell", "dumbbells"], "home"))
     for place, equipment, slug in cases:
         result = sport.select_program(answers(place=place, equipment=equipment, days_per_week=4,
             minutes_per_session=60, weekdays=[1, 2, 4, 6]))
@@ -127,7 +127,7 @@ def test_outdoor_four_day_programs_split_upper_and_lower_work():
 
 def test_intermediate_gym_split_retains_barbell_lifts_from_supplied_plan():
     sport = sport_module()
-    selected = sport.select_program(answers(place="gym", equipment=["machines"], level="intermediate",
+    selected = sport.select_program(answers(place="gym", equipment=["machines", "barbell", "dumbbells", "bench"], level="intermediate",
         days_per_week=4, minutes_per_session=60, weekdays=[1, 2, 4, 6]))
     sessions = {item["id"]: item for item in selected["sessions"]}
     assert sessions["PUSH"]["work"][0]["exercise_id"] == "barbell_bench_press"
@@ -136,7 +136,7 @@ def test_intermediate_gym_split_retains_barbell_lifts_from_supplied_plan():
 
 def test_short_programs_are_selected_for_each_place_without_replacing_full_programs():
     sport = sport_module()
-    for place, equipment in (("home", []), ("outdoor", ["low_bar", "bench"]), ("gym", ["machines"])):
+    for place, equipment in (("home", ["bands"]), ("outdoor", ["low_bar", "bench"]), ("gym", ["machines"])):
         short = sport.select_program(answers(place=place, equipment=equipment, minutes_per_session=25))
         full = sport.select_program(answers(place=place, equipment=equipment, minutes_per_session=45))
         assert short["program"]["min_minutes"] == 25
@@ -243,7 +243,7 @@ def test_exercise_metadata_and_program_coverage_are_explicit():
     excluded.update(item.split(':')[0] for item in report['incompatible_exercises'] if ':' in item)
     assert all(item['id'] not in excluded for item in report['available_combinations'])
     assert report['available_combinations']
-    assert report['unavailable_combinations']
+    assert report['unavailable_combinations'] == []
 
 
 def test_home_without_equipment_has_real_pull_or_explicit_gap():

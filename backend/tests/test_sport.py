@@ -10,7 +10,7 @@ from test_spheres import sign_in
 def plan_answers(**overrides):
     values = {
         "goal": "fat_loss_muscle_focus", "level": "beginner", "place": "home",
-        "equipment": [], "days_per_week": 2, "minutes_per_session": 35,
+        "equipment": ["bands"], "days_per_week": 2, "minutes_per_session": 35,
         "limitations": False, "weekdays": [1, 4],
     }
     values.update(overrides)

@@ -93,7 +93,7 @@ def select_program(answers: SportAnswers, excluded_ids: set[str] | None = None) 
         timed = [item for item in candidates if item["min_minutes"] <= answers.minutes_per_session]
         equipped = [item for item in timed if set(item["required_equipment"]) <= set(answers.equipment)]
         if equipped:
-            program = max(equipped, key=lambda item: (item["min_minutes"], item["duration_weeks"]))
+            program = max(equipped, key=lambda item: (item["min_minutes"], len(item["required_equipment"]), item["duration_weeks"], item["id"]))
         elif not timed:
             reasons.append(f"Для этого места нужно не меньше {min(item['min_minutes'] for item in candidates)} минут на занятие.")
         else:

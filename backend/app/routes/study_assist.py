@@ -15,6 +15,7 @@ from app.models import StudyAssistRequest, StudyAttempt, User
 from app.study import course, owned_plan
 from app.study_help import get_help_fragment
 from app.study_assist import PROMPT_VERSION, assist_lesson
+from app.cloud_ai import explain_catalog_fragment, PROMPT_VERSION as CLOUD_PROMPT_VERSION
 from app.rate_limit import enforce, record
 from app.tasks import local_date
 
@@ -141,18 +142,28 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
         except HTTPException as error:
             if error.status_code != 429:
                 raise
+    if generated is None and settings.cloud_ai_enabled and settings.gemini_api_key and payload.stage != 'review':
+        try:
+            enforce(db, request, "cloud_study_assist", context.user.id, account_limit=20, source_limit=1000, minutes=60)
+            record(db, request, "cloud_study_assist", context.user.id)
+            generated = explain_catalog_fragment(fragment, stage=payload.stage,
+                api_key=settings.gemini_api_key, model=settings.gemini_model)
+        except HTTPException as error:
+            if error.status_code != 429:
+                raise
     if generated is None:
         generated = {"source": "authored", "text": {"hint": fragment.hint, "next_step": fragment.next_step,
                      "review": fragment.explanation, "explain": fragment.explanation}[payload.stage],
                      "next_step": ""}
     metric = StudyAssistRequest(user_id=context.user.id, course_id=plan.course_id, version=plan.version,
                                 lesson_id=payload.lesson_id, question_index=payload.question_index,
-                                stage=payload.stage, source=generated['source'], prompt_version=PROMPT_VERSION,
-                                model_digest=settings.ollama_model_digest if generated['source'] == 'local_ai' else '',
+                                stage=payload.stage, source=generated['source'], prompt_version=CLOUD_PROMPT_VERSION if generated['source'] == 'cloud_ai' else PROMPT_VERSION,
+                                model_digest=(settings.ollama_model_digest if generated['source'] == 'local_ai' else settings.gemini_model if generated['source'] == 'cloud_ai' else ''),
                                 latency_ms=round((monotonic()-started)*1000))
     db.add(metric)
     db.commit()
     return {"request_id": metric.id, "source": generated["source"], "stage": payload.stage, "text": generated["text"], "next_step": generated["next_step"],
             "lesson_id": payload.lesson_id, "version": plan.version, "question_index": payload.question_index,
+            "allow_local_answer": settings.local_ai_enabled and settings.environment == "development" and plan.course_id in allowed,
             "next_stage_token": _token(secret, context.user.id, plan.id, payload.lesson_id,
                                        payload.question_index, next_stage) if next_stage else None}

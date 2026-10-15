@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import os
 
 
@@ -13,6 +13,9 @@ class Settings:
     ollama_model: str = "qwen3:4b-instruct"
     ollama_model_digest: str = "unverified"
     local_ai_study_routes: str = ""
+    cloud_ai_enabled: bool = False
+    gemini_api_key: str = field(default="", repr=False)
+    gemini_model: str = "gemini-3.5-flash-lite"
 
     def __post_init__(self) -> None:
         if len(self.jwt_secret) < 32:
@@ -44,4 +47,7 @@ class Settings:
             ollama_model=os.getenv("OLLAMA_MODEL", "qwen3:4b-instruct"),
             ollama_model_digest=os.getenv("OLLAMA_MODEL_DIGEST", "unverified"),
             local_ai_study_routes=os.getenv("LOCAL_AI_STUDY_ROUTES", ""),
+            cloud_ai_enabled=os.getenv("CLOUD_AI_ENABLED", "false").lower() == "true",
+            gemini_api_key=os.getenv("GEMINI_API_KEY", ""),
+            gemini_model=os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"),
         )
