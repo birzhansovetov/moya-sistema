@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.config import Settings
 from app.db import sqlalchemy_url, utc_now
-from app.models import MatchingPreview, MatchingStartResult
+from app.models import MatchingPreview, MatchingStartResult, AssistantRequest
 
 logger = logging.getLogger(__name__)
 
@@ -22,13 +22,22 @@ def cleanup_onboarding(db: Session) -> tuple[int, int]:
     return previews, results
 
 
+def cleanup_assistant(db: Session) -> int:
+    return db.execute(delete(AssistantRequest).where(AssistantRequest.created_at < utc_now()-timedelta(days=30))).rowcount
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("area", choices=("onboarding",))
-    parser.parse_args()
+    parser.add_argument("area", choices=("onboarding", "assistant"))
+    args = parser.parse_args()
     engine = create_engine(sqlalchemy_url(Settings.from_env().database_url))
     try:
         with Session(engine) as db:
+            if args.area == "assistant":
+                count = cleanup_assistant(db)
+                db.commit()
+                logger.info("Assistant cleanup: %s records", count)
+                return
             previews, results = cleanup_onboarding(db)
             db.commit()
             logger.info("Matching cleanup: %s previews, %s results", previews, results)

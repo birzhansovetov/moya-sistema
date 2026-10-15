@@ -501,3 +501,20 @@ class BackupUse(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     used_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now)
+
+
+class AssistantRequest(Base):
+    __tablename__ = 'assistant_requests'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), index=True)
+    section: Mapped[str] = mapped_column(String(24))
+    topic_id: Mapped[str] = mapped_column(String(60))
+    material_kind: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    material_id: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    material_version: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    source: Mapped[str] = mapped_column(String(20))
+    prompt_version: Mapped[str] = mapped_column(String(30))
+    model: Mapped[str] = mapped_column(String(120))
+    latency_ms: Mapped[int] = mapped_column(Integer)
+    helped: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now, index=True)

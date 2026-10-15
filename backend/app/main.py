@@ -8,7 +8,7 @@ from app.db import sqlalchemy_url
 from app.mail import GmailMailer, Mailer
 from app.local_ai import PreviewAdvisor
 from app.book_storage import S3BookStore
-from app.routes import auth, backup, calendar, finance, library, nutrition, onboarding, personal, personal_books, profile, reading, sport, study, study_assist, tasks
+from app.routes import assistant, auth, backup, calendar, finance, library, nutrition, onboarding, personal, personal_books, profile, reading, sport, study, study_assist, tasks
 
 
 def create_app(settings: Settings | None = None, mailer: Mailer | None = None) -> FastAPI:
@@ -21,6 +21,7 @@ def create_app(settings: Settings | None = None, mailer: Mailer | None = None) -
     app.state.book_store = S3BookStore.from_env()
     app.state.engine = create_engine(sqlalchemy_url(settings.database_url), pool_pre_ping=True)
     app.state.sessionmaker = sessionmaker(app.state.engine, expire_on_commit=False)
+    app.include_router(assistant.router)
     app.include_router(auth.router)
     app.include_router(profile.router)
     app.include_router(backup.router)
