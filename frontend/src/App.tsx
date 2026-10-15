@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Button } from './components/ui'
 import { useAuth } from './auth'
 import { Shell } from './components/Shell'
 import { AuthPage } from './pages/Auth'
@@ -26,8 +27,16 @@ function LanguageRoute() {
 }
 
 export function App() {
-  const { user, loading, setAuthenticated } = useAuth()
-  if (loading) return <div className="loadingScreen">Открываем ваше пространство…</div>
+  const { user, loading, sessionError, retrySession, setAuthenticated } = useAuth()
+  const { pathname } = useLocation()
+  const publicAuthPage = ['/login', '/register', '/forgot-password', '/verify-email', '/reset-password'].includes(pathname)
+  if (!publicAuthPage && loading) return <div className="loadingScreen" role="status">Открываем ваше пространство…</div>
+  if (!publicAuthPage && sessionError && !user) return <main className="sessionRecovery">
+    <h1>Не удалось загрузить пространство</h1>
+    <p role="alert">{sessionError}</p>
+    <Button onClick={retrySession}>Повторить загрузку</Button>
+    <Link to="/login">Перейти ко входу</Link>
+  </main>
   return <Routes>
     <Route path="/login" element={user ? <Navigate to="/" replace /> : <AuthPage onAuthenticated={setAuthenticated} />} />
     <Route path="/register" element={user ? <Navigate to="/" replace /> : <AuthPage onAuthenticated={setAuthenticated} />} />

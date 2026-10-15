@@ -46,15 +46,18 @@ export async function apiResponse(path: string, init: RequestInit = {}): Promise
   try {
     return await requestResponse(path, init)
   } catch (error) {
+    if (init.signal?.aborted) throw error
     if (error instanceof ApiError && error.status === 401 && path !== '/auth/refresh' && path !== '/auth/login') {
       try {
         if (!refreshPromise) {
-          refreshPromise = request<AuthResult>('/auth/refresh', { method: 'POST' }).finally(() => { refreshPromise = null })
+          refreshPromise = request<AuthResult>('/auth/refresh', { method: 'POST', signal: init.signal }).finally(() => { refreshPromise = null })
         }
         const renewed = await refreshPromise
+        if (init.signal?.aborted) throw new Error('Запрос отменён.')
         setCsrfToken(renewed.csrf_token)
         return await requestResponse(path, init)
       } catch (refreshError) {
+        if (init.signal?.aborted) throw refreshError
         if (refreshError instanceof ApiError && refreshError.status === 401) {
           setCsrfToken('')
           authFailureHandler?.()
