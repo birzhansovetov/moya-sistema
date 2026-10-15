@@ -1,3 +1,4 @@
+import {Pronunciation} from './Pronunciation'
 import {useRef,useState} from 'react'
 import {useMutation,useQuery,useQueryClient} from '@tanstack/react-query'
 import {api,json} from '../api'
@@ -7,10 +8,10 @@ import type {Word} from '../studyTypes'
 import s from '../pages/Study.module.css'
 type Card=Word&{review_id:string|null;due_date:string}
 function ReviewCard({card,courseId,version,onSaved}:{card:Card;courseId:string;version:string;onSaved:()=>void}){
- const [revealed,setRevealed]=useState(false);const key=useRef(crypto.randomUUID());const [rating,setRating]=useState<string|null>(null)
+ const language=({english:'en',kazakh:'kk',korean:'ko',turkish:'tr',spanish:'es'} as Record<string,string>)[courseId]||'en';const [revealed,setRevealed]=useState(false);const key=useRef(crypto.randomUUID());const [rating,setRating]=useState<string|null>(null)
  const save=useMutation({mutationFn:(value:string)=>api<{due_date:string}>('/study/reviews',json('POST',{course_id:courseId,version,card_id:card.id,rating:value,expected_review_id:card.review_id,create_key:key.current})),onSuccess:onSaved})
  function submit(value:string){if(rating!==value){key.current=crypto.randomUUID();setRating(value)}save.mutate(value)}
- return <section className={`card ${s.cardReview}`}><p className={s.subtle}>Вспомните перевод и составьте предложение</p><h3 lang="en">{card.word}</h3>{!revealed?<button className="secondaryButton" onClick={()=>setRevealed(true)}>Показать перевод</button>:<><strong>{card.translation}</strong><p lang="en">{card.example}</p><div className="healthActions"><button className="secondaryButton" disabled={save.isPending||save.isSuccess} onClick={()=>submit('again')}>Повторить завтра</button><button className="primaryButton" disabled={save.isPending||save.isSuccess} onClick={()=>submit('remembered')}>Вспомнил</button></div></>}{save.error&&<p role="alert" className="errorMessage">{save.error.message}</p>}{save.data&&<p role="status">Сохранено. Следующее повторение: {save.data.due_date}.</p>}</section>
+ return <section className={`card ${s.cardReview}`}><p className={s.subtle}>Вспомните перевод и составьте предложение</p><h3 lang={language}>{card.word}</h3><Pronunciation text={card.word} language={language}/>{!revealed?<button className="secondaryButton" onClick={()=>setRevealed(true)}>Показать перевод</button>:<><strong>{card.translation}</strong><p lang={language}>{card.example}</p><div className="healthActions"><button className="secondaryButton" disabled={save.isPending||save.isSuccess} onClick={()=>submit('again')}>Повторить завтра</button><button className="primaryButton" disabled={save.isPending||save.isSuccess} onClick={()=>submit('remembered')}>Вспомнил</button></div></>}{save.error&&<p role="alert" className="errorMessage">{save.error.message}</p>}{save.data&&<p role="status">Сохранено. Следующее повторение: {save.data.due_date}.</p>}</section>
 }
 export function StudyCards({courseId,version}:{courseId:string;version:string}){
  const {user}=useAuth();const client=useQueryClient();const today=useLocalToday(user?.timezone||'Asia/Almaty')

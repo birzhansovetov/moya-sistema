@@ -29,7 +29,7 @@ export function TodayNext({ date }: { date: string }) {
   const steps = [
     ...(session && !workoutDone ? [{ title: session.title, area: 'Тренировка', detail: 'План и техника упражнений', minutes: plan?.answers.minutes_per_session || 45, to: `/health/sport?${new URLSearchParams({ plan: plan!.id, date, session: session.id })}#sport-sessions` }] : []),
     ...lessons.map(lesson => ({ title: lesson.title, area: lesson.course_title, detail: 'Урок и практика', minutes: lesson.minutes, to: `${studyPaths[lesson.course_id]}?${new URLSearchParams({ plan: lesson.plan_id, lesson: lesson.lesson_id, date })}` })),
-    ...(book ? [{ title: book.title, area: 'Чтение', detail: book.pages ? `Продолжить со страницы ${book.current_page + 1}` : 'Продолжить чтение', minutes: 15, to: `/education/reading?${new URLSearchParams({ book: book.id, date })}` }] : []),
+    ...(book ? [{ title: book.title, area: 'Чтение', detail: book.pages ? `Продолжить со страницы ${book.current_page + 1}` : 'Продолжить чтение', minutes: 15, to: `/books?${new URLSearchParams({ book: book.id, date })}` }] : []),
   ]
   let remaining = budget
   const queue = steps.filter(step => { if (step.minutes > remaining) return false; remaining -= step.minutes; return true })

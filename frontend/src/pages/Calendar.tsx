@@ -34,7 +34,7 @@ export function CalendarPage() {
   return <div>
     <div className="pageHeader"><div><h1>Календарь</h1></div></div>
     <div className="calendarLayout"><section className="card calendarCard">
-      <div className="calendarHeader"><h2>{label}</h2><div><button className="iconButton" aria-label="Предыдущий месяц" onClick={() => moveMonth(-1)}>‹</button><button className="iconButton" aria-label="Следующий месяц" onClick={() => moveMonth(1)}>›</button></div></div>
+      <div className="calendarHeader"><h2>{label}</h2><div><button className="secondaryButton" aria-label="Предыдущий месяц" onClick={() => moveMonth(-1)}>Назад</button><button className="secondaryButton" aria-label="Следующий месяц" onClick={() => moveMonth(1)}>Далее</button></div></div>
       {calendar.isError && <p role="alert" className="errorMessage">Не удалось загрузить календарь. <button className="textButton" onClick={() => void calendar.refetch()}>Повторить</button></p>}
       <div className="calendarGrid">{weekNames.map(day => <span className="weekdayName" key={day}>{day}</span>)}{Array.from({ length: blanks }, (_, index) => <span key={`blank-${index}`} />)}{Array.from({ length: days }, (_, index) => {
         const value = `${month}-${String(index + 1).padStart(2, '0')}`

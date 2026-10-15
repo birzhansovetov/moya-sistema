@@ -1,15 +1,1 @@
-.page{display:grid;gap:26px}
-.page :global(.pageHeader){margin:0}
-.page :global(.pageHeader)>div{max-width:850px}
-.page :global(.pageHeader h1){max-width:16ch}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.card{display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:330px;min-width:0;padding:25px;border:1px solid #d7d5cf;border-radius:20px;color:#242424;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease}
-.card:hover{transform:translateY(-2px);box-shadow:0 14px 28px #26262612}
-.card:focus-visible{outline:3px solid #242424;outline-offset:3px}
-.sport{background:#e3eae3}.nutrition{background:#f0e8dd}.calories{background:#e8e9ee}
-.top{display:flex;justify-content:space-between;gap:10px;color:#64615c;font-size:11px;font-weight:750}
-.card h2{margin:0 0 10px;font-size:clamp(24px,2.5vw,34px);line-height:1.08;letter-spacing:-.045em}
-.card p{margin:0;max-width:31ch;color:#5f5c57;font-size:14px;line-height:1.5}
-.action{display:inline-flex;align-self:flex-start;align-items:center;min-height:37px;padding:9px 12px;border-radius:9px;background:#242424;color:#fff;font-size:12px;font-weight:750}
-@media(max-width:950px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{min-height:270px}}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.card{min-height:230px;padding:22px;gap:20px}}
+.page{min-width:0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.card{display:flex;flex-direction:column;gap:20px;padding:24px;border:0;border-radius:24px;background:var(--surface);text-decoration:none;color:var(--text);min-width:0}.card h2{font-size:26px;margin:0 0 12px}.card p{font-size:16px;margin:0;color:var(--text-muted)}.top{display:flex;align-items:center;gap:12px;color:var(--section-color);font-size:14px}.action{display:flex;align-items:center;min-height:48px;color:var(--color-action);font-size:15px;font-weight:650;margin-top:auto}.sport{background:#EEF5DC;--section-color:#35550E}.nutrition{background:#FFF1DD;--section-color:#92551D}.calories{background:#E9F0FF;--section-color:#3157AC}.photo{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:16px}.card:hover{outline:1px solid var(--line)}@media(max-width:900px){.grid{grid-template-columns:1fr}.card{gap:16px}.photo{max-height:260px}}

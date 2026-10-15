@@ -16,7 +16,7 @@ type Analytics = { start: string; end: string; weeks: Week[];
 
 const areas: { key: Area; label: string; to: string }[] = [
   { key: 'health', label: 'Здоровье', to: '/health' },
-  { key: 'education', label: 'Обучение', to: '/education' },
+  { key: 'education', label: 'Книги', to: '/books' },
   { key: 'profession', label: 'Профессия', to: '/profession' },
   { key: 'languages', label: 'Языки', to: '/languages' },
   { key: 'finance', label: 'Финансы', to: '/finance' },

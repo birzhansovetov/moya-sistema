@@ -1,3 +1,4 @@
+import {Brand} from '../components/Brand'
 import { SectionAssistant } from '../components/SectionAssistant'
 import { useEffect, useState, type FormEvent } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
@@ -66,7 +67,7 @@ export function AuthPage({ onAuthenticated }: { onAuthenticated: (value: AuthRes
     reset: 'Задайте новый пароль для вашего аккаунта.',
   }[mode]
   return <main className={styles.page}><SectionAssistant />
-    <div className={styles.brand}><span className={styles.brandMark}>М</span><span>Моя система</span></div>
+    <div className={styles.brand}><Brand compact/><span>Моя система</span></div>
     <Card className={styles.card}>
       <h1>{title}</h1>
       <p className={styles.subtitle}>{description}</p>

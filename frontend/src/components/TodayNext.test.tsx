@@ -22,5 +22,5 @@ test('nearest planned workout is shown before study and links to the exact sessi
   fireEvent.click(screen.getByText('На сегодня: 60 мин · изменить время'))
   fireEvent.click(screen.getByRole('button', { name: '90 мин' }))
   fireEvent.click(screen.getByText('Следом ещё 1'))
-  expect(screen.getByRole('link', { name: 'Java: Классы · 25 мин' })).toHaveAttribute('href', '/education/java?plan=study-1&lesson=lesson-1&date=2026-10-12')
+  expect(screen.getByRole('link', { name: 'Java: Классы · 25 мин' })).toHaveAttribute('href', '/profession/java?plan=study-1&lesson=lesson-1&date=2026-10-12')
 })

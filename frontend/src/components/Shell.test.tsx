@@ -12,10 +12,10 @@ function mount(path: string) {
 
 afterEach(() => { cleanup(); document.documentElement.removeAttribute('data-theme') })
 
-test('mobile shell keeps five primary destinations and a parent link on a detail page', () => {
+test('mobile shell keeps four primary destinations and a parent link on a detail page', () => {
   mount('/health/sport')
   const nav = screen.getByRole('navigation', { name: 'Мобильная навигация' })
-  expect(within(nav).getAllByRole('link')).toHaveLength(5)
+  expect(within(nav).getAllByRole('link')).toHaveLength(4)
   expect(within(nav).getByRole('link', { name: 'Разделы' })).toHaveAttribute('aria-current', 'page')
   expect(screen.getByRole('link', { name: 'Назад к здоровью' })).toHaveAttribute('href', '/health')
 })

@@ -21,11 +21,11 @@ test('six spheres open their own content path instead of task filters', async ()
   await waitFor(() => expect(screen.getByRole('link', { name: /Здоровье/ })).toBeInTheDocument())
   expect(screen.getByRole('link', { name: /Здоровье/ })).toHaveAttribute('href', '/health')
   expect(screen.getByRole('link', { name: /Финансы/ })).toHaveAttribute('href', '/finance')
-  for (const name of ['Обучение', 'Профессия', 'Языки', 'Финансы', 'Личное']) {
+  for (const name of ['Книги', 'Профессия', 'Языки', 'Финансы', 'Личное']) {
     expect(screen.getByText(name)).toBeInTheDocument()
   }
   expect(screen.queryByRole('link', { name: /Задачи/ })).not.toBeInTheDocument()
-  expect(screen.getByRole('link', { name: /Обучение/ })).toHaveAttribute('href', '/education')
+  expect(screen.getByRole('link', { name: /Книги/ })).toHaveAttribute('href', '/books')
   expect(screen.getByRole('link', { name: /Личное/ })).toHaveAttribute('href', '/personal')
 })
 
@@ -49,7 +49,7 @@ test('sections offer direct continuation into saved plans and reading', async ()
     throw new Error(`Unexpected API path ${path}`)
   })
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter><SectionsPage /></MemoryRouter></QueryClientProvider>)
-  expect(await screen.findByRole('link', { name: 'Продолжить: Сила дома' })).toHaveAttribute('href', '/health/sport?plan=sport-1')
+  expect(await screen.findByRole('link', { name: 'Продолжить тренировку' })).toHaveAttribute('href', '/health/sport?plan=sport-1')
   await waitFor(() => expect(screen.getAllByRole('link', { name: 'Продолжить урок' })).toHaveLength(2))
   expect(screen.getByRole('link', { name: /Финансы/ })).toHaveAttribute('href', '/finance')
   expect(screen.queryByRole('link', { name: 'Открыть расходы' })).not.toBeInTheDocument()

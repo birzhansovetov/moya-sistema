@@ -1,0 +1,6 @@
+import {render,screen,fireEvent,cleanup} from '@testing-library/react'
+import {test,expect,afterEach} from 'vitest'
+import {MediaPlayer} from './MediaPlayer'
+afterEach(cleanup)
+test('video waits for user before contacting external player',()=>{render(<MediaPlayer asset={{id:'example',kind:'video',src:'https://www.youtube-nocookie.com/embed/O_nWCgnBL5U',title:'Урок',sourceUrl:'https://www.adidas.com/us/blog/939852-bodyweight-workout-15minute-full-body-routine',rights:'Официальное встраивание'}}/>);expect(document.querySelector('iframe')).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Смотреть видео'}));expect(screen.getByTitle('Урок')).toHaveAttribute('src','https://www.youtube-nocookie.com/embed/O_nWCgnBL5U');expect(screen.getByRole('link',{name:'Открыть у автора'})).toBeInTheDocument()})
+test('audio error has recovery and never claims completion',()=>{render(<MediaPlayer asset={{id:'a',kind:'audio',src:'/audio/test.wav',title:'Аудио',sourceUrl:'https://example.org',rights:'Учебная запись',transcript:'Текст'}}/>);fireEvent.error(screen.getByLabelText('Аудио'));expect(screen.getByRole('alert')).toHaveTextContent('Не удалось загрузить запись');expect(screen.getByText('Текст')).toBeInTheDocument()})

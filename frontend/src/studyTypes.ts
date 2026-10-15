@@ -10,6 +10,6 @@ export type Attempt={id:string;plan_id:string;lesson_id:string;date:string;snaps
 export type StudyState={active_plan:StudyPlan|null;plan:StudyPlan|null;plans:StudyPlan[];completed:string[];next_lesson_id:string|null;pending_retry_lesson_id:string|null;attempts:Attempt[];attempt_total:number;history_offset:number}
 export const languageCourses=['english','kazakh','korean','turkish','spanish'] as const
 export const languageNames:Record<string,string>={english:'Английский',kazakh:'Казахский',korean:'Корейский',turkish:'Турецкий',spanish:'Испанский'}
-export const studyPaths:Record<string,string>={java:'/education/java',go:'/education/go',english:'/languages',kazakh:'/languages/kazakh',korean:'/languages/korean',turkish:'/languages/turkish',spanish:'/languages/spanish','java-backend':'/profession'}
+export const studyPaths:Record<string,string>={java:'/profession/java',go:'/profession/go',english:'/languages',kazakh:'/languages/kazakh',korean:'/languages/korean',turkish:'/languages/turkish',spanish:'/languages/spanish','java-backend':'/profession/backend'}
 export const goalNames:Record<string,string>={general:'Общее развитие',work:'Для работы',travel:'Для поездок',project:'Создать проект'}
 export const levelNames:Record<string,string>={beginner:'С основ',foundation:'Основы Java уже знакомы',A1:'A1 — начинаю с основ',A2:'A2 — закрепить базу',B1:'B1 — перейти к самостоятельной речи',B2:'B2 — практика сложных тем'}

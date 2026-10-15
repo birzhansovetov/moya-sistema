@@ -8,6 +8,6 @@ vi.mock('./api',()=>({api:async()=>({items:[{id:'book',title:'Читаемая �
 test('daily personal and reading links preserve the selected date and original record',async()=>{
  render(<QueryClientProvider client={new QueryClient({defaultOptions:{queries:{retry:false}}})}><MemoryRouter><DevelopmentDay date="2026-10-09" personalItems={[{id:'event',title:'Встреча с другом',date:'2026-10-09',kind:'event',completed:false}]}/></MemoryRouter></QueryClientProvider>)
  expect(screen.getByRole('link',{name:/Встреча с другом/})).toHaveAttribute('href','/personal?entry=event&date=2026-10-09')
- expect(await screen.findByRole('link',{name:/Читаемая книга/})).toHaveAttribute('href','/education/reading?book=book&date=2026-10-09')
+ expect(await screen.findByRole('link',{name:/Читаемая книга/})).toHaveAttribute('href','/books?book=book&date=2026-10-09')
  expect(screen.getByText(/страницы 11–25/)).toBeInTheDocument()
 })

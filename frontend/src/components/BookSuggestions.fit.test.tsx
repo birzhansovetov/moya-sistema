@@ -14,7 +14,7 @@ test('unsuitable book offers another book from the same interest', async () => {
     { id: 'second', title: 'Книга Б', author: 'Автор', interest: 'growth', genres: ['self_development'], description: 'Второе описание', questions: [], check: '', source: '', available_offline: true },
   ] } : { paragraphs: ['Текст книги'], total: 1, next_offset: null })
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter><BookSuggestions onChoose={vi.fn()} /></MemoryRouter></QueryClientProvider>)
-  await screen.findByText('Книга А · Автор')
+  await screen.findByRole('heading',{name:'Книга А'})
   fireEvent.click(screen.getByRole('button', { name: 'Мне не подходит: Книга А' }))
   fireEvent.click(screen.getByRole('button', { name: 'Книга Б' }))
   expect(await screen.findByRole('region', { name: 'Чтение Книга Б' })).toBeInTheDocument()

@@ -1,0 +1,3 @@
+import {useState} from 'react'
+import './BookCover.css'
+export function BookCover({title,author,src}:{title:string;author?:string;src?:string}){const [failed,setFailed]=useState(false);const palette=['clay','blue','sage','violet'];const color=palette[Array.from(title).reduce((sum,c)=>sum+c.charCodeAt(0),0)%palette.length];return src&&!failed?<img className="bookCover" src={src} alt={`Обложка: ${title}`} loading="lazy" width="180" height="260" onError={()=>setFailed(true)}/>:<div className={`bookCover bookCover--${color}`} role="img" aria-label={`Обложка: ${title}`}><span>{author||'Моя библиотека'}</span><strong>{title}</strong><span>МС · Книги</span></div>}

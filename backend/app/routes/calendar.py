@@ -19,6 +19,14 @@ router = APIRouter(prefix="/api/calendar", tags=["calendar"])
 AREAS = ("health", "education", "profession", "languages", "finance", "personal")
 
 
+def study_area(course_id: str) -> str | None:
+    if course_id in ('java', 'go', 'java-backend'):
+        return 'profession'
+    if course_id in ('english', 'kazakh', 'korean', 'turkish', 'spanish'):
+        return 'languages'
+    return None
+
+
 class FeedbackPayload(BaseModel):
     model_config = ConfigDict(extra="forbid")
     end: date
@@ -125,7 +133,7 @@ def weekly_review(end: date = Query(), user: User = Depends(get_current_user), d
         StudyAttempt, StudyAttempt.plan_id == StudyPlan.id).where(
         StudyAttempt.user_id == user.id, StudyAttempt.date >= start, StudyAttempt.date <= end)).all()
     language_reviews = count(select(StudyReview.id).where(StudyReview.user_id == user.id,
-        StudyReview.course_id == 'english', StudyReview.date >= start, StudyReview.date <= end))
+        StudyReview.course_id.in_(('english', 'kazakh', 'korean', 'turkish', 'spanish')), StudyReview.date >= start, StudyReview.date <= end))
     reading_count = count(select(ReadingLog.id).join(ReadingBook).where(
         ReadingBook.user_id == user.id, ReadingBook.deleted_at.is_(None),
         ReadingLog.deleted_at.is_(None), ReadingLog.date >= start, ReadingLog.date <= end))
@@ -140,9 +148,9 @@ def weekly_review(end: date = Query(), user: User = Depends(get_current_user), d
         'training': training_week_review(db, user.id, start, end),
         'areas': {
             'health': sport_count + food_count,
-            'education': reading_count + sum(course in ('java', 'go') for course, _ in attempts),
-            'profession': sum(course == 'java-backend' for course, _ in attempts),
-            'languages': language_reviews + sum(course == 'english' for course, _ in attempts),
+            'education': reading_count,
+            'profession': sum(study_area(course) == 'profession' for course, _ in attempts),
+            'languages': language_reviews + sum(study_area(course) == 'languages' for course, _ in attempts),
             'finance': finance_count,
             'personal': personal_count,
         },

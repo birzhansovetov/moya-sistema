@@ -16,7 +16,7 @@ vi.mock('./auth', () => ({ useAuth: () => ({ user: { id: 'one' } }) }))
 
 test('six readable sphere entrances keep their destination routes', async () => {
   render(<QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}><MemoryRouter><SectionsPage /></MemoryRouter></QueryClientProvider>)
-  for (const [name, route] of [['Здоровье', '/health'], ['Обучение', '/education'], ['Профессия', '/profession'], ['Языки', '/languages'], ['Финансы', '/finance'], ['Личное', '/personal']]) {
+  for (const [name, route] of [['Здоровье', '/health'], ['Книги', '/books'], ['Профессия', '/profession'], ['Языки', '/languages'], ['Финансы', '/finance'], ['Личное', '/personal']]) {
     expect(await screen.findByRole('link', { name: new RegExp(name) })).toHaveAttribute('href', route)
   }
   expect(screen.queryAllByText(/СФЕРА 0[1-6]/)).toHaveLength(0)

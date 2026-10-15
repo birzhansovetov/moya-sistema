@@ -1,3 +1,4 @@
+import {AppIcon} from '../components/AppIcon'
 import {Link} from 'react-router-dom'
 import styles from './Health.module.css'
 
@@ -9,6 +10,6 @@ export function HealthPage(){
  ]
  return <div className={styles.page}>
   <div className="pageHeader"><div><Link className="textButton" to="/sections">Все сферы</Link><h1>Здоровье</h1><p>Выберите тренировку, рецепт или расчёт калорий.</p></div></div>
-  <div className={styles.grid}>{areas.map(area=><Link className={`${styles.card} ${styles[area.id]}`} to={area.to} key={area.id}><div className={styles.top}><span>{area.index}</span><span>{area.meta}</span></div><div><h2>{area.title}</h2><p>{area.description}</p></div><span className={styles.action}>Открыть {area.id==='calories'?'расчёт':area.title.toLowerCase()}</span></Link>)}</div>
+  <div className={styles.grid}>{areas.map(area=><Link className={`${styles.card} ${styles[area.id]}`} to={area.to} key={area.id}><div className={styles.top}><AppIcon name="health"/><span>{area.meta}</span></div>{area.id==='sport'&&<img className={styles.photo} src="/images/training-studio.webp" alt="Спортивное пространство" width="600" height="400"/>}<div><h2>{area.title}</h2><p>{area.description}</p></div><span className={styles.action}>Открыть {area.id==='calories'?'расчёт':area.title.toLowerCase()}</span></Link>)}</div>
  </div>
 }

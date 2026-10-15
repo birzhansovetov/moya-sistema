@@ -9,7 +9,8 @@ import { TasksPage } from './pages/Tasks'
 import { CalendarPage } from './pages/Calendar'
 import { SectionsPage } from './pages/Sections'
 import { StudyPage } from './pages/Study'
-import { EducationPage } from './pages/Education'
+import { ProfessionPage } from './pages/Profession'
+import { legacyDestination } from './navigation'
 import { ReadingPage } from './pages/Reading'
 import { PersonalPage } from './pages/Personal'
 import { FinancePage } from './pages/Finance'
@@ -20,6 +21,8 @@ import { OnboardingPage } from './pages/Onboarding'
 import { LanguagesPage } from './pages/Languages'
 import { useParams } from 'react-router-dom'
 
+function LegacyRoute(){const {pathname,search,hash}=useLocation();return <Navigate replace to={legacyDestination(pathname,search,hash)||'/profession'}/>}
+function ProfessionRoute(){const {search}=useLocation();return new URLSearchParams(search).has('plan')?<LegacyRoute/>:<ProfessionPage/>}
 function LanguageRoute() {
   const { courseId } = useParams()
   return ['english', 'kazakh', 'korean', 'turkish', 'spanish'].includes(courseId || '')
@@ -47,13 +50,17 @@ export function App() {
     <Route element={user ? user.onboarding_complete === false ? <Navigate to="/onboarding" replace /> : <Shell /> : <Navigate to="/login" replace />}>
       <Route index element={<TodayPage />} />
       <Route path="sections" element={<SectionsPage />} />
-      <Route path="education" element={<EducationPage />} />
-      <Route path="education/java" element={<StudyPage key="java" courseId="java" />} />
-      <Route path="education/go" element={<StudyPage key="go" courseId="go" />} />
+      <Route path="education" element={<LegacyRoute />} />
+      <Route path="books" element={<ReadingPage />} />
+      <Route path="education/java" element={<LegacyRoute />} />
+      <Route path="education/go" element={<LegacyRoute />} />
       <Route path="languages" element={<LanguagesPage />} />
       <Route path="languages/:courseId" element={<LanguageRoute />} />
-      <Route path="profession" element={<StudyPage key="java-backend" courseId="java-backend" />} />
-      <Route path="education/reading" element={<ReadingPage />} />
+      <Route path="profession" element={<ProfessionRoute />} />
+      <Route path="profession/java" element={<StudyPage key="java" courseId="java" />} />
+      <Route path="profession/go" element={<StudyPage key="go" courseId="go" />} />
+      <Route path="profession/backend" element={<StudyPage key="java-backend" courseId="java-backend" />} />
+      <Route path="education/reading" element={<LegacyRoute />} />
       <Route path="personal" element={<PersonalPage />} />
       <Route path="finance" element={<FinancePage />} />
       <Route path="health" element={<HealthPage />} />

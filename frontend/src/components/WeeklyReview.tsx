@@ -13,7 +13,7 @@ type Review = { start: string; end: string; tasks: { planned: number; completed:
     suggestion: 'keep' | 'review_frequency'; reason: string; feedback?: Feedback } | null }
 const areas: { key: Area; name: string; to: string }[] = [
   { key: 'health', name: 'Здоровье', to: '/health' },
-  { key: 'education', name: 'Обучение', to: '/education' },
+  { key: 'education', name: 'Книги', to: '/books' },
   { key: 'profession', name: 'Профессия', to: '/profession' },
   { key: 'languages', name: 'Языки', to: '/languages' },
   { key: 'finance', name: 'Финансы', to: '/finance' },

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../auth'
 import styles from './Shell.module.css'
+import {Brand} from './Brand'
 
 type IconName = 'today' | 'sections' | 'tasks' | 'calendar' | 'profile'
 
@@ -24,17 +25,20 @@ const links: { to: string; text: string; icon: IconName; end?: boolean }[] = [
   { to: '/calendar', text: 'Календарь', icon: 'calendar' },
 ]
 
-const spherePaths = ['/health', '/education', '/profession', '/languages', '/finance', '/personal']
-const sphereNames: Record<string, string> = { health: 'Здоровье', education: 'Обучение', profession: 'Профессия', languages: 'Языки', finance: 'Финансы', personal: 'Личное' }
+const spherePaths = ['/health', '/books', '/education', '/profession', '/languages', '/finance', '/personal']
+const sphereNames: Record<string, string> = { health: 'Здоровье', education: 'Книги', books:'Книги', profession: 'Профессия', languages: 'Языки', finance: 'Финансы', personal: 'Личное' }
 
 export function themeForPath(pathname: string) {
+  if (pathname === '/education/java' || pathname === '/education/go') return 'study-code'
+  if (pathname === '/education/reading') return 'reading'
   if (pathname === '/health/sport') return 'sport'
   if (pathname === '/health/nutrition') return 'nutrition'
   if (pathname === '/health/calories') return 'calories'
-  if (pathname === '/education/java' || pathname === '/education/go') return 'study-code'
+  if (pathname === '/profession/java' || pathname === '/profession/go') return 'study-code'
+  if (pathname.startsWith('/profession/')) return 'study-code'
   if (pathname === '/profession') return 'profession'
   if (pathname === '/languages' || pathname.startsWith('/languages/')) return 'language'
-  if (pathname === '/education/reading') return 'reading'
+  if (pathname === '/books') return 'reading'
   if (pathname === '/finance') return 'finance'
   if (pathname === '/personal') return 'personal'
   return 'neutral'
@@ -51,10 +55,10 @@ export function Shell() {
   }, [theme])
   const sectionPage = spherePaths.some(path => pathname === path || pathname.startsWith(`${path}/`))
   const sphere = pathname.split('/')[1]
-  const pageNames: Record<string, string> = { '/health/sport': 'Тренировки', '/health/nutrition': 'Рецепты', '/health/calories': 'Калории', '/education/reading': 'Книги', '/education/java': 'Java', '/education/go': 'Go' }
+  const pageNames: Record<string, string> = { '/health/sport': 'Тренировки', '/health/nutrition': 'Рецепты', '/health/calories': 'Калории', '/books': 'Книги', '/profession/java': 'Java', '/profession/go': 'Go', '/profession/backend':'Backend' }
   const current = pageNames[pathname] || (pathname === '/' ? 'Мой день' : pathname === '/profile' ? 'Профиль' : pathname.startsWith('/tasks') ? 'Задачи' : pathname.startsWith('/calendar') ? 'Календарь' : sphereNames[sphere] || 'Разделы')
   const parent = pathname.startsWith('/health/') ? { to: '/health', label: 'здоровью' }
-    : pathname.startsWith('/education/') ? { to: '/education', label: 'обучению' }
+    : pathname.startsWith('/profession/') ? { to: '/profession', label: 'профессии' }
       : sectionPage ? { to: '/sections', label: 'разделам' } : null
   const navLink = (link: typeof links[number]) => {
     const active = link.to === '/' ? pathname === '/' : link.to === '/sections' ? pathname === '/sections' || sectionPage : pathname === link.to || pathname.startsWith(`${link.to}/`)
@@ -64,7 +68,7 @@ export function Shell() {
   }
   return <div className={styles.layout} data-app-shell data-theme={theme}>
     <aside className={styles.sidebar}>
-      <div className={styles.brand}><span className={styles.brandMark}>М</span><span>Моя система</span></div>
+      <div className={styles.brand}><Brand/></div>
       <nav aria-label="Основная навигация">{links.map(navLink)}</nav>
       <div className={styles.spacer} />
       <NavLink to="/profile" className={({ isActive }) => isActive ? `${styles.profile} ${styles.active}` : styles.profile}>
@@ -74,11 +78,11 @@ export function Shell() {
       </NavLink>
     </aside>
     <div className={styles.mainArea}>
-      <header className={styles.topbar}><div className={styles.location}><span className={styles.mobileBrand}>Моя система</span><span className={styles.desktopRoot}>{sectionPage ? 'Разделы' : 'Пространство'}</span><span className={styles.divider}>/</span><strong>{current}</strong></div><div className={styles.appHeader}>{parent ? <NavLink className={styles.backLink} to={parent.to} aria-label={`Назад к ${parent.label}`}>Назад</NavLink> : <span className={styles.appMark} aria-hidden="true">М</span>}<div className={styles.appTitle}><strong>{current}</strong></div><NavLink className={styles.headerProfile} to="/profile" aria-label="Открыть профиль"><Icon name="profile" /></NavLink></div></header>
-      <main className={styles.content}><SectionAssistant /><Outlet /></main>
+      <header className={styles.topbar}><div className={styles.location}><span className={styles.mobileBrand}>Моя система</span><span className={styles.desktopRoot}>{sectionPage ? 'Разделы' : 'Пространство'}</span><span className={styles.divider}>/</span><strong>{current}</strong></div><div className={styles.appHeader}>{parent ? <NavLink className={styles.backLink} to={parent.to} aria-label={`Назад к ${parent.label}`}>Назад</NavLink> : <Brand compact/>}<div className={styles.appTitle}><strong>{current}</strong></div></div><SectionAssistant /></header>
+      <main className={styles.content} data-screen={theme}><Outlet /></main>
     </div>
     <nav className={styles.mobileNav} aria-label="Мобильная навигация">
-      {[...links, { to: '/profile', text: 'Профиль', icon: 'profile' as const }].map(navLink)}
+      {[...links.filter(link=>link.to!=='/calendar'), { to: '/profile', text: 'Профиль', icon: 'profile' as const }].map(navLink)}
     </nav>
   </div>
 }

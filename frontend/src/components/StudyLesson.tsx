@@ -1,3 +1,4 @@
+import {Pronunciation} from './Pronunciation'
 import {AssistantMaterialButton} from './SectionAssistant'
 import {useRef,useState} from 'react'
 import {useMutation,useQuery} from '@tanstack/react-query'
@@ -59,5 +60,5 @@ export function StudyLesson({lesson,plan,date,today,drafts}:{lesson:Lesson;plan:
 
 function LessonWord({word,languageTag}:{word:{id:string;word:string;translation:string;example:string};languageTag:string}){
  const [revealed,setRevealed]=useState(false)
- return <div className={s.word}><strong lang={languageTag}>{word.word}</strong><p lang={languageTag}>{word.example}</p>{revealed?<span>{word.translation}</span>:<button type="button" className="textButton" onClick={()=>setRevealed(true)}>Показать перевод</button>}</div>
+ return <div className={s.word}><strong lang={languageTag}>{word.word}</strong><Pronunciation text={word.word} language={languageTag}/><p lang={languageTag}>{word.example}</p>{revealed?<span>{word.translation}</span>:<button type="button" className="textButton" onClick={()=>setRevealed(true)}>Показать перевод</button>}</div>
 }

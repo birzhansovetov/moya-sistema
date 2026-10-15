@@ -26,6 +26,6 @@ export function StudyDay({ date }: { date: string }) {
             <div><strong>{item.course_title}</strong><p>{item.minutes} минут</p></div>
             <Link to={`${studyPaths[item.course_id]}?${new URLSearchParams({ plan: item.plan_id, lesson: item.lesson_id, date })}`}>{item.title}</Link>
           </div>)}
-        </> : <p className="muted">На эту дату занятия нет. Выберите дни в планах <Link to="/education/java">Java</Link>, <Link to="/education/go">Go</Link>, <Link to="/languages">английского</Link> или <Link to="/profession">профессии</Link>.</p>}
+        </> : <p className="muted">На эту дату занятия нет. Выберите дни в планах <Link to="/profession/java">Java</Link>, <Link to="/profession/go">Go</Link>, <Link to="/languages">английского</Link> или <Link to="/profession">профессии</Link>.</p>}
   </section>
 }

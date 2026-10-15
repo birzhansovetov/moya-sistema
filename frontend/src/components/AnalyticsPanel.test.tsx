@@ -54,7 +54,7 @@ test('analytics shows real four-week trends and retains the training review insi
   expect(screen.getByText('2 из 3 задач выполнено')).toBeInTheDocument()
   const trend = screen.getByRole('list', { name: 'Активность по неделям' })
   expect(within(trend).getAllByRole('listitem')).toHaveLength(4)
-  expect(screen.getByRole('link', { name: 'Обучение 2' })).toHaveAttribute('href', '/education')
+  expect(screen.getByRole('link', { name: 'Книги 2' })).toHaveAttribute('href', '/books')
   fireEvent.click(screen.getByText('Разбор последней недели'))
   expect(await screen.findByText('Домашний план')).toBeInTheDocument()
   expect(screen.getByRole('button', { name: 'Слишком сложно' })).toBeInTheDocument()
