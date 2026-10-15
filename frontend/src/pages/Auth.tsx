@@ -1,3 +1,4 @@
+import { SectionAssistant } from '../components/SectionAssistant'
 import { useEffect, useState, type FormEvent } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { api, json, type AuthResult } from '../api'
@@ -64,7 +65,7 @@ export function AuthPage({ onAuthenticated }: { onAuthenticated: (value: AuthRes
     verify: 'Придумайте пароль, чтобы завершить регистрацию.',
     reset: 'Задайте новый пароль для вашего аккаунта.',
   }[mode]
-  return <main className={styles.page}>
+  return <main className={styles.page}><SectionAssistant />
     <div className={styles.brand}><span className={styles.brandMark}>М</span><span>Моя система</span></div>
     <Card className={styles.card}>
       <h1>{title}</h1>

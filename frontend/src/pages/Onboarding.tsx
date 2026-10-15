@@ -1,3 +1,4 @@
+import { SectionAssistant } from '../components/SectionAssistant'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ApiError, api, json } from '../api'
@@ -184,7 +185,7 @@ export function OnboardingPage() {
       }
     } finally { setBusy(false) }
   }
-  return <main className="onboardingPage"><div className="onboardingFrame">
+  return <main className="onboardingPage"><SectionAssistant /><div className="onboardingFrame">
     <header className="onboardingHeader"><span className="onboardingBrand">Моя система</span><span>{step === steps.length ? 'Ваш подбор' : `Шаг ${step + 1} из ${steps.length}`}</span></header>
     <div className="onboardingProgress" role="progressbar" aria-label="Прогресс анкеты" aria-valuenow={step} aria-valuemin={0} aria-valuemax={steps.length}><span style={{ width: `${step / steps.length * 100}%` }} /></div>
     {loadingSaved && <p className="onboardingHint">Загружаем ваши ответы…</p>}

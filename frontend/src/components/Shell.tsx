@@ -1,3 +1,4 @@
+import { SectionAssistant } from '../components/SectionAssistant'
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../auth'
@@ -74,7 +75,7 @@ export function Shell() {
     </aside>
     <div className={styles.mainArea}>
       <header className={styles.topbar}><div className={styles.location}><span className={styles.mobileBrand}>Моя система</span><span className={styles.desktopRoot}>{sectionPage ? 'Разделы' : 'Пространство'}</span><span className={styles.divider}>/</span><strong>{current}</strong></div><div className={styles.appHeader}>{parent ? <NavLink className={styles.backLink} to={parent.to} aria-label={`Назад к ${parent.label}`}>Назад</NavLink> : <span className={styles.appMark} aria-hidden="true">М</span>}<div className={styles.appTitle}><strong>{current}</strong></div><NavLink className={styles.headerProfile} to="/profile" aria-label="Открыть профиль"><Icon name="profile" /></NavLink></div></header>
-      <main className={styles.content}><Outlet /></main>
+      <main className={styles.content}><SectionAssistant /><Outlet /></main>
     </div>
     <nav className={styles.mobileNav} aria-label="Мобильная навигация">
       {[...links, { to: '/profile', text: 'Профиль', icon: 'profile' as const }].map(navLink)}
