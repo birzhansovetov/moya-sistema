@@ -58,7 +58,7 @@ def _public_items(section, today):
         cat=load_recipes()
         for x in cat['recipes']:
             if reviewed_variant('recipe',x,today):
-                ingredients='; '.join(f"{cat['foods'][i['food_id']]['name']}: {i['grams']} г ({i['state']})" for i in x['ingredients'])
+                ingredients='; '.join(f"{cat['foods'][i['food_id']]['name']}: {i['grams']} г ({ {'dry':'сухой продукт','raw':'сырой продукт','as_packaged':'как в упаковке'}[i['state']] })" for i in x['ingredients'])
                 yield ('recipe',x['id'],_read('recipes.json')['version'],x['name'],f"{x['name']}. Порций: {x['servings']}. {ingredients}. "+' '.join(x['steps']))
     if section in COURSES:
         c=course(COURSES[section],latest_version(COURSES[section]))
@@ -72,7 +72,7 @@ def _public_items(section, today):
 def materials_for_section(section: str, *, db: Session, today: date) -> list[dict]:
     topics_for_section(section)
     return [dict(kind=k,id=i,version=v,title=t) for k,i,v,t,_ in _public_items(section,today)
-            if not is_revoked(db,k,i,v)]
+            if not is_revoked(db,k,i,v) and not (k=='lesson' and is_revoked(db,'study',i.split(':')[0],v))]
 
 
 def resolve_material(kind: str, id: str, version: str, *, db: Session, today: date) -> PublicExplanation:
@@ -82,7 +82,7 @@ def resolve_material(kind: str, id: str, version: str, *, db: Session, today: da
                 if v!=version:
                     raise HTTPException(409,'Материал обновлён. Выберите его заново.')
                 # Existing course revocation uses course ID; check both levels.
-                if is_revoked(db,k,i,v) or (k=='lesson' and is_revoked(db,'course',i.split(':')[0],v)):
+                if is_revoked(db,k,i,v) or (k=='lesson' and is_revoked(db,'study',i.split(':')[0],v)):
                     raise HTTPException(404,'Материал недоступен')
                 return PublicExplanation(k,i,v,t,text[:6000])
     raise HTTPException(404,'Материал не найден')

@@ -39,3 +39,15 @@ def test_no_private_or_unknown_material(client):
         for kind in ['personal_book','diary','quiz','attempt','answer']:
             with pytest.raises(HTTPException):
                 resolve_material(kind,'anything','v1',db=db,today=date(2026,10,15))
+
+
+def test_withdrawn_course_blocks_listing_and_resolution(client):
+    from app.study import latest_version
+    version=latest_version('java')
+    with Session(client.app.state.engine) as db:
+        ref=materials_for_section('java',db=db,today=date(2026,10,15))[0]
+        db.add(ContentRevocation(kind='study',item_id='java',version=version,reason='withdrawn',active=True));db.commit()
+        assert materials_for_section('java',db=db,today=date(2026,10,15))==[]
+        with pytest.raises(HTTPException) as caught:
+            resolve_material(ref['kind'],ref['id'],ref['version'],db=db,today=date(2026,10,15))
+        assert caught.value.status_code==404

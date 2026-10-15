@@ -14,7 +14,7 @@ type MaterialChoice=Omit<MaterialRef,'version'>&{version?:string}
 type OpenArgs={section:SectionCode;material?:MaterialChoice}
 const AssistantContext=createContext<((args:OpenArgs)=>void)|null>(null)
 export function AssistantProvider({children}:{children:ReactNode}){
- const {user}=useAuth();const {pathname}=useLocation()
+ const {user}=useAuth();const {pathname,search:routeSearch,hash}=useLocation()
  const [opened,setOpened]=useState<OpenArgs|null>(null)
  const [data,setData]=useState<Topics|null>(null)
  const [result,setResult]=useState<Result|null>(null)
@@ -22,7 +22,7 @@ export function AssistantProvider({children}:{children:ReactNode}){
  const [search,setSearch]=useState('');const [busy,setBusy]=useState(false);const [error,setError]=useState('');const [rated,setRated]=useState(false)
  const generation=useRef(0);const focus=useRef<HTMLElement|null>(null);const inFlight=useRef(false)
  function close(){generation.current++;inFlight.current=false;setOpened(null);setData(null);setResult(null);setBusy(false);setError('');setSelected(null)}
- useEffect(()=>{close()},[pathname,user?.id])
+ useEffect(()=>{close()},[pathname,routeSearch,hash,user?.id])
  async function load(args:OpenArgs){
   const current=++generation.current
   setData(null);setResult(null);setError('');setBusy(true);inFlight.current=true;setSearch('');setSelected(args.material?.version?args.material as MaterialRef:null);setRated(false)
@@ -61,7 +61,7 @@ export function AssistantProvider({children}:{children:ReactNode}){
     <div className={styles.questions}>{(selected?data.topics.slice(0,1):data.topics).map(topic=><Button key={topic.id} variant="secondary" disabled={busy} onClick={()=>void ask(topic)}>{selected?'Объяснить материал':topic.label}{selected&&<span className={styles.srOnly}> · {topic.label}</span>}</Button>)}</div>
    </>}
    {busy&&data&&<p role="status">Готовим объяснение…</p>}
-   {error&&<div role="alert"><p className="errorMessage">{error}</p>{!data&&opened&&<Button variant="secondary" onClick={()=>void load(opened)}>Повторить загрузку</Button>}</div>}
+   {error&&<div role="alert"><p className="errorMessage">{error}</p>{opened&&<Button variant="secondary" disabled={busy} onClick={()=>void load({section:opened.section})}>{data?'Обновить материалы':'Повторить загрузку'}</Button>}</div>}
    {result&&<Card className={styles.answer}><div role="status"><strong>{result.source==='cloud_ai'?'Объяснение ИИ · Gemini':'Готовая подсказка'}</strong>{result.material&&<p className={styles.muted}>{result.material.title}</p>}<p className={styles.answerText}>{result.text}</p></div>
     {result.notice&&<p className={styles.muted}>{result.notice}</p>}
     {result.links.map(link=><Link key={link.to} to={link.to} onClick={close}>{link.label}</Link>)}
