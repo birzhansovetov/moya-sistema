@@ -120,6 +120,7 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
                                  today=local_date(context.user.timezone), db=db)
     if fragment is None:
         raise HTTPException(404, "Для этого вопроса пока нет проверенной подсказки")
+    example=next(x for x in course(plan.course_id,plan.version)["lessons"] if x["id"]==payload.lesson_id).get("example")
     secret = request.app.state.settings.jwt_secret
     if payload.stage in ("next_step", "review"):
         _check_token(secret, payload.stage_token, context.user.id, plan.id, payload.lesson_id,
@@ -134,7 +135,7 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
     settings = request.app.state.settings
     allowed = {value.strip() for value in settings.local_ai_study_routes.split(",") if value.strip()}
     generated = None
-    if settings.local_ai_enabled and settings.environment == "development" and plan.course_id in allowed:
+    if payload.format == "default" and settings.local_ai_enabled and settings.environment == "development" and plan.course_id in allowed:
         try:
             enforce(db, request, "study_assist", context.user.id, account_limit=20, source_limit=1000, minutes=60)
             record(db, request, "study_assist", context.user.id)
@@ -150,7 +151,7 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
             reserve_cloud_call(db, context.user, request)
             generated = explain_catalog_fragment(fragment, stage=payload.stage,
                 api_key=settings.gemini_api_key, model=settings.gemini_model, format=payload.format,
-                prepared_example=(next(x for x in course(plan.course_id,plan.version)["lessons"] if x["id"]==payload.lesson_id).get("example") if payload.format=="example" else None))
+                prepared_example=example if payload.format=="example" else None)
         except HTTPException as error:
             if error.status_code != 429:
                 raise
@@ -158,6 +159,8 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
         generated = {"source": "authored", "text": {"hint": fragment.hint, "next_step": fragment.next_step,
                      "review": fragment.explanation, "explain": fragment.explanation}[payload.stage],
                      "next_step": ""}
+    if generated["source"]=="authored" and payload.format=="example" and payload.stage=="explain" and example:
+        generated["text"]=example
     metric = StudyAssistRequest(user_id=context.user.id, course_id=plan.course_id, version=plan.version,
                                 lesson_id=payload.lesson_id, question_index=payload.question_index,
                                 stage=payload.stage, source=generated['source'], prompt_version=CLOUD_PROMPT_VERSION if generated['source'] == 'cloud_ai' else PROMPT_VERSION,
@@ -165,7 +168,7 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
                                 latency_ms=round((monotonic()-started)*1000))
     db.add(metric)
     db.commit()
-    return {"format":payload.format, "request_id": metric.id, "source": generated["source"], "stage": payload.stage, "text": generated["text"], "next_step": generated["next_step"],
+    return {"example_available":bool(example), "next_actions":next_actions("profession" if plan.course_id=="java-backend" else plan.course_id), "format":payload.format, "request_id": metric.id, "source": generated["source"], "stage": payload.stage, "text": generated["text"], "next_step": generated["next_step"],
             "lesson_id": payload.lesson_id, "version": plan.version, "question_index": payload.question_index,
             "allow_local_answer": settings.local_ai_enabled and settings.environment == "development" and plan.course_id in allowed,
             "next_stage_token": _token(secret, context.user.id, plan.id, payload.lesson_id,
