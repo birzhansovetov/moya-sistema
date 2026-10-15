@@ -114,3 +114,20 @@ def test_malformed_successful_provider_json_always_falls_back(monkeypatch):
         monkeypatch.setattr(cloud_ai.http.client,'HTTPSConnection',Connection)
         result=cloud_ai.explain_catalog_fragment(fragment,stage='explain',api_key='key',model='gemini-3.5-flash-lite')
         assert result['source']=='authored'
+
+
+def test_public_explanation_uses_safe_payload_and_shared_cache(monkeypatch):
+    from app import cloud_ai
+    from app.assistant_content import PublicExplanation
+    fragment=PublicExplanation('guide','finance-entry','1','Учёт','Записывайте операции по категориям.')
+    calls=[]
+    def generate(model,key,payload):
+        calls.append(payload)
+        return {'text':'Сохраняйте доходы и расходы отдельно.'}
+    monkeypatch.setattr(cloud_ai,'_generate',generate)
+    cloud_ai.reset_runtime()
+    result=cloud_ai.explain_public_fragment(fragment,fallback=fragment.text,api_key='fake',model='gemini-test')
+    assert result['source']=='cloud_ai'
+    assert set(json.loads(calls[0]['contents'][0]['parts'][0]['text']))=={'material','stage','language'}
+    assert cloud_ai.explain_public_fragment(fragment,fallback=fragment.text,api_key='fake',model='gemini-test')==result
+    assert len(calls)==1

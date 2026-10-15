@@ -14,6 +14,7 @@ class Settings:
     ollama_model_digest: str = "unverified"
     local_ai_study_routes: str = ""
     cloud_ai_enabled: bool = False
+    cloud_ai_sections: str = ""
     gemini_api_key: str = field(default="", repr=False)
     gemini_model: str = "gemini-3.5-flash-lite"
 
@@ -48,6 +49,7 @@ class Settings:
             ollama_model_digest=os.getenv("OLLAMA_MODEL_DIGEST", "unverified"),
             local_ai_study_routes=os.getenv("LOCAL_AI_STUDY_ROUTES", ""),
             cloud_ai_enabled=os.getenv("CLOUD_AI_ENABLED", "false").lower() == "true",
+            cloud_ai_sections=os.getenv("CLOUD_AI_SECTIONS", ""),
             gemini_api_key=os.getenv("GEMINI_API_KEY", ""),
             gemini_model=os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"),
         )

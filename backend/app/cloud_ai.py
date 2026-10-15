@@ -60,15 +60,30 @@ def _generate(model: str, api_key: str, payload: dict) -> dict:
 
 
 def explain_catalog_fragment(fragment: HelpFragment, *, stage: str, api_key: str, model: str) -> dict:
-    """Only authored material is accepted, deliberately no attempt/user arguments."""
+    material = {'hint': fragment.hint, 'next_step': fragment.next_step,
+                'explain': fragment.explanation, 'review': fragment.explanation}[stage]
+    def reveals_answer(text):
+        lesson = next(x for x in course(fragment.course_id, fragment.version)['lessons'] if x['id'] == fragment.lesson_id)
+        return any(normalize_answer(answer) in normalize_answer(text)
+                   for answer in lesson['quiz'][fragment.question_index]['answers'])
+    return _explain_text(material, identity=('study', fragment.course_id, fragment.version, fragment.lesson_id, fragment.question_index),
+                         stage=stage, api_key=api_key, model=model,
+                         rejects=reveals_answer if stage in ('hint','next_step') else None)
+
+
+def explain_public_fragment(fragment, *, fallback: str, api_key: str, model: str) -> dict:
+    return _explain_text(fragment.text, identity=(fragment.kind,fragment.id,fragment.version), stage='explain',
+                         api_key=api_key, model=model, fallback=fallback)
+
+
+def _explain_text(material: str, *, identity: tuple, stage: str, api_key: str, model: str,
+                  rejects=None, fallback: str | None = None) -> dict:
     global _cooldown_until
-    authored = {'source': 'authored', 'text': {'hint': fragment.hint, 'next_step': fragment.next_step,
-                'explain': fragment.explanation, 'review': fragment.explanation}[stage], 'next_step': ''}
+    authored = {'source': 'authored', 'text': fallback if fallback is not None else material, 'next_step': ''}
     if not api_key or stage not in ('hint', 'next_step', 'explain'):
         return authored
-    material = authored['text'][:2000]
-    key = (fragment.course_id, fragment.version, fragment.lesson_id, fragment.question_index,
-           stage, hashlib.sha256(material.encode()).hexdigest(), PROMPT_VERSION, model)
+    material = material[:6000]
+    key = (*identity, stage, hashlib.sha256(material.encode()).hexdigest(), PROMPT_VERSION, model)
     if not _busy.acquire(blocking=False):
         return authored
     try:
@@ -104,12 +119,8 @@ def explain_catalog_fragment(fragment: HelpFragment, *, stage: str, api_key: str
             if (not isinstance(text, str) or not 1 <= len(text.strip()) <= 600
                     or not text.isprintable() or re.search(r'https?://|www\.', text, re.I)):
                 return authored
-            if stage in ('hint', 'next_step'):
-                lesson = next(x for x in course(fragment.course_id, fragment.version)['lessons']
-                              if x['id'] == fragment.lesson_id)
-                if any(normalize_answer(answer) in normalize_answer(text)
-                       for answer in lesson['quiz'][fragment.question_index]['answers']):
-                    return authored
+            if rejects and rejects(text):
+                return authored
             result = {'source': 'cloud_ai', 'text': text.strip(), 'next_step': ''}
             _cache[key] = (now + 86400, result)
             _cache.move_to_end(key)

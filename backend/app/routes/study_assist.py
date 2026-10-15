@@ -17,6 +17,7 @@ from app.study_help import get_help_fragment
 from app.study_assist import PROMPT_VERSION, assist_lesson
 from app.cloud_ai import explain_catalog_fragment, PROMPT_VERSION as CLOUD_PROMPT_VERSION
 from app.rate_limit import enforce, record
+from app.assistant_limits import reserve_cloud_call
 from app.tasks import local_date
 
 router = APIRouter(prefix="/api/study", tags=["study-assist"])
@@ -144,8 +145,7 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
                 raise
     if generated is None and settings.cloud_ai_enabled and settings.gemini_api_key and payload.stage != 'review':
         try:
-            enforce(db, request, "cloud_assist", context.user.id, account_limit=20, source_limit=1000, minutes=60)
-            record(db, request, "cloud_assist", context.user.id)
+            reserve_cloud_call(db, context.user, request)
             generated = explain_catalog_fragment(fragment, stage=payload.stage,
                 api_key=settings.gemini_api_key, model=settings.gemini_model)
         except HTTPException as error:
