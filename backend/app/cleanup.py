@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.config import Settings
 from app.db import sqlalchemy_url, utc_now
-from app.models import MatchingPreview, MatchingStartResult, AssistantRequest
+from app.models import MatchingPreview, MatchingStartResult, AssistantRequest, AssistantCheckAttempt
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +23,8 @@ def cleanup_onboarding(db: Session) -> tuple[int, int]:
 
 
 def cleanup_assistant(db: Session) -> int:
-    return db.execute(delete(AssistantRequest).where(AssistantRequest.created_at < utc_now()-timedelta(days=30))).rowcount
+    checks = db.execute(delete(AssistantCheckAttempt).where(AssistantCheckAttempt.created_at < utc_now()-timedelta(days=30))).rowcount
+    return checks + db.execute(delete(AssistantRequest).where(AssistantRequest.created_at < utc_now()-timedelta(days=30))).rowcount
 
 
 def main() -> None:

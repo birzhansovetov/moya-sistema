@@ -13,7 +13,7 @@ describe('section assistant',()=>{
   api.mockResolvedValueOnce({request_id:'one',source:'cloud_ai',text:'Отмечайте операции.',material:null,links:[],notice:null})
   fireEvent.click(screen.getByRole('button',{name:'Как начать учёт?'}))
   expect(await screen.findByText('Объяснение ИИ · Gemini')).toBeInTheDocument()
-  expect(JSON.parse(api.mock.calls[1][1].body)).toEqual({section:'finance',topic_id:'finance-1',material:null})
+  expect(JSON.parse(api.mock.calls[1][1].body)).toEqual({section:'finance',topic_id:'finance-1',material:null,format:'default'})
   expect(screen.queryByRole('textbox')).not.toBeInTheDocument()
   fireEvent.click(screen.getByRole('button',{name:'Закрыть'}))
   await waitFor(()=>expect(screen.queryByRole('dialog')).not.toBeInTheDocument())

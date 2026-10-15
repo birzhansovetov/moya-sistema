@@ -1,0 +1,50 @@
+{
+  "checks": 323,
+  "courses": {
+    "java": {
+      "chapters": 14,
+      "mapped_lessons": 14,
+      "total_lessons": 14
+    },
+    "go": {
+      "chapters": 8,
+      "mapped_lessons": 8,
+      "total_lessons": 32
+    },
+    "english": {
+      "chapters": 27,
+      "mapped_lessons": 27,
+      "total_lessons": 27
+    },
+    "java-backend": {
+      "chapters": 14,
+      "mapped_lessons": 14,
+      "total_lessons": 14
+    },
+    "kazakh": {
+      "chapters": 13,
+      "mapped_lessons": 48,
+      "total_lessons": 48
+    },
+    "korean": {
+      "chapters": 16,
+      "mapped_lessons": 48,
+      "total_lessons": 48
+    },
+    "turkish": {
+      "chapters": 48,
+      "mapped_lessons": 48,
+      "total_lessons": 48
+    },
+    "spanish": {
+      "chapters": 12,
+      "mapped_lessons": 48,
+      "total_lessons": 48
+    }
+  },
+  "uncovered_chapters": [],
+  "orphans": [],
+  "duplicate_main_prompts": [],
+  "exercise_checks": 3,
+  "recipe_checks": 65
+}

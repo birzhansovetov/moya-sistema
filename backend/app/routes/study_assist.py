@@ -15,6 +15,7 @@ from app.models import StudyAssistRequest, StudyAttempt, User
 from app.study import course, owned_plan
 from app.study_help import get_help_fragment
 from app.study_assist import PROMPT_VERSION, assist_lesson
+from app.assistant_learning import ExplainFormat, prepared_example, next_actions
 from app.cloud_ai import explain_catalog_fragment, PROMPT_VERSION as CLOUD_PROMPT_VERSION
 from app.rate_limit import enforce, record
 from app.assistant_limits import reserve_cloud_call
@@ -38,6 +39,7 @@ def availability(plan_id: str, lesson_id: str, user: User = Depends(get_current_
 
 
 class AssistRequest(BaseModel):
+    format: ExplainFormat = "default"
     plan_id: str
     lesson_id: str
     question_index: int = Field(ge=0)
@@ -147,7 +149,8 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
         try:
             reserve_cloud_call(db, context.user, request)
             generated = explain_catalog_fragment(fragment, stage=payload.stage,
-                api_key=settings.gemini_api_key, model=settings.gemini_model)
+                api_key=settings.gemini_api_key, model=settings.gemini_model, format=payload.format,
+                prepared_example=(next(x for x in course(plan.course_id,plan.version)["lessons"] if x["id"]==payload.lesson_id).get("example") if payload.format=="example" else None))
         except HTTPException as error:
             if error.status_code != 429:
                 raise
@@ -162,7 +165,7 @@ def assist(payload: AssistRequest, request: Request, context: AuthContext = Depe
                                 latency_ms=round((monotonic()-started)*1000))
     db.add(metric)
     db.commit()
-    return {"request_id": metric.id, "source": generated["source"], "stage": payload.stage, "text": generated["text"], "next_step": generated["next_step"],
+    return {"format":payload.format, "request_id": metric.id, "source": generated["source"], "stage": payload.stage, "text": generated["text"], "next_step": generated["next_step"],
             "lesson_id": payload.lesson_id, "version": plan.version, "question_index": payload.question_index,
             "allow_local_answer": settings.local_ai_enabled and settings.environment == "development" and plan.course_id in allowed,
             "next_stage_token": _token(secret, context.user.id, plan.id, payload.lesson_id,

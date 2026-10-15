@@ -518,3 +518,19 @@ class AssistantRequest(Base):
     latency_ms: Mapped[int] = mapped_column(Integer)
     helped: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utc_now, index=True)
+
+
+class AssistantCheckAttempt(Base):
+    __tablename__ = 'assistant_check_attempts'
+    __table_args__ = (UniqueConstraint('user_id','issue_id',name='uq_assistant_check_issue'),)
+    id: Mapped[str] = mapped_column(String(36),primary_key=True,default=new_id)
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id',ondelete='CASCADE'),index=True)
+    issue_id: Mapped[str] = mapped_column(String(36))
+    check_id: Mapped[str] = mapped_column(String(160))
+    check_version: Mapped[str] = mapped_column(String(40))
+    digest: Mapped[str] = mapped_column(String(64))
+    material: Mapped[dict] = mapped_column(JSON)
+    option_id: Mapped[str] = mapped_column(String(40))
+    correct: Mapped[bool] = mapped_column(Boolean)
+    activity: Mapped[dict | None] = mapped_column(JSON,nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime,default=utc_now,index=True)

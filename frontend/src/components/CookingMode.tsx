@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { Food, Recipe } from '../healthTypes'
+import {AssistantMaterialButton,useAssistantOpen} from './SectionAssistant'
 import { scaleRecipeStep } from '../recipeSteps'
 
 const number = (value: number) => Number.isInteger(value) ? String(value) : value.toFixed(1).replace('.', ',')
 
 export function CookingMode({ recipe, foods, portions, onClose }: { recipe: Recipe; foods: Record<string, Food>; portions: number; onClose: () => void }) {
+  const assistantOpen=useAssistantOpen()
+  const helperOpen=useRef(assistantOpen)
+  helperOpen.current=assistantOpen
   const [step, setStep] = useState(0)
   const [checked, setChecked] = useState<string[]>([])
   const closeRef = useRef<HTMLButtonElement>(null)
@@ -18,6 +22,7 @@ export function CookingMode({ recipe, foods, portions, onClose }: { recipe: Reci
     document.body.style.overflow = 'hidden'
     closeRef.current?.focus()
     function onKey(event: KeyboardEvent) {
+      if(helperOpen.current||event.defaultPrevented)return
       if (event.key === 'Escape') { event.preventDefault(); onClose(); return }
       if (event.key !== 'Tab' || !dialogRef.current) return
       const items = Array.from(dialogRef.current.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled)'))
@@ -31,11 +36,11 @@ export function CookingMode({ recipe, foods, portions, onClose }: { recipe: Reci
   }, [onClose])
 
   return createPortal(<div className="cookingBackdrop" onMouseDown={event => { if (event.target === event.currentTarget) onClose() }}>
-    <div ref={dialogRef} className="cookingDialog" role="dialog" aria-modal="true" aria-label={`Готовим: ${recipe.name}`}>
+    <div ref={dialogRef} className="cookingDialog" role="dialog" aria-modal={assistantOpen?undefined:true} aria-label={`Готовим: ${recipe.name}`}>
       <header className="cookingHeader"><div><span className="cookingEyebrow">Режим готовки</span><h2>{recipe.name}</h2><p>{number(portions)} порц. · {recipe.minutes} мин</p></div><button ref={closeRef} type="button" className="cookingClose" onClick={onClose} aria-label="Закрыть режим готовки">×</button></header>
       <div className="cookingContent">
         <section className="cookingIngredients" aria-label="Ингредиенты"><h3>Ингредиенты</h3><p>{checked.length} из {recipe.ingredients.length} отмечено</p><ul>{recipe.ingredients.map(item => <li key={item.food_id}><label><input type="checkbox" checked={checked.includes(item.food_id)} onChange={() => setChecked(current => current.includes(item.food_id) ? current.filter(id => id !== item.food_id) : [...current, item.food_id])} /><span>{foods[item.food_id]?.name || item.food_name || item.food_id}</span><strong>{number(item.grams * factor)} г</strong></label></li>)}</ul></section>
-        <section className="cookingStep" aria-live="polite"><p className="cookingEyebrow">Шаг {step + 1} из {recipe.steps.length}</p><p className="cookingInstruction">{scaleRecipeStep(recipe.steps[step], factor)}</p><div className="cookingProgress" aria-hidden="true"><span style={{ width: `${((step + 1) / recipe.steps.length) * 100}%` }} /></div><div className="cookingActions"><button type="button" onClick={() => setStep(current => current - 1)} disabled={step === 0}>Назад</button><button type="button" className="primaryButton" onClick={() => step === recipe.steps.length - 1 ? onClose() : setStep(current => current + 1)}>{step === recipe.steps.length - 1 ? 'Завершить' : 'Далее'}</button></div></section>
+        <section className="cookingStep" aria-live="polite"><p className="cookingEyebrow">Шаг {step + 1} из {recipe.steps.length}</p><AssistantMaterialButton section="nutrition" material={{kind:'recipe',id:recipe.id}} stepId={'step-'+step} handlers={{ingredients:()=>dialogRef.current?.querySelector<HTMLElement>('.cookingIngredients input')?.focus(),...(step<recipe.steps.length-1?{next_step:()=>setStep(current=>current+1)}:{})}}/><p className="cookingInstruction">{scaleRecipeStep(recipe.steps[step], factor)}</p><div className="cookingProgress" aria-hidden="true"><span style={{ width: `${((step + 1) / recipe.steps.length) * 100}%` }} /></div><div className="cookingActions"><button type="button" onClick={() => setStep(current => current - 1)} disabled={step === 0}>Назад</button><button type="button" className="primaryButton" onClick={() => step === recipe.steps.length - 1 ? onClose() : setStep(current => current + 1)}>{step === recipe.steps.length - 1 ? 'Завершить' : 'Далее'}</button></div></section>
       </div>
     </div>
   </div>, document.body)
