@@ -1,0 +1,327 @@
+{
+  "mobile390": [
+    {
+      "route": "/",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/sections",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/education",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/education/java",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/education/go",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/profession",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/languages",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/languages/english",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/languages/kazakh",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/languages/korean",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/languages/turkish",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/languages/spanish",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/health",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/health/sport",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/health/nutrition",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/health/calories",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/finance",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/education/reading",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/personal",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/tasks",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/calendar",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/profile",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    },
+    {
+      "route": "/onboarding",
+      "dialog": true,
+      "overflow": false,
+      "error": false
+    }
+  ],
+  "zoom200": [
+    {
+      "route": "/",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/sections",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/education",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/education/java",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/education/go",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/profession",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/languages",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/languages/english",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/languages/kazakh",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/languages/korean",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/languages/turkish",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/languages/spanish",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/health",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/health/sport",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/health/nutrition",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/health/calories",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/finance",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/education/reading",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/personal",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/tasks",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/calendar",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/profile",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    },
+    {
+      "route": "/onboarding",
+      "dpr": 4,
+      "overflow": false,
+      "viewport": 735,
+      "error": false
+    }
+  ],
+  "answerWidths": [
+    {
+      "width": 360,
+      "height": 884,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 884,
+      "overflow": false
+    },
+    {
+      "width": 640,
+      "height": 884,
+      "overflow": false
+    },
+    {
+      "width": 480,
+      "height": 900,
+      "overflow": false
+    }
+  ]
+}
