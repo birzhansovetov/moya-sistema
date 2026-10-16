@@ -1,6 +1,4 @@
 import {useWorkoutRestTimer} from '../useWorkoutRestTimer'
-import {MediaPlayer} from '../components/MediaPlayer'
-import {sportVideo} from '../mediaCatalog'
 import { AssistantMaterialButton } from '../components/SectionAssistant'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
@@ -251,7 +249,7 @@ export function SportPage() {
         {plan && <details className="card sportHistory"><summary>История тренировок</summary>{workouts.isLoading ? <p className="muted">Загружаем историю…</p> : workouts.isError ? <p role="alert" className="errorMessage">Не удалось загрузить историю. <button className="textButton" onClick={() => void workouts.refetch()}>Повторить</button></p> : workouts.data?.items.length ? <div>{workouts.data.items.map(item => <details className="healthSession" key={item.id}><summary>{item.date} · {item.program_title ? `${item.program_title} · ` : ''}{item.session_title || `занятие ${item.session_id}`}</summary><p>Сложность {item.difficulty}/10{item.note ? ` · ${item.note}` : ''}</p>{item.results?.map(result => <div className="healthExercise" key={result.exercise_id}><h3>{result.performed_exercise_name || catalog.data?.exercises[result.performed_exercise_id || result.exercise_id]?.name || result.performed_exercise_id || result.exercise_id}</h3>{result.performed_exercise_id && <p>Вместо: {catalog.data?.exercises[result.exercise_id]?.name || result.exercise_id}</p>}<p>Подходы: {result.completed_sets} · {result.exercise_id === 'brisk_walk' ? 'минуты' : 'повторения'}: {result.reps_per_set.join(', ')}{result.weight_kg !== null ? ` · вес: ${result.weight_kg} кг` : ''}</p></div>)}</details>)}</div> : <p className="muted">Выполненных занятий пока нет.</p>}</details>}
       </div>
     </div>
-    <details className="secondarySection sportVideoCard"><summary>Дополнительная видеотренировка</summary><p className="muted">Дополнительный материал на английском. Не заменяет вашу программу и не адаптирован под ограничения здоровья.</p><MediaPlayer asset={sportVideo}/></details><SportLibrary exercises={catalog.data?.exercises || {}} loading={catalog.isLoading} error={catalog.isError} onRetry={() => void catalog.refetch()} />
+    <SportLibrary exercises={catalog.data?.exercises || {}} loading={catalog.isLoading} error={catalog.isError} onRetry={() => void catalog.refetch()} />
     <details className="secondarySection"><summary>Советы по тренировкам</summary><Guides area="sport" /></details>
   </div>
 }
