@@ -28,8 +28,8 @@ export function ProfilePage() {
       {error && <p role="alert" className="errorMessage">{error}</p>}{message && <p role="status" className="successMessage">{message}</p>}
       <div><button className="primaryButton" disabled={busy}>{busy ? 'Сохраняем…' : 'Сохранить изменения'}</button></div>
     </form></section>
-    <section className="card"><h2>Ваш подбор</h2><p>Ответы по шести сферам можно изменить. Перед заменой планов вы увидите новый подбор; история занятий сохранится.</p><a className="secondaryButton" href="/onboarding">Изменить ответы</a></section>
-    <ProfileBackup />
+    <section className="card"><h2>Ваш подбор</h2><p>Измените цели и предпочтения. История занятий сохранится.</p><a className="secondaryButton" href="/onboarding">Изменить ответы</a></section>
+    <details className="secondarySection"><summary>Резервная копия и перенос данных</summary><ProfileBackup /></details>
     <button className="textButton" onClick={() => logout().catch(cause => setError(cause instanceof Error ? cause.message : 'Не удалось выйти'))}>Выйти из аккаунта</button>
   </div>
 }

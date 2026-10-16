@@ -31,11 +31,7 @@ beforeEach(() => {
 })
 function mount(){render(<QueryClientProvider client={new QueryClient({defaultOptions:{queries:{retry:false}}})}><MemoryRouter><PersonalPage/></MemoryRouter></QueryClientProvider>)}
 
-test('personal guidance is reachable from the first screen',async()=>{
-  mount()
-  expect(screen.getByRole('link',{name:'Гайды по личному развитию'})).toHaveAttribute('href','#personal-guides')
-  expect(await screen.findByRole('heading',{name:'Готовые гайды'})).toBeInTheDocument()
-})
+test('diary keeps guidance off the writing screen',async()=>{mount();expect(screen.queryByRole('heading',{name:'Готовые гайды'})).not.toBeInTheDocument()})
 
 test('free text diary survives failed save and can be edited, removed and restored',async()=>{
   failed=true; mount()
@@ -80,6 +76,7 @@ test('an inline creation finishing cannot close another entry editor',async()=>{
   fireEvent.change(screen.getByLabelText('Что хотите записать?'),{target:{value:'Новая запись'}})
   fireEvent.click(screen.getByRole('button',{name:'Сохранить запись'}))
   await waitFor(()=>expect(finish).toBeTypeOf('function'))
+  fireEvent.click(screen.getByRole('button',{name:'История'}))
   fireEvent.click(screen.getByRole('button',{name:'Изменить запись'}))
   const modal=within(screen.getByRole('dialog'))
   fireEvent.change(modal.getByLabelText('Что хотите записать?'),{target:{value:'Не потерять этот черновик'}})
@@ -90,7 +87,7 @@ test('an inline creation finishing cannot close another entry editor',async()=>{
 
 test('quick diary saves mood and multiple activities without prose', async () => {
   mount()
-  fireEvent.click(await screen.findByRole('button', {name:'Хорошее'}))
+  fireEvent.click(await screen.findByRole('button', {name:'Хорошо'}))
   fireEvent.click(screen.getByLabelText('Встреча'))
   fireEvent.click(screen.getByLabelText('Отдых'))
   fireEvent.click(screen.getByRole('button',{name:'Сохранить запись'}))
@@ -103,8 +100,22 @@ test('quick diary saves mood and multiple activities without prose', async () =>
 test('dated diary history can be opened from its calendar day', async () => {
   entries=[{id:'dated',kind:'diary',title:'',body:'Прогулка вечером',date:'2026-10-10',mood:'good',activity:'walk',activities:['walk'],completed:false,impression:'',deleted:false}]
   mount()
+  fireEvent.click(screen.getByRole('button',{name:'История'}))
+  fireEvent.click(screen.getByText('Календарь записей',{exact:true}))
   expect(await screen.findByText('Прогулка вечером')).toBeInTheDocument()
   fireEvent.click(await screen.findByRole('button',{name:'10 октября, 1 запись'}))
   expect(screen.getByLabelText('С')).toHaveValue('2026-10-10')
   expect(screen.getByLabelText('По')).toHaveValue('2026-10-10')
+})
+
+test('diary starts with a quick entry and keeps history and date secondary',async()=>{
+ mount()
+ expect(screen.getByRole('button',{name:'Хорошо'})).toBeVisible()
+ expect(screen.queryByRole('textbox',{name:'Дата'})).not.toBeInTheDocument()
+ expect(screen.queryByRole('heading',{name:'История'})).not.toBeInTheDocument()
+ fireEvent.click(screen.getByRole('button',{name:'История'}))
+ expect(screen.getByRole('heading',{name:'История'})).toBeVisible()
+ fireEvent.click(screen.getByRole('button',{name:'Запись'}))
+ fireEvent.click(screen.getByText('Добавить детали',{exact:true}))
+ expect(screen.getByLabelText('Дата')).toBeVisible()
 })

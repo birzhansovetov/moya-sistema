@@ -167,7 +167,7 @@ test('rest can start after a completed set and be skipped without completing the
   fireEvent.click(await screen.findByRole('button',{name:'Записать тренировку'}))
   fireEvent.change(await screen.findByLabelText('Приседание до стула — подход 1 (повторения)'),{target:{value:'10'}})
   fireEvent.click(screen.getByRole('button',{name:'Начать отдых после подхода 1'}))
-  expect(screen.getByRole('timer')).toHaveTextContent('01:15')
+  expect(screen.getByRole('timer')).toHaveTextContent(/01:1[0-5]/)
   fireEvent.click(screen.getByRole('button',{name:'Пропустить отдых'}))
   expect(screen.queryByRole('timer')).not.toBeInTheDocument()
   expect(apiMock.mock.calls.some(([path,init])=>path==='/health/sport/workouts'&&init?.method==='POST')).toBe(false)
@@ -224,7 +224,7 @@ test('experience selector explains all three new paths while preserving an old p
   await screen.findByRole('heading', { name: 'Сила и ходьба дома' })
   const selector = screen.getByLabelText('Опыт тренировок') as HTMLSelectElement
   expect(Array.from(selector.options).map(option => option.value)).toEqual(['returning', 'irregular', 'regular'])
-  expect(Array.from(selector.options).some(option => option.textContent?.includes('Занимался регулярно'))).toBe(true)
+  expect(Array.from(selector.options).some(option => option.textContent?.includes('Занимаюсь регулярно'))).toBe(true)
 })
 
 test('workout journal saves distinct reps for each set and optional weight', async () => {

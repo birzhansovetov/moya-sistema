@@ -9,3 +9,5 @@
 [hidden]{display:none!important}.bookAvailable{color:var(--color-success);font-size:14px}.bookShelfTabs{margin-bottom:24px}.bookShelfTabs button{font-size:15px}.bookShelfTabs button[aria-pressed=true]{background:var(--section-tint);color:var(--section-color)}
 
 .pageHeader>div>.textButton:first-child{display:none}.bookShelfTabs{gap:8px}.libraryGrid .bookCover{max-width:none}
+
+.secondarySection{margin-block:16px;border-block-start:1px solid var(--line);padding-block:8px}.secondarySection>summary{cursor:pointer;min-height:48px;display:flex;align-items:center;gap:12px;font-weight:600;color:var(--text)}.secondarySection[open]>summary{margin-bottom:16px}.secondarySection>summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.secondarySection:not([open])>*:not(summary){display:none}
