@@ -1,3 +1,4 @@
+import {useWorkoutRestTimer} from '../useWorkoutRestTimer'
 import {MediaPlayer} from '../components/MediaPlayer'
 import {sportVideo} from '../mediaCatalog'
 import { AssistantMaterialButton } from '../components/SectionAssistant'
@@ -66,8 +67,6 @@ export function SportPage() {
   const [draftDirty, setDraftDirty] = useState(false)
   const [draftError, setDraftError] = useState('')
   const [exerciseIndex, setExerciseIndex] = useState(0)
-  const [restUntil, setRestUntil] = useState<number | null>(null)
-  const [restRemaining, setRestRemaining] = useState(0)
   const finishingRef = useRef(false)
 
   useEffect(() => {
@@ -96,20 +95,21 @@ export function SportPage() {
     queryClient.setQueryData(['sport-plan', user?.id], { plan: saved.plan })
     setProposed(null); setMatch(null); setActual({}); setError(''); setNotice(saved.status === 'replaced' ? 'Новый план сохранён. История прежних тренировок доступна ниже.' : 'План сохранён.')
   }, onError: cause => setError(message(cause)) })
-  const logMutation = useMutation({ mutationFn: (payload: unknown) => api<Workout>('/health/sport/workouts', json('POST', payload)), onSuccess: () => { setError(''); setNotice('Тренировка завершена и записана.'); setActual({}); setNote(''); setDraftDirty(false); setDraftError(''); setJournalOpen(false); void queryClient.invalidateQueries({ queryKey: ['sport-workouts', user?.id] }); void queryClient.invalidateQueries({ queryKey: ['sport-draft', user?.id] }) }, onError: cause => { finishingRef.current = false; setError(message(cause)) } })
+  const logMutation = useMutation({ mutationFn: (payload: unknown) => api<Workout>('/health/sport/workouts', json('POST', payload)), onSuccess: () => { setError(''); setNotice('Тренировка завершена и записана.'); setRestUntil(null); setActual({}); setNote(''); setDraftDirty(false); setDraftError(''); setJournalOpen(false); void queryClient.invalidateQueries({ queryKey: ['sport-workouts', user?.id] }); void queryClient.invalidateQueries({ queryKey: ['sport-draft', user?.id] }) }, onError: cause => { finishingRef.current = false; setError(message(cause)) } })
 
   const plan = planQuery.data?.plan
   const lastPlanDate = plan ? dateOffset(plan.started_on, plan.program.duration_weeks * 7 - 1) : today
   const activeSessions = plan?.program.sessions.slice(0, plan.answers.days_per_week) || []
   const activeSession = activeSessions.find(item => item.id === sessionId) || activeSessions[0]
   const draftKey = plan && activeSession ? `${plan.id}:${workoutDate}:${activeSession.id}` : ''
+  const {restUntil,setRestUntil,restRemaining}=useWorkoutRestTimer(user?.id&&draftKey?`${user.id}:${draftKey}`:'')
   const draftQuery = useQuery({ queryKey: ['sport-draft', user?.id, draftKey], enabled: !!user && !!draftKey && journalOpen,
     queryFn: () => api<{ draft: { actual: Record<string, ActualExercise>; difficulty: number; note: string } | null }>(`/health/sport/draft?plan_id=${encodeURIComponent(plan!.id)}&date=${workoutDate}&session_id=${encodeURIComponent(activeSession!.id)}`), staleTime: Infinity })
   const draftMutation = useMutation({ mutationFn: (payload: { key: string; body: unknown }) => api<{ draft: { actual: Record<string, ActualExercise>; difficulty: number; note: string } }>('/health/sport/draft', json('PUT', payload.body)),
     onSuccess: (saved, payload) => { if (!finishingRef.current) queryClient.setQueryData(['sport-draft', user?.id, payload.key], saved); setDraftError('') },
     onError: cause => { if (!finishingRef.current) setDraftError(message(cause)) } })
 
-  useEffect(() => { finishingRef.current = false; setActual({}); setDifficulty(5); setNote(''); setDraftLoadedKey(''); setDraftDirty(false); setDraftError(''); setExerciseIndex(0); setRestUntil(null) }, [draftKey])
+  useEffect(() => { finishingRef.current = false; setActual({}); setDifficulty(5); setNote(''); setDraftLoadedKey(''); setDraftDirty(false); setDraftError(''); setExerciseIndex(0) }, [draftKey])
   useEffect(() => {
     if (!draftKey || !draftQuery.isSuccess || draftLoadedKey === draftKey) return
     setActual(draftQuery.data.draft?.actual || {})
@@ -123,13 +123,6 @@ export function SportPage() {
     setNote(draftQuery.data.draft?.note || '')
     setDraftLoadedKey(draftKey)
   }, [draftKey, draftQuery.isSuccess, draftQuery.data, draftLoadedKey, activeSession])
-  useEffect(() => {
-    if (restUntil === null) { setRestRemaining(0); return }
-    const tick = () => { const seconds = Math.max(0, Math.ceil((restUntil - Date.now()) / 1000)); setRestRemaining(seconds); if (!seconds) setRestUntil(null) }
-    tick()
-    const interval = window.setInterval(tick, 1000)
-    return () => window.clearInterval(interval)
-  }, [restUntil])
   useEffect(() => {
     if (!draftDirty || draftLoadedKey !== draftKey || !plan || !activeSession || draftMutation.isPending || finishingRef.current) return
     const timer = window.setTimeout(() => {

@@ -1,0 +1,6 @@
+import {renderHook,act,cleanup} from '@testing-library/react'
+import {afterEach,test,expect} from 'vitest'
+import {useWorkoutRestTimer} from './useWorkoutRestTimer'
+afterEach(()=>{cleanup();localStorage.clear()})
+test('rest resumes after leaving the workout and stays isolated by user and session',()=>{const first=renderHook(()=>useWorkoutRestTimer('one:plan:session'));act(()=>first.result.current.setRestUntil(Date.now()+120000));expect(first.result.current.restRemaining).toBeGreaterThan(110);first.unmount();const resumed=renderHook(()=>useWorkoutRestTimer('one:plan:session'));expect(resumed.result.current.restRemaining).toBeGreaterThan(110);const other=renderHook(()=>useWorkoutRestTimer('two:plan:session'));expect(other.result.current.restUntil).toBeNull();act(()=>resumed.result.current.setRestUntil(null));resumed.unmount();const ended=renderHook(()=>useWorkoutRestTimer('one:plan:session'));expect(ended.result.current.restRemaining).toBe(0)})
+test('expired timer is not restarted',()=>{localStorage.setItem('moya-rest:expired',String(Date.now()-10000));const hook=renderHook(()=>useWorkoutRestTimer('expired'));expect(hook.result.current.restUntil).toBeNull();expect(hook.result.current.restRemaining).toBe(0)})
