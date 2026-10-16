@@ -4,7 +4,7 @@
 
 | Материал | Источник | Использование |
 |---|---|---|
-| Спорт: 15 минут с собственным весом | https://www.adidas.com/us/blog/939852-bodyweight-workout-15minute-full-body-routine | O_nWCgnBL5U; дополнительное видео, не персональная программа |
+| Спорт: 15 минут с собственным весом | https://www.youtube.com/watch?v=UyyJy9m82po | UyyJy9m82po; дополнительное видео, не персональная программа |
 | English: Present Simple | https://www.youtube.com/watch?v=klSvogyRxQk | BBC Learning English; внешний проигрыватель |
 | Қазақ тілі: расположение предметов | https://www.youtube.com/watch?v=Lcmx7Q787Ic | Soyle; официальный канал указан на soyle.kz |
 | 한국어: приветствия | https://www.youtube.com/watch?v=-N14HsuAx7w | King Sejong Institute Foundation |
@@ -23,3 +23,5 @@ Create a photorealistic editorial fitness photograph for a modern mobile fitness
 ## Границы покрытия
 
 По одному дополнительному видео на язык — это начало видеотеки, не полный видеокурс A1–B2. Видео не назначается автоматически отдельному упражнению или уроку с другой темой. Техника конкретных упражнений остаётся проверенным текстом существующей библиотеки. Для четырёх новых языков автономное аудирование не заявляется: карточки используют доступный голос устройства, видеоматериалы требуют интернета.
+
+Browser playback check found the old adidas blog embed private. Replaced with public Les Mills × adidas BODYCOMBAT supplementary video.
